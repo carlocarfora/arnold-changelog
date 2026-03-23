@@ -52,7 +52,7 @@ body {
 .app {
   display: grid;
   grid-template-columns: 220px 1fr;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto 1fr;
   min-height: 100vh;
 }
 
@@ -61,7 +61,7 @@ header {
   grid-column: 1 / -1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 20px;
   padding: 0 28px;
   height: 56px;
   border-bottom: 1px solid var(--border);
@@ -80,6 +80,7 @@ header {
   font-weight: 400;
   color: var(--text);
   letter-spacing: -0.01em;
+  flex-shrink: 0;
 }
 .logo-icon {
   width: 26px; height: 26px;
@@ -97,6 +98,7 @@ header {
   display: flex;
   align-items: center;
   gap: 14px;
+  flex-shrink: 0;
 }
 .header-meta {
   font-family: var(--mono);
@@ -129,8 +131,8 @@ aside {
   padding: 20px 0;
   overflow-y: auto;
   position: sticky;
-  top: 112px;
-  height: calc(100vh - 112px);
+  top: 56px;
+  height: calc(100vh - 56px);
 }
 .series-group { margin-bottom: 8px; }
 .series-label {
@@ -441,23 +443,18 @@ main {
 }
 .empty-state p { color: var(--muted); max-width: 44ch; line-height: 1.75; font-size: 14px; }
 
-/* ── Search bar ──────────────────────────────────────────────────────────── */
-.search-bar {
-  grid-column: 1 / -1;
+/* ── Header search ───────────────────────────────────────────────────────── */
+.header-search {
+  flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 28px;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
-  position: sticky;
-  top: 56px;
-  z-index: 90;
+  gap: 10px;
 }
 #search-input {
   flex: 1;
-  max-width: 520px;
-  height: 34px;
+  min-width: 0;
+  height: 32px;
   padding: 0 12px;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -475,6 +472,7 @@ main {
   font-size: 11px;
   color: var(--muted);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* ── Search results ──────────────────────────────────────────────────────── */
@@ -557,6 +555,9 @@ mark {
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 720px) {
+  header { gap: 10px; padding: 0 14px; }
+  .updated-at, .header-meta { display: none; }
+  .search-count { display: none; }
   .app { grid-template-columns: 1fr; }
   aside {
     position: static;
