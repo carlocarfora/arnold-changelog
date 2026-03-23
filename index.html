@@ -171,11 +171,21 @@
         </div>`;
     }).join('');
 
-    const sysReq = cl.systemRequirements ? `
-      <div class="sysreq">
-        <div class="sysreq-label">System Requirements</div>
-        <div class="sysreq-text">${esc(cl.systemRequirements)}</div>
-      </div>` : '';
+    const sysReq = cl.systemRequirements ? (() => {
+      // Split on sentence boundaries into bullet points
+      const bullets = cl.systemRequirements
+        .split(/(?<=\.)\s+/)
+        .map(s => s.trim())
+        .filter(s => s.length > 4);
+      const bulletHtml = bullets.length > 1
+        ? `<ul class="sysreq-list">${bullets.map(b => `<li>${esc(b)}</li>`).join('')}</ul>`
+        : `<div class="sysreq-text">${esc(cl.systemRequirements)}</div>`;
+      return `
+        <div class="sysreq">
+          <div class="sysreq-label">System Requirements</div>
+          ${bulletHtml}
+        </div>`;
+    })() : '';
 
     $main.innerHTML = `
       <div class="changelog-header">
