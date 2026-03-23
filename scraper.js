@@ -130,6 +130,41 @@ async function fetchWithRetry(url, retries = 3) {
   return null;
 }
 
+// ── HTML escaping ─────────────────────────────────────────────────────────────
+function escHtml(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Sanitize element HTML: keep <code> inline, make <a> absolute, strip rest ──
+function sanitizeHtml(el, baseUrl) {
+  function toHtml(node) {
+    if (!node.tagName) {
+      // Text node — decode then re-escape
+      return escHtml(node.text || '');
+    }
+    const tag = node.tagName.toLowerCase();
+    if (tag === 'code') {
+      return `<code>${escHtml(node.text)}</code>`;
+    }
+    if (tag === 'a') {
+      let href = node.getAttribute('href') || '';
+      if (href && !href.startsWith('http') && !href.startsWith('//')) {
+        try { href = new URL(href, baseUrl).href; } catch (_) {}
+      }
+      const inner = (node.childNodes || []).map(toHtml).join('');
+      return (href && href.startsWith('http'))
+        ? `<a href="${escHtml(href)}" target="_blank" rel="noopener">${inner}</a>`
+        : inner;
+    }
+    if (tag === 'strong' || tag === 'b') {
+      return `<strong>${(node.childNodes || []).map(toHtml).join('')}</strong>`;
+    }
+    // All other tags: recurse into children, drop the tag itself
+    return (node.childNodes || []).map(toHtml).join('');
+  }
+  return (el.childNodes || []).map(toHtml).join('').replace(/\s+/g, ' ').trim();
+}
+
 // ── Parse a single changelog page ────────────────────────────────────────────
 function parsePage(html, version, url) {
   const root = parse(html);
@@ -166,17 +201,18 @@ function parsePage(html, version, url) {
       // List items
       if (el.tagName === 'UL' || el.tagName === 'OL') {
         el.querySelectorAll('li').forEach(li => {
-          // Extract code/pre blocks before reading text
+          // Only extract block-level <pre> as separate code blocks; <code> stays inline
           const codeBlocks = [];
-          li.querySelectorAll('pre, code').forEach(codeEl => {
-            const codeText = codeEl.text.trim();
+          li.querySelectorAll('pre').forEach(preEl => {
+            const codeText = preEl.text.trim();
             if (codeText.length > 0) codeBlocks.push(codeText);
-            codeEl.remove();
+            preEl.remove();
           });
-          const text = li.text.trim().replace(/\s+/g, ' ');
-          if (text.length < 5 && !codeBlocks.length) return;
-          const tickets = [...text.matchAll(/\b(ARNOLD-\d+|usd#\d+)\b/g)].map(m => m[1]);
-          const item = { text, tickets };
+          const itemHtml = sanitizeHtml(li, url);
+          const plainText = li.text.trim().replace(/\s+/g, ' ');
+          if (plainText.length < 5 && !codeBlocks.length) return;
+          const tickets = [...plainText.matchAll(/\b(ARNOLD-\d+|usd#\d+)\b/g)].map(m => m[1]);
+          const item = { html: itemHtml, tickets };
           if (codeBlocks.length) item.codeBlocks = codeBlocks;
           items.push(item);
         });
@@ -184,15 +220,16 @@ function parsePage(html, version, url) {
       // Paragraphs as fallback
       else if (el.tagName === 'P') {
         const codeBlocks = [];
-        el.querySelectorAll('pre, code').forEach(codeEl => {
-          const codeText = codeEl.text.trim();
+        el.querySelectorAll('pre').forEach(preEl => {
+          const codeText = preEl.text.trim();
           if (codeText.length > 0) codeBlocks.push(codeText);
-          codeEl.remove();
+          preEl.remove();
         });
-        const text = el.text.trim().replace(/\s+/g, ' ');
-        if (text.length > 15 && !/^copyright/i.test(text)) {
-          const tickets = [...text.matchAll(/\b(ARNOLD-\d+|usd#\d+)\b/g)].map(m => m[1]);
-          const item = { text, tickets };
+        const itemHtml = sanitizeHtml(el, url);
+        const plainText = el.text.trim().replace(/\s+/g, ' ');
+        if (plainText.length > 15 && !/^copyright/i.test(plainText)) {
+          const tickets = [...plainText.matchAll(/\b(ARNOLD-\d+|usd#\d+)\b/g)].map(m => m[1]);
+          const item = { html: itemHtml, tickets };
           if (codeBlocks.length) item.codeBlocks = codeBlocks;
           items.push(item);
         }

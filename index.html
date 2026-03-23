@@ -82,7 +82,24 @@
       .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  // Highlight query terms inside an already-escaped string
+  // Strip HTML tags to get plain text (for search matching)
+  function stripTags(html) {
+    return html.replace(/<[^>]+>/g, '');
+  }
+
+  // Get plain text from an item regardless of old (text) or new (html) format
+  function itemText(item) {
+    return item.html !== undefined ? stripTags(item.html) : (item.text || '');
+  }
+
+  // Highlight query terms in an HTML string, touching only text nodes (not tag internals)
+  function highlightHtml(html, query) {
+    if (!query) return html;
+    const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return html.replace(/([^<>]+)(?=<|$)/g, t => t.replace(re, '<mark>$1</mark>'));
+  }
+
+  // Highlight inside a plain escaped string (used for headings etc.)
   function highlight(escaped, query) {
     if (!query) return escaped;
     const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
@@ -136,11 +153,11 @@
     const codeHtml = item.codeBlocks?.length
       ? item.codeBlocks.map(c => `<pre class="code-block"><code>${esc(c)}</code></pre>`).join('')
       : '';
-    const sentences = item.text.split(/\.\s+(?=[A-Z])/).map(s => s.trim()).filter(s => s.length > 8);
-    const textHtml = sentences.length > 2
-      ? `<ul class="item-bullets">${sentences.map(s => `<li>${highlight(esc(s.replace(/\.$/, '')), query)}</li>`).join('')}</ul>`
-      : `<div class="item-text">${highlight(esc(item.text), query)}</div>`;
-    return `<div class="item">${textHtml}${codeHtml}${tickets}</div>`;
+    // New format stores sanitized HTML; old cached data has plain text
+    const contentHtml = item.html !== undefined
+      ? highlightHtml(item.html, query)
+      : highlight(esc(item.text || ''), query);
+    return `<div class="item"><div class="item-text">${contentHtml}</div>${codeHtml}${tickets}</div>`;
   }
 
   // ── Single changelog view ──────────────────────────────────────────────────
@@ -222,7 +239,7 @@
       for (const sec of cl.sections) {
         const sectionHit = sec.heading.toLowerCase().includes(q);
         for (const item of sec.items) {
-          const itemHit = item.text.toLowerCase().includes(q);
+          const itemHit = itemText(item).toLowerCase().includes(q);
           if (versionHit || sectionHit || itemHit) {
             versionMatches.push({ sec, item });
           }
@@ -243,7 +260,9 @@
         }).join('');
 
         resultBlocks.push(`
-          <div class="search-result-block">
+          <div class="search-result-block"
+               onmouseenter="highlightSidebarVersion('${cl.versionId}')"
+               onmouseleave="highlightSidebarVersion(null)">
             <div class="search-result-version" onclick="clearSearchAndSelect('${cl.versionId}')">
               <span class="search-result-version-num">${esc(cl.version)}</span>
               <span class="search-result-count">${versionMatches.length} match${versionMatches.length !== 1 ? 'es' : ''}</span>
@@ -283,6 +302,12 @@
     state.query = '';
     $count.textContent = '';
     selectVersion(id);
+  };
+
+  window.highlightSidebarVersion = function(id) {
+    $list.querySelectorAll('.version-btn').forEach(btn => {
+      btn.classList.toggle('hover-highlight', btn.getAttribute('onclick') === `selectVersion('${id}')`);
+    });
   };
 
   window.setFilter = function(f) {

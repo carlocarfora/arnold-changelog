@@ -284,12 +284,30 @@ main {
   transition: padding-left 0.12s;
 }
 .item:last-child { border-bottom: none; }
-.item:hover { padding-left: 6px; }
 .item-text {
   font-size: 14px;
   line-height: 1.7;
   color: var(--subtle);
 }
+.item-text code {
+  font-family: var(--mono);
+  font-size: 0.82em;
+  background: var(--surface);
+  border: 1px solid var(--border-hi);
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: var(--subtle);
+}
+[data-theme="dark"] .item-text code {
+  background: var(--surface-hi);
+}
+.item-text a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(217, 119, 87, 0.4);
+  text-underline-offset: 2px;
+}
+.item-text a:hover { text-decoration-color: var(--accent); }
 .item-tickets {
   display: flex;
   flex-wrap: wrap;
@@ -547,6 +565,11 @@ mark {
   vertical-align: middle;
 }
 .version-btn.dim { opacity: 0.35; }
+.version-btn.hover-highlight {
+  color: var(--text);
+  border-left-color: var(--border-hi);
+  background: var(--surface-hi);
+}
 
 /* ── Scrollbar ───────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
