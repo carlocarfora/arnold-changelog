@@ -1,0 +1,11 @@
+{
+  "name": "arnold-changelog",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "scrape": "node scraper.js"
+  },
+  "dependencies": {
+    "node-html-parser": "^6.1.13"
+  }
+}
