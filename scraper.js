@@ -166,18 +166,35 @@ function parsePage(html, version, url) {
       // List items
       if (el.tagName === 'UL' || el.tagName === 'OL') {
         el.querySelectorAll('li').forEach(li => {
+          // Extract code/pre blocks before reading text
+          const codeBlocks = [];
+          li.querySelectorAll('pre, code').forEach(codeEl => {
+            const codeText = codeEl.text.trim();
+            if (codeText.length > 0) codeBlocks.push(codeText);
+            codeEl.remove();
+          });
           const text = li.text.trim().replace(/\s+/g, ' ');
-          if (text.length < 5) return;
+          if (text.length < 5 && !codeBlocks.length) return;
           const tickets = [...text.matchAll(/\b(ARNOLD-\d+|usd#\d+)\b/g)].map(m => m[1]);
-          items.push({ text, tickets });
+          const item = { text, tickets };
+          if (codeBlocks.length) item.codeBlocks = codeBlocks;
+          items.push(item);
         });
       }
       // Paragraphs as fallback
       else if (el.tagName === 'P') {
+        const codeBlocks = [];
+        el.querySelectorAll('pre, code').forEach(codeEl => {
+          const codeText = codeEl.text.trim();
+          if (codeText.length > 0) codeBlocks.push(codeText);
+          codeEl.remove();
+        });
         const text = el.text.trim().replace(/\s+/g, ' ');
         if (text.length > 15 && !/^copyright/i.test(text)) {
           const tickets = [...text.matchAll(/\b(ARNOLD-\d+|usd#\d+)\b/g)].map(m => m[1]);
-          items.push({ text, tickets });
+          const item = { text, tickets };
+          if (codeBlocks.length) item.codeBlocks = codeBlocks;
+          items.push(item);
         }
       }
       el = el.nextElementSibling;

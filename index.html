@@ -164,12 +164,15 @@
         const tickets = item.tickets?.length
           ? `<div class="item-tickets">${item.tickets.map(t => `<span class="ticket">${esc(t)}</span>`).join('')}</div>`
           : '';
-        // Split long text into sub-bullets at sentence boundaries (capital letter after ". ")
+        const codeHtml = item.codeBlocks?.length
+          ? item.codeBlocks.map(c => `<pre class="code-block"><code>${esc(c)}</code></pre>`).join('')
+          : '';
+        // Split long text into sub-bullets at sentence boundaries
         const sentences = item.text.split(/\.\s+(?=[A-Z])/).map(s => s.trim()).filter(s => s.length > 8);
         const textHtml = sentences.length > 2
           ? `<ul class="item-bullets">${sentences.map(s => `<li>${esc(s.replace(/\.$/, ''))}</li>`).join('')}</ul>`
           : `<div class="item-text">${esc(item.text)}</div>`;
-        return `<div class="item">${textHtml}${tickets}</div>`;
+        return `<div class="item">${textHtml}${codeHtml}${tickets}</div>`;
       }).join('');
       return `
         <div class="section">

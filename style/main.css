@@ -327,6 +327,24 @@ main {
   letter-spacing: 0.02em;
 }
 
+/* ── Code blocks ─────────────────────────────────────────────────────────── */
+.code-block {
+  margin-top: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.65;
+  color: var(--subtle);
+  white-space: pre;
+}
+[data-theme="dark"] .code-block {
+  background: var(--surface-hi);
+}
+
 /* ── System req ──────────────────────────────────────────────────────────── */
 .sysreq {
   margin-top: 40px;
