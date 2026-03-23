@@ -25,6 +25,11 @@
     </div>
   </header>
 
+  <div class="search-bar">
+    <input type="search" id="search-input" placeholder="Search across all versions…" autocomplete="off" spellcheck="false" />
+    <span class="search-count" id="search-count"></span>
+  </div>
+
   <aside>
     <div id="version-list">
       <div class="state-message" style="padding:20px">
@@ -50,29 +55,47 @@
     return localStorage.getItem('theme') ||
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   }
-
   function applyTheme(t) {
     document.documentElement.setAttribute('data-theme', t);
     $toggle.textContent = t === 'dark' ? '☀' : '☽';
     localStorage.setItem('theme', t);
   }
-
   applyTheme(getTheme());
-
-  $toggle.addEventListener('click', () => {
-    applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
-  });
+  $toggle.addEventListener('click', () => applyTheme(getTheme() === 'dark' ? 'light' : 'dark'));
 
   // ── State ──────────────────────────────────────────────────────────────────
   const state = {
-    data: null,
-    activeId: null,
+    data:         null,
+    activeId:     null,
     activeFilter: 'all',
+    query:        '',
   };
 
-  const $list    = document.getElementById('version-list');
-  const $main    = document.getElementById('main-content');
-  const $updAt   = document.getElementById('updated-at');
+  const $list   = document.getElementById('version-list');
+  const $main   = document.getElementById('main-content');
+  const $updAt  = document.getElementById('updated-at');
+  const $search = document.getElementById('search-input');
+  const $count  = document.getElementById('search-count');
+
+  // ── Helpers ────────────────────────────────────────────────────────────────
+  function esc(s) {
+    return String(s || '')
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // Highlight query terms inside an already-escaped string
+  function highlight(escaped, query) {
+    if (!query) return escaped;
+    const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return escaped.replace(re, '<mark>$1</mark>');
+  }
+
+  function classifySection(heading) {
+    if (/enhance|feature|new|improv|add/i.test(heading)) return 'enhancements';
+    if (/bug|fix|crash|resolv/i.test(heading))           return 'bug-fixes';
+    if (/break|compat|deprecat/i.test(heading))          return 'breaking';
+    return '';
+  }
 
   // ── Load data ──────────────────────────────────────────────────────────────
   async function loadData() {
@@ -81,20 +104,10 @@
     return res.json();
   }
 
-  // ── Classify section ───────────────────────────────────────────────────────
-  function classifySection(heading) {
-    if (/enhance|feature|new|improv|add/i.test(heading)) return 'enhancements';
-    if (/bug|fix|crash|resolv/i.test(heading))           return 'bug-fixes';
-    if (/break|compat|deprecat/i.test(heading))          return 'breaking';
-    return '';
-  }
-
-  // ── Render sidebar ─────────────────────────────────────────────────────────
-  function renderSidebar() {
-    // Only show versions that were successfully scraped
+  // ── Sidebar ────────────────────────────────────────────────────────────────
+  function renderSidebar(matchCounts = null) {
     const changelogs = state.data.changelogs.filter(cl => !cl.error);
 
-    // Group by major.minor (e.g. 7.4.x, 7.3.x)
     const groups = new Map();
     for (const cl of changelogs) {
       const parts = cl.version.split('.');
@@ -103,18 +116,35 @@
       groups.get(key).push(cl);
     }
 
-    $list.innerHTML = [...groups.entries()].map(([label, versions]) => `
-      <div class="series-group">
-        <span class="series-label">${esc(label)}</span>
-        ${versions.map(cl => {
-          const isActive = cl.versionId === state.activeId ? 'active' : '';
-          return `<button class="version-btn ${isActive}" onclick="selectVersion('${cl.versionId}')">${esc(cl.version)}</button>`;
-        }).join('')}
-      </div>`
-    ).join('');
+    $list.innerHTML = [...groups.entries()].map(([label, versions]) => {
+      const btns = versions.map(cl => {
+        const isActive = cl.versionId === state.activeId ? 'active' : '';
+        const count = matchCounts?.[cl.versionId];
+        // If searching, dim versions with no matches
+        const dim = matchCounts && !count ? 'dim' : '';
+        const badge = count ? `<span class="sidebar-match-count">${count}</span>` : '';
+        return `<button class="version-btn ${isActive} ${dim}" onclick="selectVersion('${cl.versionId}')">${esc(cl.version)}${badge}</button>`;
+      }).join('');
+      return `<div class="series-group"><span class="series-label">${esc(label)}</span>${btns}</div>`;
+    }).join('');
   }
 
-  // ── Render changelog ───────────────────────────────────────────────────────
+  // ── Item renderer (shared by changelog + search views) ────────────────────
+  function renderItem(item, query = '') {
+    const tickets = item.tickets?.length
+      ? `<div class="item-tickets">${item.tickets.map(t => `<span class="ticket">${esc(t)}</span>`).join('')}</div>`
+      : '';
+    const codeHtml = item.codeBlocks?.length
+      ? item.codeBlocks.map(c => `<pre class="code-block"><code>${esc(c)}</code></pre>`).join('')
+      : '';
+    const sentences = item.text.split(/\.\s+(?=[A-Z])/).map(s => s.trim()).filter(s => s.length > 8);
+    const textHtml = sentences.length > 2
+      ? `<ul class="item-bullets">${sentences.map(s => `<li>${highlight(esc(s.replace(/\.$/, '')), query)}</li>`).join('')}</ul>`
+      : `<div class="item-text">${highlight(esc(item.text), query)}</div>`;
+    return `<div class="item">${textHtml}${codeHtml}${tickets}</div>`;
+  }
+
+  // ── Single changelog view ──────────────────────────────────────────────────
   function renderChangelog(cl) {
     if (cl.error) {
       $main.innerHTML = `
@@ -129,28 +159,14 @@
     }
 
     const rt = cl.releaseType || 'release';
-    const badgeClass = {
-      feature:  'badge-feature-lg',
-      bugfix:   'badge-bugfix-lg',
-      breaking: 'badge-breaking-lg',
-      release:  'badge-release-lg',
-    }[rt] || 'badge-release-lg';
-    const badgeLabel = {
-      feature:  'Feature Release',
-      bugfix:   'Bug Fix Release',
-      breaking: 'Breaking Changes',
-      release:  'Release',
-    }[rt] || rt;
+    const badgeClass = { feature:'badge-feature-lg', bugfix:'badge-bugfix-lg', breaking:'badge-breaking-lg', release:'badge-release-lg' }[rt] || 'badge-release-lg';
+    const badgeLabel = { feature:'Feature Release', bugfix:'Bug Fix Release', breaking:'Breaking Changes', release:'Release' }[rt] || rt;
 
     const sectionTypes = [...new Set(cl.sections.map(s => classifySection(s.heading)).filter(Boolean))];
-
     const filterBar = sectionTypes.length > 1 ? `
       <div class="filter-bar">
         <button class="filter-chip ${state.activeFilter === 'all' ? 'active' : ''}" onclick="setFilter('all')">All</button>
-        ${sectionTypes.map(t => `
-          <button class="filter-chip ${state.activeFilter === t ? 'active' : ''}" onclick="setFilter('${t}')">
-            ${t.replace('-', ' ')}
-          </button>`).join('')}
+        ${sectionTypes.map(t => `<button class="filter-chip ${state.activeFilter === t ? 'active' : ''}" onclick="setFilter('${t}')">${t.replace('-',' ')}</button>`).join('')}
       </div>` : '';
 
     const visibleSections = cl.sections.filter(s =>
@@ -160,41 +176,19 @@
     const sectionsHtml = visibleSections.map((sec, i) => {
       const cls = classifySection(sec.heading);
       const num = String(i + 1).padStart(2, '0');
-      const itemsHtml = sec.items.map(item => {
-        const tickets = item.tickets?.length
-          ? `<div class="item-tickets">${item.tickets.map(t => `<span class="ticket">${esc(t)}</span>`).join('')}</div>`
-          : '';
-        const codeHtml = item.codeBlocks?.length
-          ? item.codeBlocks.map(c => `<pre class="code-block"><code>${esc(c)}</code></pre>`).join('')
-          : '';
-        // Split long text into sub-bullets at sentence boundaries
-        const sentences = item.text.split(/\.\s+(?=[A-Z])/).map(s => s.trim()).filter(s => s.length > 8);
-        const textHtml = sentences.length > 2
-          ? `<ul class="item-bullets">${sentences.map(s => `<li>${esc(s.replace(/\.$/, ''))}</li>`).join('')}</ul>`
-          : `<div class="item-text">${esc(item.text)}</div>`;
-        return `<div class="item">${textHtml}${codeHtml}${tickets}</div>`;
-      }).join('');
       return `
         <div class="section">
           <div class="section-heading ${cls}">${num} ${esc(sec.heading)}</div>
-          <div class="item-list">${itemsHtml}</div>
+          <div class="item-list">${sec.items.map(item => renderItem(item)).join('')}</div>
         </div>`;
     }).join('');
 
     const sysReq = cl.systemRequirements ? (() => {
-      // Split on sentence boundaries into bullet points
-      const bullets = cl.systemRequirements
-        .split(/(?<=\.)\s+/)
-        .map(s => s.trim())
-        .filter(s => s.length > 4);
+      const bullets = cl.systemRequirements.split(/(?<=\.)\s+/).map(s => s.trim()).filter(s => s.length > 4);
       const bulletHtml = bullets.length > 1
         ? `<ul class="sysreq-list">${bullets.map(b => `<li>${esc(b)}</li>`).join('')}</ul>`
         : `<div class="sysreq-text">${esc(cl.systemRequirements)}</div>`;
-      return `
-        <div class="sysreq">
-          <div class="sysreq-label">System Requirements</div>
-          ${bulletHtml}
-        </div>`;
+      return `<div class="sysreq"><div class="sysreq-label">System Requirements</div>${bulletHtml}</div>`;
     })() : '';
 
     $main.innerHTML = `
@@ -207,8 +201,73 @@
         <a class="source-link" href="${esc(cl.sourceUrl)}" target="_blank" rel="noopener">↗ View on Autodesk Help</a>
       </div>
       ${filterBar}
-      ${sectionsHtml || '<div class="empty-state"><p>No sections were parsed from this page.</p></div>'}
+      ${sectionsHtml || '<div class="empty-state"><p>No sections parsed from this page.</p></div>'}
       ${sysReq}`;
+  }
+
+  // ── Search results view ────────────────────────────────────────────────────
+  function renderSearch(query) {
+    const q = query.toLowerCase().trim();
+    const matchCounts = {};
+    const resultBlocks = [];
+    let totalMatches = 0;
+
+    for (const cl of state.data.changelogs) {
+      if (cl.error) continue;
+
+      const versionMatches = [];
+
+      // Check version number itself
+      const versionHit = cl.version.toLowerCase().includes(q);
+
+      for (const sec of cl.sections) {
+        const sectionHit = sec.heading.toLowerCase().includes(q);
+        for (const item of sec.items) {
+          const itemHit = item.text.toLowerCase().includes(q);
+          if (versionHit || sectionHit || itemHit) {
+            versionMatches.push({ sec, item });
+          }
+        }
+      }
+
+      if (versionMatches.length > 0 || versionHit) {
+        matchCounts[cl.versionId] = versionMatches.length;
+        totalMatches += versionMatches.length;
+
+        const itemsHtml = versionMatches.map(({ sec, item }) => {
+          const cls = classifySection(sec.heading);
+          return `
+            <div class="search-result-item">
+              <span class="search-result-section ${cls}">${highlight(esc(sec.heading), query)}</span>
+              ${renderItem(item, query)}
+            </div>`;
+        }).join('');
+
+        resultBlocks.push(`
+          <div class="search-result-block">
+            <div class="search-result-version" onclick="clearSearchAndSelect('${cl.versionId}')">
+              <span class="search-result-version-num">${esc(cl.version)}</span>
+              <span class="search-result-count">${versionMatches.length} match${versionMatches.length !== 1 ? 'es' : ''}</span>
+            </div>
+            ${itemsHtml}
+          </div>`);
+      }
+    }
+
+    renderSidebar(matchCounts);
+
+    if (resultBlocks.length === 0) {
+      $count.textContent = '';
+      $main.innerHTML = `
+        <div class="empty-state">
+          <h2>No results</h2>
+          <p>Nothing matched "<strong>${esc(query)}</strong>" across any version.</p>
+        </div>`;
+      return;
+    }
+
+    $count.textContent = `${totalMatches} result${totalMatches !== 1 ? 's' : ''} across ${resultBlocks.length} version${resultBlocks.length !== 1 ? 's' : ''}`;
+    $main.innerHTML = `<div class="search-results">${resultBlocks.join('')}</div>`;
   }
 
   // ── Select version ─────────────────────────────────────────────────────────
@@ -220,16 +279,35 @@
     if (cl) renderChangelog(cl);
   };
 
+  window.clearSearchAndSelect = function(id) {
+    $search.value = '';
+    state.query = '';
+    $count.textContent = '';
+    selectVersion(id);
+  };
+
   window.setFilter = function(f) {
     state.activeFilter = f;
     const cl = state.data.changelogs.find(c => c.versionId === state.activeId);
     if (cl) renderChangelog(cl);
   };
 
-  function esc(s) {
-    return String(s || '')
-      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
+  // ── Search input handler ───────────────────────────────────────────────────
+  let searchTimer;
+  $search.addEventListener('input', () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      state.query = $search.value.trim();
+      if (state.query.length === 0) {
+        $count.textContent = '';
+        renderSidebar();
+        const cl = state.data.changelogs.find(c => c.versionId === state.activeId);
+        if (cl) renderChangelog(cl);
+      } else if (state.query.length >= 2) {
+        renderSearch(state.query);
+      }
+    }, 150);
+  });
 
   // ── Init ───────────────────────────────────────────────────────────────────
   async function init() {
@@ -252,7 +330,7 @@
       }
 
       renderSidebar();
-      selectVersion(state.data.changelogs[0].versionId);
+      selectVersion(state.data.changelogs.find(c => !c.error)?.versionId);
 
     } catch (e) {
       $list.innerHTML = '';
