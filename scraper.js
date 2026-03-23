@@ -31,8 +31,14 @@ const VERSIONS = [
 ];
 
 // ── URL builder ───────────────────────────────────────────────────────────────
-function buildUrl(v) {
-  return `https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-${v.series}/arnold_core_${v.id}_html.html`;
+// Newer versions use arnold_core_{id}_html.html
+// Older versions use arnold_user_guide_ac_release_notes_ac_rn_{id}_html.html
+function buildUrls(v) {
+  const base = `https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-${v.series}`;
+  return [
+    `${base}/arnold_core_${v.id}_html.html`,
+    `${base}/arnold_user_guide_ac_release_notes_ac_rn_${v.id}_html.html`,
+  ];
 }
 
 // ── Fetch with retries ────────────────────────────────────────────────────────
@@ -58,7 +64,7 @@ async function fetchWithRetry(url, retries = 3) {
 }
 
 // ── Parse a single changelog page ────────────────────────────────────────────
-function parsePage(html, version) {
+function parsePage(html, version, url) {
   const root = parse(html);
 
   // Remove nav, header, footer, script, style noise
@@ -138,7 +144,7 @@ function parsePage(html, version) {
     intro,
     sections,
     systemRequirements,
-    sourceUrl:          buildUrl(version),
+    sourceUrl:          url,
     scrapedAt:          new Date().toISOString(),
   };
 }
@@ -172,17 +178,22 @@ async function main() {
       continue;
     }
 
-    const url = buildUrl(version);
-    console.log(`→ Fetch ${version.label}  ${url}`);
+    const urls = buildUrls(version);
+    let res = null;
+    let url = null;
+    for (const candidate of urls) {
+      console.log(`→ Fetch ${version.label}  ${candidate}`);
+      res = await fetchWithRetry(candidate);
+      if (res) { url = candidate; break; }
+    }
 
-    const res = await fetchWithRetry(url);
     if (!res) {
       console.warn(`✗ Failed ${version.label}`);
       changelogs.push({
         version:   version.label,
         versionId: version.id,
         error:     'Page not found or fetch failed',
-        sourceUrl: url,
+        sourceUrl: urls[0],
         scrapedAt: new Date().toISOString(),
       });
       failed++;
@@ -199,7 +210,7 @@ async function main() {
       continue;
     }
 
-    const parsed = parsePage(html, version);
+    const parsed = parsePage(html, version, url);
     changelogs.push(parsed);
     fetched++;
 
