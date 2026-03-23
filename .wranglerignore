@@ -1,0 +1,8 @@
+.git
+node_modules
+scraper.js
+package.json
+package-lock.json
+wrangler.json
+.gitignore
+.wranglerignore
