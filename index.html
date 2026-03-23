@@ -6,7 +6,7 @@
   <title>Arnold Release Notes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style/main.css" />
 </head>
 <body>
@@ -16,11 +16,12 @@
   <header>
     <div class="logo">
       <div class="logo-icon">A</div>
-      Arnold Release Notes
+      Arnold Documentation
     </div>
     <div class="header-right">
       <span class="updated-at" id="updated-at"></span>
       <span class="header-meta">Arnold Core</span>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle theme">☀</button>
     </div>
   </header>
 
@@ -42,15 +43,36 @@
 </div>
 
 <script>
+  // ── Theme ──────────────────────────────────────────────────────────────────
+  const $toggle = document.getElementById('theme-toggle');
+
+  function getTheme() {
+    return localStorage.getItem('theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+
+  function applyTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    $toggle.textContent = t === 'dark' ? '☀' : '☽';
+    localStorage.setItem('theme', t);
+  }
+
+  applyTheme(getTheme());
+
+  $toggle.addEventListener('click', () => {
+    applyTheme(getTheme() === 'dark' ? 'light' : 'dark');
+  });
+
+  // ── State ──────────────────────────────────────────────────────────────────
   const state = {
     data: null,
     activeId: null,
     activeFilter: 'all',
   };
 
-  const $list = document.getElementById('version-list');
-  const $main = document.getElementById('main-content');
-  const $updatedAt = document.getElementById('updated-at');
+  const $list    = document.getElementById('version-list');
+  const $main    = document.getElementById('main-content');
+  const $updAt   = document.getElementById('updated-at');
 
   // ── Load data ──────────────────────────────────────────────────────────────
   async function loadData() {
@@ -59,7 +81,7 @@
     return res.json();
   }
 
-  // ── Classify section heading ───────────────────────────────────────────────
+  // ── Classify section ───────────────────────────────────────────────────────
   function classifySection(heading) {
     if (/enhance|feature|new|improv|add/i.test(heading)) return 'enhancements';
     if (/bug|fix|crash|resolv/i.test(heading))           return 'bug-fixes';
@@ -67,11 +89,10 @@
     return '';
   }
 
-  // ── Render sidebar (grouped by major version) ──────────────────────────────
+  // ── Render sidebar ─────────────────────────────────────────────────────────
   function renderSidebar() {
     const { changelogs } = state.data;
 
-    // Group by major version number (first character of versionId)
     const groups = new Map();
     for (const cl of changelogs) {
       const major = cl.version.split('.')[0];
@@ -84,14 +105,8 @@
       <div class="series-group">
         <span class="series-label">${esc(label)}</span>
         ${versions.map(cl => {
-          const rt = cl.error ? 'error' : (cl.releaseType || 'release');
           const isActive = cl.versionId === state.activeId ? 'active' : '';
-          const badgeLabel = { feature: 'feat', bugfix: 'fix', breaking: 'break!', release: 'rel', error: 'err' }[rt] || rt;
-          return `
-            <button class="version-btn ${isActive}" onclick="selectVersion('${cl.versionId}')">
-              <span>${esc(cl.version)}</span>
-              <span class="badge badge-${rt}">${badgeLabel}</span>
-            </button>`;
+          return `<button class="version-btn ${isActive}" onclick="selectVersion('${cl.versionId}')">${esc(cl.version)}</button>`;
         }).join('')}
       </div>`
     ).join('');
@@ -105,15 +120,25 @@
           <div class="changelog-version"><h1>${esc(cl.version)}</h1></div>
         </div>
         <div class="error-box">
-          This version's page couldn't be scraped: ${esc(cl.error)}<br><br>
-          <a href="${esc(cl.sourceUrl)}" target="_blank" rel="noopener">↗ Try viewing it directly on Autodesk Help</a>
+          This version couldn't be scraped: ${esc(cl.error)}<br><br>
+          <a href="${esc(cl.sourceUrl)}" target="_blank" rel="noopener">↗ View on Autodesk Help</a>
         </div>`;
       return;
     }
 
     const rt = cl.releaseType || 'release';
-    const badgeClass = { feature: 'badge-feature-lg', bugfix: 'badge-bugfix-lg', breaking: 'badge-breaking-lg', release: 'badge-release-lg' }[rt] || 'badge-release-lg';
-    const badgeLabel = { feature: 'Feature Release', bugfix: 'Bug Fix Release', breaking: 'Breaking Changes', release: 'Release' }[rt] || rt;
+    const badgeClass = {
+      feature:  'badge-feature-lg',
+      bugfix:   'badge-bugfix-lg',
+      breaking: 'badge-breaking-lg',
+      release:  'badge-release-lg',
+    }[rt] || 'badge-release-lg';
+    const badgeLabel = {
+      feature:  'Feature Release',
+      bugfix:   'Bug Fix Release',
+      breaking: 'Breaking Changes',
+      release:  'Release',
+    }[rt] || rt;
 
     const sectionTypes = [...new Set(cl.sections.map(s => classifySection(s.heading)).filter(Boolean))];
 
@@ -126,22 +151,25 @@
           </button>`).join('')}
       </div>` : '';
 
-    const sectionsHtml = cl.sections
-      .filter(s => state.activeFilter === 'all' || classifySection(s.heading) === state.activeFilter)
-      .map(sec => {
-        const cls = classifySection(sec.heading);
-        const itemsHtml = sec.items.map(item => {
-          const tickets = item.tickets?.length
-            ? `<div class="item-tickets">${item.tickets.map(t => `<span class="ticket">${esc(t)}</span>`).join('')}</div>`
-            : '';
-          return `<div class="item"><div class="item-text">${esc(item.text)}</div>${tickets}</div>`;
-        }).join('');
-        return `
-          <div class="section">
-            <div class="section-heading ${cls}">${esc(sec.heading)}</div>
-            <div class="item-list">${itemsHtml}</div>
-          </div>`;
+    const visibleSections = cl.sections.filter(s =>
+      state.activeFilter === 'all' || classifySection(s.heading) === state.activeFilter
+    );
+
+    const sectionsHtml = visibleSections.map((sec, i) => {
+      const cls = classifySection(sec.heading);
+      const num = String(i + 1).padStart(2, '0');
+      const itemsHtml = sec.items.map(item => {
+        const tickets = item.tickets?.length
+          ? `<div class="item-tickets">${item.tickets.map(t => `<span class="ticket">${esc(t)}</span>`).join('')}</div>`
+          : '';
+        return `<div class="item"><div class="item-text">${esc(item.text)}</div>${tickets}</div>`;
       }).join('');
+      return `
+        <div class="section">
+          <div class="section-heading ${cls}">${num} ${esc(sec.heading)}</div>
+          <div class="item-list">${itemsHtml}</div>
+        </div>`;
+    }).join('');
 
     const sysReq = cl.systemRequirements ? `
       <div class="sysreq">
@@ -159,7 +187,7 @@
         <a class="source-link" href="${esc(cl.sourceUrl)}" target="_blank" rel="noopener">↗ View on Autodesk Help</a>
       </div>
       ${filterBar}
-      ${sectionsHtml || '<div class="empty-state"><p style="color:var(--muted)">No sections were parsed from this page.</p></div>'}
+      ${sectionsHtml || '<div class="empty-state"><p>No sections were parsed from this page.</p></div>'}
       ${sysReq}`;
   }
 
@@ -193,14 +221,14 @@
         $main.innerHTML = `
           <div class="empty-state">
             <h2>No data yet</h2>
-            <p>Run the GitHub Actions workflow (or <code>node scraper.js</code> locally) to populate the changelogs.</p>
+            <p>Run the GitHub Actions workflow to populate the changelogs.</p>
           </div>`;
         return;
       }
 
       if (state.data.updatedAt) {
         const d = new Date(state.data.updatedAt);
-        $updatedAt.textContent = `Updated ${d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' })}`;
+        $updAt.textContent = `Updated ${d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' })}`;
       }
 
       renderSidebar();
