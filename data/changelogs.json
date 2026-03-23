@@ -9297,28 +9297,28 @@
       "versionId": "7122",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7122_html.html",
-      "scrapedAt": "2026-03-23T23:11:06.664Z"
+      "scrapedAt": "2026-03-23T23:12:31.139Z"
     },
     {
       "version": "7.1.2.1",
       "versionId": "7121",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7121_html.html",
-      "scrapedAt": "2026-03-23T23:11:06.806Z"
+      "scrapedAt": "2026-03-23T23:12:31.326Z"
     },
     {
       "version": "7.1.2.0",
       "versionId": "7120",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7120_html.html",
-      "scrapedAt": "2026-03-23T23:11:06.889Z"
+      "scrapedAt": "2026-03-23T23:12:31.687Z"
     },
     {
       "version": "7.1.1.1",
       "versionId": "7111",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7111_html.html",
-      "scrapedAt": "2026-03-23T23:11:06.964Z"
+      "scrapedAt": "2026-03-23T23:12:31.885Z"
     },
     {
       "version": "7.1.1.0",
@@ -14712,5 +14712,5 @@
       "scrapedAt": "2026-03-23T23:03:09.057Z"
     }
   ],
-  "updatedAt": "2026-03-23T23:11:06.965Z"
+  "updatedAt": "2026-03-23T23:12:31.885Z"
 }
