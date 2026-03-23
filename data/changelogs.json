@@ -1,1 +1,3667 @@
-{"versions":[],"changelogs":[],"updatedAt":null}
+{
+  "versions": [
+    {
+      "id": "7451",
+      "label": "7.4.5.1",
+      "series": "7x"
+    },
+    {
+      "id": "7411",
+      "label": "7.4.1.1",
+      "series": "7x"
+    },
+    {
+      "id": "7410",
+      "label": "7.4.1.0",
+      "series": "7x"
+    },
+    {
+      "id": "7400",
+      "label": "7.4.0.0",
+      "series": "7x"
+    },
+    {
+      "id": "7330",
+      "label": "7.3.3.0",
+      "series": "7x"
+    },
+    {
+      "id": "7320",
+      "label": "7.3.2.0",
+      "series": "7x"
+    },
+    {
+      "id": "7310",
+      "label": "7.3.1.0",
+      "series": "7x"
+    },
+    {
+      "id": "7300",
+      "label": "7.3.0.0",
+      "series": "7x"
+    },
+    {
+      "id": "7210",
+      "label": "7.2.1.0",
+      "series": "7x"
+    },
+    {
+      "id": "7200",
+      "label": "7.2.0.0",
+      "series": "7x"
+    },
+    {
+      "id": "7110",
+      "label": "7.1.1.0",
+      "series": "7x"
+    },
+    {
+      "id": "7100",
+      "label": "7.1.0.0",
+      "series": "7x"
+    },
+    {
+      "id": "7010",
+      "label": "7.0.1.0",
+      "series": "7x"
+    },
+    {
+      "id": "7000",
+      "label": "7.0.0.0",
+      "series": "7x"
+    }
+  ],
+  "changelogs": [
+    {
+      "version": "7.4.5.1",
+      "versionId": "7451",
+      "releaseType": "release",
+      "intro": "19 February 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "text": "ARNOLD-17399 - IPR crash after deleting shapes",
+              "tickets": [
+                "ARNOLD-17399"
+              ]
+            },
+            {
+              "text": "ARNOLD-17489 - Crash with invalid vdb points grid in point cloud queries",
+              "tickets": [
+                "ARNOLD-17489"
+              ]
+            },
+            {
+              "text": "ARNOLD-17494 - Linux crash regression in 7.4.5.0",
+              "tickets": [
+                "ARNOLD-17494"
+              ]
+            },
+            {
+              "text": "usd#2557 - Fix regression when a geometry has an instancer without any instances",
+              "tickets": [
+                "usd#2557"
+              ]
+            },
+            {
+              "text": "usd#2547 - Changing material terminal is not updated with Hydra 2",
+              "tickets": [
+                "usd#2547"
+              ]
+            },
+            {
+              "text": "usd#2536 - ArnoldUsd procedural filename is not reported as an asset",
+              "tickets": [
+                "usd#2536"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.28. This is equivalent to RHEL/Rocky 8. macOS 11 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M-series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and requires driver versions newer than 582.16/580.126 (Windows/Linux). Older drivers will log an error and abort the render. Note that you can use New Feature Branch drivers. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN GPU support is limited to: macOS Apple native CPUs (M1 and newer) Linux NVIDIA GPUs using Turing or newer architectures Windows Intel Xe dedicated and integrated GPUs NVIDIA GPUs using Turing or newer architectures AMD GPUs with RDNA2 (Navi 21 only) and RDNA3 (Navi 3x) architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7451_html.html",
+      "scrapedAt": "2026-03-23T22:00:16.050Z"
+    },
+    {
+      "version": "7.4.1.1",
+      "versionId": "7411",
+      "releaseType": "release",
+      "intro": "6 May 2025",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "text": "ARNOLD-16006 - Adding Cryptomatte causes Opacity AOV to be black",
+              "tickets": [
+                "ARNOLD-16006"
+              ]
+            },
+            {
+              "text": "ARNOLD-16044 - [GPU] IPR crash when modifying a shape's parameter",
+              "tickets": [
+                "ARNOLD-16044"
+              ]
+            },
+            {
+              "text": "ARNOLD-16116 - Render report fixes and cleanups",
+              "tickets": [
+                "ARNOLD-16116"
+              ]
+            },
+            {
+              "text": "ARNOLD-16155 - Emission cone is too narrow for IES lights in Global Light Sampling",
+              "tickets": [
+                "ARNOLD-16155"
+              ]
+            },
+            {
+              "text": "ARNOLD-16178 - [MaterialX] Interactive edits to published node graphs are ignored",
+              "tickets": [
+                "ARNOLD-16178"
+              ]
+            },
+            {
+              "text": "ARNOLD-16181 - Performance regression in initialization of instanced procedurals",
+              "tickets": [
+                "ARNOLD-16181"
+              ]
+            },
+            {
+              "text": "ARNOLD-16184 - Crash when options.outputs is set to a null array pointer",
+              "tickets": [
+                "ARNOLD-16184"
+              ]
+            },
+            {
+              "text": "ARNOLD-16187 - Change default for procedural_instancing_optimization from exhaustive to conservative",
+              "tickets": [
+                "ARNOLD-16187"
+              ]
+            },
+            {
+              "text": "ARNOLD-16214 - Procedural bounding box not correctly recalculated after adding nodes in procedural_update",
+              "tickets": [
+                "ARNOLD-16214"
+              ]
+            },
+            {
+              "text": "ARNOLD-16247 - Crash when using AiProceduralExpand without a render session",
+              "tickets": [
+                "ARNOLD-16247"
+              ]
+            },
+            {
+              "text": "usd#2269 - Fix lost shader connections when the Hydra procedural was updated (mtoa)",
+              "tickets": [
+                "usd#2269"
+              ]
+            },
+            {
+              "text": "usd#2268 - Re-enable instancer motion blur on the first rendered frame by recomputing the transform matrices when the shutter is updated",
+              "tickets": [
+                "usd#2268"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 11 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 560.35.03 or higher drivers. On Windows, we recommend 560.76 or higher drivers. Intel OIDN GPU support is limited to: MacOS Apple native CPUs (M1 and newer) Windows Intel Xe dedicated and integrated GPUs NVIDIA GPUs using Turing or newer architectures AMD GPUs with RDNA2 (Navi 21 only) and RDNA3 (Navi 3x) architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7411_html.html",
+      "scrapedAt": "2026-03-23T22:00:17.577Z"
+    },
+    {
+      "version": "7.4.1.0",
+      "versionId": "7410",
+      "releaseType": "release",
+      "intro": "26 March 2025",
+      "sections": [
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "text": "Render stats report: An HTML-based, interactive viewer for the Arnold render statistics. You can quickly visualize and inspect detailed render stats such as frame render time, memory usage, render time by category or by node, and texture usage. If you're using kick, add the -report flag. Arnold plugins like MtoA and HtoA include Render Report options in the Diagnostic render settings. (ARNOLD-14140)",
+              "tickets": [
+                "ARNOLD-14140"
+              ]
+            },
+            {
+              "text": "GPU Toon shading: Arnold GPU now includes initial support for the Toon shader and the contour filter. The Toon shader is currently limited to rendering direct lighting only (no reflections, refractions, or indirect lighting). (ARNOLD-15656, ARNOLD-15988)",
+              "tickets": [
+                "ARNOLD-15656",
+                "ARNOLD-15988"
+              ]
+            },
+            {
+              "text": "Faster procedural instancing: Arnold is faster at rendering scenes with complex hierarchies and point instancers. The new options.procedural_instancing_optimization flag usually produces speedups between 1-2x, but for sufficiently complex scenes the speedup can be significantly larger. This new optimization defaults to exhaustive mode, which gives the most speedup. Exhaustive mode may use more memory; you can switch to conservative mode to use only the optimizations that do not consume additional memory. This setting is currently only supported for batch CPU rendering. (ARNOLD-14208)",
+              "tickets": [
+                "ARNOLD-14208"
+              ]
+            },
+            {
+              "text": "Better scaling for parallel scene init/update: The parallel scene init and update are now faster than before, especially on many-core machines. Time to first pixel, interactivity in IPR, and scene processing time for batch renders has improved. (ARNOLD-14902, ARNOLD-15718, ARNOLD-15974, ARNOLD-16114)",
+              "tickets": [
+                "ARNOLD-14902",
+                "ARNOLD-15718",
+                "ARNOLD-15974",
+                "ARNOLD-16114"
+              ]
+            },
+            {
+              "text": "Light transforms in point instancer: When an instancer contains lights, it now takes their local matrix into account if instance_inherit_xform is enabled. (ARNOLD-16028)",
+              "tickets": [
+                "ARNOLD-16028"
+              ]
+            },
+            {
+              "text": "Improved Global Light Sampling: Rendering photometric (IES) lights and mesh lights using Global Light Sampling is now higher quality, using the same render settings and taking the same render times. (ARNOLD-13692, ARNOLD-15859) Before-and-after comparison: improved renders of various IES profiles (with equal render times and render settings) Before-and-after comparison: improved renders of a motion-blurred mesh light (with equal render times and render settings)",
+              "tickets": [
+                "ARNOLD-13692",
+                "ARNOLD-15859"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "text": "Hydra-based USD translation: When you render USD, Arnold now uses Hydra by default to handle the translation of USD to Arnold, which makes the render consistent with the Hydra render delegate usd#2248. You can roll back to the previous behavior with options.usd_legacy_translation on, or by setting the environment variable PROCEDURAL_USE_HYDRA=0. (ARNOLD-15977).",
+              "tickets": [
+                "usd#2248",
+                "ARNOLD-15977"
+              ]
+            },
+            {
+              "text": "Reduced USD memory usage: USD geometry buffers are shared with Arnold, which removes one copy of the scene in interactive mode usd#2148. As an example, rendering a high resolution USD mesh with 30 million polygons now consumes 5.5 Gb instead of 7.5 Gb to render. During batch renders, the Hydra-based USD procedural now releases the USD stage memory once the translation is done usd#2228.",
+              "tickets": [
+                "usd#2148",
+                "usd#2228"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Additions",
+          "items": [
+            {
+              "text": "AiProceduralExpand now updates procedurals: This API function now both initializes and updates the procedural node, along with expanding (loading) the children nodes. This ensures any custom procedural_update functions are called. (ARNOLD-15898)",
+              "tickets": [
+                "ARNOLD-15898"
+              ]
+            },
+            {
+              "text": "Viewport proxies for points, polymeshes, and volumes: AiProceduralViewport() now accepts non-procedural nodes such as points, polymesh, and volume, and returns viewport proxy representations. (ARNOLD-15941)",
+              "tickets": [
+                "ARNOLD-15941"
+              ]
+            },
+            {
+              "text": "Render stats report API: AiReportSetFileName() sets the file name so that the render creates a render stats report (an html file). AiReportGetFileName() gets the render report file name. (ARNOLD-14140)",
+              "tickets": [
+                "ARNOLD-14140"
+              ]
+            },
+            {
+              "text": "Cryptomatte metadata: Common cryptomatte metadata is now included in the Arnold core, so plugins do not require an mtd file for cryptomatte. (ARNOLD-15661)",
+              "tickets": [
+                "ARNOLD-15661"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible changes",
+          "items": [
+            {
+              "text": "Single full scene update in batch: Arnold now only does a single full scene update for render sessions in batch mode. This can cause issues for plugins allowing the modification of the scene in batch sessions, as dependencies between nodes are not tracked. Plugin developers should use interactive render sessions when modifying the scene. (ARNOLD-15974)",
+              "tickets": [
+                "ARNOLD-15974"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "text": "ARNOLD-15834 - Sampling noise is now consistent across renders",
+              "tickets": [
+                "ARNOLD-15834"
+              ]
+            },
+            {
+              "text": "ARNOLD-15686 - Utility AOV shader crashes Arnold if skydome has a texture",
+              "tickets": [
+                "ARNOLD-15686"
+              ]
+            },
+            {
+              "text": "ARNOLD-15842 - OSL shader not rebuilt when a parameter is modified",
+              "tickets": [
+                "ARNOLD-15842"
+              ]
+            },
+            {
+              "text": "ARNOLD-15858 - Per-light sampling performance regression fix",
+              "tickets": [
+                "ARNOLD-15858"
+              ]
+            },
+            {
+              "text": "ARNOLD-15892 - Procedural bounds are not updated when its child objects undergo motion transforms",
+              "tickets": [
+                "ARNOLD-15892"
+              ]
+            },
+            {
+              "text": "ARNOLD-15905 - Lens effect doesn't update correctly when the render resolution changes",
+              "tickets": [
+                "ARNOLD-15905"
+              ]
+            },
+            {
+              "text": "ARNOLD-15914 - [GPU] Arnold should throw an error when the shader stack size cannot be determined",
+              "tickets": [
+                "ARNOLD-15914"
+              ]
+            },
+            {
+              "text": "ARNOLD-14467 - [GPU] GPU crash during JIT compilation",
+              "tickets": [
+                "ARNOLD-14467"
+              ]
+            },
+            {
+              "text": "ARNOLD-15939 - Nodes created in procedural_update ignore procedural matrix",
+              "tickets": [
+                "ARNOLD-15939"
+              ]
+            },
+            {
+              "text": "ARNOLD-15942 - Crash when modifying a parameter that triggers procedural reloading during scene update",
+              "tickets": [
+                "ARNOLD-15942"
+              ]
+            },
+            {
+              "text": "ARNOLD-15943 - Procedural bounding box is not recalculated after creating or removing nodes in procedural_update, leading to clipped objects in renders or poor performance.",
+              "tickets": [
+                "ARNOLD-15943"
+              ]
+            },
+            {
+              "text": "ARNOLD-15948 - Crash when destroying an object node from procedural_update",
+              "tickets": [
+                "ARNOLD-15948"
+              ]
+            },
+            {
+              "text": "ARNOLD-15983 - OpenEXR DWAA float textures read incorrectly",
+              "tickets": [
+                "ARNOLD-15983"
+              ]
+            },
+            {
+              "text": "ARNOLD-15993 - Raw drivers receiving incorrect number of samples",
+              "tickets": [
+                "ARNOLD-15993"
+              ]
+            },
+            {
+              "text": "ARNOLD-16000 - Dependencies should not be added when enable_dependency_graph is disabled",
+              "tickets": [
+                "ARNOLD-16000"
+              ]
+            },
+            {
+              "text": "ARNOLD-16005 - Hang in AiProceduralViewport with ginstance nodes",
+              "tickets": [
+                "ARNOLD-16005"
+              ]
+            },
+            {
+              "text": "ARNOLD-16041 - [MaterialX] connections to named nodegraph outputs do not work",
+              "tickets": [
+                "ARNOLD-16041"
+              ]
+            },
+            {
+              "text": "ARNOLD-16050 - [MaterialX] ND_mix_surfaceshader renders black when assigned from materialx operator",
+              "tickets": [
+                "ARNOLD-16050"
+              ]
+            },
+            {
+              "text": "ARNOLD-15985 - [MaterialX] Parameter with \"defaultgeomprop\" attribute set overrides connection",
+              "tickets": [
+                "ARNOLD-15985"
+              ]
+            },
+            {
+              "text": "ARNOLD-15986 - [MaterialX] Crash when node with the same name exists inside a nodegraph",
+              "tickets": [
+                "ARNOLD-15986"
+              ]
+            },
+            {
+              "text": "ARNOLD-16053 - Triplanar produces artifacts on GPU with some NVIDIA drivers",
+              "tickets": [
+                "ARNOLD-16053"
+              ]
+            },
+            {
+              "text": "ARNOLD-16060 - Lights under procedurals cannot be transformed during interactive renders",
+              "tickets": [
+                "ARNOLD-16060"
+              ]
+            },
+            {
+              "text": "ARNOLD-16073 - Prevent instancer from setting invalid custom names to child nodes",
+              "tickets": [
+                "ARNOLD-16073"
+              ]
+            },
+            {
+              "text": "ARNOLD-16081 - Subdivided meshes included in cached procedurals were not always correctly identified, which might cause differences in the subdivision results",
+              "tickets": [
+                "ARNOLD-16081"
+              ]
+            },
+            {
+              "text": "usd#2208 - Fix unnecessary allocations in the instancer and mesh",
+              "tickets": [
+                "usd#2208"
+              ]
+            },
+            {
+              "text": "usd#2218 - Fix Hydra warning with orthographic cameras",
+              "tickets": [
+                "usd#2218"
+              ]
+            },
+            {
+              "text": "usd#2219 - Fix race condition in Hydra with node names",
+              "tickets": [
+                "usd#2219"
+              ]
+            },
+            {
+              "text": "usd#2224 - Fix warning \"HdArnoldDriverMain is already installed\"",
+              "tickets": [
+                "usd#2224"
+              ]
+            },
+            {
+              "text": "usd#2225 - Fix crash in point instancers with missing prototypes",
+              "tickets": [
+                "usd#2225"
+              ]
+            },
+            {
+              "text": "usd#2232 - Fix incorrect husk render of left-handed indexed meshes with normals",
+              "tickets": [
+                "usd#2232"
+              ]
+            },
+            {
+              "text": "usd#2234 - Fix warning \"Selected Hydra renderer doesn't support prim type 'RenderSettings'\"",
+              "tickets": [
+                "usd#2234"
+              ]
+            },
+            {
+              "text": "usd#2239 - OpenVDB asset with explicit fieldName does not render in Hydra",
+              "tickets": [
+                "usd#2239"
+              ]
+            },
+            {
+              "text": "usd#1402 - Incorrect transform when exporting parented objects to USD",
+              "tickets": [
+                "usd#1402"
+              ]
+            },
+            {
+              "text": "usd#2227 - Hydra procedural breaks the Arnold log",
+              "tickets": [
+                "usd#2227"
+              ]
+            },
+            {
+              "text": "usd#2240 - Default volume shader should be assigned in the USD procedural",
+              "tickets": [
+                "usd#2240"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 11 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 560.35.03 or higher drivers. On Windows, we recommend 560.76 or higher drivers. Intel OIDN GPU support is limited to: MacOS Apple native CPUs (M1 and newer) Windows Intel Xe dedicated and integrated GPUs NVIDIA GPUs using Turing or newer architectures AMD GPUs with RDNA2 (Navi 21 only) and RDNA3 (Navi 3x) architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7410_html.html",
+      "scrapedAt": "2026-03-23T22:00:19.112Z"
+    },
+    {
+      "version": "7.4.0.0",
+      "versionId": "7400",
+      "releaseType": "release",
+      "intro": "26 March 2025",
+      "sections": [
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "text": "Lights in procedural instances: When you instance a procedural, any lights created by the procedural are copied for each instance. For example, instances of ASS or USD assets with lights now render the lights properly. (ARNOLD-15657)",
+              "tickets": [
+                "ARNOLD-15657"
+              ]
+            },
+            {
+              "text": "Imager run once mode: Imagers can now be set to run only once, at the end of a bucket or the end of a completed final frame. This can be useful for particularly expensive imagers and can be enabled via the ImagerProperties::run_once property. (ARNOLD-12191)",
+              "tickets": [
+                "ARNOLD-12191"
+              ]
+            },
+            {
+              "text": "OpenColorIO 2.4.1: OpenColorIO has been updated to v2.4.1. (ARNOLD-15681)",
+              "tickets": [
+                "ARNOLD-15681"
+              ]
+            },
+            {
+              "text": "Improved MaterialX support: MaterialX has been upgraded to v1.38.10-OpenPBR, this new version brings support for the OpenPBR MaterialX node, improved Lama support and new nodes such as the NPR nodes. See v1.38.10, v1.38.9 release notes for details. (ARNOLD-15659)",
+              "tickets": [
+                "ARNOLD-15659"
+              ]
+            },
+            {
+              "text": "Update Autodesk Desktop Licensing installer Arnold now uses Autodesk Desktop Licensing installer version 15.1, which includes the following components: AdskLicensingService 11.16.6.5912, AdskLicensingAgent 5.20.12.4281, and AdskLicensingInstHelper 2.13.1.2514.",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "text": "Distant Lights normalize support : Distant lights now support the normalize attribute, so you can now disable normalize (before it was always enabled and the normalize attribute was ignored). You can use the Arnold option usd_legacy_distant_light_normalize to roll back to the previous behaviour. (usd#2176)",
+              "tickets": [
+                "usd#2176"
+              ]
+            },
+            {
+              "text": "USD 24.11: The USD procedural now uses USD 24.11.",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "API Additions",
+          "items": [
+            {
+              "text": "Replace AtImagerSchedule with AtImagerProperties: The imager_prepare API has a new AtImagerProperties structure that provides more control over how an Imager should run. (ARNOLD-15774) Setting Imager bucket / full frame schedules will now work like so: <code class=\"prettyprint\"> imager_prepare { if (run_imager_full_frame) properties.schedule_full_frame = true; else properties.schedule_bucket = true; }</code>",
+              "tickets": [
+                "ARNOLD-15774"
+              ]
+            },
+            {
+              "text": "Improved return values for device selection API: AiDeviceSelect and AiDeviceAutoSelect now return the AtDeviceSelectErrorCode enum instead of an int to better describe the error status of the API call. (ARNOLD-14652) AtDeviceSelectErrorCode SUCCESS Device selection was successful FAILURE_NO_DEVICES_FOUND No Arnold compatible devices found FAILURE_NAME No matches found for options.gpu_default_names regular expression FAILURE_MEMORY No matching device has free memory greater than options.gpu_default_min_memory_MB threshold FAILURE_INVALID_ID Invalid device id in selection FAILURE_UNSUPPORTED Unsupported device in selection FAILURE_UNKNOWN Generic error",
+              "tickets": [
+                "ARNOLD-14652"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible Changes",
+          "items": [
+            {
+              "text": "This version breaks binary compatibility. Shaders, procedurals, and other plugins compiled against older versions of Arnold are not compatible with this version of Arnold and must be updated and recompiled.",
+              "tickets": []
+            },
+            {
+              "text": "Autodesk Network Licensing version: Arnold 7.4 switches to ARNOL_2026 licensing. (ARNOLD-15400) Single-user subscriptions will work with Arnold 7.4. The plugin installers automatically register the new version. If you do not use a plugin, then after you download Arnold, open the Arnold License Manager and click Register. Existing network licenses will not work with Arnold 7.4. Log on to your Autodesk account to generate your new ARNOL_2026 licenses. If you do not run the installers, and you manually register Arnold, then use--pk C0PR1 --pv 2026.0.0.F with the AdskLicensingInstHelper command.",
+              "tickets": [
+                "ARNOLD-15400"
+              ]
+            },
+            {
+              "text": "Single-user subscriptions will work with Arnold 7.4. The plugin installers automatically register the new version. If you do not use a plugin, then after you download Arnold, open the Arnold License Manager and click Register.",
+              "tickets": []
+            },
+            {
+              "text": "Existing network licenses will not work with Arnold 7.4. Log on to your Autodesk account to generate your new ARNOL_2026 licenses.",
+              "tickets": []
+            },
+            {
+              "text": "If you do not run the installers, and you manually register Arnold, then use--pk C0PR1 --pv 2026.0.0.F with the AdskLicensingInstHelper command.",
+              "tickets": []
+            },
+            {
+              "text": "Removed sss_use_autobump option: Use the per-object autobump_visibility flag. (ARNOLD-15782)",
+              "tickets": [
+                "ARNOLD-15782"
+              ]
+            },
+            {
+              "text": "Removed legacy_volume_albedo: This option is no longer available as the new volume albedo is more useful. (ARNOLD-15782)",
+              "tickets": [
+                "ARNOLD-15782"
+              ]
+            },
+            {
+              "text": "Removed AiMsgSetCallback(), AiMsgAddCallback(), AiMsgResetCallback(): Use AiMsgRegisterCallback() and AiMsgDeregisterCallback() instead. (ARNOLD-15782)",
+              "tickets": [
+                "ARNOLD-15782"
+              ]
+            },
+            {
+              "text": "Removed AiASSLoad(), AiASSWrite(), AiASSWriteWithMetadata(): Use AiSceneLoad() and AiSceneWrite() instead. (ARNOLD-15782)",
+              "tickets": [
+                "ARNOLD-15782"
+              ]
+            },
+            {
+              "text": "Removed deprecated versions of AiOrenNayarBSDF() and AiMicrofacetSetThinFilm(): Use the version with the same function name but additional arguments. (ARNOLD-15782)",
+              "tickets": [
+                "ARNOLD-15782"
+              ]
+            },
+            {
+              "text": "Removed AiLoadImage(): Use AiReadImage() instead. (ARNOLD-15782)",
+              "tickets": [
+                "ARNOLD-15782"
+              ]
+            },
+            {
+              "text": "Deprecated enable_new_quad_light_sampler and enable_new_point_light_sampler options: The new samplers should always be better, so these options are marked as deprecated and will be removed in a future version of Arnold. (ARNOLD-15782)",
+              "tickets": [
+                "ARNOLD-15782"
+              ]
+            },
+            {
+              "text": "Distant Lights normalize support : Distant lights now support the normalize attribute, so you can now disable normalize (before it was always enabled and the normalize attribute was ignored). You can use the Arnold option usd_legacy_distant_light_normalize to roll back to the previous behaviour. (usd#2176)",
+              "tickets": [
+                "usd#2176"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "text": "ARNOLD-15713 - [MaterialX] Mix shader does not work as surface shader",
+              "tickets": [
+                "ARNOLD-15713"
+              ]
+            },
+            {
+              "text": "ARNOLD-15723 - No visible layering when layering a dielectric on top of a diffuse Lama shader. In MaterialX, layering of a Lama dielectric node on top of a Lama diffuse node was not generating the correct appearance of the diffuse surface coated with the dielectric. The OSL layering logic in Arnold has been improved to fix this issue.",
+              "tickets": [
+                "ARNOLD-15723"
+              ]
+            },
+            {
+              "text": "usd#2201 - Hydra procedural should not modify the input usd stage with shutter range",
+              "tickets": [
+                "usd#2201"
+              ]
+            },
+            {
+              "text": "usd#2197 - MaterialX textures not applied properly in hydra through mayaHydra",
+              "tickets": [
+                "usd#2197"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 11 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 560.35.03 or higher drivers. On Windows, we recommend 560.76 or higher drivers. Intel OIDN GPU support is limited to: MacOS Apple native CPUs (M1 and newer) Windows Intel Xe dedicated and integrated GPUs NVIDIA GPUs using Turing or newer architectures AMD GPUs with RDNA2 (Navi 21 only) and RDNA3 (Navi 3x) architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7400_html.html",
+      "scrapedAt": "2026-03-23T22:00:20.668Z"
+    },
+    {
+      "version": "7.3.3.0",
+      "versionId": "7330",
+      "releaseType": "release",
+      "intro": "24 July 2024",
+      "sections": [
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "text": "OpenPBR Surface: A new openpbr_surface shader implements the OpenPBR specification. OpenPBR Surface is an evolution of Standard Surface, developed in collaboration with Adobe and the Academy Software Foundation. It introduces many improvements, in particular a better sheen/fuzz model and improved metal reflectivity parameterization. (ARNOLD-13385)",
+              "tickets": [
+                "ARNOLD-13385"
+              ]
+            },
+            {
+              "text": "image courtesy of Nikie Monteleone",
+              "tickets": []
+            },
+            {
+              "text": "Scattering diffusion in volumes: Two new parameters in standard_volume improve how light is scattered in volumes. Using those parameters can help achieve high-scattering looks with fewer volume bounces and without adding energy. (ARNOLD-14482) scatter_diffusion accelerates scattering in volumes. scatter_diffusion_roughness accelerates scattering further on anisotropic volumes and can help achieve realistic looking clouds with fewer bounces. gain and bias curves can further tweak the effect of both parameters",
+              "tickets": [
+                "ARNOLD-14482"
+              ]
+            },
+            {
+              "text": "scatter_diffusion accelerates scattering in volumes.",
+              "tickets": []
+            },
+            {
+              "text": "scatter_diffusion_roughness accelerates scattering further on anisotropic volumes and can help achieve realistic looking clouds with fewer bounces.",
+              "tickets": []
+            },
+            {
+              "text": "gain and bias curves can further tweak the effect of both parameters",
+              "tickets": []
+            },
+            {
+              "text": "Stochastic volume interpolation: The tricubic interpolation mode of AiVolumeSampleXXX() calls, such as those used by the standard_volume shader, now uses a stochastic method of interpolation that greatly reduces the amount of voxel data read in each sample call. In testing, we've seen speed ups of as much as 1.7x in certain scenes. Note that this technique does not always produce a perfectly matching image as a result, and can be toggled via the stochastic_volume_interpolation render option (default is on). (ARNOLD-3856)",
+              "tickets": [
+                "ARNOLD-3856"
+              ]
+            },
+            {
+              "text": "Improved quality with Intel Open Image Denoise 2.3.0: The updated Intel Denoiser improves denoising quality and can produce sharper results with less artifacts on scenes with specular reflections and transmission. For more information about changes in this version, see the OIDN release notes (ARNOLD-15059).",
+              "tickets": [
+                "ARNOLD-15059"
+              ]
+            },
+            {
+              "text": "OIDN support for Apple Metal and AMD GPU: The Intel OIDN denoiser now supports on macOS all Apple Metal GPUs (M1 and newer) and on Windows AMD GPUs using RDNA2 (Navi 21 only) and RDNA3 (Navi 3x) architectures. This allows for significantly faster denoising: on an M1 Max laptop we see 5-8x faster denoising. (ARNOLD-14855, ARNOLD-14856)",
+              "tickets": [
+                "ARNOLD-14855",
+                "ARNOLD-14856"
+              ]
+            },
+            {
+              "text": "GPU Many-lights support for light linking: Arnold GPU now uses Global Light Sampling for group of lights linked to a shape. This can improve rendering performance for scenes with light linking. For example, the ALab scene now renders twice as fast when you use Global Light Sampling. (ARNOLD-15050)",
+              "tickets": [
+                "ARNOLD-15050"
+              ]
+            },
+            {
+              "text": "GPU improved time to first pixel in scenes with many nodes: Reduced time to first pixel with Arnold GPU and scenes with many nodes. (ARNOLD-13652)",
+              "tickets": [
+                "ARNOLD-13652"
+              ]
+            },
+            {
+              "text": "Motion vector AOV on GPU: The motionvector AOV is now supported when rendering on GPU. (ARNOLD-11046)",
+              "tickets": [
+                "ARNOLD-11046"
+              ]
+            },
+            {
+              "text": "3D ramp modes: Ramp shaders have three new modes: 3d_linear, 3d_spherical, and 3d_cylindrical. These modes calculate the ramp input from the distance between the shading point and a user-defined reference point or line. (ARNOLD-15051, ARNOLD-15196)",
+              "tickets": [
+                "ARNOLD-15051",
+                "ARNOLD-15196"
+              ]
+            },
+            {
+              "text": "Ramp offset: Ramp shaders can now offset the input value, which allows you to add noise to the ramp. (ARNOLD-15052, ARNOLD-15197)",
+              "tickets": [
+                "ARNOLD-15052",
+                "ARNOLD-15197"
+              ]
+            },
+            {
+              "text": "Heatmap Imager Mode: The tonemap imager now has a heatmap mode that creates a spectrum based on a looked-up AOV quantity. The color ranges from blue (at minimum) to red (at maximum). (ARNOLD-15123)",
+              "tickets": [
+                "ARNOLD-15123"
+              ]
+            },
+            {
+              "text": "Improved AOV memory usage in non-progressive renders: Non-progressive, adaptive renders with the box filter now use less memory. Memory usage is also reduced in non-adaptive renders when using the following filters gaussian_filter, triangle_filter, sinc_filter, catrom_filter, mitnet_filter, blackman_harris_filter. For example, in a 1080p render using adaptive with AA_samples_max 50 and 6 AOVs, the memory used by AOVs was reduced from 14GB to 730MB (-96%). Note also that AOV memory usage now remains constant as AA_samples_max increases, unlike previous releases where the memory would increase quadratically. (ARNOLD-10160)",
+              "tickets": [
+                "ARNOLD-10160"
+              ]
+            },
+            {
+              "text": "Improved efficiency of the Alembic procedural: The Alembic procedural now reads data in parallel, which optimizes initialization times of heavy Alembic files with many objects. We observed startup times going from 15 minutes to 4 seconds on a large production scene. (ARNOLD-14796)",
+              "tickets": [
+                "ARNOLD-14796"
+              ]
+            },
+            {
+              "text": "Indirect diffuse and indirect specular parameters are now linkable in the standard_surface and openpbr_surface shaders: The indirect_diffuse and indirect_specular of standard_surface and openpbr_surface shaders now support linking of shaders. This should allow better optimization in scenarios where no indirect lighting is needed. (ARNOLD-14204)",
+              "tickets": [
+                "ARNOLD-14204"
+              ]
+            },
+            {
+              "text": "Triplanar Nref user param: Triplanar shader now accepts an Nref user parameter, to allow specifying reference normals when in Pref mode. (ARNOLD-15063)",
+              "tickets": [
+                "ARNOLD-15063"
+              ]
+            },
+            {
+              "text": "AOV names used for OpenImageIO subimages: Multi-part files previously used default subimage naming for layers/subimages. Arnold now uses the names of AOV outputs for the corresponding subimage. (ARNOLD-15053)",
+              "tickets": [
+                "ARNOLD-15053"
+              ]
+            },
+            {
+              "text": "Triangle tessellation memory usage statistics grouped under polymesh memory usage: Arnold logs now list triangle tessellation and polymesh memory usage together in the peak CPU memory used and peak GPU memory consumed. (ARNOLD-15194)",
+              "tickets": [
+                "ARNOLD-15194"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "text": "Reduced memory usage when using Husk - Arnold now uses less memory for geometry when rendering a single frame through Husk. On the ALab scene the memory used for the geometry is now comparable to kick and the overall memory is reduced by 10% on this particular scene. usd#1918",
+              "tickets": [
+                "usd#1918"
+              ]
+            },
+            {
+              "text": "Skinning on USD curves and points - Binding skeleton on BasisCurves and points will now work with the procedural. usd#1814",
+              "tickets": [
+                "usd#1814"
+              ]
+            },
+            {
+              "text": "User data on lights - Primvars on lights are now imported as user data on Arnold light nodes. usd#1939",
+              "tickets": [
+                "usd#1939"
+              ]
+            },
+            {
+              "text": "Improved quad and mesh light exports - Mesh lights are now exported as a Mesh with light attributes instead of a GeometryLight. usd#1955",
+              "tickets": [
+                "usd#1955"
+              ]
+            },
+            {
+              "text": "Renders abort on license fail - The render delegate used by Husk aborts a render if a license isn't found and the environment variable ARNOLD_FORCE_ABORT_ON_LICENSE_FAIL is set to 1. usd#1950",
+              "tickets": [
+                "usd#1950"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API changes",
+          "items": [
+            {
+              "text": "ParallelFor API: A new AiParallelFor function allows API users to easily implement multithreading of work over an array without having to use a dedicated multi-threading library such as TBB. (ARNOLD-14966) <code class=\"lang-cpp prettyprint\"> // simple example that squares all the elements in an array void square(size_t array_index, void* data, void* payload) { float& value = *static_cast<float*>(data); value = value * value; } std::array<float, 7> values = {1, 2, 3, 5, 8, 13, 21}; AiParallelFor(values.data(), sizeof(values[0]), values.size(), nullptr, square);</code>",
+              "tickets": [
+                "ARNOLD-14966"
+              ]
+            },
+            {
+              "text": "ParallelJobs API: A new AtParallelJobs class allows programs to run jobs in parallel through a parallel job scheduler. This has more overhead than AiParallelFor(), but is more flexible as it allows for dispatching jobs without needing to place all the jobs in an array. (ARNOLD-15091) <code class=\"lang-cpp prettyprint\"> AtParallelJobs jobs; for (size_t i = 0; i < job_count; ++i) { payload = create_your_payload_data(); jobs.add(payload, &callback); } jobs.wait();</code>",
+              "tickets": [
+                "ARNOLD-15091"
+              ]
+            },
+            {
+              "text": "OpenVDB preview in AiProceduralViewport: The procedural viewport preview API can now return a boundary mesh for a volume when called on a procedural containing OpenVDB volumes nodes. This is useful to render a preview of a procedural with volumes in a DCC viewport. (ARNOLD-14382)",
+              "tickets": [
+                "ARNOLD-14382"
+              ]
+            },
+            {
+              "text": "Shader API: A new function to query whether an object is opaque or not. (ARNOLD-4919) <code class=\"lang-cpp prettyprint\"> AI_API AI_PURE bool AiShaderGlobalsIsObjectOpaque(const AtShaderGlobals *sg);</code>",
+              "tickets": [
+                "ARNOLD-4919"
+              ]
+            },
+            {
+              "text": "Enum values: You can now define enum values that start with a digit. (ARNOLD-15165) <code class=\"lang-cpp prettyprint\"> const char *enum_myparam[] = { \"2d_space\", \"3d_space\", NULL }; AiParameterEnum(\"myparam\", 0, enum_myparam); </code>",
+              "tickets": [
+                "ARNOLD-15165"
+              ]
+            },
+            {
+              "text": "Critical Section API: Added compile guards around native_handle() references in ai_critsec.h because it no longer exists in the STL shipped with Visual Studio v17.8+ (MSVC v14.38+). (ARNOLD-14779)",
+              "tickets": [
+                "ARNOLD-14779"
+              ]
+            },
+            {
+              "text": "Node API: Added new API to declare an update dependency between two nodes (a dependency is when a node uses data from another node during its update). (ARNOLD-15211) <code class=\"lang-cpp prettyprint\"> AI_API void AiNodeAddDependency(AtNode* node, const AtNode* dependency);</code>",
+              "tickets": [
+                "ARNOLD-15211"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible Changes",
+          "items": [
+            {
+              "text": "Triangle tessellation memory usage statistics grouped under polymesh memory usage: Arnold memory usage statistics no longer groups triangle tesselation memory usage under the triangle tessellation section. You can now find the memory usage under polymesh memory usage in peak CPU memory used or peak GPU memory consumed. (ARNOLD-15194)",
+              "tickets": [
+                "ARNOLD-15194"
+              ]
+            },
+            {
+              "text": "heatmap_filter deprecated: With the improved heatmap workflow via imagers, the heatmap_filter is now deprecated and may be removed in the future. (ARNOLD-15123)",
+              "tickets": [
+                "ARNOLD-15123"
+              ]
+            },
+            {
+              "text": "No forced scene update after options modifications: Instead of forcing a full scene update when the options node is modified, a node that uses data from the options node in its node_update function should declare this dependency with the new AiNodeAddDependency API. (ARNOLD-14973)",
+              "tickets": [
+                "ARNOLD-14973"
+              ]
+            },
+            {
+              "text": "force_update metadata deprecated: We are deprecating this functionality, which might be removed completely on a future release. Instead of using force_update, nodes are expected to declare dependencies on other nodes using the new AiNodeAddDependency API, to optimize scene updates (ARNOLD-14901)",
+              "tickets": [
+                "ARNOLD-14901"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "text": "ARNOLD-14779 - AtProfiledLockable not compiling on Windows in newer MSVC due to Mutex::native_handle_type",
+              "tickets": [
+                "ARNOLD-14779"
+              ]
+            },
+            {
+              "text": "ARNOLD-15060 - Arnold should not catch C++ exceptions it did not generate",
+              "tickets": [
+                "ARNOLD-15060"
+              ]
+            },
+            {
+              "text": "ARNOLD-15087 - uv_projection shader uses corrupt UVs for evaluating its default_color shader",
+              "tickets": [
+                "ARNOLD-15087"
+              ]
+            },
+            {
+              "text": "ARNOLD-15121 - [GPU] crash when CUDA error has no message",
+              "tickets": [
+                "ARNOLD-15121"
+              ]
+            },
+            {
+              "text": "ARNOLD-15122 - Crash destroying a light that is part of a light group",
+              "tickets": [
+                "ARNOLD-15122"
+              ]
+            },
+            {
+              "text": "ARNOLD-15136 - Random hang when parallel initializing scene",
+              "tickets": [
+                "ARNOLD-15136"
+              ]
+            },
+            {
+              "text": "ARNOLD-15239 - Invalid memory access due to locale handling",
+              "tickets": [
+                "ARNOLD-15239"
+              ]
+            },
+            {
+              "text": "ARNOLD-15269 - Output sheared in negative AA passes when using OptiX denoiser with odd-numbered render resolution sizes",
+              "tickets": [
+                "ARNOLD-15269"
+              ]
+            },
+            {
+              "text": "ARNOLD-15277 - [GPU] crash when using shadow groups",
+              "tickets": [
+                "ARNOLD-15277"
+              ]
+            },
+            {
+              "text": "ARNOLD-15025 - [GPU] Outdated GPU support metadata on min_pixel_width parameter",
+              "tickets": [
+                "ARNOLD-15025"
+              ]
+            },
+            {
+              "text": "usd#1861 - Fix BasisCurves disappearing on interactive updates",
+              "tickets": [
+                "usd#1861"
+              ]
+            },
+            {
+              "text": "usd#1927 - Fix procedural updates during interactive changes of non-leaf primitives",
+              "tickets": [
+                "usd#1927"
+              ]
+            },
+            {
+              "text": "usd#1661 - In the procedural the subdivision meshes will use the normals generated by the subdivision algorithm instead of the normal primvar.",
+              "tickets": [
+                "usd#1661"
+              ]
+            },
+            {
+              "text": "usd#1919 - Fix rendering multiple frames with husk.",
+              "tickets": [
+                "usd#1919"
+              ]
+            },
+            {
+              "text": "usd#1952 - Don't write camera aperture parameters if they're already set",
+              "tickets": [
+                "usd#1952"
+              ]
+            },
+            {
+              "text": "usd#1902 - Fix sporadic invalid Cache ID error",
+              "tickets": [
+                "usd#1902"
+              ]
+            },
+            {
+              "text": "usd#1940 - Incorrect handling of shaders referenced in multiple materials",
+              "tickets": [
+                "usd#1940"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 11 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 535.104 or higher drivers. On Windows, we recommend 537.13 or higher drivers. Intel OIDN GPU support is limited to: MacOS Apple native CPUs (M1 and newer) Windows Intel Xe dedicated and integrated GPUs NVIDIA GPUs using Turing or newer architectures AMD GPUs with RDNA2 (Navi 21 only) and RDNA3 (Navi 3x) architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7330_html.html",
+      "scrapedAt": "2026-03-23T22:00:22.221Z"
+    },
+    {
+      "version": "7.3.2.0",
+      "versionId": "7320",
+      "releaseType": "release",
+      "intro": "22 May 2024",
+      "sections": [
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "text": "Toon tone-mapping: You can now drive the hue and saturation of tonemapping in the toon shader. The toon shader has four new parameters that complement the existing value-based tonemapping parameters. The connected shader's U coordinate drives direct light hue and the V coordinate drives saturation, which enables textures like those below to map the toon shader's response to colored lighting (Note: make sure to set the image's wrapping mode to clamp and filter to closest for best results) (ARNOLD-10687). These toon parameters include: edge_tonemap_hue_saturation silhouette_tonemap_hue_saturation base_tonemap_hue_saturation specular_tonemap_hue_saturation No base_tonemap_hue_saturation image -> base_tonemap_hue_saturation image -> specular_tonemap_hue_saturation Color palette images -> base_tonemap_hue_saturation image.offset_u: 0 to 1 (light color is unchanged)",
+              "tickets": [
+                "ARNOLD-10687"
+              ]
+            },
+            {
+              "text": "edge_tonemap_hue_saturation",
+              "tickets": []
+            },
+            {
+              "text": "silhouette_tonemap_hue_saturation",
+              "tickets": []
+            },
+            {
+              "text": "base_tonemap_hue_saturation",
+              "tickets": []
+            },
+            {
+              "text": "specular_tonemap_hue_saturation",
+              "tickets": []
+            },
+            {
+              "text": "Better volume denoising: Denoising volumes now produces better results. The changes in how volume albedo is computed help the denoiser to keep more details. Ringing artifacts when objects are viewed against the background are also reduced, and a new N_denoise AOV fixes some denoising artifacts visible in low-AA renders. (ARNOLD-14936, ARNOLD-13071) 7.3.1 7.3.2 7.3.1 7.3.2 7.3.1 7.3.2",
+              "tickets": [
+                "ARNOLD-14936",
+                "ARNOLD-13071"
+              ]
+            },
+            {
+              "text": "Many-lights support for light linking: Global light sampling is now applied per group of lights linked to a shape. That can improve rendering performance for scenes with light linking. The ALab scene now renders twice as fast when you use Global Light Sampling. (ARNOLD-14985)",
+              "tickets": [
+                "ARNOLD-14985"
+              ]
+            },
+            {
+              "text": "Improved Standard Hair on GPU: The GPU renderer now supports the extra_depth parameter. This enables accurate rendering of blond or bright-colored hair without raising GI_specular_depth. (ARNOLD-8822)",
+              "tickets": [
+                "ARNOLD-8822"
+              ]
+            },
+            {
+              "text": "Improved volume albedo AOV: Volume albedo values are now more physically-based and less likely to saturate. This improves volume denoising and any LPE AOV using volume albedo is also now more useful for compositing. For backwards compatibility, you can set the new global option legacy_volume_albedo to true. (ARNOLD-13071)",
+              "tickets": [
+                "ARNOLD-13071"
+              ]
+            },
+            {
+              "text": "Bake subdivided and displaced geometry with kick: Polygon mesh geometry can be baked with render-time subdivision and displacement, and saved to file with kick -bakegeo -resave (ARNOLD-2815, ARNOLD-14994)",
+              "tickets": [
+                "ARNOLD-2815",
+                "ARNOLD-14994"
+              ]
+            },
+            {
+              "text": "Improved OSL interoperability: The color4, color2, vector4, vector2, and matrix33 are now supported as output types of OSL shaders when connected to Arnold shaders. Additionally, Arnold shaders that output RGBA or Vector2 types can now be directly connected to OSL shader color4 and vector2 input parameters. Those features make it easier to mix Arnold and MaterialX standard library shader nodes. (ARNOLD-13989, ARNOLD-14692)",
+              "tickets": [
+                "ARNOLD-13989",
+                "ARNOLD-14692"
+              ]
+            },
+            {
+              "text": "Update OpenVDB to version 11.0: Arnold now uses the latest OpenVDB library. For the list of changes between OpenVDB version 7.1.1 and version 11.0, see the release notes. (ARNOLD-11217)",
+              "tickets": [
+                "ARNOLD-11217"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "text": "Cylinder lights - Cylinder lights are saved as UsdLuxCylinderLight primitives - usd#1894",
+              "tickets": [
+                "usd#1894"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API changes",
+          "items": [
+            {
+              "text": "Geometry baking API: You can now bake subdivided and displaced geometry. You can save the baked geometry either in another universe or you can change the geometry in-place in the same universe. Typically, you would bake geometry by looping over scene nodes with AtNodeIterator. Currently, geometry baking applies to polymesh nodes only.(ARNOLD-2815) <code class=\"lang-cpp prettyprint\"> AI_API AtNode* AiNodeGetProcessedGeometry(AtNode* source_node, AtUniverse *dest_universe);</code>",
+              "tickets": [
+                "ARNOLD-2815"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible Changes",
+          "items": [
+            {
+              "text": "Save usdz files to a usdz_tx folder: Previously when reading a .usdz file, any generated .tx files would be saved to a folder named <usdz_filename>.tmp. The .tmp extension may have led users to remove this folder prematurely, resulting in extra work the next time the usdz was rendered. These files will now be written to and read from a folder name <usdz_filename>.usdz_tx. (ARNOLD-14999)",
+              "tickets": [
+                "ARNOLD-14999"
+              ]
+            },
+            {
+              "text": "Improved volume AOV: The volume albedo AOV and LPE scattering event has been improved. For backwards compatibility, you can set the new global option legacy_volume_albedo to true. (ARNOLD-13071)",
+              "tickets": [
+                "ARNOLD-13071"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "text": "ARNOLD-8165 - Crash when curvature, ambient occlusion, or round corners is used in displacement",
+              "tickets": [
+                "ARNOLD-8165"
+              ]
+            },
+            {
+              "text": "ARNOLD-14551 - Add log notification when FIS is enabled",
+              "tickets": [
+                "ARNOLD-14551"
+              ]
+            },
+            {
+              "text": "ARNOLD-14590 - Very bright lights, such as the sun, are not properly occluded by dense volumes",
+              "tickets": [
+                "ARNOLD-14590"
+              ]
+            },
+            {
+              "text": "ARNOLD-14649 - [GPU] Crash with pascal card",
+              "tickets": [
+                "ARNOLD-14649"
+              ]
+            },
+            {
+              "text": "ARNOLD-14970 - [GPU] Rare â€œstack overflow exceptionâ€ crash with OSL shaders",
+              "tickets": [
+                "ARNOLD-14970"
+              ]
+            },
+            {
+              "text": "ARNOLD-14995 - [GPU] Crash when attempting to render a Bifrost volume",
+              "tickets": [
+                "ARNOLD-14995"
+              ]
+            },
+            {
+              "text": "ARNOLD-14998 - Rare crash in Windows when texture_searchpath contains a root directory",
+              "tickets": [
+                "ARNOLD-14998"
+              ]
+            },
+            {
+              "text": "ARNOLD-15003 - Range shader produces wrong results if gain is less than 0 or greater than 1",
+              "tickets": [
+                "ARNOLD-15003"
+              ]
+            },
+            {
+              "text": "ARNOLD-15015 - Profiler data is lost when other universes are destroyed",
+              "tickets": [
+                "ARNOLD-15015"
+              ]
+            },
+            {
+              "text": "ARNOLD-15016 - [GPU] Misaligned address error when rendering",
+              "tickets": [
+                "ARNOLD-15016"
+              ]
+            },
+            {
+              "text": "ARNOLD-15030 - GPU renderer and denoiser imagers incorrectly overriding FIS parameters set in options",
+              "tickets": [
+                "ARNOLD-15030"
+              ]
+            },
+            {
+              "text": "ARNOLD-15040 - AiTextureLoad crashes with textures that use subimages as mipmaps",
+              "tickets": [
+                "ARNOLD-15040"
+              ]
+            },
+            {
+              "text": "usd#1900 - Fix transform hierarchies for Arnold non-xformable primitives",
+              "tickets": [
+                "usd#1900"
+              ]
+            },
+            {
+              "text": "usd#1903 - USD Writer should skip materials when the shader mask is disabled",
+              "tickets": [
+                "usd#1903"
+              ]
+            },
+            {
+              "text": "usd#1906 - Fix light filters assignment order in the render delegate to make it consistent with the procedural",
+              "tickets": [
+                "usd#1906"
+              ]
+            },
+            {
+              "text": "usd#1912 - Procedural interactive updates don't consider primitives visibility",
+              "tickets": [
+                "usd#1912"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 11 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are natively supported. GPU rendering and Optix denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 535.104 or higher drivers. On Windows, we recommend 537.13 or higher drivers. Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7320_html.html",
+      "scrapedAt": "2026-03-23T22:00:23.750Z"
+    },
+    {
+      "version": "7.3.1.0",
+      "versionId": "7310",
+      "releaseType": "release",
+      "intro": "27 March 2024",
+      "sections": [
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "text": "Update Intel Open Image Denoise (OIDN) to version 2.2.2: The updated denoiser has 10% better performance on CPU, includes some critical bug fixes, and handles high-frequency details better. (ARNOLD-14772)",
+              "tickets": [
+                "ARNOLD-14772"
+              ]
+            },
+            {
+              "text": "OptiX denoiser runs on progressive negative AA passes: The OptiX denoiser imager now denoises the low-resolution progressive passes (renders with AA < 0). This should result in higher quality feedback in IPR. (ARNOLD-11487)",
+              "tickets": [
+                "ARNOLD-11487"
+              ]
+            },
+            {
+              "text": "MaterialX node definitions: The MaterialX node definitions for Arnold shaders now use the standard surfaceshader and volumeshader types, which make them easier to use in DCCs and mix with standard library shaders. The UI for Arnold MaterialX shaders is also improved with the addition of parameter groups and node categories. (ARNOLD-14717, ARNOLD-14736, ARNOLD-14716)",
+              "tickets": [
+                "ARNOLD-14717",
+                "ARNOLD-14736",
+                "ARNOLD-14716"
+              ]
+            },
+            {
+              "text": "OCIO environment variable priority: The OCIO environment variable now takes priority over the configuration file set in the Arnold OCIO color manager as well as the builtin OCIO configuration file. A new ignore_environment_variable parameter on the OCIO color manager causes Arnold to ignore the value of the environment variable and restores the previous behavior. The OCIO environment variable is also now taken into account by maketx. (ARNOLD-9012)",
+              "tickets": [
+                "ARNOLD-9012"
+              ]
+            },
+            {
+              "text": "Curves in procedural viewport API: Procedurals now return curves nodes in AI_PROC_POLYGONS viewport mode. (ARNOLD-14756)",
+              "tickets": [
+                "ARNOLD-14756"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "text": "Light linking on custom procedurals: You can now use light linking on custom procedurals such as Yeti in the render delegate. (usd#1730)",
+              "tickets": [
+                "usd#1730"
+              ]
+            },
+            {
+              "text": "Improved tooltips: The tooltips in DCCs for Arnold nodes in USD is much improved. usd#1835",
+              "tickets": [
+                "usd#1835"
+              ]
+            },
+            {
+              "text": "Imager node support: USD support for the new Arnold AI_NODE_IMAGER node type. usd#1870",
+              "tickets": [
+                "usd#1870"
+              ]
+            },
+            {
+              "text": "Export ArnoldOptions as UsdRenderSettings - The Arnold USD exporter covnerts the Arnold options node to UsdRenderSettings, UsdRenderProduct, and UsdRenderVar nodes. usd#1852, usd#1865",
+              "tickets": [
+                "usd#1852",
+                "usd#1865"
+              ]
+            },
+            {
+              "text": "Velocities motion blur for points - Points with a velocities attribute now render with motion blur. usd#1868",
+              "tickets": [
+                "usd#1868"
+              ]
+            },
+            {
+              "text": "Better default for transmission ray depth - Set the default transmission depth to 8, so that the default settings work better with glass, and to match default in other Arnold plugins like HtoA and MtoA. usd#1889",
+              "tickets": [
+                "usd#1889"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API changes",
+          "items": [
+            {
+              "text": "Imager plugin API: A public API is now available for imagers. This adds support for custom and third-party imagers in Arnold.(ARNOLD-10322)",
+              "tickets": [
+                "ARNOLD-10322"
+              ]
+            },
+            {
+              "text": "The API is built upon a new AI_NODE_IMAGER node type and is implemented via two main API.",
+              "tickets": []
+            },
+            {
+              "text": "imager_evaluate allows you to modify output pixels of a render.",
+              "tickets": []
+            },
+            {
+              "text": "imager_prepare is an optional API allows you to query the outputs an imager will recieve and prepare any evaluation specific data.",
+              "tickets": []
+            },
+            {
+              "text": "Additionally, there are a couple of helper APIs for the imager_prepare method. These API let you request additional inputs to be rendered for imager evaluation, and to add additional output layers that the user may want to write to the driver.",
+              "tickets": []
+            },
+            {
+              "text": "Improved builtin metadata: Node and node parameter definitions have been further augmented with metadata that could be useful across DCCs. The metadata that have been added or improved are the following: help, category, ui.groups. Some of these metadata were previously distributed as separate mtd files in each DCC. (ARNOLD-14677, ARNOLD-14678, ARNOLD-14702, ARNOLD-14661)",
+              "tickets": [
+                "ARNOLD-14677",
+                "ARNOLD-14678",
+                "ARNOLD-14702",
+                "ARNOLD-14661"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible Changes",
+          "items": [
+            {
+              "text": "OCIO environment variable priority: The OCIO environment variable now takes priority over the file set in the Arnold OCIO color manager. Setting color_manager_ocio.ignore_environment_variable to true restores the previous behavior.",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "text": "ARNOLD-6309 - System locale should not affect .ass reading or writing",
+              "tickets": [
+                "ARNOLD-6309"
+              ]
+            },
+            {
+              "text": "usd#1547 - Fix mesh lights shutoff when there is a light link in the scene.",
+              "tickets": [
+                "usd#1547"
+              ]
+            },
+            {
+              "text": "usd#1859 - Support PointInstancer invisibleIDs for lights",
+              "tickets": [
+                "usd#1859"
+              ]
+            },
+            {
+              "text": "usd#1881 - Support UDIM and relative paths on mtlx image shaders",
+              "tickets": [
+                "usd#1881"
+              ]
+            },
+            {
+              "text": "usd#1884 - Set a proper name to skydome image node in Hydra",
+              "tickets": [
+                "usd#1884"
+              ]
+            },
+            {
+              "text": "usd#1890 - Reduce VtArray memory consumption, specially in the instancer.",
+              "tickets": [
+                "usd#1890"
+              ]
+            },
+            {
+              "text": "usd#1874 - Shader output attributes should be outputs:out to match the Sdr registry",
+              "tickets": [
+                "usd#1874"
+              ]
+            },
+            {
+              "text": "usd#1878 - Make Arnold relative path optional for image shaders",
+              "tickets": [
+                "usd#1878"
+              ]
+            },
+            {
+              "text": "usd#1873 - Ensure materials are written under a scope primitive",
+              "tickets": [
+                "usd#1873"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 11 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 535.104 or higher drivers. On Windows, we recommend 537.13 or higher drivers. Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7310_html.html",
+      "scrapedAt": "2026-03-23T22:00:25.361Z"
+    },
+    {
+      "version": "7.3.0.0",
+      "versionId": "7300",
+      "releaseType": "release",
+      "intro": "27 March 2024",
+      "sections": [
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "text": "Progressive dithered sampling: Arnold now supports dithered samples in progressive and adaptive rendering. Dithering brings nicer noise distributions at low AA sample counts. (ARNOLD-10739)",
+              "tickets": [
+                "ARNOLD-10739"
+              ]
+            },
+            {
+              "text": "Improved MaterialX support: Arnold can now render MaterialX node graphs mixing Arnold nodes with MaterialX standard library nodes. DCCs loading the Arnold node definitions benefit from the newly added UI metadata and provide a better user experience. Arnold also now uses MaterialX 1.38.8, this update brings new nodes in the MaterialX standard library, for a full list of changes please see the full release notes. (ARNOLD-14286, ARNOLD-14623, ARNOLD-14513)",
+              "tickets": [
+                "ARNOLD-14286",
+                "ARNOLD-14623",
+                "ARNOLD-14513"
+              ]
+            },
+            {
+              "text": "Emission and per-light-group AOVs: Per-light-group indirect AOVs no longer include emission. Emissive surfaces now only appear in the \"default\" light group output. When using emission in shaders, the sum of the light group AOVs will now add up to the beauty pass. (ARNOLD-9453)",
+              "tickets": [
+                "ARNOLD-9453"
+              ]
+            },
+            {
+              "text": "Evaluate autobump in SSS on GPU: Autobump will now be evaluated in the SSS computation with the GPU renderer when the sss_use_autobump option is enabled, this matches the behavior when rendering on CPU. (ARNOLD-8494)",
+              "tickets": [
+                "ARNOLD-8494"
+              ]
+            },
+            {
+              "text": "Device selection in the Intel Denoiser: It is now possible to toggle between Auto/CPU/GPU for OIDN denoiser imager. Arnold now also provides accurate timing information for the denoiser in the log. (ARNOLD-14524, ARNOLD-14526)",
+              "tickets": [
+                "ARNOLD-14524",
+                "ARNOLD-14526"
+              ]
+            },
+            {
+              "text": "Batch renders now abort on license fail: Arnold now aborts if there is a license error in a batch render. The option abort_on_license_fail is now true by default, and applies to batch renders only. This means you don't have to check rendered image sequences for watermarks. Interactive renders do not abort, and have a watermark on license fail as usual. The environment variable ARNOLD_FORCE_ABORT_ON_LICENSE_FAILoverrides this default behavior (0 = batch and interactive render with watermarks on license fail, 1 = batch and interactive abort on license fail). (ARNOLD-13024)",
+              "tickets": [
+                "ARNOLD-13024"
+              ]
+            },
+            {
+              "text": "Add license checkout time to render statistics: The render statistics now include the \"license checkout time\", which is the time in microseconds spent on license checkout for a specific render. This is useful to users to diagnose long checkout times when rendering in batch. (ARNOLD-13497)",
+              "tickets": [
+                "ARNOLD-13497"
+              ]
+            },
+            {
+              "text": "New network server configuration modes in the License Manager: You can now choose a license file or specify a three server redundancy setup on the network server configuration tab in the License Manager. (ARNOLD-14586, ARNOLD-14615)",
+              "tickets": [
+                "ARNOLD-14586",
+                "ARNOLD-14615"
+              ]
+            },
+            {
+              "text": "Upgrade to OpenColorIO 2.3.2: OpenColorIO library has been upgraded to use version 2.3.2. For the list of changes see the release notes for 2.3, 2.3.1, and 2.3.2. (ARNOLD-14026)",
+              "tickets": [
+                "ARNOLD-14026"
+              ]
+            },
+            {
+              "text": "Updated Alembic to 1.8.5: The Alembic procedural has been upgraded to use version 1.8.5 of the Alembic library. (ARNOLD-14448)",
+              "tickets": [
+                "ARNOLD-14448"
+              ]
+            },
+            {
+              "text": "Autodesk Analytics Program: A newer version of the Autodesk Analytics Program (ADP) has been integrated into Arnold. This brings stability improvements. (ARNOLD-13805)",
+              "tickets": [
+                "ARNOLD-13805"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "text": "Update to USD 23.11: The USD version was updated from 22.11 to 23.11 in the procedural. The USD Arnold procedural embeds a static version of USD 23.11, see USD 23.11 Changelog for all the changes related to this new version of USD.",
+              "tickets": []
+            },
+            {
+              "text": "Light instances: You can now instance lights with a Point Instancer. (usd#1705)",
+              "tickets": [
+                "usd#1705"
+              ]
+            },
+            {
+              "text": "Visibility and Mattes on instances in Hydra: In the Hydra Render Delegate, the Arnold visibility and matte attributes now work on instances. (usd#1635)",
+              "tickets": [
+                "usd#1635"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API changes",
+          "items": [
+            {
+              "text": "Builtin metadata: Nodes and their parameter definitions have been augmented with more metadata that could be useful across DCCs. The metadata that has been included are the following: animateable, default, help, gpu_support, hide, linkable, max/min, softmax/softmin and units. Some of these metadata were previously distributed as separate mtd files in each DCC. (ARNOLD-10265)",
+              "tickets": [
+                "ARNOLD-10265"
+              ]
+            },
+            {
+              "text": "Remove _private functions from BSDF API: The functions AiMicrofacetBSDF_private and AiMicrofacetRefractionBSDF_private (included to support dielectric priority) have now been removed from the BSDF API. The functions AiMicrofacetBSDF and AiMicrofacetRefractionBSDF now take dielectric_priority as an optional argument. (ARNOLD-14166)",
+              "tickets": [
+                "ARNOLD-14166"
+              ]
+            },
+            {
+              "text": "Expose conductor Fresnel mode as an enum in AiMetalBSDF: AiMetalBSDF has been modified to accept an AtMetalFresnelMode enum argument, selecting between the original \"Gulbrandsen\" conductor Fresnel model and the new \"F82-tint\" model. (ARNOLD-14165)",
+              "tickets": [
+                "ARNOLD-14165"
+              ]
+            },
+            {
+              "text": "Expose random walk version in the closure API: AiClosureRandomWalkV2BSSRDF has been removed, and instead the existing AiClosureRandomWalkBSSRDF has been modified to accept an AtRandomWalkVersion enum argument, selecting between the original v1 and v2 SSS modes. (ARNOLD-14164)",
+              "tickets": [
+                "ARNOLD-14164"
+              ]
+            },
+            {
+              "text": "Expose thin walled transmission in the public BSDF API: AiMicrofacetBSDF has been modified to accept an optional thin_walled_transmission argument, which specifies the fraction of the BSDF considered to represent a thin-walled dielectric. This is used to implement thin-walled transmission in Standard Surfaces. This was previously implemented in a way that circumvented the API, which has been fixed to be more explicit with this change. (ARNOLD-14167)",
+              "tickets": [
+                "ARNOLD-14167"
+              ]
+            },
+            {
+              "text": "Provide azimuthal roughness to AidEonBSDF: AidEonBSDF has been modified to accept a roughness_azimuthal argument, specifying the specular roughness for azimuthal scattering specifically. This is in addition to the existing roughness argument specifying the specular roughness for longitudinal scattering. (ARNOLD-8325)",
+              "tickets": [
+                "ARNOLD-8325"
+              ]
+            },
+            {
+              "text": "Removed AiADPSetIntroShown() and AiADPDialogStrings(): These deprecated functions were removed from the Arnold API. (ARNOLD-13805)",
+              "tickets": [
+                "ARNOLD-13805"
+              ]
+            },
+            {
+              "text": "Change AiUniverseCacheFlush API to receive a non-const universe: The AtUniverse passed into AiUniverseCacheFlush() was changed from const to non-const. (ARNOLD-14548)",
+              "tickets": [
+                "ARNOLD-14548"
+              ]
+            },
+            {
+              "text": "Remove deprecated AiGPUCachePopulate functions: Deprecated functions AiGPUCachePopulate(), AiGPUCachePopulateStatus(), AiGPUCachePopulateRemainingSeconds(), and AiGPUCachePopulateTerminate() have been removed. (ARNOLD-14570)",
+              "tickets": [
+                "ARNOLD-14570"
+              ]
+            },
+            {
+              "text": "Remove deprecated AiRenderSetCallback function: Deprecated function AiRenderSetCallback() has been removed. (ARNOLD-12583)",
+              "tickets": [
+                "ARNOLD-12583"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible Changes",
+          "items": [
+            {
+              "text": "This version breaks binary compatibility: Shaders, procedurals, and other plugins compiled against older versions of Arnold are not compatible with this version of Arnold and need to be updated and recompiled.",
+              "tickets": []
+            },
+            {
+              "text": "Autodesk Network Licensing version: Arnold 7.3 switches to ARNOL_2025 licensing. (ARNOLD-14292) Single-user subscriptions will work with Arnold 7.3. The plugin installers automatically register the new version. If you do not use a plugin, then after you download Arnold, open the Arnold License Manager and click Register. Existing network licenses will not work with Arnold 7.3. Log on to your Autodesk account to generate your new ARNOL_2025 licenses. If you do not run the installers, and you manually register Arnold, then use--pk C0PQ1 --pv 2025.0.0.F with the AdskLicensingInstHelper command.",
+              "tickets": [
+                "ARNOLD-14292"
+              ]
+            },
+            {
+              "text": "Single-user subscriptions will work with Arnold 7.3. The plugin installers automatically register the new version. If you do not use a plugin, then after you download Arnold, open the Arnold License Manager and click Register.",
+              "tickets": []
+            },
+            {
+              "text": "Existing network licenses will not work with Arnold 7.3. Log on to your Autodesk account to generate your new ARNOL_2025 licenses.",
+              "tickets": []
+            },
+            {
+              "text": "If you do not run the installers, and you manually register Arnold, then use--pk C0PQ1 --pv 2025.0.0.F with the AdskLicensingInstHelper command.",
+              "tickets": []
+            },
+            {
+              "text": "abort_on_license_fail defaults to true: Arnold now aborts by default if there is a license error in batch renders. You can revert to the previous behavior by setting the abort_on_license_failto false, or by using the new ARNOLD_FORCE_ABORT_ON_LICENSE_FAIL environment variable. (ARNOLD-10455, ARNOLD-13024)",
+              "tickets": [
+                "ARNOLD-10455",
+                "ARNOLD-13024"
+              ]
+            },
+            {
+              "text": "Emission and per-light-group AOVs: Per-light-group indirect AOVs no longer include emission. (ARNOLD-9453)",
+              "tickets": [
+                "ARNOLD-9453"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "text": "ARNOLD-14246 - [MaterialX] Promoted attributes and nodegraph interfaces are ignored",
+              "tickets": [
+                "ARNOLD-14246"
+              ]
+            },
+            {
+              "text": "ARNOLD-14601 - [MaterialX] Missing enum values in node definitions",
+              "tickets": [
+                "ARNOLD-14601"
+              ]
+            },
+            {
+              "text": "ARNOLD-14612 - [MaterialX] Ignored color space on standard library image nodes",
+              "tickets": [
+                "ARNOLD-14612"
+              ]
+            },
+            {
+              "text": "ARNOLD-14646 - [MaterialX] Crash when using the distance node in USD",
+              "tickets": [
+                "ARNOLD-14646"
+              ]
+            },
+            {
+              "text": "ARNOLD-14561 - [MaterialX] Crash when mixing Arnold and standard library shaders",
+              "tickets": [
+                "ARNOLD-14561"
+              ]
+            },
+            {
+              "text": "ARNOLD-14287 - Rare crash when compiling OSL with LLVM during IPR",
+              "tickets": [
+                "ARNOLD-14287"
+              ]
+            },
+            {
+              "text": "ARNOLD-14634 - Error when denoising unsupported pixel type AOVs in OIDN and OptiX",
+              "tickets": [
+                "ARNOLD-14634"
+              ]
+            },
+            {
+              "text": "usd#1758 - Fix several crashes by returning a default value when an attribute type is not recognized.",
+              "tickets": [
+                "usd#1758"
+              ]
+            },
+            {
+              "text": "usd#1756 - Registry should declare filenames as assets in GetTypeAsSdfType.",
+              "tickets": [
+                "usd#1756"
+              ]
+            },
+            {
+              "text": "usd#1770 - Fix exr driver always rendering float with husk when productType is arnold.",
+              "tickets": [
+                "usd#1770"
+              ]
+            },
+            {
+              "text": "usd#1772 - RectLight texture uvs are now consistent between husk, kick and other renderer.",
+              "tickets": [
+                "usd#1772"
+              ]
+            },
+            {
+              "text": "usd#1776 - Fix incorrect PointInstancer instance orientations in the render delegate.",
+              "tickets": [
+                "usd#1776"
+              ]
+            },
+            {
+              "text": "usd#1769 - Fix curve uvs when they are vertex interpolated.",
+              "tickets": [
+                "usd#1769"
+              ]
+            },
+            {
+              "text": "usd#1784 - The aov layer name is now correctly taken into account when rendering exrs with husk and using the arnold productType.",
+              "tickets": [
+                "usd#1784"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 11 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 535.104 or higher drivers. On Windows, we recommend 537.13 or higher drivers. Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7300_html.html",
+      "scrapedAt": "2026-03-23T22:00:26.881Z"
+    },
+    {
+      "version": "7.2.1.0",
+      "versionId": "7210",
+      "releaseType": "release",
+      "intro": "29 March 2023",
+      "sections": [
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "text": "Distance shader: A new distance shader that uses the distance to the nearest surface to interpolate between near and far color values. (ARNOLD-9361)",
+              "tickets": [
+                "ARNOLD-9361"
+              ]
+            },
+            {
+              "text": "Global light sampling: A new, more efficient sampling technique for lights is available. To enable global light sampling, set options.light_samples to a non-zero value. When enabled, the light sample settings on individual lights are ignored and the overall, global contribution of all lights together is computed using options.light_samples number of samples only. In this release, global light sampling does not apply to environment, directional lights, volumes, and GPU rendering. See the full documentation for more details. (ARNOLD-12860)",
+              "tickets": [
+                "ARNOLD-12860"
+              ]
+            },
+            {
+              "text": "Improved triangle intersector: Triangle intersection is now 20% faster and less likely to allow rays to incorrectly slip between triangles, which manifested as holes in a mesh. (ARNOLD-4136)",
+              "tickets": [
+                "ARNOLD-4136"
+              ]
+            },
+            {
+              "text": "Faster loading of OpenVDB volumes in Windows: On Windows, OpenVDB volumes are faster to load, especially on certain many-core CPUs. On one 112-core machine we've seen 4.5x faster loads; other CPUs saw smaller speedups. (ARNOLD-12633)",
+              "tickets": [
+                "ARNOLD-12633"
+              ]
+            },
+            {
+              "text": "Faster instancer initialization: The instancer procedural is now faster on single-socket CPUs. We've seen up to 1.6x faster node initialization on some machines. (ARNOLD-12963)",
+              "tickets": [
+                "ARNOLD-12963"
+              ]
+            },
+            {
+              "text": "alembic.objectpath changed to an array : The Alembic procedural parameter objectpath is now an ARRAY type, so multiple object paths can be given to a single Alembic procedural. (ARNOLD-12950)",
+              "tickets": [
+                "ARNOLD-12950"
+              ]
+            },
+            {
+              "text": "uv_transform improvements : The uv_transform shader now has a wset parameter, which is the name of a float user data value. A new matrix attribute uvw_matrix returns new coordinates based on the uvw values. If the new attribute uvcoords is linked to a shader, the values returned by that shader override the uv coordinates, at the cost of efficiency because this prevents Arnold from using the correct filtering. (ARNOLD-13049, ARNOLD-13156)",
+              "tickets": [
+                "ARNOLD-13049",
+                "ARNOLD-13156"
+              ]
+            },
+            {
+              "text": "Motion blur with set_transform: The set_transform operator now has a matrix attribute, that can be animated. This allows set_transform to apply animations and get correct motion blur. (ARNOLD-13068)",
+              "tickets": [
+                "ARNOLD-13068"
+              ]
+            },
+            {
+              "text": "Update OSL : Open Shading Language (OSL) has been updated to version 1.12.9. (ARNOLD-11791)",
+              "tickets": [
+                "ARNOLD-11791"
+              ]
+            },
+            {
+              "text": "Update Boost: The Boost library has been updated to 1.81.0. (ARNOLD-12271)",
+              "tickets": [
+                "ARNOLD-12271"
+              ]
+            },
+            {
+              "text": "Update zlib: The zlib library has been updated to 1.2.13. (ARNOLD-13097)",
+              "tickets": [
+                "ARNOLD-13097"
+              ]
+            },
+            {
+              "text": "Update Cryptomatte: Cryptomatte has been updated to 1.2.2. (ARNOLD-13101), so sidecar manifests now work with Solaris.",
+              "tickets": [
+                "ARNOLD-13101"
+              ]
+            },
+            {
+              "text": "autotx metadata in tx files: TX files generated with AutoTX now have the metadata autotx 1 added to the TX file. (ARNOLD-13025)",
+              "tickets": [
+                "ARNOLD-13025"
+              ]
+            },
+            {
+              "text": "New environment variable for external control of autotx: The new environment variable ARNOLD_AUTO_GENERATE_TX overrides the options parameter texture_auto_generate_tx. This environment variable can be either never or when_outdated, which are equivalent to disabling or enabling the global autotx option. (ARNOLD-12875)",
+              "tickets": [
+                "ARNOLD-12875"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "text": "Update Arnold-USD: USD has been updated to 22.11 (ARNOLD-13075, ARNOLD-13099)",
+              "tickets": [
+                "ARNOLD-13075",
+                "ARNOLD-13099"
+              ]
+            },
+            {
+              "text": "Support more MaterialX shaders in USD. The MaterialX Standard Library shaders for creating and manipulating BSDFs, VDFs, and EDFs, such as layer, mix, and add, are now supported in USD as well as the following shaders : triplanarprojection, switch, and constant.",
+              "tickets": []
+            },
+            {
+              "text": "Convert cube, sphere, cylinder, capsule primitives as meshes in the procedural. Geometric primitives are now converted to Hydra meshes instead of Arnold primitives. usd#1318 usd#1451",
+              "tickets": [
+                "usd#1318",
+                "usd#1451"
+              ]
+            },
+            {
+              "text": "Support render delegate products for all Arnold drivers. When rendering using Hydra, with husk for example, the render delegate now uses the RenderProduct drivers. usd#1422",
+              "tickets": [
+                "usd#1422"
+              ]
+            },
+            {
+              "text": "Arnold Render Products in Hydra: Setting the render product type to \"arnold\" (instead of the default \"raster\") will now render the scene with Arnold drivers. This means we support the driver parameters defined in the Arnold tab of the render products. usd#1423",
+              "tickets": [
+                "usd#1423"
+              ]
+            },
+            {
+              "text": "Instanced skinned meshes: Skinned instances are now rendering in the correct transform and order. usd#1412",
+              "tickets": [
+                "usd#1412"
+              ]
+            },
+            {
+              "text": "fStop and aperture_size: The procedural and render delegate now support both the fStop and the aperture_size parameters in the camera. usd#1421",
+              "tickets": [
+                "usd#1421"
+              ]
+            },
+            {
+              "text": "Support combination of half and full precision AOVs in the procedural. The procedural can now render a combination of half- and full- precision aovs. usd#1416",
+              "tickets": [
+                "usd#1416"
+              ]
+            },
+            {
+              "text": "Always read RenderVar aov:name as an output layer. The RenderVar parameter driver:parameters:aov:name is now used as the output aov layer name. usd#1408",
+              "tickets": [
+                "usd#1408"
+              ]
+            },
+            {
+              "text": "Support Render Product names: Render Product names are now used as the Arnold output layer names. In exr files, each layer name can now be customized. usd#1408",
+              "tickets": [
+                "usd#1408"
+              ]
+            },
+            {
+              "text": "Support asset attributes for filenames when no tokens are present. \"filename\" Arnold attributes are now SdfAssetPaths in USD usd#1163",
+              "tickets": [
+                "usd#1163"
+              ]
+            },
+            {
+              "text": "Filename attributes as Assets: In Arnold shaders (like the image shader), the filename is now an asset parameter. This allows Arnold to support relative paths in a more consistent way for USD. usd#1418",
+              "tickets": [
+                "usd#1418"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Additions",
+          "items": [
+            {
+              "text": "Enable/disable crash handler for the session: The new function AiSetSystemHandlers() and the environment variable ARNOLD_SYSTEM_HANDLER_MASK have been added, allowing a user to mask Arnold built-in system handlers. The supported masks are listed in AtSystemHandlerMask and currently allow all handlers to be either fully enabled or disabled. (ARNOLD-13014)",
+              "tickets": [
+                "ARNOLD-13014"
+              ]
+            },
+            {
+              "text": "Check if TX file is up to date: The new function AiTextureTxFileNeedsUpdate() returns true if the TX file needs to be regenerated from its source texture. This can happen if the source texture was modified or if Arnold was updated with a newer OpenImageIO library. (ARNOLD-12994)",
+              "tickets": [
+                "ARNOLD-12994"
+              ]
+            },
+            {
+              "text": "Get original texture name for TX file: The new function AiTextureGetTxSourceFileName() returns the name of the texture file used to generate a given TX file. (ARNOLD-13047)",
+              "tickets": [
+                "ARNOLD-13047"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible changes",
+          "items": [
+            {
+              "text": "Auto Generate TX and OpenImageIO versioning: Arnold now regenerates tx files only if the OIIO version in Arnold is newer. Using an older Arnold with an older OIIO does not force a regeneration of the tx files. (ARNOLD-12992)",
+              "tickets": [
+                "ARNOLD-12992"
+              ]
+            },
+            {
+              "text": "Auto Generate TX on write-protected folder: When a TX file cannot be generated because the target folder is write protected, the TX file is generated in the system temp folder. (ARNOLD-13039)",
+              "tickets": [
+                "ARNOLD-13039"
+              ]
+            },
+            {
+              "text": "Minimum driver requirement raised: The minimum supported NVIDIA driver versions are now 512.78 (for Windows) and 510.73.05 (for Linux). (ARNOLD-13169)",
+              "tickets": [
+                "ARNOLD-13169"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "text": "ARNOLD-12964 - Rare crash when threads are creating AtStrings at the same time",
+              "tickets": [
+                "ARNOLD-12964"
+              ]
+            },
+            {
+              "text": "ARNOLD-13032 - AiTextureAutoTxFlags not resolving auto color space",
+              "tickets": [
+                "ARNOLD-13032"
+              ]
+            },
+            {
+              "text": "ARNOLD-13115 - Use textures in texture_auto_tx_path even when autotx generation is disabled",
+              "tickets": [
+                "ARNOLD-13115"
+              ]
+            },
+            {
+              "text": "ARNOLD-13197 - Log callbacks ignore maximum number of warnings",
+              "tickets": [
+                "ARNOLD-13197"
+              ]
+            },
+            {
+              "text": "ARNOLD-13201 - Crashes when default universe is null",
+              "tickets": [
+                "ARNOLD-13201"
+              ]
+            },
+            {
+              "text": "ARNOLD-13350 - Set AtNode LocalData pointer to null after node_finish is called",
+              "tickets": [
+                "ARNOLD-13350"
+              ]
+            },
+            {
+              "text": "ARNOLD-12995 - [MaterialX] Support nodes from the MaterialX PBR library in USD",
+              "tickets": [
+                "ARNOLD-12995"
+              ]
+            },
+            {
+              "text": "ARNOLD-13073 - [MaterialX] AiMaterialxGetOslShaderCode fails on ND_switch_color3",
+              "tickets": [
+                "ARNOLD-13073"
+              ]
+            },
+            {
+              "text": "ARNOLD-13074 - [MaterialX] AiMaterialxGetOslShaderCode fails on ND_separate3_color3",
+              "tickets": [
+                "ARNOLD-13074"
+              ]
+            },
+            {
+              "text": "ARNOLD-13107 - Mesh lights occasionally do not render",
+              "tickets": [
+                "ARNOLD-13107"
+              ]
+            },
+            {
+              "text": "ARNOLD-13163 - [GPU] CPU memory leak when rendering multiple frames on the GPU",
+              "tickets": [
+                "ARNOLD-13163"
+              ]
+            },
+            {
+              "text": "usd#1412 - Fix instance skinned mesh in incorrect position and order.",
+              "tickets": [
+                "usd#1412"
+              ]
+            },
+            {
+              "text": "usd#1438 - Creating surface models from PBR nodes doesn't work",
+              "tickets": [
+                "usd#1438"
+              ]
+            },
+            {
+              "text": "usd#1433 - Material binding not handling correctly the different scopes",
+              "tickets": [
+                "usd#1433"
+              ]
+            },
+            {
+              "text": "usd#1447 - MaterialX Triplanar renders black",
+              "tickets": [
+                "usd#1447"
+              ]
+            },
+            {
+              "text": "usd#1427 - Motion blur differences between procedural and delegate",
+              "tickets": [
+                "usd#1427"
+              ]
+            },
+            {
+              "text": "usd#1442 - Velocity motion blur doesn't work if PointInstancer has more than one prototype",
+              "tickets": [
+                "usd#1442"
+              ]
+            },
+            {
+              "text": "usd#1354 - Vertex mismatch with velocity blur and point normals in Hydra",
+              "tickets": [
+                "usd#1354"
+              ]
+            },
+            {
+              "text": "usd#1420 - Unify fStop and aperture_size",
+              "tickets": [
+                "usd#1420"
+              ]
+            },
+            {
+              "text": "usd#1430 - deepexr driver parameters like depth_tolerance are ignored",
+              "tickets": [
+                "usd#1430"
+              ]
+            },
+            {
+              "text": "usd#1411 - append parameter (for checkpointing renders) is not translated",
+              "tickets": [
+                "usd#1411"
+              ]
+            },
+            {
+              "text": "usd#1413 - Crash in UsdSkel in the procedural",
+              "tickets": [
+                "usd#1413"
+              ]
+            },
+            {
+              "text": "usd#1352 - Skinned instances in wrong world position",
+              "tickets": [
+                "usd#1352"
+              ]
+            },
+            {
+              "text": "usd#1394 - USD procedural renders characters in the wrong positions and order",
+              "tickets": [
+                "usd#1394"
+              ]
+            },
+            {
+              "text": "usd#1443 - Incorrect number of motion keys with skinned primvar normals and motion blur",
+              "tickets": [
+                "usd#1443"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 10.13 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chip are natively supported. GPU rendering works on Windows and Linux only and requires an NVIDIA GPU of the Ada, Ampere, Turing, Volta, Pascal, or Maxwell architecture. We recommend using the 525.89 or higher drivers on Linux and 528.49, or higher on Windows. See Arnold GPU for more information. For GPU rendering, the cache also needs to be re-populated after installing a new Arnold version, updating to a new NVIDIA driver, or changing the hardware configuration of GPUs on the system. More information can be found here. OptiX™ denoiser requires an NVIDIA GPU with CUDA™ Compute Capability 5.0 and above. Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7210_html.html",
+      "scrapedAt": "2026-03-23T22:00:28.402Z"
+    },
+    {
+      "version": "7.2.0.0",
+      "versionId": "7200",
+      "releaseType": "release",
+      "intro": "29 Mar 2023",
+      "sections": [
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "text": "Disable sky in physical_sky: In addition to the preexisting enable_sun parameter, the physical_sky shader now also has an enable_sky parameter for disabling the sky. This allows, for instance, to have two suns. (ARNOLD-12584)",
+              "tickets": [
+                "ARNOLD-12584"
+              ]
+            },
+            {
+              "text": "Colorspace included in TX filename: AutoTX-generated files now include the original extension and the texture and rendering color spaces in the filename. For example, running AutoTX on my_texture.jpg with an sRGB color space and ACEScg rendering color space will produce: my_texture_sRGB_ACEScg.jpg.tx. Textures that are not supposed to have colorspace changes get the tag raw, such as my_texture_raw.jpg.tx. (ARNOLD-11919)",
+              "tickets": [
+                "ARNOLD-11919"
+              ]
+            },
+            {
+              "text": "Faster node init/update: The node init and update times are now faster. We have seen speedups of up to 20%. (ARNOLD-12870)",
+              "tickets": [
+                "ARNOLD-12870"
+              ]
+            },
+            {
+              "text": "Improved many-core volume scaling: Rendering performance of volumes has been improved on certain many-core machines. The Disney cloud on a dual socket Intel Xeon Linux machine (56 total logical cores) now renders 1.4x faster. (ARNOLD-13004)",
+              "tickets": [
+                "ARNOLD-13004"
+              ]
+            },
+            {
+              "text": "Improved many-core OCIO performance: Rendering performance when using OCIO has been improved. Examples where this speedup might be observed are when using 8-bit textures, textures in a different colorspace to the rendering colorspace, when not using AutoTX, or shading operations that require colorspace transforms. We have seen up to 20% reduction in rendering time on multi-socket systems. (ARNOLD-12912)",
+              "tickets": [
+                "ARNOLD-12912"
+              ]
+            },
+            {
+              "text": "Support up to 1024 CPU cores: AI_MAX_THREADS has been increased from 256 to 1024, which allows Arnold to now create up to 1024 threads for full CPU utilization on machines with up to 1024 cores. (ARNOLD-11015, ARNOLD-12967, ARNOLD-12997)",
+              "tickets": [
+                "ARNOLD-11015",
+                "ARNOLD-12967",
+                "ARNOLD-12997"
+              ]
+            },
+            {
+              "text": "Better autobump visibility masking: We can now also disable autobump on camera and shadow rays. These used to be treated as always enabled. For scenes with non-opaque objects, disabling autobump on shadow rays can give up to a 50% speed up if there are many non-opaque objects. This shadow ray optimization should only affect the look when autobump is used to adjust the opacity for shadow ray, which likely is not a common use case. (ARNOLD-8863)",
+              "tickets": [
+                "ARNOLD-8863"
+              ]
+            },
+            {
+              "text": "Instancer light linking: If a light is linked to a shape and both are instanced, then the instancer now preserves this link within instances. This means the first light instance is linked to the first shape instance, the second light instance to the second shape instance and so on. (ARNOLD-12929)",
+              "tickets": [
+                "ARNOLD-12929"
+              ]
+            },
+            {
+              "text": "polymesh.smoothing defaults to true: The default setting for polymesh.smoothing (smoothed normals) is now true across the core and plugins. Previously it was disabled in the core and only some plugins. (ARNOLD-11688)",
+              "tickets": [
+                "ARNOLD-11688"
+              ]
+            },
+            {
+              "text": "Upgraded OCIO: OpenColorIO has been upgraded to 2.2.1. (ARNOLD-12743)",
+              "tickets": [
+                "ARNOLD-12743"
+              ]
+            },
+            {
+              "text": "Remove warning about using tiled with deep_exr: We no longer warn about using tiled with deep_exr. (ARNOLD-12887)",
+              "tickets": [
+                "ARNOLD-12887"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "text": "MaterialX displacement shaders: MaterialX displacement shaders are now interpreted correctly. usd#1366",
+              "tickets": [
+                "usd#1366"
+              ]
+            },
+            {
+              "text": "Arnold shader metadata: We now register all Arnold shader metadata in the Sdr registry. Before only the Help and Role metadata were passed to the registry. usd#1390",
+              "tickets": [
+                "usd#1390"
+              ]
+            },
+            {
+              "text": "AutoTX environment variable: HDARNOLD_auto_generate_tx can be set to override the default AutoTX behaviour in the render delegate. usd#1353",
+              "tickets": [
+                "usd#1353"
+              ]
+            },
+            {
+              "text": "Driver options in the RenderProduct primitive: It is now possible to set the driver options in the RenderProduct primitive using attribute names prefixed with the driver name in the Arnold namespace. For example arnold:driver_jpeg:quality will set the quality when rendering with the jpeg driver. usd#1346",
+              "tickets": [
+                "usd#1346"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Additions",
+          "items": [
+            {
+              "text": "Load/Read, Write, and Resize image API changes: The Image API functions introduced in 7.1.4 now also take an optional AtParamValueMap so that in the future we can add or change parameters to these functions without breaking the API. Currently there are no parameters these functions expect. Additionally, AiLoadImage() has been deprecated and replaced with the more appropriately named AiReadImage(); functionally they do the same thing. (ARNOLD-12937) <code class=\"lang-cpp prettyprint\"> bool AiReadImage(const char* filename, const uint8_t format, AtImage& image, AtParamValueMap* params = nullptr); bool AiWriteImage(const char* filename, const AtImage& image, AtParamValueMap* params = nullptr); bool AiResizeImage(const AtImage& inImage, AtImage& outImage, AtParamValueMap* params = nullptr);</code>",
+              "tickets": [
+                "ARNOLD-12937"
+              ]
+            },
+            {
+              "text": "Specify connected inputs in AiMaterialxGetOslShaderCode: The new optional connected_input parameter enables client code to specify input connection on a MaterialX node reference. This is needed for Geometry Property input connections like UV coordinates, to prevent them from being removed from the generated OSL code. (ARNOLD-12712)",
+              "tickets": [
+                "ARNOLD-12712"
+              ]
+            },
+            {
+              "text": "New API to get the name of the TX file generated for a given texture: TX file names now include the color spaces and the extension of the original file, so we added AiTextureGetTxFileName to allow client code to get the exact name of the generated TX file. (ARNOLD-12970) <code class=\"lang-cpp prettyprint\"> AtString AiTextureGetTxFileName(const char* filename, AtString texture_color_space, AtString render_color_space, const AtUniverse* universe);</code>",
+              "tickets": [
+                "ARNOLD-12970"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible changes",
+          "items": [
+            {
+              "text": "This version breaks binary compatibility: Shaders, procedurals, and other plugins compiled against older versions of Arnold are not compatible with this version of Arnold and need to be updated and recompiled.",
+              "tickets": []
+            },
+            {
+              "text": "Autodesk Network Licensing version : Arnold 7.2 switches to ARNOL_2024 licensing. (ARNOLD-12833) Single-user subscriptions will work with Arnold 7.2. The plugin installers automatically register the new version. If you do not use a plugin, then after you download Arnold, open the Arnold License Manager and click Register. Existing network licenses will not work with Arnold 7.2. Log on to your Autodesk account to generate your new ARNOL_2024 licenses. Autodesk Network License Manager (NLM) servers must be updated to version 11.18.",
+              "tickets": [
+                "ARNOLD-12833"
+              ]
+            },
+            {
+              "text": "Single-user subscriptions will work with Arnold 7.2. The plugin installers automatically register the new version. If you do not use a plugin, then after you download Arnold, open the Arnold License Manager and click Register.",
+              "tickets": []
+            },
+            {
+              "text": "Existing network licenses will not work with Arnold 7.2. Log on to your Autodesk account to generate your new ARNOL_2024 licenses.",
+              "tickets": []
+            },
+            {
+              "text": "Autodesk Network License Manager (NLM) servers must be updated to version 11.18.",
+              "tickets": []
+            },
+            {
+              "text": "AiLoadImage: AiLoadImage() has been deprecated and replaced with the more appropriately named AiReadImage(); functionally they do the same thing. (ARNOLD-12937) <code class=\"lang-cpp prettyprint\"> inline AI_DEPRECATED bool AiLoadImage(const char* filename, const uint8_t format, AtImage& image) { return AiReadImage(filename, format, image, nullptr); }</code>",
+              "tickets": [
+                "ARNOLD-12937"
+              ]
+            },
+            {
+              "text": "Removed deprecated functions: The following previously deprecated functions have now been removed. (ARNOLD-12938) <code class=\"lang-cpp prettyprint\"> // replace with init() as there is no benefit to specifying an init bound void AtBBox::init(float bound); // replace with AtMutex void AiCritSecInit(AtCritSec* cs); void AiCritSecInitRecursive(AtCritSec* cs); void AiCritSecClose(AtCritSec* cs); void AiCritSecEnter(AtCritSec* cs); void AiCritSecLeave(AtCritSec* cs); // Replace with variants that specify the universe or render session int AiDeviceSelect(AtDeviceType device_type, const AtArray* device_ids); int AiDeviceAutoSelect(); AtDeviceType AiDeviceGetSelectedType(); const AtArray* AiDeviceGetSelectedIds(AtDeviceType device_type); int AiASSWrite(const char* filename, int mask = AI_NODE_ALL, bool open_procs = false, bool binary = true); int AiASSWriteWithMetadata(const char* filename, int mask = AI_NODE_ALL, bool open_procs = false, bool binary = true, const AtMetadataStore* mds = NULL); int AiASSLoad(const char* filename, int mask = AI_NODE_ALL); void AiMsgSetLogFileFlags(int flags); void AiMsgSetConsoleFlags(int flags); int AiMsgGetLogFileFlags(); int AiMsgGetConsoleFlags(); AtNode* AiNode (const AtString nentry_name, const AtString name = AtString(), const AtNode* parent = NULL); AtNode* AiNodeLookUpByName (const AtString name, const AtNode* parent = NULL); AtNode* AiNode (const char* nentry_name, const char* name = \"\", const AtNode* parent = NULL); AtNode* AiNodeLookUpByName (const char* name, const AtNode* parent = NULL); bool AiOpSetTarget(AtNode* node); AtNode* AiOpGetTarget(); AtSessionMode AiGetSessionMode(); void AiRenderAddInteractiveOutput(uint32_t output_index); bool AiRenderIsInteractiveOutput(uint32_t output_index); bool AiRenderRemoveInteractiveOutput(uint32_t output_index); void AiRenderRemoveAllInteractiveOutputs(); void AiRenderSetInteractiveOutput(uint32_t output_index); uint32_t AiRenderGetInteractiveOutput(); bool AiRenderSetHintBool(AtString hint, bool value); bool AiRenderSetHintInt(AtString hint, int32_t value); bool AiRenderSetHintFlt(AtString hint, float value); bool AiRenderSetHintStr(AtString hint, AtString value); bool AiRenderSetHintArray(AtString hint, AtArray *value); bool AiRenderGetHintBool(AtString hint, bool& value); bool AiRenderGetHintInt(AtString hint, int32_t& value); bool AiRenderGetHintFlt(AtString hint, float& value); bool AiRenderGetHintStr(AtString hint, AtString& value); bool AiRenderGetHintArray(AtString hint, const AtArray*& value); AtRenderErrorCode AiRender(AtRenderMode mode = AI_RENDER_MODE_CAMERA); AtRenderErrorCode AiRenderBegin(AtRenderMode mode = AI_RENDER_MODE_CAMERA, AtRenderUpdateCallback update_callback = NULL, void* callback_private_data = NULL); AtRenderErrorCode AiRenderEnd(); AtRenderStatus AiRenderGetStatus(); void AiRenderInterrupt(AtBlockingCall blocking = AI_NON_BLOCKING); void AiRenderAbort(AtBlockingCall blocking = AI_NON_BLOCKING); void AiRenderResume(); void AiRenderRestart(); bool AiRendering(); bool AiUniverseIsActive(); bool AiUniverseCacheFlush(int cache_flags); AtNode* AiUniverseGetOptions(); AtNode* AiUniverseGetCamera(); AtBBox AiUniverseGetSceneBounds(); AtNodeIterator* AiUniverseGetNodeIterator(unsigned int node_mask); AtAOVIterator* AiUniverseGetAOVIterator();</code>",
+              "tickets": [
+                "ARNOLD-12938"
+              ]
+            },
+            {
+              "text": "Removed min_optix_denoiser_sample option: Removed the deprecated and redundant min_optix_denoiser_sample option. (ARNOLD-11714)",
+              "tickets": [
+                "ARNOLD-11714"
+              ]
+            },
+            {
+              "text": "Removed non-functioning kick -of flag: kick -of was removed because it was never able to actually change the output file type. The one thing it could properly do was to output the output file types Arnold can write to, however that functionality can already be reproduced through kick -nodes | grep driver_. (ARNOLD-12857)",
+              "tickets": [
+                "ARNOLD-12857"
+              ]
+            },
+            {
+              "text": "Better autobump visibility masking: Camera ray visibility must now be explicitly set (before, camera ray visibility was enabled regardless of the autobump_visibility setting). Existing scenes that use autobump_visibility may need to enable camera ray visibility. (ARNOLD-8863)",
+              "tickets": [
+                "ARNOLD-8863"
+              ]
+            },
+            {
+              "text": "License Manager log folder changed on Linux: License Manager application and diagnostic logs are now stored under the ~/.autodesk folder on Linux. (ARNOLD-12993)",
+              "tickets": [
+                "ARNOLD-12993"
+              ]
+            },
+            {
+              "text": "kick -nostdin replaced with -stdin: kick no longer automatically reads from stdin, because in the past, waiting for input from stdin caused problems with some tools. If you want kick to read from stdin, use the new -stdin flag. (ARNOLD-6908)",
+              "tickets": [
+                "ARNOLD-6908"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "text": "ARNOLD-12712 - Modifying texcoords in USD doesn't work with Arnold",
+              "tickets": [
+                "ARNOLD-12712"
+              ]
+            },
+            {
+              "text": "ARNOLD-12982 - [LicenseManager] Support tool fails to install on Linux and macOS when running Diagnostics",
+              "tickets": [
+                "ARNOLD-12982"
+              ]
+            },
+            {
+              "text": "usd#1383 - Relative search paths with UDIM and attribute tags are now correctly passed to Arnold",
+              "tickets": [
+                "usd#1383"
+              ]
+            },
+            {
+              "text": "usd#1380 - Crash when updating a MaterialX shader in Solaris",
+              "tickets": [
+                "usd#1380"
+              ]
+            },
+            {
+              "text": "usd#1372 - Primitives with an empty purpose attribute are now handled correctly",
+              "tickets": [
+                "usd#1372"
+              ]
+            },
+            {
+              "text": "usd#1334 - Skip curves with empty radius",
+              "tickets": [
+                "usd#1334"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 10.13 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chip are natively supported. GPU rendering works on Windows and Linux only and requires an NVIDIA GPU of the Ampere, Turing, Volta, Pascal, or Maxwell architecture. We recommend using the 525.89 or higher drivers on Linux and 528.49, or higher on Windows. See Arnold GPU for more information. For GPU rendering, the cache also needs to be re-populated after installing a new Arnold version, updating to a new NVIDIA driver , or changing the hardware configuration of GPUs on the system. More information can be found here. OptiX™ denoiser requires an NVIDIA GPU with CUDA™ Compute Capability 5.0 and above. Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7200_html.html",
+      "scrapedAt": "2026-03-23T22:00:30.567Z"
+    },
+    {
+      "version": "7.1.1.0",
+      "versionId": "7110",
+      "releaseType": "release",
+      "intro": "30 Mar 2022",
+      "sections": [
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "text": "Adjust how often imagers are run during IPR: A new options setting has been added called options.imager_overhead_target_percent which can be used to control how often imagers should run during a render. An imager_overhead_target_percent setting of 0 will cause the imagers to only run at the end of the render. The default value of 1 will periodically run the imager during the render so that the overhead from running the imager is no more than approximately 1%. ARNOLD-11750",
+              "tickets": [
+                "ARNOLD-11750"
+              ]
+            },
+            {
+              "text": "Noice imager runs only at end of render: The noice imager, which is generally too slow for interactive IPR, will no longer run during a render and instead is only run at the end of the render pass. ARNOLD-11761",
+              "tickets": [
+                "ARNOLD-11761"
+              ]
+            },
+            {
+              "text": "Overrides for specific instances in the instancer: Instead of specifying a value for all instances, overrides for specific instances can be defined by declaring a user data array of instanceidxs_ prefix on the instancer node. ARNOLD-12142",
+              "tickets": [
+                "ARNOLD-12142"
+              ]
+            },
+            {
+              "text": "Reference time for OpenVDB volumes: The global options.reference_time attribute is now also used as the time the grid data exists, so velocity motion blur is relative to this reference time. Usually this is zero, which for frame-relative time values means \"on the frame\", which is typical of OpenVDB simulation data. ARNOLD-12143",
+              "tickets": [
+                "ARNOLD-12143"
+              ]
+            },
+            {
+              "text": "** USD Enhancements",
+              "tickets": []
+            },
+            {
+              "text": "Author defaultPrim in the USD writer: When an Arnold scene is saved as USD, a defaultPrim is now authored, which is needed for nested instances usd#1064",
+              "tickets": [
+                "usd#1064"
+              ]
+            },
+            {
+              "text": "Don't force export of ArnoldOptions: When exporting USD files, we now store the list of authored frames as custom metadatas in the usd file, and no longer need to force the export of the ArnoldOptions primitive usd#963",
+              "tickets": [
+                "usd#963"
+              ]
+            },
+            {
+              "text": "Write shading trees under their material's scope: When authoring shading trees, the shaders are now written under their material's hierarchy. usd#1067",
+              "tickets": [
+                "usd#1067"
+              ]
+            },
+            {
+              "text": "Support velocity/acceleration in Hydra: Meshes and curves with varying topologies and velocity or acceleration primvars are now supported in the render delegate usd#1039",
+              "tickets": [
+                "usd#1039"
+              ]
+            },
+            {
+              "text": "Reduce default subdivision level in Hydra: The different subdivision quality settings in Solaris are now interpreted as (0, 1, 2, 3) subdiv_iterations in Arnold, instead of (0, 2, 4, 8) which was too high for Arnold subdivision usd#1056",
+              "tickets": [
+                "usd#1056"
+              ]
+            },
+            {
+              "text": "Control amount of arnold-usd threads when rendering a usd file : A new environment variable ARNOLD_USD_READER_THREADS allows to control how many arnold-usd threads will be used to translate the usd data to arnold when running kick on a usd file. Default value is 0 and means that all threads will be used usd#1055",
+              "tickets": [
+                "usd#1055"
+              ]
+            },
+            {
+              "text": "Support light temperature in Hydra: Usd native lights have a light temperature attribute that is now supported in the render delegate usd#1051",
+              "tickets": [
+                "usd#1051"
+              ]
+            },
+            {
+              "text": "Default to smooth meshes in Hydra: In the render delegate, meshes are now smoothed by default, as in the usd procedural usd#24",
+              "tickets": [
+                "usd#24"
+              ]
+            },
+            {
+              "text": "Specify which RenderSettings to use when calling AiSceneLoad: A custom parameter render_settings allows to control which RenderSettings primitive to export to Arnold options node usd#1017",
+              "tickets": [
+                "usd#1017"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Additions",
+          "items": [
+            {
+              "text": "AiRenderSessionGetOptions(): AiRenderSessionGetOptions() will return the render options node used by a given render session. This read-only render options node holds a separate set of options, initialized from the universe options but partially modified for render specific requirements. The differences with the universe copy of the options are mostly related to invalid values that are sanitized for rendering and temporary changes to sample values made during interactive render. ARNOLD-12012",
+              "tickets": [
+                "ARNOLD-12012"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible Changes",
+          "items": [
+            {
+              "text": "Arnold 5 porting guide removed. The Arnold_5_Porting_Guide.pdf has been removed. Arnold-11696",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "text": "ARNOLD-12158 Bucket corners in kick should not be drawn for negative AA passes",
+              "tickets": [
+                "ARNOLD-12158"
+              ]
+            },
+            {
+              "text": "ARNOLD-12154 Poor sample quality when using multiple render sessions",
+              "tickets": [
+                "ARNOLD-12154"
+              ]
+            },
+            {
+              "text": "ARNOLD-12143 Volume velocity motion blur does not support non-normalized shutter intervals",
+              "tickets": [
+                "ARNOLD-12143"
+              ]
+            },
+            {
+              "text": "ARNOLD-12139 The legacy bifrost procedural for Max does not work with an explicit universe",
+              "tickets": [
+                "ARNOLD-12139"
+              ]
+            },
+            {
+              "text": "ARNOLD-12123 Changing the output driver from an operator doesn't work",
+              "tickets": [
+                "ARNOLD-12123"
+              ]
+            },
+            {
+              "text": "ARNOLD-12122 Arnold-7.1.0 slowdown when reading hdr images",
+              "tickets": [
+                "ARNOLD-12122"
+              ]
+            },
+            {
+              "text": "ARNOLD-12119 Crash rendering ramp with one point",
+              "tickets": [
+                "ARNOLD-12119"
+              ]
+            },
+            {
+              "text": "ARNOLD-12097 Crashes related to null strings",
+              "tickets": [
+                "ARNOLD-12097"
+              ]
+            },
+            {
+              "text": "ARNOLD-12026 Overlapping spotlight and camera artefact",
+              "tickets": [
+                "ARNOLD-12026"
+              ]
+            },
+            {
+              "text": "ARNOLD-11954 Overlapping dielectrics with equal IOR can generate a spurious specular reflection",
+              "tickets": [
+                "ARNOLD-11954"
+              ]
+            },
+            {
+              "text": "ARNOLD-12201 [GPU] Random slowdowns",
+              "tickets": [
+                "ARNOLD-12201"
+              ]
+            },
+            {
+              "text": "ARNOLD-12017 [GPU] rendered output can contain random invalid pixels",
+              "tickets": [
+                "ARNOLD-12017"
+              ]
+            },
+            {
+              "text": "usd#1049 Fix instanceable primitives without prototype",
+              "tickets": [
+                "usd#1049"
+              ]
+            },
+            {
+              "text": "usd#1045 Fix crashes with invalid indexed primvars",
+              "tickets": [
+                "usd#1045"
+              ]
+            },
+            {
+              "text": "usd#1031 Fix element connection in arnold node graphs",
+              "tickets": [
+                "usd#1031"
+              ]
+            },
+            {
+              "text": "usd#1025 Fix random results with instancer and multiple referenced files",
+              "tickets": [
+                "usd#1025"
+              ]
+            },
+            {
+              "text": "usd#1024 Ensure the lights normalize attribute is authored in usd",
+              "tickets": [
+                "usd#1024"
+              ]
+            },
+            {
+              "text": "usd#1005 Get proper instancer matrices when some instances are hidden",
+              "tickets": [
+                "usd#1005"
+              ]
+            },
+            {
+              "text": "usd#1010 Fix shadow/light linking when some lights don't have any collection",
+              "tickets": [
+                "usd#1010"
+              ]
+            },
+            {
+              "text": "usd#1019 Fix light linking with nested procedurals",
+              "tickets": [
+                "usd#1019"
+              ]
+            },
+            {
+              "text": "usd#1012 Light linking referencing shape parents",
+              "tickets": [
+                "usd#1012"
+              ]
+            },
+            {
+              "text": "usd#1088 Fix attribute calls in camera reader that were causing random crashes",
+              "tickets": [
+                "usd#1088"
+              ]
+            },
+            {
+              "text": "usd#1071 Write enum attributes as tokens instead of strings",
+              "tickets": [
+                "usd#1071"
+              ]
+            },
+            {
+              "text": "usd#1084 Fix issues when writing USD geometry lights",
+              "tickets": [
+                "usd#1084"
+              ]
+            },
+            {
+              "text": "usd#1081 Add point_light to the list of schemas to be generated",
+              "tickets": [
+                "usd#1081"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 10.13 or later . CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are supported under Rosetta 2 mode. GPU rendering works on Windows and Linux only and requires an NVIDIA GPU of the Ampere, Turing, Volta, Pascal, or Maxwell architecture. Optix™ denoiser requires an NVidia GPU with CUDA™ Compute Capability 5.0 and above. Important: We recommend using the 511.09 (Quadro), 511.09 (GeForce) , or higher on Windows and 495.46 or higher drivers on Linux . See Arnold GPU for more information. The driver type must be set to DCH. In the driver page, select \"Windows Driver Type:\" DCH The cache will also need to be re-populated after installing a new Arnold version, updating to a new NVIDIA driver , or changing the hardware configuration of GPUs on the system. More information can be found here . Important: This version breaks binary compatibility. Shaders, procedurals, and other plugins compiled against Arnold 7.0 and older are not compatible with this version of Arnold and will need to be updated and recompiled.",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_user_guide_ac_release_notes_ac_rn_7110_html.html",
+      "scrapedAt": "2026-03-23T22:00:32.180Z"
+    },
+    {
+      "version": "7.1.0.0",
+      "versionId": "7100",
+      "releaseType": "release",
+      "intro": "30 Mar 2022",
+      "sections": [
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "text": "Improved IPR interactivity: GPU and CPU interactivity is improved. ARNOLD-11981, ARNOLD-12007",
+              "tickets": [
+                "ARNOLD-11981",
+                "ARNOLD-12007"
+              ]
+            },
+            {
+              "text": "Stability improvements: We've improved the stability of Arnold, especially when using multiple render sessions.",
+              "tickets": []
+            },
+            {
+              "text": "Per axis texture in triplanar: The triplanar shader can now optionally use different textures for each axis. ARNOLD-11708.",
+              "tickets": [
+                "ARNOLD-11708"
+              ]
+            },
+            {
+              "text": "Input per Axis disabled versus Input per Axis enabled",
+              "tickets": []
+            },
+            {
+              "text": "A wide range of shading effects such as snow, dust, sand, and moss, can be achieved using input_per_axis (Y).",
+              "tickets": []
+            },
+            {
+              "text": "With and without triplanar.input_per_axis (Y)",
+              "tickets": []
+            },
+            {
+              "text": "Flip_on_opposite_direction in triplanar: A new parameter called flip_on_opposite_direction can also be used to control the behavior of the shader on faces facing the corresponding negative axis. ARNOLD-11615.",
+              "tickets": [
+                "ARNOLD-11615"
+              ]
+            },
+            {
+              "text": "flip_on_opposite_direction: enabled (default) and disabled",
+              "tickets": []
+            },
+            {
+              "text": "Reduced overhead of running Imagers in IPR: Imagers will no longer always run after every progressive pass or bucket update. This can give a substantial speedup with expensive to run imagers. Furthermore, a new options setting has been added called options.imager_overhead_target_percent which can be used to control how often imagers should run during a render. An imager_overhead_target_percent setting of 0 will cause the imagers to only run at the end of the render. The default value of 1 will periodically run the imager during the render so that the overhead from running the imager is no more than approximately 1%. ARNOLD-11750, ARNOLD-11760",
+              "tickets": [
+                "ARNOLD-11750",
+                "ARNOLD-11760"
+              ]
+            },
+            {
+              "text": "Better startup and update times with atmosphere shader: Starting renders and updating parameters when using a high number of AA samples with a volume_scatter atmosphere shader should now be much faster. ARNOLD-5503",
+              "tickets": [
+                "ARNOLD-5503"
+              ]
+            },
+            {
+              "text": "Render times of a simple scene with volume_scatter.samples=30:",
+              "tickets": []
+            },
+            {
+              "text": "Case insensitive output image file extension: AiFindDriverType() is now case insensitive, so asking, for instance, for a \"png\", \"PNG\", or \"Png\" will all return the png driver. This can be observed with kick -o , which will now work for different case types. ARNOLD-11934",
+              "tickets": [
+                "ARNOLD-11934"
+              ]
+            },
+            {
+              "text": "Updated MaterialX to 1.38.3: We now use MaterialX 1.38.3. Surface materials defined in a nodegraph are now supported. ARNOLD-10534, ARNOLD-11903",
+              "tickets": [
+                "ARNOLD-10534",
+                "ARNOLD-11903"
+              ]
+            },
+            {
+              "text": "Updated Alembic to 1.8.3: The alembic procedural has been upgraded to use version 1.8.3 of the alembic library. ARNOLD-11973",
+              "tickets": [
+                "ARNOLD-11973"
+              ]
+            },
+            {
+              "text": "Faster TextureResolveUseExistingTx: The TextureResolveUseExistingTx stage is now much faster when many threads are trying to open textures for the first time with the use existing tx option enabled. On a 128-core machine we saw about an 8x speedup. ARNOLD-11689",
+              "tickets": [
+                "ARNOLD-11689"
+              ]
+            },
+            {
+              "text": "Faster per-pixel imagers: We removed overhead in imagers that can execute independently on each pixel. The exposure and tonemap imagers, for instance, are now significantly faster. This likely will be most noticed when interacting in IPR with small buckets. Note that bloom and denoising imagers require access to all pixels and so will not benefit from this optimization. ARNOLD-12011",
+              "tickets": [
+                "ARNOLD-12011"
+              ]
+            },
+            {
+              "text": "Faster bloom imager: The bloom imager has been optimized. In one test we saw a 10% performance improvement. ARNOLD-11568",
+              "tickets": [
+                "ARNOLD-11568"
+              ]
+            },
+            {
+              "text": "AOV denoising with the OptiX denoiser: Upgraded from the Optix 6 to Optix 7 denoiser. This newer denoiser supports denoising AOVs in a way that allows the denoised result to be compositable. Prevoius OptiX denoisers had no guarantees that the denoised results would combine correctly. ARNOLD-11726",
+              "tickets": [
+                "ARNOLD-11726"
+              ]
+            },
+            {
+              "text": "Original beauty, Denoised beauty, Denoised diffuse AOV, Denoised specular AOV, Denoised diffuse + denoised specular",
+              "tickets": []
+            },
+            {
+              "text": "Upgraded OIIO to 2.4.0: This allowed for fixing several defects listed in the Bug Fixes section. ARNOLD-11651, ARNOLD-11785, ARNOLD-11790",
+              "tickets": [
+                "ARNOLD-11651",
+                "ARNOLD-11785",
+                "ARNOLD-11790"
+              ]
+            },
+            {
+              "text": "Invert view and display transform for textures using OCIO: When using an explicit OCIO or the default color manager, it is possible to specify both a display and view transform when writing outputs, using the View ( Display ) syntax. It is now possible to use the same syntax for input color transforms as well. For example, reading a texture using the ACES 1.0 SDR-video ( sRGB ) color space will correctly invert a file with a view transform baked in. (ARNOLD-11961).",
+              "tickets": [
+                "ARNOLD-11961"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "GPU Enhancements",
+          "items": [
+            {
+              "text": "Improved GPU IPR interactivity: GPU IPR rendering is now more interactive. ARNOLD-11981",
+              "tickets": [
+                "ARNOLD-11981"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "text": "Point Instancer improvements : Per-instance primvars and nested instancers are now handled both in the procedural usd#944 as well as the render delegate usd#482 .",
+              "tickets": [
+                "usd#944",
+                "usd#482"
+              ]
+            },
+            {
+              "text": "Mesh builtin normals : The procedural now reads the builtin USD description for mesh normals usd#962 usd#986",
+              "tickets": [
+                "usd#962",
+                "usd#986"
+              ]
+            },
+            {
+              "text": "Curves UVs : The procedural now supports UVs on curves, for per-strand primvars usd#975",
+              "tickets": [
+                "usd#975"
+              ]
+            },
+            {
+              "text": "Light-linking : ignoreRoots wasn't supported correctly for light / shadow links in the procedural usd#987",
+              "tickets": [
+                "usd#987"
+              ]
+            },
+            {
+              "text": "Shadow parameters : The procedural now reads shadow parameters (enable, color) from USD lights usd#945",
+              "tickets": [
+                "usd#945"
+              ]
+            },
+            {
+              "text": "Shader connections to array attributes : The render delegate now supports rendering shader connection to an array attribute. This is needed e.g. to have shader connections on ramps usd#970",
+              "tickets": [
+                "usd#970"
+              ]
+            },
+            {
+              "text": "Render tags : Render tags are now taken into account by the render delegate usd#883",
+              "tickets": [
+                "usd#883"
+              ]
+            },
+            {
+              "text": "Procedural search path : USD is now properly considering the options procedural_search_path when loading nested procedurals #usd942",
+              "tickets": []
+            },
+            {
+              "text": "Motion blur with UsdSkel : the procedural now extends the interval used to bake the skinning, so that it includes surrounding integer frames usd#951",
+              "tickets": [
+                "usd#951"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Additions",
+          "items": [
+            {
+              "text": "AiRender(): We provided a new version of the deprecated AiRender() call, which receives a render session parameter, in line with the rest of the render API. This function provides a convenient way to make a quick batch render in a synchronous way, returning only when the render is finished. (ARNOLD-11240).",
+              "tickets": [
+                "ARNOLD-11240"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible Changes",
+          "items": [
+            {
+              "text": "Warnings about deprecated API usage enabled by default: Warnings about deprecated API usage are controlled by the AI_ENABLE_DEPRECATION_WARNINGS macro, which is now set to 1 by default. This will help you find any use of old Arnold API that might be causing issues. If you still need to disable them for some specific part of your code, they can be disabled by setting AI_ENABLE_DEPRECATION_WARNINGS to 0. (ARNOLD-11751).",
+              "tickets": [
+                "ARNOLD-11751"
+              ]
+            },
+            {
+              "text": "Changes in node_initialize/node_update : Those functions now receive a new parameter for the render session where the node is being rendered. This render session can be used for any API call requiring it to be specified. (ARNOLD-11817)",
+              "tickets": [
+                "ARNOLD-11817"
+              ]
+            },
+            {
+              "text": "Changes in logging API : Logging functions have been modified so that log messages are associated with a universe instead of a render session. This means the AiMsgSetLogFileFlags, AiMsgSetConsoleFlags, AiMsgGetLogFileFlags and AiMsgGetConsoleFlags API functions will now require a universe pointer instead of a render session pointer. Also, the log callback will receive a universe pointer parameter (called \"universe\") instead of a render session pointer. (ARNOLD-11983)",
+              "tickets": [
+                "ARNOLD-11983"
+              ]
+            },
+            {
+              "text": "Autodesk Network Licensing version : Arnold 7.1 switches to ARNOL_2023 licensing. Single-user subscriptions will work with Arnold 7.1. The plugin installers automatically register the new version. If you do not use a plugin, then after you download Arnold, open the Arnold License Manager and click Register . Existing network licenses will not work with Arnold 7.1. Log on to your Autodesk account to generate your new ARNOL_2023 licenses.",
+              "tickets": []
+            },
+            {
+              "text": "Single-user subscriptions will work with Arnold 7.1. The plugin installers automatically register the new version. If you do not use a plugin, then after you download Arnold, open the Arnold License Manager and click Register .",
+              "tickets": []
+            },
+            {
+              "text": "Existing network licenses will not work with Arnold 7.1. Log on to your Autodesk account to generate your new ARNOL_2023 licenses.",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "text": "ARNOLD-11958 - Color correct shader produces incorrect values with small gamma values",
+              "tickets": [
+                "ARNOLD-11958"
+              ]
+            },
+            {
+              "text": "ARNOLD-11852 - Memory leak with imagers when rendering multiple frames",
+              "tickets": [
+                "ARNOLD-11852"
+              ]
+            },
+            {
+              "text": "ARNOLD-11835 - Full frame imagers crash with negative render region",
+              "tickets": [
+                "ARNOLD-11835"
+              ]
+            },
+            {
+              "text": "ARNOLD-11827 - Intel Alder Lake CPUs did not always use high performance cores in Windows",
+              "tickets": [
+                "ARNOLD-11827"
+              ]
+            },
+            {
+              "text": "ARNOLD-11795 - Spotlight penumbra should affect the specular intensity",
+              "tickets": [
+                "ARNOLD-11795"
+              ]
+            },
+            {
+              "text": "ARNOLD-11667 - GPU and CPU+FIS filtering generated sampling patterns that could alias",
+              "tickets": [
+                "ARNOLD-11667"
+              ]
+            },
+            {
+              "text": "ARNOLD-11242 - 'n' key was no longer toggling AI denoisers in kick IPR",
+              "tickets": [
+                "ARNOLD-11242"
+              ]
+            },
+            {
+              "text": "ARNOLD-10400 - Volume motion blur advection computation was incorrect",
+              "tickets": [
+                "ARNOLD-10400"
+              ]
+            },
+            {
+              "text": "ARNOLD-10391 - Volume motion blur used incorrect motion/shutter intervals",
+              "tickets": [
+                "ARNOLD-10391"
+              ]
+            },
+            {
+              "text": "ARNOLD-11889 - Maketx --monochrome-detect should generate Y not R image for exr formats",
+              "tickets": [
+                "ARNOLD-11889"
+              ]
+            },
+            {
+              "text": "ARNOLD-11968 - AiUniverseGetRenderSession returns invalid pointer instead of null if the session was previously destroyed",
+              "tickets": [
+                "ARNOLD-11968"
+              ]
+            },
+            {
+              "text": "ARNOLD-11982 - Texture invalidation in Linux and macOS occurred even when texture was not modified",
+              "tickets": [
+                "ARNOLD-11982"
+              ]
+            },
+            {
+              "text": "ARNOLD-12055 - [GPU] Crash switching from CPU to GPU with optix denoiser",
+              "tickets": [
+                "ARNOLD-12055"
+              ]
+            },
+            {
+              "text": "ARNOLD-10577 - [GPU] Textured skydome_light leaks memory over multiple frames in a session",
+              "tickets": [
+                "ARNOLD-10577"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 10.13 or later . CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are supported under Rosetta 2 mode. GPU rendering works on Windows and Linux only and requires an NVIDIA GPU of the Ampere, Turing, Volta, Pascal, or Maxwell architecture. Optix™ denoiser requires an NVidia GPU with CUDA™ Compute Capability 5.0 and above. Important: We recommend using the 511.09 (Quadro), 511.09 (GeForce) , or higher on Windows and 495.46 or higher drivers on Linux . See Arnold GPU for more information. The driver type must be set to DCH. In the driver page, select \"Windows Driver Type:\" DCH The cache will also need to be re-populated after installing a new Arnold version, updating to a new NVIDIA driver , or changing the hardware configuration of GPUs on the system. More information can be found here . Important: This version breaks binary compatibility. Shaders, procedurals, and other plugins compiled against Arnold 7.0 and older are not compatible with this version of Arnold and will need to be updated and recompiled.",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_user_guide_ac_release_notes_ac_rn_7100_html.html",
+      "scrapedAt": "2026-03-23T22:00:33.780Z"
+    },
+    {
+      "version": "7.0.1.0",
+      "versionId": "7010",
+      "error": "Page not found or fetch failed",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7010_html.html",
+      "scrapedAt": "2026-03-23T22:00:35.401Z"
+    },
+    {
+      "version": "7.0.0.0",
+      "versionId": "7000",
+      "releaseType": "release",
+      "intro": "18 Oct 2021",
+      "sections": [
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "text": "Open Image Denoise imager: Intel ® 's Open Image Denoise (OIDN) is a fast, AI-accelerated denoiser that runs on CPU that has been integrated into Arnold as the [imager_denoiser_oidn](/display/arnug/imager_denoiser_oidn) imager as an additional denoising option. (ARNOLD-8677).",
+              "tickets": [
+                "ARNOLD-8677"
+              ]
+            },
+            {
+              "text": "Sampling settings: camera (AA): 3, diffuse: 2, specular: 2, transmission: 2.",
+              "tickets": []
+            },
+            {
+              "text": "Higher quality AI denoising: The OptiX and OIDN denoisers now use the newly introduced denoise_albedo_noisy AOV as the albedo feature AOV provided to the denoiser. This adds specular reflections and refractions to the albedo, which can improve denoiser quality. Below are comparisons between undenoised and Optix denoised with the old and new albedo AOV (ARNOLD-10812).",
+              "tickets": [
+                "ARNOLD-10812"
+              ]
+            },
+            {
+              "text": "Undenoised (left), Optix diffuse albedo (center), Optix diffuse + specular albedo (right).",
+              "tickets": []
+            },
+            {
+              "text": "LUT based tone mapping: [imager_tonemap](/display/arnug/imager_tonemap) now supports a lut mode to apply LUT files in all the formats supported by OCIOv2 (cube, look, 3dl, clf among others). imager_tonemap.lut_filename spe ifies the file to load. Note that some LUTs assume a non-linear color space. To help with this, it is possible to specify a working color space in imager_tonemap.lut_working_color_space to convert to the specified space, apply the lut, and convert to linear or rendering color space again (ARNOLD-11084).",
+              "tickets": [
+                "ARNOLD-11084"
+              ]
+            },
+            {
+              "text": "Automatic selection of box filtering with OIDN and OptiX denoisers: The OptiX and OIDN denoisers do not perform well with CPU rendering filters that span across multiple pixels. Arnold on CPU will now automatically force a box filter on outputs with filters with known issues when either of the denoisers are used (ARNOLD-10812).",
+              "tickets": [
+                "ARNOLD-10812"
+              ]
+            },
+            {
+              "text": "Imager_color_curves: A new imager to control brightness and color curves has been added. Separate curves can be authored for each R, G, or B component, along with the main curve to control the overall luminance response. Curve interpolation and working color space can also be set as needed (ARNOLD-11161).",
+              "tickets": [
+                "ARNOLD-11161"
+              ]
+            },
+            {
+              "text": "RGB colors edited in real-time using imager_color_curves",
+              "tickets": []
+            },
+            {
+              "text": "imager_tonemap.mix: imager_tonemap now has an additional mix parameter. 0 preserves the input untouched and 1 applies the full node effect (ARNOLD-11172).",
+              "tickets": [
+                "ARNOLD-11172"
+              ]
+            },
+            {
+              "text": "Ignore imagers option: The global option ignore_imagers has been added to allow users to disable imager post-processing in a scene. This can be useful for debugging and can also be enabled via kick with the -ii flag. (ARNOLD-10720).",
+              "tickets": [
+                "ARNOLD-10720"
+              ]
+            },
+            {
+              "text": "Improved support for imagers shared by multiple drivers: All imagers, including the denoisers, can now be shared by drivers with different AOV inputs (ARNOLD-11087).",
+              "tickets": [
+                "ARNOLD-11087"
+              ]
+            },
+            {
+              "text": "Improved imagers refresh rate in IPR: Fullframe imagers will now be updated during rendering so that the imager chain result can be previewed before the entire image has been rendered. This replaces the previous behavior where in some cases we would have to delay the result until after the full frame had finished (ARNOLD-11203).",
+              "tickets": [
+                "ARNOLD-11203"
+              ]
+            },
+            {
+              "text": "Improved filter performance in progressive rendering: The performance of several filters, including the Triangle, Sinc, Blackman-Harris, Catmull-Rom, and Mitnet filters have been improved when rendering in progressive mode. In some cases, we have seen a 48% improvement in performance and a 20x improvement in memory usage (ARNOLD-10651).",
+              "tickets": [
+                "ARNOLD-10651"
+              ]
+            },
+            {
+              "text": "Added support for multiple parallel render sessions on CPU: Any Arnold universe can now be rendered using its own render session (only one render session per universe). Those render sessions can be executed in any order, even in parallel.",
+              "tickets": []
+            },
+            {
+              "text": "Multiple outputs for shaders: Arnold now supports having multiple outputs for shader nodes. Shader outputs can be linked to inputs of other shader nodes in a .ass file or programmatically via the AiNodeLinkOutput() function by optionally specifying which output is desired when linking. When no output is specified, the node's default output parameter will be chosen, preserving Arnold's existing behavior. Standard OSL language rules apply when specifying multiple OSL shader outputs. An example OSL shader with three color outputs could look like the following snippet and each output could be connected separately: <code class=\"prettyprint\">shader test_shader (output color result = color(1, 1, 1), output color good = color(0, 0, 1), output color bad = color(1, 0, 0)) { ... } </code>",
+              "tickets": []
+            },
+            {
+              "text": "Visible lights now transparent: The visible lights are now transparent, which matches the behavior of indirectly seen lights. This also has the benefit of allowing black parts of textured lights to be masked away. This is a look-breaking change to fix previously incorrect visible light behavior (ARNOLD-9070). Visible lights transparency now matches the reflection",
+              "tickets": [
+                "ARNOLD-9070"
+              ]
+            },
+            {
+              "text": "kick ascii render mode: kick -ascii allows rendering directly into the terminal. This requires a 24-bit terminal with UTF-8 support. The windows terminal, most Linux terminals, and iTerm support this; Apple's Terminal does not. This will change the resolution of the render to fit within the console, so any images written to disk will likely be very small. Because it is so low res, telling kick to use a small bucket size is recommended, for instance by passing -bs 16 to kick. This can be useful for checking if a render on a remote machine is working (ARNOLD-11146).",
+              "tickets": [
+                "ARNOLD-11146"
+              ]
+            },
+            {
+              "text": "Render in ACEScg by default: Arnold will now use an OCIO color manager by default. This color manager will use the default OCIO configuration file. Arnold will render in the ACEScg color space by default. (ARNOLD-11246): The rendering color space in Arnold 6 and older is scene-linear Rec.709-sRGB, it is possible to override the default OCIO color manager to revert back to the previous default color space. For example, you must pass the following argument to kick: <code class=\"prettyprint\">-set ai_default_color_manager_ocio.color_space_linear \"scene-linear Rec.709-sRGB\" </code> Arnold assumes tx files are in the rendering space, it is recommended to regenerate tx files when changing the rendering color space",
+              "tickets": [
+                "ARNOLD-11246"
+              ]
+            },
+            {
+              "text": "The rendering color space in Arnold 6 and older is scene-linear Rec.709-sRGB, it is possible to override the default OCIO color manager to revert back to the previous default color space. For example, you must pass the following argument to kick:",
+              "tickets": []
+            },
+            {
+              "text": "Arnold assumes tx files are in the rendering space, it is recommended to regenerate tx files when changing the rendering color space",
+              "tickets": []
+            },
+            {
+              "text": "Standard OCIO configuration: Arnold now ships with a standard OCIO configuration exposing common color spaces used for rendering, such as ACEScg and scene-linear Rec.709-sRGB as well as the ACES 1.0 SDR-video ACES output transform for standard dynamic range video . This configuration is compatible with the default Maya 2022 OCIO configuration. (ARNOLD-11333):",
+              "tickets": [
+                "ARNOLD-11333"
+              ]
+            },
+            {
+              "text": "Multi-part EXR: The EXR driver can now render AOVs as separate images (parts) in a multi-part EXR file (merged AOVs, in contrast, renders AOVs as layers in a single-part EXR). Multi-part works with either scanline or tiled EXRs and is enabled with the driver_exr.multipart boolean parameter. Noice does not work with multi-part EXRs.",
+              "tickets": []
+            },
+            {
+              "text": "Noice does not work with multi-part EXRs.",
+              "tickets": []
+            },
+            {
+              "text": "Write AOVs to multiple formats: It is now possible to output a single AOV in multiple different formats, for example, the following output string will now output the correct result (ARNOLD-11079). <code class=\"prettyprint\">outputs 2 1 STRING \"RGBA FLOAT filter testrender\" \"RGBA RGB filter testrender2\" </code>",
+              "tickets": [
+                "ARNOLD-11079"
+              ]
+            },
+            {
+              "text": "OSL UDIMs: OSL now uses the same code as Arnold's image node for resolving texture tags, such as UDIMs. This can make OSL texture lookups faster and increase the types of texture tags that can be used from OSL. (ARNOLD-9276).",
+              "tickets": [
+                "ARNOLD-9276"
+              ]
+            },
+            {
+              "text": "SSS setnames with randomwalk: The sss_setname feature that allows subsurface effects to spread between distinct objects is now supported in the randomwalk mode on CPU (ARNOLD-8140). without sss_setname with sss_setname without sss_setname with sss_setname",
+              "tickets": [
+                "ARNOLD-8140"
+              ]
+            },
+            {
+              "text": "Use Existing TX: When options.texture_use_existing_tx is set to true, which is the default, Arnold will attempt to use the .tx version of a texture when available. The .tx file must be located in the same directory as the requested source texture and have the same name with the exception of the file extension. For instance, if \"foo/bar/floor.png\" is requested and \"foo/bar/floor.tx\" exists then \"floor.tx\" will be used. Arnold will ignore any requested colorspace conversions when the .tx file is used since we assume the .tx will have the colorspace transform baked in (ARNOLD-4107).",
+              "tickets": [
+                "ARNOLD-4107"
+              ]
+            },
+            {
+              "text": "Support for MaterialX v1.38: Arnold extends its MaterialX support to v1.38. As a part of this upgrade, looks and materials exported from Arnold will now be expressed as a combination of Nodes and Inputs departing from the previous standard of ShaderRefs and Params. Arnold will still be able to render MaterialX documents exported with earlier versions of Arnold however this may cause a look-breaking change.",
+              "tickets": []
+            },
+            {
+              "text": "Cryptomatte 1.1.2: Cryptomatte has been updated to version 1.1.2 (ARNOLD-11270).",
+              "tickets": [
+                "ARNOLD-11270"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "GPU Enhancements",
+          "items": [
+            {
+              "text": "Reduced VRAM use for polymeshes: The amount of VRAM used by polymeshes is significantly lower in this version. Scenes with heavy subdivision will use around 33% less GPU memory for geometry (ARNOLD-8524).",
+              "tickets": [
+                "ARNOLD-8524"
+              ]
+            },
+            {
+              "text": "Reduced VRAM use for GPU volumes: In 6.2.1 we started to use NVIDIA's NanoVDB system for rendering OpenVDB volumes on GPU, which greatly reduced the GPU memory required for OpenVDB volumes. In 7.0, compression of NanoVDB volumes has been further improved, so that we see roughly a further 50-60% reduction in GPU memory in typical volumetric scenes. GPU volumes now consume less VRAM than the equivalent CPU volumes consume RAM (note, the red line shows the RAM usage in a separate CPU render). (ARNOLD-11229)",
+              "tickets": [
+                "ARNOLD-11229"
+              ]
+            },
+            {
+              "text": "Matte support: Support for matte has been added to the GPU integrator. This means the matte closure, matte shader, and matte shape flag are all now supported (ARNOLD-7924).",
+              "tickets": [
+                "ARNOLD-7924"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "text": "USD 21.08: The procedural included in the core SDK is now built using USD 21.08.",
+              "tickets": []
+            },
+            {
+              "text": "UsdImaging adapters: Arnold-USD now includes a set of UsdImaging adapters for Arnold specific schemas, that allows direct use of procedurals and Arnold shapes in Hydra. ( usd#185 usd#741 )",
+              "tickets": [
+                "usd#185",
+                "usd#741"
+              ]
+            },
+            {
+              "text": "Deep rendering: The render delegate now supports rendering of deep AOVs via DelegateRenderProducts. ( usd#650 )",
+              "tickets": [
+                "usd#650"
+              ]
+            },
+            {
+              "text": "Multiple frames in a single file: The USD writer is now able to append multiple frames to a single USD file. ( usd#777 )",
+              "tickets": [
+                "usd#777"
+              ]
+            },
+            {
+              "text": "Hydra scene delegate: Arnold-USD now includes an experimental scene delegate for Hydra. ( usd#764 )",
+              "tickets": [
+                "usd#764"
+              ]
+            },
+            {
+              "text": "Progressive disabled when using Husk: Progressive rendering is now disabled when rendering via husk. ( usd#755 )",
+              "tickets": [
+                "usd#755"
+              ]
+            },
+            {
+              "text": "Procedural Path Mapping: The procedural now supports Arnold Path Mapping when loading USD files. ( usd#818 )",
+              "tickets": [
+                "usd#818"
+              ]
+            },
+            {
+              "text": "Custom PrimID Hydra Buffer: The render delegate now uses a dedicated primId AOV to support selections in Hydra viewports. This improves support for render-time procedurals and leaves the built-in id parameter unchanged on shapes. ( usd#812 )",
+              "tickets": [
+                "usd#812"
+              ]
+            },
+            {
+              "text": "DoubleSided in the Render Delegate: The render delegate now supports the built-in doubleSided parameter on USD primitives and correctly supports overrides via Arnold-specific primvars. ( usd#805 )",
+              "tickets": [
+                "usd#805"
+              ]
+            },
+            {
+              "text": "Motion Blur using Velocity and Acceleration: The render delegate now extrapolates point positions if velocity or acceleration primvars exist and there are no multiple samples for the position. ( usd#673 )",
+              "tickets": [
+                "usd#673"
+              ]
+            },
+            {
+              "text": "Light Linking: The procedural now supports light linking. ( usd#787 )",
+              "tickets": [
+                "usd#787"
+              ]
+            },
+            {
+              "text": "Fast camera updates: The render delegate now handles camera-only updates more efficiently, improving the first time to pixel. ( usd#869 )",
+              "tickets": [
+                "usd#869"
+              ]
+            },
+            {
+              "text": "Standard Surface Fallback: The render delegate now uses a standard surface as a fallback, when no materials are assigned to a prim. ( usd#861 )",
+              "tickets": [
+                "usd#861"
+              ]
+            },
+            {
+              "text": "String array parameters: String array primvars are now converted to built-in parameters. ( usd#808 )",
+              "tickets": [
+                "usd#808"
+              ]
+            },
+            {
+              "text": "Multiple hydra sessions: The render delegate now uses the multiple render session API. ( usd#783 )",
+              "tickets": [
+                "usd#783"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Additions",
+          "items": [
+            {
+              "text": "Multiple render sessions: with the new support for multiple render sessions, there are many API additions (old API is deprecated and uses the default render session): <code class=\"lang-cpp prettyprint\">// Log settings AI_API void AiMsgSetLogFileFlags(const AtRenderSession* rs, int flags); AI_API void AiMsgSetConsoleFlags(const AtRenderSession* rs, int flags); AI_API int AiMsgGetLogFileFlags(const AtRenderSession* rs); AI_API int AiMsgGetConsoleFlags(const AtRenderSession* rs); // Device selection AI_API int AiDeviceSelect(AtRenderSession* render_session, AtDeviceType device_type, const AtArray* device_ids); AI_API int AiDeviceAutoSelect(AtRenderSession* render_session); AI_API AtDeviceType AiDeviceGetSelectedType(const AtRenderSession* render_session); AI_API const AtArray* AiDeviceGetSelectedIds(const AtRenderSession* render_session, AtDeviceType device_type); // Rendering AI_API AtRenderSession* AiRenderSession(AtUniverse* universe, AtSessionMode mode = AI_SESSION_BATCH); AI_API AtUniverse* AiRenderSessionGetUniverse(const AtRenderSession* render_session); AI_API void AiRenderSessionDestroy(AtRenderSession* render_session); AI_API AtSessionMode AiGetSessionMode(const AtRenderSession* render_session); AI_API void AiRenderAddInteractiveOutput(AtRenderSession* render_session, uint32_t output_index); AI_API bool AiRenderIsInteractiveOutput(AtRenderSession render_session, uint32_t output_index); AI_API bool AiRenderRemoveInteractiveOutput(AtRenderSession* render_session, uint32_t output_index); AI_API void AiRenderRemoveAllInteractiveOutputs(AtRenderSession* render_session); AI_API bool AiRenderSetHintBool(AtRenderSession* render_session, AtString hint, bool value); AI_API bool AiRenderSetHintInt(AtRenderSession* render_session, AtString hint, int32_t value); AI_API bool AiRenderSetHintFlt(AtRenderSession* render_session, AtString hint, float value); AI_API bool AiRenderSetHintStr(AtRenderSession* render_session, AtString hint, AtString value); AI_API bool AiRenderSetHintArray(AtRenderSession* render_session, AtString hint, AtArray *value); AI_API bool AiRenderGetHintBool(const AtRenderSession* render_session, AtString hint, bool& value); AI_API bool AiRenderGetHintInt(const AtRenderSession* render_session, AtString hint, int32_t& value); AI_API bool AiRenderGetHintFlt(const AtRenderSession* render_session, AtString hint, float& value); AI_API bool AiRenderGetHintStr(const AtRenderSession* render_session, AtString hint, AtString& value); AI_API bool AiRenderGetHintArray(const AtRenderSession* render_session, AtString hint, const AtArray*& value); AI_API AtRenderErrorCode AiRenderBegin(AtRenderSession* render_session, AtRenderMode mode = AI_RENDER_MODE_CAMERA, AtRenderUpdateCallback update_callback = NULL, void* callback_private_data = NULL); AI_API AtRenderErrorCode AiRenderEnd(AtRenderSession* render_session); AI_API AtRenderStatus AiRenderGetStatus(const AtRenderSession* render_session); AI_API void AiRenderInterrupt(AtRenderSession* render_session, AtBlockingCall blocking = AI_NON_BLOCKING); AI_API void AiRenderAbort(AtRenderSession* render_session, AtBlockingCall blocking = AI_NON_BLOCKING); AI_API void AiRenderResume(AtRenderSession* render_session); AI_API void AiRenderRestart(AtRenderSession* render_session); AI_API bool AiRenderIsAnyActive(); </code>",
+              "tickets": []
+            },
+            {
+              "text": "Multiple outputs: the AiNodeLinkOutput() function now allows the caller to optionally select not only a component of the output but also specify which non-default shader output is desired when linking (ie, non-default output *\"output_B\", default output component *\"r\", or non-default output component *\"output_B.z\"* ). When left unspecified, the default output will be chosen with its full type. OSL shaders' default output can be linked to either specifically or not, whilst C shaders' default output are nameless and thus can't be specified explicitly.",
+              "tickets": []
+            },
+            {
+              "text": "C shaders can now declare an additional set of output parameters in their node_parameters method using the following set of API functions:",
+              "tickets": []
+            },
+            {
+              "text": "C shaders that do have multiple outputs are now informed of which output is required of them during shader evaluation via the AiShaderGlobalsGetSelectedOutput() function:",
+              "tickets": []
+            },
+            {
+              "text": "OSL shaders on the other hand will not only expose a nameless default output selected from the shader's output parameters as before, but also the full set of named output parameters using conventional OSL output parameter declaration.",
+              "tickets": []
+            },
+            {
+              "text": "Node output parameters of both C and OSL shaders can be inspected through the node entry API using the following functions:",
+              "tickets": []
+            },
+            {
+              "text": "The index of the linked output parameter and output component of both C and OSL shaders can be inspected through the node API using the following function:",
+              "tickets": []
+            },
+            {
+              "text": "Supported extension metadata: all file path parameters can be queried for metadata of type extensions to retrieve supported format extensions. (ARNOLD-11159)",
+              "tickets": [
+                "ARNOLD-11159"
+              ]
+            },
+            {
+              "text": "Linear Color Space Test: the new AiColorManagerColorSpaceIsLinear can be used to efficiently check if a given color space is linear. Color Managers can optionally implement color_manager_color_space_is_linear, otherwise, the default implementation will be used. (ARNOLD-6706) <code class=\"lang-cpp prettyprint\">AI_API bool AiColorManagerColorSpaceIsLinear(AtNode *node, AtString cs); </code>",
+              "tickets": [
+                "ARNOLD-6706"
+              ]
+            },
+            {
+              "text": "Python bindings for AtParamValueMapIterator API: those were missing from a previous release: <code class=\"lang-python prettyprint\">def AiParamValueMapIteratorDestroy(iterator) def AiParamValueMapIteratorGetNext(iterator) -> AtParamValueMapEntry def AiParamValueMapIteratorFinished(iterator) -> bool </code>",
+              "tickets": []
+            },
+            {
+              "text": "Python bindings for AiMakeTx API: a new parameter has been added so that it can be applied on different universes (as usual, None is a shortcut for the default universe): <code class=\"lang-python prettyprint\">def AiMakeTx(file, flags, universe = None) </code>",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible Changes",
+          "items": [
+            {
+              "text": "Removed denoise_optix_filter: With the introduction of the imager_denoiser_optix node, the old denoise_optix_filter code path has become redundant and therefore removed. (ARNOLD-11204)",
+              "tickets": [
+                "ARNOLD-11204"
+              ]
+            },
+            {
+              "text": "imager_denoiser_optix clamp disabled by default: The default of the imager_denoiser_optix's clamp parameter has now been set to disabled. (ARNOLD-11187)",
+              "tickets": [
+                "ARNOLD-11187"
+              ]
+            },
+            {
+              "text": "Support for MaterialX v1.38: There's a look-breaking change that affects certain materialX documents. If your document contains a connection to a MaterialX nodeGraph without explicitly specifying the output of the nodegraph the node is connecting to, we used to be returning a NULL meaning so the connection was not applied. In this version, if this scenario exists we return the first output to the nodegraph.",
+              "tickets": []
+            },
+            {
+              "text": "Multiple render sessions: For the API updated as described above, the old API was maintained as deprecated and is implicitly using the default universe/render session. This will work fine when using the default universe and render session, but any code expected to work on an arbitrary universe/render session will have to be updated with the new API passing an explicit universe or render session.",
+              "tickets": []
+            },
+            {
+              "text": "options.pin_threads: pin_threads has been removed from the options node. Threads are now never pinned. (ARNOLD-11073)",
+              "tickets": [
+                "ARNOLD-11073"
+              ]
+            },
+            {
+              "text": "AiOutputIteratorGetNext: AiOutputIteratorGetNext switched from taking a const char** output_name to the more efficient AtString* output_name. (ARNOLD-11357)",
+              "tickets": [
+                "ARNOLD-11357"
+              ]
+            },
+            {
+              "text": "Removed source code info from API functions: AiMalloc_func(), AiFree_func(), AiRealloc_func(), AiArrayGet*Func(), and AiArraySet*Func() all took source code info (filename and line number). These functions have been removed and their previous macros ( AiMalloc(), AiFree(), AiRealloc(), AiArrayGet*(), and AiArraySet() ) which were setting the source code info are now proper functions. If you were using the macros you should not need to modify any code. (ARNOLD-5785, ARNOLD-10754).",
+              "tickets": [
+                "ARNOLD-5785",
+                "ARNOLD-10754"
+              ]
+            },
+            {
+              "text": "options.scene_units_in_meters: The scene_units_in_meters option and metadata have been renamed to meters_per_unit, putting them more in line with their equivalents in the USD standard. Note that these values now have an inverse interpretation to what they had before, so implementations must now provide values such that: new_scene_units_value = 1 / old_scene_units_value (ARNOLD-11176)",
+              "tickets": [
+                "ARNOLD-11176"
+              ]
+            },
+            {
+              "text": "Renamed AiUniverseIsActive to AiArnoldIsActive: The AiUniverseIsActive API function is now renamed to AiArnoldIsActive (ARNOLD-11120)",
+              "tickets": [
+                "ARNOLD-11120"
+              ]
+            },
+            {
+              "text": "Autodesk Network Licensing version: Arnold 7 switches to ARNOL_2022 licensing. Single-user subscriptions will work with Arnold 7. The plugin installers automatically register the new version. If you do not use a plugin, then after you download Arnold, open the Arnold License Manager and click Register. Existing network licenses will not work with Arnold 7. Log on to your Autodesk account to generate your new ARNOL_2022 licenses.",
+              "tickets": []
+            },
+            {
+              "text": "Single-user subscriptions will work with Arnold 7. The plugin installers automatically register the new version. If you do not use a plugin, then after you download Arnold, open the Arnold License Manager and click Register.",
+              "tickets": []
+            },
+            {
+              "text": "Existing network licenses will not work with Arnold 7. Log on to your Autodesk account to generate your new ARNOL_2022 licenses.",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "text": "ARNOLD-3573 - Incorrect log color in Windows consoles when using multiple threads",
+              "tickets": [
+                "ARNOLD-3573"
+              ]
+            },
+            {
+              "text": "ARNOLD-11625 - Empty backtrace when using printBackTrace() outside a crash on Windows",
+              "tickets": [
+                "ARNOLD-11625"
+              ]
+            },
+            {
+              "text": "ARNOLD-11230 - Low transmission_depth values causes dielectrics to be too dark",
+              "tickets": [
+                "ARNOLD-11230"
+              ]
+            },
+            {
+              "text": "ARNOLD-11421 - Progressive render IPR can get stuck at final AA level",
+              "tickets": [
+                "ARNOLD-11421"
+              ]
+            },
+            {
+              "text": "ARNOLD-11178 - Unexpected normal smoothing behavior",
+              "tickets": [
+                "ARNOLD-11178"
+              ]
+            },
+            {
+              "text": "ARNOLD-11228 - Using ray/shader switches to lower transmission depth causes dielectrics to be too dark",
+              "tickets": [
+                "ARNOLD-11228"
+              ]
+            },
+            {
+              "text": "ARNOLD-11562 - [Alembic] UV data in curves not interpolated correctly when overriding curve.basis",
+              "tickets": [
+                "ARNOLD-11562"
+              ]
+            },
+            {
+              "text": "ARNOLD-11361 - [Alembic] user data on curves is interpolated incorrectly",
+              "tickets": [
+                "ARNOLD-11361"
+              ]
+            },
+            {
+              "text": "ARNOLD-8934 - [GPU] Arnold \"Render Section to Texture\" crashes Maya",
+              "tickets": [
+                "ARNOLD-8934"
+              ]
+            },
+            {
+              "text": "ARNOLD-11687 - [GPU] 8-bit RGBA sRGB textures render incorrectly in ACEScg",
+              "tickets": [
+                "ARNOLD-11687"
+              ]
+            },
+            {
+              "text": "ARNOLD-10996 - [GPU] Crash or artifacts when multiple image nodes point to the same texture",
+              "tickets": [
+                "ARNOLD-10996"
+              ]
+            },
+            {
+              "text": "ARNOLD-11515 - [GPU] Crash when destroying procedurals interactively using 470 Nvidia drivers",
+              "tickets": [
+                "ARNOLD-11515"
+              ]
+            },
+            {
+              "text": "ARNOLD-11621 - [GPU] Discrepancy with SSS closures in OSL",
+              "tickets": [
+                "ARNOLD-11621"
+              ]
+            },
+            {
+              "text": "ARNOLD-11241 - [GPU] Missing alpha channel in RGBA-typed LPE AOVs",
+              "tickets": [
+                "ARNOLD-11241"
+              ]
+            },
+            {
+              "text": "ARNOLD-11466 - [GPU] denoise_albedo is black on SSS",
+              "tickets": [
+                "ARNOLD-11466"
+              ]
+            },
+            {
+              "text": "ARNOLD-11444 - [Imagers] Crash after an imager_denoiser_optix error",
+              "tickets": [
+                "ARNOLD-11444"
+              ]
+            },
+            {
+              "text": "ARNOLD-11087 - [Imagers] Incorrect result when multiple drivers with different AOVs share a single imager",
+              "tickets": [
+                "ARNOLD-11087"
+              ]
+            },
+            {
+              "text": "ARNOLD-11071 - [MaterialX] Crash when multiple objects share the same material",
+              "tickets": [
+                "ARNOLD-11071"
+              ]
+            },
+            {
+              "text": "ARNOLD-11089 - [OCIO] OCIOColorManagerGetKnownChromaticities() not working with OCIO environment variable",
+              "tickets": [
+                "ARNOLD-11089"
+              ]
+            },
+            {
+              "text": "ARNOLD-11538 - [OCIO] Random crashes when using the color API from multiple threads",
+              "tickets": [
+                "ARNOLD-11538"
+              ]
+            },
+            {
+              "text": "ARNOLD-8521 - [OSL] UDIM textures through OSL do not have their color transform applied",
+              "tickets": [
+                "ARNOLD-8521"
+              ]
+            },
+            {
+              "text": "ARNOLD-9190 - [Noice] Crash when using a small data window",
+              "tickets": [
+                "ARNOLD-9190"
+              ]
+            },
+            {
+              "text": "usd#751 Render delegate crashes when changing material terminals interactively",
+              "tickets": [
+                "usd#751"
+              ]
+            },
+            {
+              "text": "usd#797 Warning messages when HdArnoldRenderPass is deleted",
+              "tickets": [
+                "usd#797"
+              ]
+            },
+            {
+              "text": "usd#847 Procedural should check the camera of the proper universe for motion blur settings",
+              "tickets": [
+                "usd#847"
+              ]
+            },
+            {
+              "text": "usd#858 Can't hide/unhide lights in Hydra",
+              "tickets": [
+                "usd#858"
+              ]
+            },
+            {
+              "text": "usd#853 Missing indices for facevarying primvars in Hydra abort renders",
+              "tickets": [
+                "usd#853"
+              ]
+            },
+            {
+              "text": "usd#871 Enforce writing multiple frames when no default is authored",
+              "tickets": [
+                "usd#871"
+              ]
+            },
+            {
+              "text": "usd#802 B-spline curves not using radius in procedural",
+              "tickets": [
+                "usd#802"
+              ]
+            },
+            {
+              "text": "usd#798 SdfMetadata clashing with another NdrDiscovery plugin",
+              "tickets": [
+                "usd#798"
+              ]
+            },
+            {
+              "text": "usd#816 The procedural does not use \"driver:parameters:aov:name\"",
+              "tickets": [
+                "usd#816"
+              ]
+            },
+            {
+              "text": "usd#880 Scenes using pre-21.02 light parameters are not rendering correctly",
+              "tickets": [
+                "usd#880"
+              ]
+            },
+            {
+              "text": "usd#884 Render delegate shouldn't call AiBegin/AiEnd if Arnold is already active",
+              "tickets": [
+                "usd#884"
+              ]
+            },
+            {
+              "text": "usd#843 Disabling render purposes does not hide geometries in Hydra",
+              "tickets": [
+                "usd#843"
+              ]
+            },
+            {
+              "text": "usd#887 Int parameters are not converted to unsigned int shader parameters in the render delegate",
+              "tickets": [
+                "usd#887"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 10.13 or later. CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chip are supported under Rosetta 2 mode. GPU rendering works on Windows and Linux only and requires an NVIDIA GPU of the Ampere, Turing, Volta, Pascal, or Maxwell architecture. We recommend using the 470.74 or higher drivers on Linux and 472.12 (Quadro), 472.12 (GeForce), or higher on Windows. See Arnold GPU for more information. Optix™ denoiser requires an NVidia GPU with CUDA™ Compute Capability 5.0 and above.",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_user_guide_ac_release_notes_ac_rn_7000_html.html",
+      "scrapedAt": "2026-03-23T22:00:35.496Z"
+    }
+  ],
+  "updatedAt": "2026-03-23T22:00:36.996Z"
+}
