@@ -75,7 +75,7 @@ header {
   align-items: center;
   gap: 10px;
   font-family: var(--serif);
-  font-style: italic;
+  font-style: normal;
   font-size: 16px;
   font-weight: 400;
   color: var(--text);
@@ -152,7 +152,7 @@ aside {
   border-left: 2px solid transparent;
   color: var(--subtle);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 13px;
   cursor: pointer;
   transition: color 0.12s, border-color 0.12s, background 0.12s;
   text-align: left;
@@ -206,7 +206,7 @@ main {
 }
 .changelog-version h1 {
   font-family: var(--serif);
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -294,6 +294,27 @@ main {
   gap: 8px;
   margin-top: 6px;
 }
+.item-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.item-bullets li {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--subtle);
+  padding-left: 16px;
+  position: relative;
+}
+.item-bullets li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .ticket {
   font-family: var(--mono);
   font-size: 10px;
@@ -395,7 +416,7 @@ main {
 .empty-state { padding: 80px 0; }
 .empty-state h2 {
   font-family: var(--serif);
-  font-style: italic;
+  font-style: normal;
   font-size: 28px;
   font-weight: 400;
   margin-bottom: 12px;

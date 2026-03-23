@@ -16,7 +16,7 @@
   <header>
     <div class="logo">
       <div class="logo-icon">A</div>
-      Arnold Documentation
+      Arnold Change Log
     </div>
     <div class="header-right">
       <span class="updated-at" id="updated-at"></span>
@@ -91,12 +91,14 @@
 
   // ── Render sidebar ─────────────────────────────────────────────────────────
   function renderSidebar() {
-    const { changelogs } = state.data;
+    // Only show versions that were successfully scraped
+    const changelogs = state.data.changelogs.filter(cl => !cl.error);
 
+    // Group by major.minor (e.g. 7.4.x, 7.3.x)
     const groups = new Map();
     for (const cl of changelogs) {
-      const major = cl.version.split('.')[0];
-      const key = `${major}.x`;
+      const parts = cl.version.split('.');
+      const key = `${parts[0]}.${parts[1]}.x`;
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key).push(cl);
     }
@@ -162,7 +164,12 @@
         const tickets = item.tickets?.length
           ? `<div class="item-tickets">${item.tickets.map(t => `<span class="ticket">${esc(t)}</span>`).join('')}</div>`
           : '';
-        return `<div class="item"><div class="item-text">${esc(item.text)}</div>${tickets}</div>`;
+        // Split long text into sub-bullets at sentence boundaries (capital letter after ". ")
+        const sentences = item.text.split(/\.\s+(?=[A-Z])/).map(s => s.trim()).filter(s => s.length > 8);
+        const textHtml = sentences.length > 2
+          ? `<ul class="item-bullets">${sentences.map(s => `<li>${esc(s.replace(/\.$/, ''))}</li>`).join('')}</ul>`
+          : `<div class="item-text">${esc(item.text)}</div>`;
+        return `<div class="item">${textHtml}${tickets}</div>`;
       }).join('');
       return `
         <div class="section">
