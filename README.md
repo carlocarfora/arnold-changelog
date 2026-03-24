@@ -17,10 +17,13 @@ Scrapes Arnold Core and Arnold for Houdini (HtoA) release notes from Autodesk's 
 ## How it works
 
 ```
-GitHub Actions (weekly)
-  → runs scraper.js          → writes data/changelogs.json
-  → runs scraper-htoa.js     → writes data/changelogs-htoa.json
-  → commits to repo
+GitHub Actions (weekly — check-versions.yml)
+  → fetches Core + HtoA index pages from Autodesk
+  → compares against VERSIONS arrays in scraper files
+  → if new Core versions: updates scraper.js, runs scraper.js
+  → if new HtoA versions: updates scraper-htoa.js, runs scraper-htoa.js
+  → commits updated scraper files + JSON data
+  (no-ops entirely if no new versions detected)
 
 Cloudflare Workers/Pages
   → detects new commit
@@ -39,8 +42,9 @@ No server, no database, no runtime cost.
 ```
 arnold-changelog/
 ├── index.html                        ← Frontend UI + client-side search
-├── scraper.js                        ← Arnold Core scraper (GitHub Actions)
-├── scraper-htoa.js                   ← HtoA scraper (GitHub Actions)
+├── scraper.js                        ← Arnold Core scraper
+├── scraper-htoa.js                   ← HtoA scraper
+├── version-checker.js                ← Discovers new versions, triggers scrapes
 ├── package.json                      ← npm deps (node-html-parser)
 ├── package-lock.json
 ├── wrangler.json                     ← Cloudflare Workers config
@@ -52,8 +56,9 @@ arnold-changelog/
 │   └── changelogs-htoa.json          ← HtoA output (committed to repo)
 └── .github/
     └── workflows/
-        ├── scrape.yml                ← Scrapes Arnold Core (Mon 9am UTC)
-        └── scrape-htoa.yml           ← Scrapes HtoA (Mon 10am UTC)
+        ├── check-versions.yml        ← Version discovery + conditional scrape (Mon 8am UTC)
+        ├── scrape.yml                ← Manual-only Core scrape (backup)
+        └── scrape-htoa.yml           ← Manual-only HtoA scrape (backup)
 ```
 
 ## Setup
@@ -115,10 +120,9 @@ Click the link icon next to any version heading or hover over an item to reveal 
 
 ## Schedule
 
-- Core scraper: every **Monday at 9am UTC** (`scrape.yml`)
-- HtoA scraper: every **Monday at 10am UTC** (`scrape-htoa.yml`)
+`check-versions.yml` runs every **Monday at 8am UTC**. It fetches the Autodesk index pages, detects any new versions, updates the `VERSIONS` arrays in the scraper files, and runs whichever scrapers are needed. If nothing is new, it exits without committing or scraping anything.
 
-Both can also be triggered manually from the GitHub Actions tab.
+`scrape.yml` and `scrape-htoa.yml` are manual-only backups — useful if you need to force a full re-scrape without waiting for the version checker.
 
 ## Running locally
 

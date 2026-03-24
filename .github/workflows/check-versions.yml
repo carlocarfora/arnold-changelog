@@ -1,0 +1,46 @@
+name: Check for New Arnold Versions
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'  # Every Monday at 8am UTC
+  workflow_dispatch:       # Also allows manual trigger from GitHub UI
+
+jobs:
+  check-and-scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for new versions
+        id: check
+        run: node version-checker.js
+
+      - name: Scrape Arnold Core
+        if: steps.check.outputs.new_core == 'true'
+        run: node scraper.js
+
+      - name: Scrape Arnold HtoA
+        if: steps.check.outputs.new_htoa == 'true'
+        run: node scraper-htoa.js
+
+      - name: Commit and push changes
+        if: steps.check.outputs.new_core == 'true' || steps.check.outputs.new_htoa == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scraper.js scraper-htoa.js data/changelogs.json data/changelogs-htoa.json
+          git diff --staged --quiet || git commit -m "chore: auto-update changelogs for new versions [$(date -u +%Y-%m-%d)]"
+          git pull --rebase origin main
+          git push
