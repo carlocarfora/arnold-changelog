@@ -650,6 +650,13 @@ footer p {
 }
 footer a { color: var(--muted); text-decoration: underline; }
 footer a:hover { color: var(--text); }
+.footer-domain {
+  margin-top: 6px;
+  font-family: var(--serif);
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.5;
+}
 
 /* ── Scrollbar ───────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
