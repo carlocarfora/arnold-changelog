@@ -1,7 +1,7 @@
 /**
- * scraper.js
- * Run by GitHub Actions weekly. Fetches Arnold release note pages from
- * Autodesk's static CDN, parses them, and writes data/changelogs.json.
+ * scrape-core.js
+ * Run by GitHub Actions when new versions are detected. Fetches Arnold Core
+ * release note pages from Autodesk's static CDN and writes data/changelogs.json.
  *
  * To add a new Arnold version: add an entry to VERSIONS (newest first).
  * Format: { id: "7451", label: "7.4.5.1", series: "7x" }

@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Run scraper
-        run: node scraper.js
+        run: node scrape-core.js
 
       - name: Commit updated data
         run: |

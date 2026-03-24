@@ -1,7 +1,7 @@
 /**
- * scraper-htoa.js
- * Run by GitHub Actions weekly. Fetches Arnold for Houdini (HtoA) release note
- * pages from Autodesk's CDN, parses them, and writes data/changelogs-htoa.json.
+ * scrape-htoa.js
+ * Run by GitHub Actions when new versions are detected. Fetches Arnold for
+ * Houdini (HtoA) release note pages from Autodesk's CDN and writes data/changelogs-htoa.json.
  *
  * To add a new HtoA version: add an entry to VERSIONS (newest first).
  * 6.x format: { id: "6461", label: "6.4.6.1", series: "6x" }

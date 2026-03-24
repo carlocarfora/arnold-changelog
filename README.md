@@ -20,8 +20,8 @@ Scrapes Arnold Core and Arnold for Houdini (HtoA) release notes from Autodesk's 
 GitHub Actions (weekly — check-versions.yml)
   → fetches Core + HtoA index pages from Autodesk
   → compares against VERSIONS arrays in scraper files
-  → if new Core versions: updates scraper.js, runs scraper.js
-  → if new HtoA versions: updates scraper-htoa.js, runs scraper-htoa.js
+  → if new Core versions: updates scrape-core.js, runs scrape-core.js
+  → if new HtoA versions: updates scrape-htoa.js, runs scrape-htoa.js
   → commits updated scraper files + JSON data
   (no-ops entirely if no new versions detected)
 
@@ -42,8 +42,8 @@ No server, no database, no runtime cost.
 ```
 arnold-changelog/
 ├── index.html                        ← Frontend UI + client-side search
-├── scraper.js                        ← Arnold Core scraper
-├── scraper-htoa.js                   ← HtoA scraper
+├── scrape-core.js                        ← Arnold Core scraper
+├── scrape-htoa.js                   ← HtoA scraper
 ├── version-checker.js                ← Discovers new versions, triggers scrapes
 ├── package.json                      ← npm deps (node-html-parser)
 ├── package-lock.json
@@ -89,12 +89,12 @@ Each run takes ~1–2 minutes, commits the JSON, and Cloudflare auto-redeploys.
 
 When Autodesk releases a new version, add an entry to the `VERSIONS` array at the top of the relevant scraper file (newest first).
 
-**Arnold Core** (`scraper.js`):
+**Arnold Core** (`scrape-core.js`):
 ```js
 { id: "7500", label: "7.5.0.0", series: "7x" },
 ```
 
-**HtoA** (`scraper-htoa.js`):
+**HtoA** (`scrape-htoa.js`):
 ```js
 { id: "6461", label: "6.4.6.1", series: "6x" },
 ```
@@ -128,8 +128,8 @@ Click the link icon next to any version heading or hover over an item to reveal 
 
 ```bash
 npm install
-node scraper.js        # Arnold Core
-node scraper-htoa.js   # HtoA
+node scrape-core.js        # Arnold Core
+node scrape-htoa.js   # HtoA
 ```
 
 Serve the root with a local server to test:

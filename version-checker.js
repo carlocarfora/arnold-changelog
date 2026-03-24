@@ -150,7 +150,7 @@ async function main() {
   let newHtoa = false;
 
   for (const [product, urls] of Object.entries(INDEX_PAGES)) {
-    const scraperFile  = product === 'core' ? 'scraper.js' : 'scraper-htoa.js';
+    const scraperFile  = product === 'core' ? 'scrape-core.js' : 'scrape-htoa.js';
     const existingIds  = getExistingIds(scraperFile);
     const allDiscovered = [];
 

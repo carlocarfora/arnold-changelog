@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Run HtoA scraper
-        run: node scraper-htoa.js
+        run: node scrape-htoa.js
 
       - name: Commit updated data
         run: |

@@ -29,11 +29,11 @@ jobs:
 
       - name: Scrape Arnold Core
         if: steps.check.outputs.new_core == 'true'
-        run: node scraper.js
+        run: node scrape-core.js
 
       - name: Scrape Arnold HtoA
         if: steps.check.outputs.new_htoa == 'true'
-        run: node scraper-htoa.js
+        run: node scrape-htoa.js
 
       - name: Commit and push changes
         if: steps.check.outputs.new_core == 'true' || steps.check.outputs.new_htoa == 'true'
