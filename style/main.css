@@ -635,19 +635,18 @@ mark {
 
 /* ── Footer ──────────────────────────────────────────────────────────────── */
 footer {
-  grid-column: 1 / -1;
-  padding: 20px 28px;
+  padding: 14px 28px;
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 footer p {
   font-family: var(--mono);
   font-size: 10px;
   color: var(--muted);
   text-align: center;
-  line-height: 1.75;
-  max-width: 80ch;
+  line-height: 1.6;
 }
 footer a { color: var(--muted); text-decoration: underline; }
 footer a:hover { color: var(--text); }
