@@ -70,7 +70,7 @@ header {
   top: 0;
   z-index: 100;
 }
-.logo {
+.logo-switch {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -81,7 +81,15 @@ header {
   color: var(--text);
   letter-spacing: -0.01em;
   flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: var(--radius);
+  transition: opacity 0.15s;
+  white-space: nowrap;
 }
+.logo-switch:hover { opacity: 0.65; }
 .logo-icon {
   width: 26px; height: 26px;
   background: var(--text);
@@ -607,4 +615,107 @@ mark {
     background: none;
   }
   main { padding: 24px 18px 48px; }
+  .logo-switch { font-size: 14px; }
+}
+
+/* ── Share button ─────────────────────────────────────────────────────────── */
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s;
+  flex-shrink: 0;
+  position: relative;
+  top: -1px;
+}
+.share-btn:hover { color: var(--text); border-color: var(--border-hi); }
+.share-btn.copied { color: var(--green); border-color: var(--green); }
+
+/* ── HtoA compat strip (inside changelog header) ─────────────────────────── */
+.compat-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 14px;
+}
+.compat-strip-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--subtle);
+}
+.compat-strip-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.compat-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 1px 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* ── Compatibility table view ────────────────────────────────────────────── */
+.compat-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.compat-table th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 16px 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.compat-table td {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 9px 16px 9px 0;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+  color: var(--subtle);
+}
+.compat-version-cell {
+  color: var(--accent) !important;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.compat-version-cell:hover { text-decoration: underline; }
+.compat-core-cell { white-space: nowrap; }
+.compat-houdini-cell { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.compat-none { color: var(--muted); }
+
+/* ── Sidebar compatibility nav button ────────────────────────────────────── */
+.compat-nav-btn {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-left-color: transparent;
+  margin-bottom: 8px;
+}
+.compat-nav-btn:hover { color: var(--text); }
+.compat-nav-btn.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: var(--accent-lo);
 }

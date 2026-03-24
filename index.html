@@ -14,17 +14,17 @@
 <div class="app">
 
   <header>
-    <div class="logo">
+    <button class="logo-switch" id="logo-switch" onclick="switchMode()" title="Switch between Core and HtoA">
       <div class="logo-icon">A</div>
-      Arnold Changelogs
-    </div>
+      <span id="logo-text">Arnold Changelog — Core</span>
+    </button>
     <div class="header-search">
       <input type="search" id="search-input" placeholder="Search across all versions…" autocomplete="off" spellcheck="false" />
       <span class="search-count" id="search-count"></span>
     </div>
     <div class="header-right">
       <span class="updated-at" id="updated-at"></span>
-      <span class="header-meta">Arnold Core</span>
+      <span class="header-meta" id="header-meta">Arnold Core</span>
       <button class="theme-toggle" id="theme-toggle" title="Toggle theme">☀</button>
     </div>
   </header>
@@ -64,17 +64,22 @@
 
   // ── State ──────────────────────────────────────────────────────────────────
   const state = {
-    data:         null,
-    activeId:     null,
-    activeFilter: 'all',
-    query:        '',
+    mode: 'core',   // 'core' | 'htoa'
+    view: 'changelog', // 'changelog' | 'compat'
+    core: { data: null, activeId: null, activeFilter: 'all', query: '' },
+    htoa: { data: null, activeId: null, activeFilter: 'all', query: '' },
   };
 
-  const $list   = document.getElementById('version-list');
-  const $main   = document.getElementById('main-content');
-  const $updAt  = document.getElementById('updated-at');
-  const $search = document.getElementById('search-input');
-  const $count  = document.getElementById('search-count');
+  // Shorthand for current mode's state
+  function s() { return state[state.mode]; }
+
+  const $list       = document.getElementById('version-list');
+  const $main       = document.getElementById('main-content');
+  const $updAt      = document.getElementById('updated-at');
+  const $search     = document.getElementById('search-input');
+  const $count      = document.getElementById('search-count');
+  const $logoText   = document.getElementById('logo-text');
+  const $headerMeta = document.getElementById('header-meta');
 
   // ── Helpers ────────────────────────────────────────────────────────────────
   function esc(s) {
@@ -82,24 +87,20 @@
       .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  // Strip HTML tags to get plain text (for search matching)
   function stripTags(html) {
     return html.replace(/<[^>]+>/g, '');
   }
 
-  // Get plain text from an item regardless of old (text) or new (html) format
   function itemText(item) {
     return item.html !== undefined ? stripTags(item.html) : (item.text || '');
   }
 
-  // Highlight query terms in an HTML string, touching only text nodes (not tag internals)
   function highlightHtml(html, query) {
     if (!query) return html;
     const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
     return html.replace(/([^<>]+)(?=<|$)/g, t => t.replace(re, '<mark>$1</mark>'));
   }
 
-  // Highlight inside a plain escaped string (used for headings etc.)
   function highlight(escaped, query) {
     if (!query) return escaped;
     const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
@@ -109,20 +110,34 @@
   function classifySection(heading) {
     if (/enhance|feature|new|improv|add/i.test(heading)) return 'enhancements';
     if (/bug|fix|crash|resolv/i.test(heading))           return 'bug-fixes';
-    if (/break|compat|deprecat/i.test(heading))          return 'breaking';
+    if (/break|compat|deprecat|incompatible/i.test(heading)) return 'breaking';
     return '';
   }
 
+  function updateHeaderLabels() {
+    const isHtoa = state.mode === 'htoa';
+    $logoText.textContent   = isHtoa ? 'Arnold Changelog — HtoA' : 'Arnold Changelog — Core';
+    $headerMeta.textContent = isHtoa ? 'Arnold HtoA' : 'Arnold Core';
+  }
+
+  function updateTimestamp() {
+    const d = s().data?.updatedAt;
+    $updAt.textContent = d
+      ? `Updated ${new Date(d).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' })}`
+      : '';
+  }
+
   // ── Load data ──────────────────────────────────────────────────────────────
-  async function loadData() {
-    const res = await fetch('/data/changelogs.json');
+  async function loadModeData(mode) {
+    const url = mode === 'htoa' ? '/data/changelogs-htoa.json' : '/data/changelogs.json';
+    const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json();
   }
 
   // ── Sidebar ────────────────────────────────────────────────────────────────
   function renderSidebar(matchCounts = null) {
-    const changelogs = state.data.changelogs.filter(cl => !cl.error);
+    const changelogs = s().data.changelogs.filter(cl => !cl.error);
 
     const groups = new Map();
     for (const cl of changelogs) {
@@ -132,20 +147,29 @@
       groups.get(key).push(cl);
     }
 
-    $list.innerHTML = [...groups.entries()].map(([label, versions]) => {
+    let html = '';
+
+    // Compatibility table link (HtoA only)
+    if (state.mode === 'htoa') {
+      const active = state.view === 'compat' ? 'active' : '';
+      html += `<div class="series-group"><button class="version-btn compat-nav-btn ${active}" onclick="showCompat()">Compatibility Table</button></div>`;
+    }
+
+    html += [...groups.entries()].map(([label, versions]) => {
       const btns = versions.map(cl => {
-        const isActive = cl.versionId === state.activeId ? 'active' : '';
+        const isActive = cl.versionId === s().activeId && state.view === 'changelog' ? 'active' : '';
         const count = matchCounts?.[cl.versionId];
-        // If searching, dim versions with no matches
         const dim = matchCounts && !count ? 'dim' : '';
         const badge = count ? `<span class="sidebar-match-count">${count}</span>` : '';
         return `<button class="version-btn ${isActive} ${dim}" onclick="selectVersion('${cl.versionId}')">${esc(cl.version)}${badge}</button>`;
       }).join('');
       return `<div class="series-group"><span class="series-label">${esc(label)}</span>${btns}</div>`;
     }).join('');
+
+    $list.innerHTML = html;
   }
 
-  // ── Item renderer (shared by changelog + search views) ────────────────────
+  // ── Item renderer ──────────────────────────────────────────────────────────
   function renderItem(item, query = '') {
     const tickets = item.tickets?.length
       ? `<div class="item-tickets">${item.tickets.map(t => `<span class="ticket">${esc(t)}</span>`).join('')}</div>`
@@ -153,19 +177,39 @@
     const codeHtml = item.codeBlocks?.length
       ? item.codeBlocks.map(c => `<pre class="code-block"><code>${esc(c)}</code></pre>`).join('')
       : '';
-    // New format stores sanitized HTML; old cached data has plain text
     const contentHtml = item.html !== undefined
       ? highlightHtml(item.html, query)
       : highlight(esc(item.text || ''), query);
     return `<div class="item"><div class="item-text">${contentHtml}</div>${codeHtml}${tickets}</div>`;
   }
 
+  // ── Share SVG icon ─────────────────────────────────────────────────────────
+  const shareSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>`;
+
+  // ── Share version ──────────────────────────────────────────────────────────
+  window.shareVersion = function(id) {
+    const hash = state.mode === 'htoa' ? `htoa-${id}` : id;
+    history.replaceState(null, '', `#${hash}`);
+    navigator.clipboard?.writeText(location.href).catch(() => {});
+    const btn = document.querySelector('.share-btn');
+    if (btn) {
+      btn.classList.add('copied');
+      btn.title = 'Copied!';
+      setTimeout(() => { btn.classList.remove('copied'); btn.title = 'Copy link'; }, 1800);
+    }
+  };
+
   // ── Single changelog view ──────────────────────────────────────────────────
   function renderChangelog(cl) {
+    state.view = 'changelog';
+
     if (cl.error) {
       $main.innerHTML = `
         <div class="changelog-header">
-          <div class="changelog-version"><h1>${esc(cl.version)}</h1></div>
+          <div class="changelog-version">
+            <h1>${esc(cl.version)}</h1>
+            <button class="share-btn" onclick="shareVersion('${cl.versionId}')" title="Copy link">${shareSvg}</button>
+          </div>
         </div>
         <div class="error-box">
           This version couldn't be scraped: ${esc(cl.error)}<br><br>
@@ -181,12 +225,12 @@
     const sectionTypes = [...new Set(cl.sections.map(s => classifySection(s.heading)).filter(Boolean))];
     const filterBar = sectionTypes.length > 1 ? `
       <div class="filter-bar">
-        <button class="filter-chip ${state.activeFilter === 'all' ? 'active' : ''}" onclick="setFilter('all')">All</button>
-        ${sectionTypes.map(t => `<button class="filter-chip ${state.activeFilter === t ? 'active' : ''}" onclick="setFilter('${t}')">${t.replace('-',' ')}</button>`).join('')}
+        <button class="filter-chip ${s().activeFilter === 'all' ? 'active' : ''}" onclick="setFilter('all')">All</button>
+        ${sectionTypes.map(t => `<button class="filter-chip ${s().activeFilter === t ? 'active' : ''}" onclick="setFilter('${t}')">${t.replace('-',' ')}</button>`).join('')}
       </div>` : '';
 
-    const visibleSections = cl.sections.filter(s =>
-      state.activeFilter === 'all' || classifySection(s.heading) === state.activeFilter
+    const visibleSections = cl.sections.filter(sec =>
+      s().activeFilter === 'all' || classifySection(sec.heading) === s().activeFilter
     );
 
     const sectionsHtml = visibleSections.map((sec, i) => {
@@ -207,13 +251,22 @@
       return `<div class="sysreq"><div class="sysreq-label">System Requirements</div>${bulletHtml}</div>`;
     })() : '';
 
+    // HtoA-specific compatibility info strip
+    const compatStrip = (state.mode === 'htoa' && (cl.arnoldCoreVersion || cl.houdiniVersions?.length)) ? `
+      <div class="compat-strip">
+        ${cl.arnoldCoreVersion ? `<span class="compat-strip-item"><span class="compat-strip-label">Arnold Core</span>${esc(cl.arnoldCoreVersion)}</span>` : ''}
+        ${cl.houdiniVersions?.length ? `<span class="compat-strip-item"><span class="compat-strip-label">Houdini</span>${cl.houdiniVersions.map(v => `<span class="compat-tag">${esc(v)}</span>`).join('')}</span>` : ''}
+      </div>` : '';
+
     $main.innerHTML = `
       <div class="changelog-header">
         <div class="changelog-version">
           <h1>${esc(cl.version)}</h1>
           <span class="release-badge ${badgeClass}">${badgeLabel}</span>
+          <button class="share-btn" onclick="shareVersion('${cl.versionId}')" title="Copy link">${shareSvg}</button>
         </div>
         ${cl.intro ? `<p class="changelog-intro">${esc(cl.intro)}</p>` : ''}
+        ${compatStrip}
         <a class="source-link" href="${esc(cl.sourceUrl)}" target="_blank" rel="noopener">↗ View on Autodesk Help</a>
       </div>
       ${filterBar}
@@ -221,19 +274,57 @@
       ${sysReq}`;
   }
 
+  // ── Compatibility table view ───────────────────────────────────────────────
+  window.showCompat = function() {
+    state.view = 'compat';
+    s().activeId = null;
+    renderSidebar();
+
+    const entries = s().data.changelogs.filter(cl => !cl.error);
+
+    const rows = entries.map(cl => {
+      const houdini = cl.houdiniVersions?.length
+        ? cl.houdiniVersions.map(v => `<span class="compat-tag">${esc(v)}</span>`).join('')
+        : '<span class="compat-none">—</span>';
+      return `
+        <tr>
+          <td class="compat-version-cell" onclick="selectVersion('${cl.versionId}')">${esc(cl.version)}</td>
+          <td class="compat-core-cell">${cl.arnoldCoreVersion ? esc(cl.arnoldCoreVersion) : '<span class="compat-none">—</span>'}</td>
+          <td class="compat-houdini-cell">${houdini}</td>
+        </tr>`;
+    }).join('');
+
+    $main.innerHTML = `
+      <div class="changelog-header">
+        <div class="changelog-version">
+          <h1>Compatibility</h1>
+        </div>
+        <p class="changelog-intro">HtoA version alongside the required Arnold Core build and supported Houdini versions.</p>
+      </div>
+      <table class="compat-table">
+        <thead>
+          <tr>
+            <th>HtoA</th>
+            <th>Arnold Core</th>
+            <th>Houdini</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  };
+
   // ── Search results view ────────────────────────────────────────────────────
   function renderSearch(query) {
+    state.view = 'changelog';
     const q = query.toLowerCase().trim();
     const matchCounts = {};
     const resultBlocks = [];
     let totalMatches = 0;
 
-    for (const cl of state.data.changelogs) {
+    for (const cl of s().data.changelogs) {
       if (cl.error) continue;
 
       const versionMatches = [];
-
-      // Check version number itself
       const versionHit = cl.version.toLowerCase().includes(q);
 
       for (const sec of cl.sections) {
@@ -290,16 +381,20 @@
 
   // ── Select version ─────────────────────────────────────────────────────────
   window.selectVersion = function(id) {
-    state.activeId = id;
-    state.activeFilter = 'all';
+    if (!id) return;
+    s().activeId = id;
+    s().activeFilter = 'all';
+    state.view = 'changelog';
+    const hash = state.mode === 'htoa' ? `htoa-${id}` : id;
+    history.replaceState(null, '', `#${hash}`);
     renderSidebar();
-    const cl = state.data.changelogs.find(c => c.versionId === id);
+    const cl = s().data.changelogs.find(c => c.versionId === id);
     if (cl) renderChangelog(cl);
   };
 
   window.clearSearchAndSelect = function(id) {
     $search.value = '';
-    state.query = '';
+    s().query = '';
     $count.textContent = '';
     selectVersion(id);
   };
@@ -311,9 +406,42 @@
   };
 
   window.setFilter = function(f) {
-    state.activeFilter = f;
-    const cl = state.data.changelogs.find(c => c.versionId === state.activeId);
+    s().activeFilter = f;
+    const cl = s().data.changelogs.find(c => c.versionId === s().activeId);
     if (cl) renderChangelog(cl);
+  };
+
+  // ── Mode switch ────────────────────────────────────────────────────────────
+  window.switchMode = async function() {
+    const newMode = state.mode === 'core' ? 'htoa' : 'core';
+    state.mode = newMode;
+    state.view = 'changelog';
+    updateHeaderLabels();
+
+    // Clear search
+    $search.value = '';
+    state[newMode].query = '';
+    $count.textContent = '';
+
+    if (!s().data) {
+      $list.innerHTML = '<div class="state-message" style="padding:20px"><div class="spinner"></div></div>';
+      $main.innerHTML = '<div class="state-message"><div class="spinner"></div><span>Loading changelogs…</span></div>';
+      try {
+        state[newMode].data = await loadModeData(newMode);
+      } catch (e) {
+        $main.innerHTML = `<div class="error-box">Failed to load HtoA changelogs: ${esc(e.message)}<br><br>Run the "Scrape Arnold HtoA Changelogs" GitHub Actions workflow to populate the data.</div>`;
+        return;
+      }
+    }
+
+    updateTimestamp();
+    renderSidebar();
+
+    if (s().activeId) {
+      const cl = s().data.changelogs.find(c => c.versionId === s().activeId);
+      if (cl) { renderChangelog(cl); return; }
+    }
+    selectVersion(s().data.changelogs.find(c => !c.error)?.versionId);
   };
 
   // ── Search input handler ───────────────────────────────────────────────────
@@ -321,14 +449,14 @@
   $search.addEventListener('input', () => {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => {
-      state.query = $search.value.trim();
-      if (state.query.length === 0) {
+      s().query = $search.value.trim();
+      if (s().query.length === 0) {
         $count.textContent = '';
         renderSidebar();
-        const cl = state.data.changelogs.find(c => c.versionId === state.activeId);
+        const cl = s().data.changelogs.find(c => c.versionId === s().activeId);
         if (cl) renderChangelog(cl);
-      } else if (state.query.length >= 2) {
-        renderSearch(state.query);
+      } else if (s().query.length >= 2) {
+        renderSearch(s().query);
       }
     }, 150);
   });
@@ -336,9 +464,15 @@
   // ── Init ───────────────────────────────────────────────────────────────────
   async function init() {
     try {
-      state.data = await loadData();
+      // Determine initial mode from URL hash
+      const hash = location.hash.slice(1);
+      const initialMode = hash.startsWith('htoa-') ? 'htoa' : 'core';
+      state.mode = initialMode;
+      updateHeaderLabels();
 
-      if (!state.data.changelogs?.length) {
+      state[initialMode].data = await loadModeData(initialMode);
+
+      if (!s().data.changelogs?.length) {
         $list.innerHTML = '';
         $main.innerHTML = `
           <div class="empty-state">
@@ -348,13 +482,13 @@
         return;
       }
 
-      if (state.data.updatedAt) {
-        const d = new Date(state.data.updatedAt);
-        $updAt.textContent = `Updated ${d.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' })}`;
-      }
-
+      updateTimestamp();
       renderSidebar();
-      selectVersion(state.data.changelogs.find(c => !c.error)?.versionId);
+
+      // Navigate to hashed version, or default to first
+      const targetId = hash.startsWith('htoa-') ? hash.slice(5) : hash;
+      const target = targetId && s().data.changelogs.find(c => c.versionId === targetId && !c.error);
+      selectVersion(target?.versionId || s().data.changelogs.find(c => !c.error)?.versionId);
 
     } catch (e) {
       $list.innerHTML = '';

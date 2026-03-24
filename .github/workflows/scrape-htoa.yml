@@ -1,8 +1,8 @@
-name: Scrape Arnold Core Changelogs
+name: Scrape Arnold HtoA Changelogs
 
 on:
   schedule:
-    - cron: '0 9 * * 1'   # Every Monday at 9am UTC
+    - cron: '0 10 * * 1'  # Every Monday at 10am UTC (1h after Core)
   workflow_dispatch:        # Also allows manual trigger from GitHub UI
 
 jobs:
@@ -23,14 +23,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run scraper
-        run: node scraper.js
+      - name: Run HtoA scraper
+        run: node scraper-htoa.js
 
       - name: Commit updated data
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/changelogs.json
-          git diff --staged --quiet || git commit -m "chore: update Arnold Core changelogs [$(date -u +%Y-%m-%d)]"
+          git add data/changelogs-htoa.json
+          git diff --staged --quiet || git commit -m "chore: update Arnold HtoA changelogs [$(date -u +%Y-%m-%d)]"
           git pull --rebase origin main
           git push
