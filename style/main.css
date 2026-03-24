@@ -771,8 +771,7 @@ footer a:hover { color: var(--text); }
   white-space: nowrap;
 }
 .compat-version-cell:hover { text-decoration: underline; }
-.compat-core-cell { white-space: nowrap; }
-.compat-houdini-cell { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+.compat-tags { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
 .compat-none { color: var(--muted); }
 
 /* ── Sidebar compatibility nav button ────────────────────────────────────── */

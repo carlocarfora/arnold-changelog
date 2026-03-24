@@ -381,8 +381,8 @@
       return `
         <tr>
           <td class="compat-version-cell" onclick="selectVersion('${cl.versionId}')">${esc(cl.version)}</td>
-          <td class="compat-houdini-cell">${houdini}</td>
-          <td class="compat-houdini-cell">${gcc}</td>
+          <td><div class="compat-tags">${houdini}</div></td>
+          <td><div class="compat-tags">${gcc}</div></td>
         </tr>`;
     }).join('');
 
