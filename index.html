@@ -59,6 +59,10 @@
 
 </div>
 
+<footer>
+  <p>Arnold Changelog Viewer is an unofficial community tool and is not affiliated with or endorsed by Autodesk, Inc. All release note content is the property of Autodesk, Inc. and is reproduced here for reference only. For official documentation visit <a href="https://help.autodesk.com" target="_blank" rel="noopener">help.autodesk.com</a>.</p>
+</footer>
+
 <script>
   // ── Theme ──────────────────────────────────────────────────────────────────
   const $toggle = document.getElementById('theme-toggle');
@@ -371,21 +375,24 @@
       const houdini = cl.houdiniVersions?.length
         ? cl.houdiniVersions.map(v => `<span class="compat-tag">${esc(v)}</span>`).join('')
         : '<span class="compat-none">—</span>';
+      const gcc = cl.gccVersions?.length
+        ? cl.gccVersions.map(v => `<span class="compat-tag">${esc(v)}</span>`).join('')
+        : '<span class="compat-none">—</span>';
       return `
         <tr>
           <td class="compat-version-cell" onclick="selectVersion('${cl.versionId}')">${esc(cl.version)}</td>
-          <td class="compat-core-cell">${cl.arnoldCoreVersion ? esc(cl.arnoldCoreVersion) : '<span class="compat-none">—</span>'}</td>
           <td class="compat-houdini-cell">${houdini}</td>
+          <td class="compat-houdini-cell">${gcc}</td>
         </tr>`;
     }).join('');
 
     $main.innerHTML = `
       <div class="changelog-header">
         <div class="changelog-version"><h1>Compatibility</h1></div>
-        <p class="changelog-intro">HtoA version alongside the required Arnold Core build and supported Houdini versions.</p>
+        <p class="changelog-intro">HtoA version alongside supported Houdini builds and required GCC versions.</p>
       </div>
       <table class="compat-table">
-        <thead><tr><th>HtoA</th><th>Arnold Core</th><th>Houdini</th></tr></thead>
+        <thead><tr><th>HtoA</th><th>Houdini</th><th>GCC</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>`;
   };

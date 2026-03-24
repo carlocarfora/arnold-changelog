@@ -259,21 +259,27 @@ function parsePage(html, version, url) {
     systemRequirements = parts.join(' ') || null;
   }
 
-  // ── Compatibility: Arnold Core version + Houdini versions ─────────────────
+  // ── Compatibility: Arnold Core version + Houdini versions + GCC versions ───
   // Arnold Core version appears in the intro: "…using Arnold 7.4.4.1…"
   const arnoldMatch = intro.match(/Arnold\s+(\d+\.\d+\.\d+\.\d+)/);
   const arnoldCoreVersion = arnoldMatch ? arnoldMatch[1] : null;
 
-  // Houdini builds appear in system requirements: "20.5.684", "21.0.440" etc.
   const sysReqText = systemRequirements || '';
+
+  // Houdini builds appear in system requirements: "20.5.684", "21.0.440" etc.
   const houdiniMatches = [...sysReqText.matchAll(/\b((?:19|20|21|22)\.\d+\.\d+)\b/g)];
   const houdiniVersions = [...new Set(houdiniMatches.map(m => m[1]))];
+
+  // GCC versions appear as "(gcc X.X.X)" in system requirements
+  const gccMatches = [...sysReqText.matchAll(/\(gcc\s+(\d+(?:\.\d+)+)\)/gi)];
+  const gccVersions = [...new Set(gccMatches.map(m => m[1]))];
 
   return {
     version:            version.label,
     versionId:          version.id,
     arnoldCoreVersion,
     houdiniVersions,
+    gccVersions,
     releaseType,
     intro,
     sections,
