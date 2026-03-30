@@ -40,7 +40,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add scraper.js scraper-htoa.js data/changelogs.json data/changelogs-htoa.json
+          git add version-checker.js scrape-core.js scrape-htoa.js data/changelogs.json data/changelogs-htoa.json
           git diff --staged --quiet || git commit -m "chore: auto-update changelogs for new versions [$(date -u +%Y-%m-%d)]"
           git pull --rebase origin main
           git push
