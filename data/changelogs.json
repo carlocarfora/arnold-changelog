@@ -1,6 +1,16 @@
 {
   "versions": [
     {
+      "id": "7510",
+      "label": "7.5.1.0",
+      "series": "7x"
+    },
+    {
+      "id": "7500",
+      "label": "7.5.0.0",
+      "series": "7x"
+    },
+    {
       "id": "7451",
       "label": "7.4.5.1",
       "series": "7x"
@@ -397,6 +407,403 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "7.5.1.0",
+      "versionId": "7510",
+      "releaseType": "release",
+      "intro": "25 March 2026",
+      "sections": [
+        {
+          "heading": "Flow Render Tech Preview",
+          "items": [
+            {
+              "html": "Arnold 7.5.1.0 includes a Tech Preview of Flow Render, an Arnold cloud-rendering solution. We are providing 2400 minutes (per user, per month) of rendering time to Arnold users for testing and evaluating the service. Please report any feedback or issues in the <a href=\"https://forums.autodesk.com/t5/arnold-forums/ct-p/arnold-en\" target=\"_blank\" rel=\"noopener\">Arnold forums</a>.",
+              "tickets": []
+            },
+            {
+              "html": "See the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_core_rendering_ac_flow_render_toc_html\" target=\"_blank\" rel=\"noopener\">Flow Render Tech Preview</a> documentation for more information.",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "html": "<strong>Custom AOVs for volume shaders</strong>: The <code>aov_write_rgb</code>, <code>aov_write_float</code>, and <code>aov_write_rgba</code> shader nodes can now be used in volume shader networks, just as they already work for surface shaders. Previously, custom AOVs were silently ignored in volume contexts. The volume raymarcher now collects AOV closures at each step and integrates them using Beer-Lambert weighting, producing physically consistent AOV outputs. (ARNOLD-6548) Both flat (EXR, TIFF) and deep EXR outputs are supported. A warning is logged when <code>aov_write_rgb</code> nodes with conflicting <code>blend_opacity</code> settings are connected to both surface and volume shaders writing to the same AOV name. There is approximately a 16% overhead with two active volume AOVs at fine step sizes (<code>step_size=0.01</code>).",
+              "tickets": [
+                "ARNOLD-6548"
+              ]
+            },
+            {
+              "html": "Both flat (EXR, TIFF) and deep EXR outputs are supported.",
+              "tickets": []
+            },
+            {
+              "html": "A warning is logged when <code>aov_write_rgb</code> nodes with conflicting <code>blend_opacity</code> settings are connected to both surface and volume shaders writing to the same AOV name.",
+              "tickets": []
+            },
+            {
+              "html": "There is approximately a 16% overhead with two active volume AOVs at fine step sizes (<code>step_size=0.01</code>).",
+              "tickets": []
+            },
+            {
+              "html": "<strong>New tangent_space_type option for normal_map</strong>: A new <code>tangent_space_type</code> parameter adds support for <a href=\"http://mikktspace.com\" target=\"_blank\" rel=\"noopener\">MIKKTSpace</a> normal mapping. The <code>standard</code> mode preserves the previous behavior, while the <code>mikk</code> mode imports <code>normal</code>, <code>tangent</code>, and <code>bitangent</code> generated with MIKKTSpace in DCC tools such as 3ds Max and evaluates the normal map using MIKKTSpace for consistent shading across applications. (ARNOLD-8377)",
+              "tickets": [
+                "ARNOLD-8377"
+              ]
+            },
+            {
+              "html": "<strong>Faster CPU renders on Windows</strong>: CPU renders on Windows have been optimized. Most, though not all, scenes show faster render times. (ARNOLD-17549) scene 7.5.1 speedup vs 7.5.0 OpenPBR shader ball 1.16x gtc-robot 1.08x Disney cloud 1.07x ALab 1.04x Intel jungle ruins 1.00x",
+              "tickets": [
+                "ARNOLD-17549"
+              ]
+            },
+            {
+              "html": "<strong>Apply unit auto-scaling to linked shader parameters</strong>: Linked shader parameters are now auto-scaled to scene units when driven by links (for example, <code>subsurface_scale</code> from a texture), ensuring unit-dependent values retain their expected magnitudes across different scene unit settings. (ARNOLD-17176)",
+              "tickets": [
+                "ARNOLD-17176"
+              ]
+            },
+            {
+              "html": "<strong>Custom position for nearest_points shader</strong>: The <code>nearest_points</code> shader has a new <code>query_position</code> parameter, which allows you to link to an input and customize the point where the point cloud is queried. When unlinked, <code>sg-&gt;P</code> (world-space shading position) is used instead. (ARNOLD-17360)",
+              "tickets": [
+                "ARNOLD-17360"
+              ]
+            },
+            {
+              "html": "<strong>New interior_set string user data</strong>: The new <code>interior_set</code> attribute enables coherent scattering (such as transmission and SSS) across shapes that share the same set name. This allows smooth propagation of scattering between separate shapes, such as large ocean surfaces modeled as multiple tiles. <code>interior_set</code> replaces <code>sss_setname</code>, although <code>sss_setname</code> remains supported for now. If both attributes are present on the same object, <code>interior_set</code> takes precedence. (ARNOLD-9038)",
+              "tickets": [
+                "ARNOLD-9038"
+              ]
+            },
+            {
+              "html": "<strong>OSL generalized Schlick Fresnel exponent</strong>: The OSL <code>generalized_schlick_bsdf</code> closure now fully supports the <code>exponent</code> parameter for both reflection and transmission lobes. Previously, Arnold ignored the exponent (effectively always using the standard Schlick value of 5) and approximated the transmission lobe by converting F0 to a dielectric IOR via the Gulbrandsen method. Both lobes now use a proper generalized Schlick Fresnel evaluation with configurable <code>f0</code>, <code>f90</code>, and <code>exponent</code>. Scenes using <code>generalized_schlick_bsdf</code> with a non-default exponent, or with significant transmission, may produce slightly different renders. (ARNOLD-16834)",
+              "tickets": [
+                "ARNOLD-16834"
+              ]
+            },
+            {
+              "html": "<strong>Bloom driver luminance threshold</strong>: Bloom now uses a smoothed luminance-based threshold to avoid hue shifts from per-channel clipping. (ARNOLD-17443)",
+              "tickets": [
+                "ARNOLD-17443"
+              ]
+            },
+            {
+              "html": "<strong>Improved maketx error messages</strong>: TX conversion error messages now include the target TX filename, which makes it easier to identify the cause of the error. (ARNOLD-17044)",
+              "tickets": [
+                "ARNOLD-17044"
+              ]
+            },
+            {
+              "html": "<strong>Include options node and driver outputs in stats JSON</strong>: Stats output now records the top-level options node and, for each image driver, an entry with the driver filename and AOV and output details, improving the metadata available for diagnostics and downstream tools. (ARNOLD-16812)",
+              "tickets": [
+                "ARNOLD-16812"
+              ]
+            },
+            {
+              "html": "<strong>Enable CER on Linux</strong>: Added support for the Customer Error Reporting (CER) library on Linux. (ARNOLD-15747)",
+              "tickets": [
+                "ARNOLD-15747"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "html": "<strong>USD warnings and errors in Arnold logs</strong>: The USD composition warnings and errors when loading a file are now included in the Arnold log <a href=\"https://github.com/Autodesk/arnold-usd/issues/2435\" target=\"_blank\" rel=\"noopener\">usd#2435</a>",
+              "tickets": [
+                "usd#2435"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Changes",
+          "items": [
+            {
+              "html": "<strong>volume_double_henyey_greenstein OSL support</strong>: The double Henyey-Greenstein phase function <code>volume_double_henyey_greenstein</code>, which corresponds to <code>AiClosureVolumeDoubleHenyeyGreenstein</code>, is now available in OSL. (ARNOLD-16701)",
+              "tickets": [
+                "ARNOLD-16701"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible Changes",
+          "items": [
+            {
+              "html": "<strong>OSL generalized_schlick_bsdf rendering change</strong>: Scenes using the OSL <code>generalized_schlick_bsdf</code> closure with a non-default <code>exponent</code> value (other than 5) or significant transmission may produce slightly different renders due to corrected Fresnel evaluation. (ARNOLD-16834)",
+              "tickets": [
+                "ARNOLD-16834"
+              ]
+            },
+            {
+              "html": "<strong>Renamed enum AI_CLOSURE_DEBUG to AI_CLOSURE_AOV</strong>: Code referencing <code>AI_CLOSURE_DEBUG</code> must be updated. (ARNOLD-6548)",
+              "tickets": [
+                "ARNOLD-6548"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-15273 - Rare GPU artifacts with certain scene, GPU, and driver combinations",
+              "tickets": [
+                "ARNOLD-15273"
+              ]
+            },
+            {
+              "html": "ARNOLD-17465 - Crash when a node turns invalid in IPR",
+              "tickets": [
+                "ARNOLD-17465"
+              ]
+            },
+            {
+              "html": "ARNOLD-17498 - Fixed incorrect volume mipmap selection in certain situations",
+              "tickets": [
+                "ARNOLD-17498"
+              ]
+            },
+            {
+              "html": "ARNOLD-17500 - Crash with invalid &quot;idxs&quot; user data",
+              "tickets": [
+                "ARNOLD-17500"
+              ]
+            },
+            {
+              "html": "ARNOLD-17553 - Crashes with empty arrays in polymeshes",
+              "tickets": [
+                "ARNOLD-17553"
+              ]
+            },
+            {
+              "html": "ARNOLD-17561 - [GPU] Matte value not inherited by child nodes",
+              "tickets": [
+                "ARNOLD-17561"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2547\" target=\"_blank\" rel=\"noopener\">usd#2547</a> - Changing material terminal is not updated with Hydra 2",
+              "tickets": [
+                "usd#2547"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2558\" target=\"_blank\" rel=\"noopener\">usd#2558</a> - Indexed user data shouldn't author the idxs companion to USD",
+              "tickets": [
+                "usd#2558"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2563\" target=\"_blank\" rel=\"noopener\">usd#2563</a> - Incorrect region renders in Hydra when one axis is not cropped",
+              "tickets": [
+                "usd#2563"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2566\" target=\"_blank\" rel=\"noopener\">usd#2566</a> - Fixed crashes when a render delegate is deleted while another is rendering",
+              "tickets": [
+                "usd#2566"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2568\" target=\"_blank\" rel=\"noopener\">usd#2568</a> - Changing the root shader in IPR is not updated when it was present in the previous shading tree",
+              "tickets": [
+                "usd#2568"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2572\" target=\"_blank\" rel=\"noopener\">usd#2572</a> - Arnold product types not working if drivers:parameter:aov:name is not defined",
+              "tickets": [
+                "usd#2572"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2580\" target=\"_blank\" rel=\"noopener\">usd#2580</a> - String per-instance primvars cannot resolve indices",
+              "tickets": [
+                "usd#2580"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.28. This is equivalent to RHEL/Rocky 8. macOS 12 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M-series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7510_html.html",
+      "scrapedAt": "2026-03-30T18:50:34.914Z"
+    },
+    {
+      "version": "7.5.0.0",
+      "versionId": "7500",
+      "releaseType": "release",
+      "intro": "25 March 2026",
+      "sections": [
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "html": "<strong>Better backfacing normal</strong>: Interpolated normals facing away from the camera could produce darkening artifacts on low‑poly meshes. Such normals are now bent toward the view direction to prevent this. (ARNOLD-6993)",
+              "tickets": [
+                "ARNOLD-6993"
+              ]
+            },
+            {
+              "html": "<strong>Unify Gaussian filter on GPU</strong>: The GPU camera code now uses the same Gaussian filter implementation as the CPU. This provides a closer match and more consistent results between CPU and GPU. (ARNOLD-17059)",
+              "tickets": [
+                "ARNOLD-17059"
+              ]
+            },
+            {
+              "html": "<strong>OpenColorIO 2.5.1</strong>: Arnold now includes OpenColorIO 2.5.1. This update includes all fixes and small improvements since the 2.5.0 release. See the <a href=\"https://github.com/AcademySoftwareFoundation/OpenColorIO/releases/tag/v2.5.1\" target=\"_blank\" rel=\"noopener\">full release notes</a> for more details. (ARNOLD-17324)",
+              "tickets": [
+                "ARNOLD-17324"
+              ]
+            },
+            {
+              "html": "<strong>Upgrade Autodesk Analytics Program</strong>: Arnold includes a newer version of the Autodesk Analytics Program (ADP), which brings stability and performance improvements. (ARNOLD-16814)",
+              "tickets": [
+                "ARNOLD-16814"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Changes",
+          "items": [
+            {
+              "html": "<strong>AtMatrix API</strong>: Now supports inequality comparisons via <code>operator!=</code>. (ARNOLD-17354)",
+              "tickets": [
+                "ARNOLD-17354"
+              ]
+            },
+            {
+              "html": "<strong>Distributed Kick</strong>: <code>kick</code> has two new command-line parameters: <code>--tile y x</code> and <code>--merge</code>, for splitting a render over multiple processes. <code>--tile y x</code> takes two integer arguments specifying tile <code>y</code> out of <code>x</code> total tiles (for example, <code>--tile 0 4</code> renders tile 1 of 4, '--tile 1 4' renders tile 2 of 4, and so on). Each tile is saved with the tile number as part of the file name (for example, example.0002_0_4.exr). After you render all tiles, run <code>kick --merge</code> with the same command line to merge the tiles into the final image. (ARNOLD-16921)",
+              "tickets": [
+                "ARNOLD-16921"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible Changes",
+          "items": [
+            {
+              "html": "<strong>Bloom now defaults to aperture mode</strong>: The lens_effects imager's bloom mode now defaults to using the <code>aperture</code> mode instead of the deprecated <code>simple</code> mode. (ARNOLD-17295)",
+              "tickets": [
+                "ARNOLD-17295"
+              ]
+            },
+            {
+              "html": "<strong>Bloom dispersion enabled by default</strong>: The bloom dispersion used in aperture mode now defaults to 1. (ARNOLD-17305)",
+              "tickets": [
+                "ARNOLD-17305"
+              ]
+            },
+            {
+              "html": "<strong>USD doubleSided attribute ignored by default</strong>: The UsdGeom doubleSided attribute is false by default, so geometry renders as single-sided, which is different from the default Arnold behavior. To prevent unexpected renders and unwanted artefacts caused by this difference, Arnold now ignores this USD attribute and uses the Arnold-specific <code>primvars:arnold:sidedness</code> instead. <a href=\"https://github.com/Autodesk/arnold-usd/issues/2099\" target=\"_blank\" rel=\"noopener\">usd#2099</a> You can roll back this change by disabling the new options attribute <code>usd_override_double_sided</code> (ARNOLD-17312)",
+              "tickets": [
+                "usd#2099",
+                "ARNOLD-17312"
+              ]
+            },
+            {
+              "html": "<strong>Cryptomatte with instances</strong>: The Cryptomatte attribute <code>object_split_instances</code> is now disabled by default, so that Cryptomatte produces smaller manifests for intstances and returns the same hash for all instances of the same object. (ARNOLD-17320)",
+              "tickets": [
+                "ARNOLD-17320"
+              ]
+            },
+            {
+              "html": "<strong>Still API compatible with 7.4</strong>: No Arnold ABI has been modified/removed, so Arnold 7.5 is still backwards compatible with shaders/plugins compiled for Arnold 7.4. (ARNOLD-17301)",
+              "tickets": [
+                "ARNOLD-17301"
+              ]
+            },
+            {
+              "html": "<strong>Autodesk Network Licensing version</strong>: Arnold 7.5 switches to <code>ARNOL_2027</code> licensing. Single-user subscriptions will work with Arnold 7.5. The plugin installers automatically register the new version. If you do not use a plugin, then after you download Arnold, open the Arnold License Manager and click Register. Existing network licenses will not work with Arnold 7.5. Log on to your Autodesk account to generate your new <code>ARNOL_2027</code> licenses. If you do not run the installers, and you manually register Arnold, then use<code>--pk C0PS1 --pv 2027.0.0.F</code> with the <code>AdskLicensingInstHelper</code> command.",
+              "tickets": []
+            },
+            {
+              "html": "Single-user subscriptions will work with Arnold 7.5. The plugin installers automatically register the new version. If you do not use a plugin, then after you download Arnold, open the Arnold License Manager and click Register.",
+              "tickets": []
+            },
+            {
+              "html": "Existing network licenses will not work with Arnold 7.5. Log on to your Autodesk account to generate your new <code>ARNOL_2027</code> licenses.",
+              "tickets": []
+            },
+            {
+              "html": "If you do not run the installers, and you manually register Arnold, then use<code>--pk C0PS1 --pv 2027.0.0.F</code> with the <code>AdskLicensingInstHelper</code> command.",
+              "tickets": []
+            },
+            {
+              "html": "<strong>macOS 12</strong>: Arnold now requires macOS 12 or later. (ARNOLD-15807)",
+              "tickets": [
+                "ARNOLD-15807"
+              ]
+            },
+            {
+              "html": "<strong>Improved API Safety with [[nodiscard]] Annotations</strong>: The Arnold API now uses <strong>[[nodiscard]]</strong> on key return values to help plugin developers catch unintended mistakes at compile time. If your code fails to compile, it likely means a return value that affects behavior was being ignored. This change helps surface issues earlier, making your custom plugins more reliable and easier to debug. Update your code to use the returned value where appropriate, or remove calls that have no effect. (ARNOLD-16995)",
+              "tickets": [
+                "ARNOLD-16995"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-17045 - Fixed procedural curves not having transparent shadows",
+              "tickets": [
+                "ARNOLD-17045"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2533\" target=\"_blank\" rel=\"noopener\">usd#2533</a> - Connections to shader with multiple outputs not properly authored to USD",
+              "tickets": [
+                "usd#2533"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2519\" target=\"_blank\" rel=\"noopener\">usd#2519</a> - Fix transform of cameras under procedurals",
+              "tickets": [
+                "usd#2519"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2526\" target=\"_blank\" rel=\"noopener\">usd#2526</a> - Update the arnold frame value when changing frame in solaris",
+              "tickets": [
+                "usd#2526"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2542\" target=\"_blank\" rel=\"noopener\">usd#2542</a> - Remove dependency on usdSkelImaging in the scene index.",
+              "tickets": [
+                "usd#2542"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2530\" target=\"_blank\" rel=\"noopener\">usd#2530</a> - Support uniform and vertex-interpolated primvars that are indexed",
+              "tickets": [
+                "usd#2530"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2532\" target=\"_blank\" rel=\"noopener\">usd#2532</a> - Fix crashes in IPR with ArnoldGinstance primitives",
+              "tickets": [
+                "usd#2532"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.28. This is equivalent to RHEL/Rocky 8. macOS 12 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M-series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN GPU support is limited to: macOS Apple native CPUs (M1 and newer) Linux NVIDIA GPUs using Turing or newer architectures Windows Intel Xe dedicated and integrated GPUs NVIDIA GPUs using Turing or newer architectures AMD GPUs with RDNA2 (Navi 21 only) and RDNA3 (Navi 3x) architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7500_html.html",
+      "scrapedAt": "2026-03-30T18:50:36.525Z"
+    },
     {
       "version": "7.4.5.1",
       "versionId": "7451",
@@ -8450,28 +8857,28 @@
       "versionId": "7122",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7122_html.html",
-      "scrapedAt": "2026-03-23T23:16:20.312Z"
+      "scrapedAt": "2026-03-30T18:50:38.221Z"
     },
     {
       "version": "7.1.2.1",
       "versionId": "7121",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7121_html.html",
-      "scrapedAt": "2026-03-23T23:16:20.498Z"
+      "scrapedAt": "2026-03-30T18:50:38.567Z"
     },
     {
       "version": "7.1.2.0",
       "versionId": "7120",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7120_html.html",
-      "scrapedAt": "2026-03-23T23:16:20.676Z"
+      "scrapedAt": "2026-03-30T18:50:38.798Z"
     },
     {
       "version": "7.1.1.1",
       "versionId": "7111",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7111_html.html",
-      "scrapedAt": "2026-03-23T23:16:21.092Z"
+      "scrapedAt": "2026-03-30T18:50:39.030Z"
     },
     {
       "version": "7.1.1.0",
@@ -13430,5 +13837,5 @@
       "scrapedAt": "2026-03-23T23:17:00.322Z"
     }
   ],
-  "updatedAt": "2026-03-23T23:17:01.824Z"
+  "updatedAt": "2026-03-30T18:50:39.030Z"
 }

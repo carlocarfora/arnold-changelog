@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "6510",
+      "label": "6.5.1.0",
+      "series": "6x"
+    },
+    {
       "id": "6461",
       "label": "6.4.6.1",
       "series": "6x"
@@ -412,6 +417,443 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "6.5.1.0",
+      "versionId": "6510",
+      "arnoldCoreVersion": null,
+      "houdiniVersions": [
+        "20.0.896",
+        "20.5.684",
+        "21.0.631"
+      ],
+      "gccVersions": [
+        "11.2.1"
+      ],
+      "releaseType": "release",
+      "intro": "25 March 2026",
+      "sections": [
+        {
+          "heading": "Flow Render Tech Preview",
+          "items": [
+            {
+              "html": "HtoA 6.5.1.0 includes a Tech Preview of Flow Render, an Arnold cloud-rendering solution. We are providing 2400 minutes (per user, per month) of rendering time to Arnold users for testing and evaluating the service. Please report any feedback or issues in the <a href=\"https://forums.autodesk.com/t5/arnold-forums/ct-p/arnold-en\" target=\"_blank\" rel=\"noopener\">Arnold forums</a>.",
+              "tickets": []
+            },
+            {
+              "html": "See the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_for_houdini_ah_flow_render_html\" target=\"_blank\" rel=\"noopener\">Flow Render Tech Preview</a> documentation for more information.",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "html": "<strong>Custom AOVs for volume shaders</strong>: The <code>aov_write_rgb</code>, <code>aov_write_float</code>, and <code>aov_write_rgba</code> shader nodes can now be used in volume shader networks, just as they already work for surface shaders. Previously, custom AOVs were silently ignored in volume contexts. The volume raymarcher now collects AOV closures at each step and integrates them using Beer-Lambert weighting, producing physically consistent AOV outputs. (ARNOLD-6548) Both flat (EXR, TIFF) and deep EXR outputs are supported. A warning is logged when <code>aov_write_rgb</code> nodes with conflicting <code>blend_opacity</code> settings are connected to both surface and volume shaders writing to the same AOV name. There is approximately a 16% overhead with two active volume AOVs at fine step sizes (<code>step_size=0.01</code>).",
+              "tickets": [
+                "ARNOLD-6548"
+              ]
+            },
+            {
+              "html": "Both flat (EXR, TIFF) and deep EXR outputs are supported.",
+              "tickets": []
+            },
+            {
+              "html": "A warning is logged when <code>aov_write_rgb</code> nodes with conflicting <code>blend_opacity</code> settings are connected to both surface and volume shaders writing to the same AOV name.",
+              "tickets": []
+            },
+            {
+              "html": "There is approximately a 16% overhead with two active volume AOVs at fine step sizes (<code>step_size=0.01</code>).",
+              "tickets": []
+            },
+            {
+              "html": "<strong>New tangent_space_type option for normal_map</strong>: A new <code>tangent_space_type</code> parameter adds support for <a href=\"http://mikktspace.com\" target=\"_blank\" rel=\"noopener\">MIKKTSpace</a> normal mapping. The <code>standard</code> mode preserves the previous behavior, while the <code>mikk</code> mode imports <code>normal</code>, <code>tangent</code>, and <code>bitangent</code> generated with MIKKTSpace in DCC tools such as 3ds Max and evaluates the normal map using MIKKTSpace for consistent shading across applications. (ARNOLD-8377)",
+              "tickets": [
+                "ARNOLD-8377"
+              ]
+            },
+            {
+              "html": "<strong>Faster CPU renders on Windows</strong>: CPU renders on Windows have been optimized. Most, though not all, scenes show faster render times. (ARNOLD-17549) scene 7.5.1 speedup vs 7.5.0 OpenPBR shader ball 1.16x gtc-robot 1.08x Disney cloud 1.07x ALab 1.04x Intel jungle ruins 1.00x",
+              "tickets": [
+                "ARNOLD-17549"
+              ]
+            },
+            {
+              "html": "<strong>Apply unit auto-scaling to linked shader parameters</strong>: Linked shader parameters are now auto-scaled to scene units when driven by links (for example, <code>subsurface_scale</code> from a texture), ensuring unit-dependent values retain their expected magnitudes across different scene unit settings. (ARNOLD-17176)",
+              "tickets": [
+                "ARNOLD-17176"
+              ]
+            },
+            {
+              "html": "<strong>Custom position for nearest_points shader</strong>: The <code>nearest_points</code> shader has a new <code>query_position</code> parameter, which allows you to link to an input and customize the point where the point cloud is queried. When unlinked, <code>sg-&gt;P</code> (world-space shading position) is used instead. (ARNOLD-17360)",
+              "tickets": [
+                "ARNOLD-17360"
+              ]
+            },
+            {
+              "html": "<strong>New interior_set string user data</strong>: The new <code>interior_set</code> attribute enables coherent scattering (such as transmission and SSS) across shapes that share the same set name. This allows smooth propagation of scattering between separate shapes, such as large ocean surfaces modeled as multiple tiles. <code>interior_set</code> replaces <code>sss_setname</code>, although <code>sss_setname</code> remains supported for now. If both attributes are present on the same object, <code>interior_set</code> takes precedence. (ARNOLD-9038)",
+              "tickets": [
+                "ARNOLD-9038"
+              ]
+            },
+            {
+              "html": "<strong>Qt Installer</strong> - The installer has been updated to Qt Installer Framework 4.10, the custom --extract and --silent flags present in the old installer have been replaced with the <a href=\"https://doc.qt.io/qtinstallerframework/ifw-use-cases-cli.html#unattended-usage\" target=\"_blank\" rel=\"noopener\">modern workflow</a> and new command line flags: <strong>Silent install and Houdini package setup</strong> <code>./htoa-6.5.1.0_r34e511b_houdini-21.0.631_lin.run install --accept-licenses --confirm-command --root /opt/custom_htoa_install_dir</code> <strong>Silent extraction and skip the license updater (which normally requires admin privileges)</strong> <code>./htoa-6.5.1.0_r34e511b_houdini-21.0.631_linux.run install --accept-licenses --confirm-command --root /opt/custom_htoa_install_dir ExtractOnly=true SkipLicenseUpdater=true</code> <strong>Skip Flow Render install</strong> <code>./htoa-6.5.1.0_r34e511b_houdini-21.0.631_linux.run install --accept-licenses --confirm-command --root /opt/custom_htoa_install_dir InstallFlowRender=false</code>",
+              "tickets": []
+            },
+            {
+              "html": "<strong>Silent install and Houdini package setup</strong> <code>./htoa-6.5.1.0_r34e511b_houdini-21.0.631_lin.run install --accept-licenses --confirm-command --root /opt/custom_htoa_install_dir</code>",
+              "tickets": []
+            },
+            {
+              "html": "<strong>Silent extraction and skip the license updater (which normally requires admin privileges)</strong> <code>./htoa-6.5.1.0_r34e511b_houdini-21.0.631_linux.run install --accept-licenses --confirm-command --root /opt/custom_htoa_install_dir ExtractOnly=true SkipLicenseUpdater=true</code>",
+              "tickets": []
+            },
+            {
+              "html": "<strong>Skip Flow Render install</strong> <code>./htoa-6.5.1.0_r34e511b_houdini-21.0.631_linux.run install --accept-licenses --confirm-command --root /opt/custom_htoa_install_dir InstallFlowRender=false</code>",
+              "tickets": []
+            },
+            {
+              "html": "<strong>OSL generalized Schlick Fresnel exponent</strong>: The OSL <code>generalized_schlick_bsdf</code> closure now fully supports the <code>exponent</code> parameter for both reflection and transmission lobes. Previously, Arnold ignored the exponent (effectively always using the standard Schlick value of 5) and approximated the transmission lobe by converting F0 to a dielectric IOR via the Gulbrandsen method. Both lobes now use a proper generalized Schlick Fresnel evaluation with configurable <code>f0</code>, <code>f90</code>, and <code>exponent</code>. Scenes using <code>generalized_schlick_bsdf</code> with a non-default exponent, or with significant transmission, may produce slightly different renders. (ARNOLD-16834)",
+              "tickets": [
+                "ARNOLD-16834"
+              ]
+            },
+            {
+              "html": "<strong>Bloom driver luminance threshold</strong>: Bloom now uses a smoothed luminance-based threshold to avoid hue shifts from per-channel clipping. (ARNOLD-17443)",
+              "tickets": [
+                "ARNOLD-17443"
+              ]
+            },
+            {
+              "html": "<strong>Improved maketx error messages</strong>: TX conversion error messages now include the target TX filename, which makes it easier to identify the cause of the error. (ARNOLD-17044)",
+              "tickets": [
+                "ARNOLD-17044"
+              ]
+            },
+            {
+              "html": "<strong>Include options node and driver outputs in stats JSON</strong>: Stats output now records the top-level options node and, for each image driver, an entry with the driver filename and AOV and output details, improving the metadata available for diagnostics and downstream tools. (ARNOLD-16812)",
+              "tickets": [
+                "ARNOLD-16812"
+              ]
+            },
+            {
+              "html": "<strong>Enable CER on Linux</strong>: Added support for the Customer Error Reporting (CER) library on Linux. (ARNOLD-15747)",
+              "tickets": [
+                "ARNOLD-15747"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "html": "<strong>USD warnings and errors in Arnold logs</strong>: The USD composition warnings and errors when loading a file are now included in the Arnold log <a href=\"https://github.com/Autodesk/arnold-usd/issues/2435\" target=\"_blank\" rel=\"noopener\">usd#2435</a>",
+              "tickets": [
+                "usd#2435"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Changes",
+          "items": [
+            {
+              "html": "<strong>volume_double_henyey_greenstein OSL support</strong>: The double Henyey-Greenstein phase function <code>volume_double_henyey_greenstein</code>, which corresponds to <code>AiClosureVolumeDoubleHenyeyGreenstein</code>, is now available in OSL. (ARNOLD-16701)",
+              "tickets": [
+                "ARNOLD-16701"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible Changes",
+          "items": [
+            {
+              "html": "<strong>OSL generalized_schlick_bsdf rendering change</strong>: Scenes using the OSL <code>generalized_schlick_bsdf</code> closure with a non-default <code>exponent</code> value (other than 5) or significant transmission may produce slightly different renders due to corrected Fresnel evaluation. (ARNOLD-16834)",
+              "tickets": [
+                "ARNOLD-16834"
+              ]
+            },
+            {
+              "html": "<strong>Renamed enum AI_CLOSURE_DEBUG to AI_CLOSURE_AOV</strong>: Code referencing <code>AI_CLOSURE_DEBUG</code> must be updated. (ARNOLD-6548)",
+              "tickets": [
+                "ARNOLD-6548"
+              ]
+            },
+            {
+              "html": "<strong>OSL generalized Schlick Fresnel exponent</strong>: The OSL <code>generalized_schlick_bsdf</code> closure now fully supports the <code>exponent</code> parameter for both reflection and transmission lobes. Previously, Arnold ignored the exponent (effectively always using the standard Schlick value of 5) and approximated the transmission lobe by converting F0 to a dielectric IOR via the Gulbrandsen method. Both lobes now use a proper generalized Schlick Fresnel evaluation with configurable <code>f0</code>, <code>f90</code>, and <code>exponent</code>. Scenes using <code>generalized_schlick_bsdf</code> with a non-default exponent, or with significant transmission, may produce slightly different renders. (ARNOLD-16834)",
+              "tickets": [
+                "ARNOLD-16834"
+              ]
+            },
+            {
+              "html": "<strong>Bloom driver luminance threshold</strong>: Bloom now uses a smoothed luminance-based threshold to avoid hue shifts from per-channel clipping. (ARNOLD-17443)",
+              "tickets": [
+                "ARNOLD-17443"
+              ]
+            },
+            {
+              "html": "<strong>Improved maketx error messages</strong>: TX conversion error messages now include the target TX filename, which makes it easier to identify the cause of the error. (ARNOLD-17044)",
+              "tickets": [
+                "ARNOLD-17044"
+              ]
+            },
+            {
+              "html": "<strong>Include options node and driver outputs in stats JSON</strong>: Stats output now records the top-level options node and, for each image driver, an entry with the driver filename and AOV and output details, improving the metadata available for diagnostics and downstream tools. (ARNOLD-16812)",
+              "tickets": [
+                "ARNOLD-16812"
+              ]
+            },
+            {
+              "html": "<strong>Enable CER on Linux</strong>: Added support for the Customer Error Reporting (CER) library on Linux. (ARNOLD-15747)",
+              "tickets": [
+                "ARNOLD-15747"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "html": "<strong>USD warnings and errors in Arnold logs</strong>: The USD composition warnings and errors when loading a file are now included in the Arnold log <a href=\"https://github.com/Autodesk/arnold-usd/issues/2435\" target=\"_blank\" rel=\"noopener\">usd#2435</a>",
+              "tickets": [
+                "usd#2435"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Changes",
+          "items": [
+            {
+              "html": "<strong>volume_double_henyey_greenstein OSL support</strong>: The double Henyey-Greenstein phase function <code>volume_double_henyey_greenstein</code>, which corresponds to <code>AiClosureVolumeDoubleHenyeyGreenstein</code>, is now available in OSL. (ARNOLD-16701)",
+              "tickets": [
+                "ARNOLD-16701"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible Changes",
+          "items": [
+            {
+              "html": "<strong>OSL generalized_schlick_bsdf rendering change</strong>: Scenes using the OSL <code>generalized_schlick_bsdf</code> closure with a non-default <code>exponent</code> value (other than 5) or significant transmission may produce slightly different renders due to corrected Fresnel evaluation. (ARNOLD-16834)",
+              "tickets": [
+                "ARNOLD-16834"
+              ]
+            },
+            {
+              "html": "<strong>Renamed enum AI_CLOSURE_DEBUG to AI_CLOSURE_AOV</strong>: Code referencing <code>AI_CLOSURE_DEBUG</code> must be updated. (ARNOLD-6548)",
+              "tickets": [
+                "ARNOLD-6548"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-15273 - Rare GPU artifacts with certain scene, GPU, and driver combinations",
+              "tickets": [
+                "ARNOLD-15273"
+              ]
+            },
+            {
+              "html": "ARNOLD-17465 - Crash when a node turns invalid in IPR",
+              "tickets": [
+                "ARNOLD-17465"
+              ]
+            },
+            {
+              "html": "ARNOLD-17498 - Fixed incorrect volume mipmap selection in certain situations",
+              "tickets": [
+                "ARNOLD-17498"
+              ]
+            },
+            {
+              "html": "ARNOLD-17500 - Crash with invalid &quot;idxs&quot; user data",
+              "tickets": [
+                "ARNOLD-17500"
+              ]
+            },
+            {
+              "html": "ARNOLD-17553 - Crashes with empty arrays in polymeshes",
+              "tickets": [
+                "ARNOLD-17553"
+              ]
+            },
+            {
+              "html": "ARNOLD-17561 - [GPU] Matte value not inherited by child nodes",
+              "tickets": [
+                "ARNOLD-17561"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2547\" target=\"_blank\" rel=\"noopener\">usd#2547</a> - Changing material terminal is not updated with Hydra 2",
+              "tickets": [
+                "usd#2547"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2558\" target=\"_blank\" rel=\"noopener\">usd#2558</a> - Indexed user data shouldn't author the idxs companion to USD",
+              "tickets": [
+                "usd#2558"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2563\" target=\"_blank\" rel=\"noopener\">usd#2563</a> - Incorrect region renders in Hydra when one axis is not cropped",
+              "tickets": [
+                "usd#2563"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2566\" target=\"_blank\" rel=\"noopener\">usd#2566</a> - Fixed crashes when a render delegate is deleted while another is rendering",
+              "tickets": [
+                "usd#2566"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2568\" target=\"_blank\" rel=\"noopener\">usd#2568</a> - Changing the root shader in IPR is not updated when it was present in the previous shading tree",
+              "tickets": [
+                "usd#2568"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2572\" target=\"_blank\" rel=\"noopener\">usd#2572</a> - Arnold product types not working if drivers:parameter:aov:name is not defined",
+              "tickets": [
+                "usd#2572"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2580\" target=\"_blank\" rel=\"noopener\">usd#2580</a> - String per-instance primvars cannot resolve indices",
+              "tickets": [
+                "usd#2580"
+              ]
+            },
+            {
+              "html": "HTOA-3141 - Solaris viewport does not update for material changes",
+              "tickets": [
+                "HTOA-3141"
+              ]
+            },
+            {
+              "html": "HTOA-3153 - Changing parmname in parameter vop prints an error",
+              "tickets": [
+                "HTOA-3153"
+              ]
+            },
+            {
+              "html": "HTOA-3150 - Switch RGBA sourceName to color, which fixes an all black render channel in Nuke",
+              "tickets": [
+                "HTOA-3150"
+              ]
+            },
+            {
+              "html": "HTOA-3127 - IPR crashes when switching frames or changing cameras",
+              "tickets": [
+                "HTOA-3127"
+              ]
+            },
+            {
+              "html": "HTOA-3091 - Solaris: husk tiled render does not match full frame render",
+              "tickets": [
+                "HTOA-3091"
+              ]
+            },
+            {
+              "html": "HTOA-3117 - Solaris IPR crash with looping value clips",
+              "tickets": [
+                "HTOA-3117"
+              ]
+            },
+            {
+              "html": "HTOA-3192 - Delegate crash when duplicating Solaris render",
+              "tickets": [
+                "HTOA-3192"
+              ]
+            },
+            {
+              "html": "HTOA-3037 - husk renders with arnold product type do not work with -o frame number variables",
+              "tickets": [
+                "HTOA-3037"
+              ]
+            },
+            {
+              "html": "HTOA-2036 - OneDrive breaks package installation",
+              "tickets": [
+                "HTOA-2036"
+              ]
+            },
+            {
+              "html": "HTOA-3022 - Ill-formed SdfPath warnings",
+              "tickets": [
+                "HTOA-3022"
+              ]
+            },
+            {
+              "html": "HTOA-3180 - Connecting a subnet input breaks outputs in Solaris materials",
+              "tickets": [
+                "HTOA-3180"
+              ]
+            },
+            {
+              "html": "HTOA-3195 - Import Materials does not set Color Space correctly",
+              "tickets": [
+                "HTOA-3195"
+              ]
+            },
+            {
+              "html": "HTOA-3207 - Cannot change path on RenderProductPrim in Arnold Render Settings",
+              "tickets": [
+                "HTOA-3207"
+              ]
+            },
+            {
+              "html": "HTOA-3208 - Change default thread count to -1 in render settings",
+              "tickets": [
+                "HTOA-3208"
+              ]
+            },
+            {
+              "html": "HTOA-3209 - Expose cryptomatte &quot;Object Split Instances&quot; toggle on Arnold Render Settings",
+              "tickets": [
+                "HTOA-3209"
+              ]
+            },
+            {
+              "html": "HTOA-3213 - Qt6 error on &quot;Inspect Arnold Operators&quot; popup",
+              "tickets": [
+                "HTOA-3213"
+              ]
+            },
+            {
+              "html": "HTOA-3214 - Scene Import LOP fails for Arnold Usd procedural due to missing schema",
+              "tickets": [
+                "HTOA-3214"
+              ]
+            },
+            {
+              "html": "HTOA-3220 - Fix Solaris viewport render settings defaults",
+              "tickets": [
+                "HTOA-3220"
+              ]
+            },
+            {
+              "html": "HTOA-3210 - AiBegin/AiEnd are now only called once by the plugin, which improves stability when rendering in multiple scene views",
+              "tickets": [
+                "HTOA-3210"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Houdini, Houdini FX, Houdini Indie, and Houdini Education 20.0.896 20.5.684 21.0.631 Flow Render is available for the default Houdini Qt versions ( Qt6 for Houdini 21, and Qt5 for Houdini 20.5 and Houdini 20.0) Linux with at least glibc 2.28 and libstdc++ 11.2.1 (gcc 11.2.1). This is equivalent to Rocky 8. macOS 11 or later Apple Mac models with M series chips are natively supported by HtoA x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chip are supported natively. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: HtoA 6.x Release Notes",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6510_html.html",
+      "scrapedAt": "2026-03-30T18:50:39.325Z"
+    },
     {
       "version": "6.4.6.1",
       "versionId": "6461",
@@ -9521,63 +9963,63 @@
       "versionId": "6133",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6133_html.html",
-      "scrapedAt": "2026-03-24T11:42:49.338Z"
+      "scrapedAt": "2026-03-30T18:50:40.992Z"
     },
     {
       "version": "6.1.3.0",
       "versionId": "6130",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6130_html.html",
-      "scrapedAt": "2026-03-24T11:42:49.446Z"
+      "scrapedAt": "2026-03-30T18:50:41.093Z"
     },
     {
       "version": "6.1.1.0",
       "versionId": "6110",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6110_html.html",
-      "scrapedAt": "2026-03-24T11:42:49.531Z"
+      "scrapedAt": "2026-03-30T18:50:41.200Z"
     },
     {
       "version": "6.1.0.0",
       "versionId": "6100",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6100_html.html",
-      "scrapedAt": "2026-03-24T11:42:49.614Z"
+      "scrapedAt": "2026-03-30T18:50:41.293Z"
     },
     {
       "version": "6.0.2.2",
       "versionId": "6022",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6022_html.html",
-      "scrapedAt": "2026-03-24T11:42:49.700Z"
+      "scrapedAt": "2026-03-30T18:50:41.384Z"
     },
     {
       "version": "6.0.2.1",
       "versionId": "6021",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6021_html.html",
-      "scrapedAt": "2026-03-24T11:42:49.922Z"
+      "scrapedAt": "2026-03-30T18:50:41.489Z"
     },
     {
       "version": "6.0.2.0",
       "versionId": "6020",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6020_html.html",
-      "scrapedAt": "2026-03-24T11:42:50.007Z"
+      "scrapedAt": "2026-03-30T18:50:41.579Z"
     },
     {
       "version": "6.0.1.0",
       "versionId": "6010",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6010_html.html",
-      "scrapedAt": "2026-03-24T11:42:50.096Z"
+      "scrapedAt": "2026-03-30T18:50:41.719Z"
     },
     {
       "version": "6.0.0.0",
       "versionId": "6000",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6000_html.html",
-      "scrapedAt": "2026-03-24T11:42:50.435Z"
+      "scrapedAt": "2026-03-30T18:50:41.812Z"
     },
     {
       "version": "5.6.3.1",
@@ -12564,5 +13006,5 @@
       "scrapedAt": "2026-03-24T11:43:21.195Z"
     }
   ],
-  "updatedAt": "2026-03-24T11:43:22.697Z"
+  "updatedAt": "2026-03-30T18:50:41.812Z"
 }
