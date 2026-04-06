@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "6462",
+      "label": "6.4.6.2",
+      "series": "6x"
+    },
+    {
       "id": "6510",
       "label": "6.5.1.0",
       "series": "6x"
@@ -417,6 +422,121 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "6.4.6.2",
+      "versionId": "6462",
+      "arnoldCoreVersion": null,
+      "houdiniVersions": [
+        "20.0.896",
+        "20.5.684",
+        "21.0.596"
+      ],
+      "gccVersions": [
+        "11.2.1"
+      ],
+      "releaseType": "release",
+      "intro": "01 April 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-13050 - Color manager could not find sRGB config with non-standard name",
+              "tickets": [
+                "ARNOLD-13050"
+              ]
+            },
+            {
+              "html": "ARNOLD-15293 - Append with multipart triggers ERROR when output file already complete",
+              "tickets": [
+                "ARNOLD-15293"
+              ]
+            },
+            {
+              "html": "ARNOLD-15504 - Missing update dependency for OpenPBR surface nits_per_unit",
+              "tickets": [
+                "ARNOLD-15504"
+              ]
+            },
+            {
+              "html": "ARNOLD-15631 - Crash when enabling autocrop with multipart/tiled EXR outputs",
+              "tickets": [
+                "ARNOLD-15631"
+              ]
+            },
+            {
+              "html": "ARNOLD-15889 - Rare crash when using .ass file with specific sizes and data",
+              "tickets": [
+                "ARNOLD-15889"
+              ]
+            },
+            {
+              "html": "ARNOLD-16573 - Maketx crash with TIFFs with malformed exif data",
+              "tickets": [
+                "ARNOLD-16573"
+              ]
+            },
+            {
+              "html": "ARNOLD-16749 - Random GPU crash",
+              "tickets": [
+                "ARNOLD-16749"
+              ]
+            },
+            {
+              "html": "ARNOLD-17416 - Incorrect results with autocrop and multipart",
+              "tickets": [
+                "ARNOLD-17416"
+              ]
+            },
+            {
+              "html": "ARNOLD-17429 - Fixed <code>ARNOLD_ND_image</code> MaterialX node definition input order mismatch that caused viewport shader compilation failure",
+              "tickets": [
+                "ARNOLD-17429"
+              ]
+            },
+            {
+              "html": "ARNOLD-17441 - Allow interactive changes for aperture bloom parameters",
+              "tickets": [
+                "ARNOLD-17441"
+              ]
+            },
+            {
+              "html": "ARNOLD-17451 - Crash in Linux with certain host processes",
+              "tickets": [
+                "ARNOLD-17451"
+              ]
+            },
+            {
+              "html": "ARNOLD-17500 - Crash with invalid &quot;idxs&quot; user data",
+              "tickets": [
+                "ARNOLD-17500"
+              ]
+            },
+            {
+              "html": "ARNOLD-17521 - Denoised outputs ignore driver's half precision",
+              "tickets": [
+                "ARNOLD-17521"
+              ]
+            },
+            {
+              "html": "ARNOLD-17524 - Random crash with pointclouds",
+              "tickets": [
+                "ARNOLD-17524"
+              ]
+            },
+            {
+              "html": "ARNOLD-17652 - Render files written on every pass for USD files",
+              "tickets": [
+                "ARNOLD-17652"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Houdini, Houdini FX, Houdini Indie and Houdini Education 20.0.896 20.5.684 21.0.596 Linux with at least glibc 2.17 and libstdc++ 11.2.1 (gcc 11.2.1) for Houdini 20/20.5. This is equivalent to Rocky 8. macOS 11 or later Apple Mac models with M series chips are supported in native mode x86-64 CPUs need to support the SSE4.1 instruction set. GPU rendering works on Windows and Linux only and requires driver versions newer than 582.16/580.126 (Windows/Linux). Older drivers will log an error and abort the render. Note that you can use New Feature Branch drivers. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Optix™ denoiser requires an NVidia GPU with CUDA™ Compute Capability 5.0 and above. Intel OIDN GPU support is limited to: macOS Apple native CPUs (M1 and newer) Windows Intel Xe dedicated and integrated GPUs NVIDIA GPUs using Turing or newer architectures Parent page: HtoA 6.x Release Notes",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6462_html.html",
+      "scrapedAt": "2026-04-06T09:01:25.638Z"
+    },
     {
       "version": "6.5.1.0",
       "versionId": "6510",
@@ -9963,63 +10083,63 @@
       "versionId": "6133",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6133_html.html",
-      "scrapedAt": "2026-03-30T18:50:40.992Z"
+      "scrapedAt": "2026-04-06T09:01:27.230Z"
     },
     {
       "version": "6.1.3.0",
       "versionId": "6130",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6130_html.html",
-      "scrapedAt": "2026-03-30T18:50:41.093Z"
+      "scrapedAt": "2026-04-06T09:01:27.348Z"
     },
     {
       "version": "6.1.1.0",
       "versionId": "6110",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6110_html.html",
-      "scrapedAt": "2026-03-30T18:50:41.200Z"
+      "scrapedAt": "2026-04-06T09:01:27.438Z"
     },
     {
       "version": "6.1.0.0",
       "versionId": "6100",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6100_html.html",
-      "scrapedAt": "2026-03-30T18:50:41.293Z"
+      "scrapedAt": "2026-04-06T09:01:27.528Z"
     },
     {
       "version": "6.0.2.2",
       "versionId": "6022",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6022_html.html",
-      "scrapedAt": "2026-03-30T18:50:41.384Z"
+      "scrapedAt": "2026-04-06T09:01:27.615Z"
     },
     {
       "version": "6.0.2.1",
       "versionId": "6021",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6021_html.html",
-      "scrapedAt": "2026-03-30T18:50:41.489Z"
+      "scrapedAt": "2026-04-06T09:01:27.709Z"
     },
     {
       "version": "6.0.2.0",
       "versionId": "6020",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6020_html.html",
-      "scrapedAt": "2026-03-30T18:50:41.579Z"
+      "scrapedAt": "2026-04-06T09:01:27.928Z"
     },
     {
       "version": "6.0.1.0",
       "versionId": "6010",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6010_html.html",
-      "scrapedAt": "2026-03-30T18:50:41.719Z"
+      "scrapedAt": "2026-04-06T09:01:28.016Z"
     },
     {
       "version": "6.0.0.0",
       "versionId": "6000",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6000_html.html",
-      "scrapedAt": "2026-03-30T18:50:41.812Z"
+      "scrapedAt": "2026-04-06T09:01:28.104Z"
     },
     {
       "version": "5.6.3.1",
@@ -13006,5 +13126,5 @@
       "scrapedAt": "2026-03-24T11:43:21.195Z"
     }
   ],
-  "updatedAt": "2026-03-30T18:50:41.812Z"
+  "updatedAt": "2026-04-06T09:01:28.104Z"
 }

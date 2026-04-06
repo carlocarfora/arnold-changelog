@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "7452",
+      "label": "7.4.5.2",
+      "series": "7x"
+    },
+    {
       "id": "7510",
       "label": "7.5.1.0",
       "series": "7x"
@@ -407,6 +412,112 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "7.4.5.2",
+      "versionId": "7452",
+      "releaseType": "release",
+      "intro": "01 April 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-13050 - Color manager could not find sRGB config with non-standard name",
+              "tickets": [
+                "ARNOLD-13050"
+              ]
+            },
+            {
+              "html": "ARNOLD-15293 - Append with multipart triggers ERROR when output file already complete",
+              "tickets": [
+                "ARNOLD-15293"
+              ]
+            },
+            {
+              "html": "ARNOLD-15504 - Missing update dependency for OpenPBR surface nits_per_unit",
+              "tickets": [
+                "ARNOLD-15504"
+              ]
+            },
+            {
+              "html": "ARNOLD-15631 - Crash when enabling autocrop with multipart/tiled EXR outputs",
+              "tickets": [
+                "ARNOLD-15631"
+              ]
+            },
+            {
+              "html": "ARNOLD-15889 - Rare crash when using .ass file with specific sizes and data",
+              "tickets": [
+                "ARNOLD-15889"
+              ]
+            },
+            {
+              "html": "ARNOLD-16573 - Maketx crash with TIFFs with malformed exif data",
+              "tickets": [
+                "ARNOLD-16573"
+              ]
+            },
+            {
+              "html": "ARNOLD-16749 - Random GPU crash",
+              "tickets": [
+                "ARNOLD-16749"
+              ]
+            },
+            {
+              "html": "ARNOLD-17416 - Incorrect results with autocrop and multipart",
+              "tickets": [
+                "ARNOLD-17416"
+              ]
+            },
+            {
+              "html": "ARNOLD-17429 - Fixed <code>ARNOLD_ND_image</code> MaterialX node definition input order mismatch that caused viewport shader compilation failure",
+              "tickets": [
+                "ARNOLD-17429"
+              ]
+            },
+            {
+              "html": "ARNOLD-17441 - Allow interactive changes for aperture bloom parameters",
+              "tickets": [
+                "ARNOLD-17441"
+              ]
+            },
+            {
+              "html": "ARNOLD-17451 - Crash in Linux with certain host processes",
+              "tickets": [
+                "ARNOLD-17451"
+              ]
+            },
+            {
+              "html": "ARNOLD-17500 - Crash with invalid &quot;idxs&quot; user data",
+              "tickets": [
+                "ARNOLD-17500"
+              ]
+            },
+            {
+              "html": "ARNOLD-17521 - Denoised outputs ignore driver's half precision",
+              "tickets": [
+                "ARNOLD-17521"
+              ]
+            },
+            {
+              "html": "ARNOLD-17524 - Random crash with pointclouds",
+              "tickets": [
+                "ARNOLD-17524"
+              ]
+            },
+            {
+              "html": "ARNOLD-17652 - Render files written on every pass for USD files",
+              "tickets": [
+                "ARNOLD-17652"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.28. This is equivalent to RHEL/Rocky 8. macOS 11 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M-series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and requires driver versions newer than 582.16/580.126 (Windows/Linux). Older drivers will log an error and abort the render. Note that you can use New Feature Branch drivers. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN GPU support is limited to: macOS Apple native CPUs (M1 and newer) Linux NVIDIA GPUs using Turing or newer architectures Windows Intel Xe dedicated and integrated GPUs NVIDIA GPUs using Turing or newer architectures AMD GPUs with RDNA2 (Navi 21 only) and RDNA3 (Navi 3x) architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7452_html.html",
+      "scrapedAt": "2026-04-06T09:01:22.523Z"
+    },
     {
       "version": "7.5.1.0",
       "versionId": "7510",
@@ -8857,28 +8968,28 @@
       "versionId": "7122",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7122_html.html",
-      "scrapedAt": "2026-03-30T18:50:38.221Z"
+      "scrapedAt": "2026-04-06T09:01:24.525Z"
     },
     {
       "version": "7.1.2.1",
       "versionId": "7121",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7121_html.html",
-      "scrapedAt": "2026-03-30T18:50:38.567Z"
+      "scrapedAt": "2026-04-06T09:01:24.863Z"
     },
     {
       "version": "7.1.2.0",
       "versionId": "7120",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7120_html.html",
-      "scrapedAt": "2026-03-30T18:50:38.798Z"
+      "scrapedAt": "2026-04-06T09:01:25.046Z"
     },
     {
       "version": "7.1.1.1",
       "versionId": "7111",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7111_html.html",
-      "scrapedAt": "2026-03-30T18:50:39.030Z"
+      "scrapedAt": "2026-04-06T09:01:25.373Z"
     },
     {
       "version": "7.1.1.0",
@@ -13837,5 +13948,5 @@
       "scrapedAt": "2026-03-23T23:17:00.322Z"
     }
   ],
-  "updatedAt": "2026-03-30T18:50:39.030Z"
+  "updatedAt": "2026-04-06T09:01:25.374Z"
 }
