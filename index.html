@@ -543,7 +543,10 @@
       if (target && sectionIdx !== null && itemIdx !== null) {
         requestAnimationFrame(() => {
           const el = document.getElementById(itemElId(versionId, sectionIdx, itemIdx));
-          el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            el.classList.add('deep-linked');
+          }
         });
       }
 

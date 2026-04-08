@@ -605,6 +605,15 @@ main {
 .search-result-section.bug-fixes    { color: var(--subtle); }
 .search-result-section.breaking     { color: var(--amber); }
 
+/* ── Deep-link highlight ─────────────────────────────────────────────────── */
+@keyframes deep-link-flash {
+  0%, 25% { background: var(--accent-lo); }
+  100%    { background: transparent; }
+}
+.item.deep-linked {
+  animation: deep-link-flash 2.5s ease-out forwards;
+}
+
 /* ── Search highlight ────────────────────────────────────────────────────── */
 mark {
   background: rgba(217, 119, 87, 0.2);
