@@ -48,6 +48,7 @@ arnold-changelog/
 ├── package.json                      ← npm deps (node-html-parser)
 ├── package-lock.json
 ├── wrangler.json                     ← Cloudflare Workers config
+├── .gitignore
 ├── .wranglerignore                   ← Excludes dev files from upload
 ├── style/
 │   └── main.css                      ← Design system (light/dark themes)

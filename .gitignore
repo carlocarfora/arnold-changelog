@@ -1,2 +1,12 @@
 node_modules/
 *.zip
+
+# Cloudflare / Wrangler
+.wrangler/
+
+# Claude Code
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
