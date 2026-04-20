@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "6511",
+      "label": "6.5.1.1",
+      "series": "6x"
+    },
+    {
       "id": "6462",
       "label": "6.4.6.2",
       "series": "6x"
@@ -422,6 +427,91 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "6.5.1.1",
+      "versionId": "6511",
+      "arnoldCoreVersion": null,
+      "houdiniVersions": [
+        "20.0.896",
+        "20.5.684",
+        "21.0.671"
+      ],
+      "gccVersions": [
+        "11.2.1"
+      ],
+      "releaseType": "release",
+      "intro": "20 April 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-14348 - Fixed random crash while rendering on ARM64 machines",
+              "tickets": [
+                "ARNOLD-14348"
+              ]
+            },
+            {
+              "html": "ARNOLD-17656 - Fixed a hang when replacing a shader that was connected to a light",
+              "tickets": [
+                "ARNOLD-17656"
+              ]
+            },
+            {
+              "html": "ARNOLD-17660 - AiProceduralViewport crashes with implicit nodes",
+              "tickets": [
+                "ARNOLD-17660"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2607\" target=\"_blank\" rel=\"noopener\">usd#2607</a> - Updating light shaders interactively hangs the render",
+              "tickets": [
+                "usd#2607"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/pull/2613\" target=\"_blank\" rel=\"noopener\">usd#2613</a> - Missing clip files and UDIMs from search path when collecting scene assets",
+              "tickets": [
+                "usd#2613"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2615\" target=\"_blank\" rel=\"noopener\">usd#2615</a> - Export material bindings for volume nodes in the volume context",
+              "tickets": [
+                "usd#2615"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2589\" target=\"_blank\" rel=\"noopener\">usd#2589</a> - Implement scene index dependencies when materials get added or removed",
+              "tickets": [
+                "usd#2589"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2582\" target=\"_blank\" rel=\"noopener\">usd#2582</a> - Arnold-disabled nodes should not be authored to USD",
+              "tickets": [
+                "usd#2582"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2433\" target=\"_blank\" rel=\"noopener\">usd#2433</a> - Support interactive changes of shaders connected to quad lights",
+              "tickets": [
+                "usd#2433"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2611\" target=\"_blank\" rel=\"noopener\">usd#2611</a> - Support exporting geometries that get added during a sequence",
+              "tickets": [
+                "usd#2611"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Houdini, Houdini FX, Houdini Indie, and Houdini Education 20.0.896 20.5.684 21.0.671 Flow Render is available for the default Houdini Qt versions ( Qt6 for Houdini 21, and Qt5 for Houdini 20.5 and Houdini 20.0) Linux with at least glibc 2.28 and libstdc++ 11.2.1 (gcc 11.2.1). This is equivalent to Rocky 8. macOS 11 or later Apple Mac models with M series chips are natively supported by HtoA x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chip are supported natively. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: HtoA 6.x Release Notes",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6511_html.html",
+      "scrapedAt": "2026-04-20T09:51:23.036Z"
+    },
     {
       "version": "6.4.6.2",
       "versionId": "6462",
@@ -10083,63 +10173,63 @@
       "versionId": "6133",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6133_html.html",
-      "scrapedAt": "2026-04-06T09:01:27.230Z"
+      "scrapedAt": "2026-04-20T09:51:24.649Z"
     },
     {
       "version": "6.1.3.0",
       "versionId": "6130",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6130_html.html",
-      "scrapedAt": "2026-04-06T09:01:27.348Z"
+      "scrapedAt": "2026-04-20T09:51:24.923Z"
     },
     {
       "version": "6.1.1.0",
       "versionId": "6110",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6110_html.html",
-      "scrapedAt": "2026-04-06T09:01:27.438Z"
+      "scrapedAt": "2026-04-20T09:51:25.176Z"
     },
     {
       "version": "6.1.0.0",
       "versionId": "6100",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6100_html.html",
-      "scrapedAt": "2026-04-06T09:01:27.528Z"
+      "scrapedAt": "2026-04-20T09:51:25.265Z"
     },
     {
       "version": "6.0.2.2",
       "versionId": "6022",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6022_html.html",
-      "scrapedAt": "2026-04-06T09:01:27.615Z"
+      "scrapedAt": "2026-04-20T09:51:25.495Z"
     },
     {
       "version": "6.0.2.1",
       "versionId": "6021",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6021_html.html",
-      "scrapedAt": "2026-04-06T09:01:27.709Z"
+      "scrapedAt": "2026-04-20T09:51:25.720Z"
     },
     {
       "version": "6.0.2.0",
       "versionId": "6020",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6020_html.html",
-      "scrapedAt": "2026-04-06T09:01:27.928Z"
+      "scrapedAt": "2026-04-20T09:51:25.807Z"
     },
     {
       "version": "6.0.1.0",
       "versionId": "6010",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6010_html.html",
-      "scrapedAt": "2026-04-06T09:01:28.016Z"
+      "scrapedAt": "2026-04-20T09:51:25.900Z"
     },
     {
       "version": "6.0.0.0",
       "versionId": "6000",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6000_html.html",
-      "scrapedAt": "2026-04-06T09:01:28.104Z"
+      "scrapedAt": "2026-04-20T09:51:26.135Z"
     },
     {
       "version": "5.6.3.1",
@@ -13126,5 +13216,5 @@
       "scrapedAt": "2026-03-24T11:43:21.195Z"
     }
   ],
-  "updatedAt": "2026-04-06T09:01:28.104Z"
+  "updatedAt": "2026-04-20T09:51:26.136Z"
 }
