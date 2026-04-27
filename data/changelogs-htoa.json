@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "6454",
+      "label": "6.4.5.4",
+      "series": "6x"
+    },
+    {
       "id": "6511",
       "label": "6.5.1.1",
       "series": "6x"
@@ -427,6 +432,37 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "6.4.5.4",
+      "versionId": "6454",
+      "arnoldCoreVersion": null,
+      "houdiniVersions": [
+        "20.0.896",
+        "20.5.684",
+        "21.0.596"
+      ],
+      "gccVersions": [
+        "11.2.1"
+      ],
+      "releaseType": "release",
+      "intro": "24 April 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "HTOA-3148 - Incorrect file generation for baked textures in COPs",
+              "tickets": [
+                "HTOA-3148"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Houdini, Houdini FX, Houdini Indie and Houdini Education 20.0.896 20.5.684 21.0.596 Linux with at least glibc 2.17 and libstdc++ 11.2.1 (gcc 11.2.1) for Houdini 20/20.5. This is equivalent to Rocky 8. macOS 11 or later Apple Mac models with M series chips are natively supported by HtoA x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chip are supported natively mode. GPU rendering works on Windows and Linux only and requires an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 580.95.05 or higher drivers. On Windows, we recommend 581.42 or higher drivers. Optix™ denoiser requires an NVidia GPU with CUDA™ Compute Capability 5.0 and above. Intel OIDN GPU support is limited to: macOS Apple native CPUs (M1 and newer) Linux NVIDIA GPUs using Turing or newer architectures Windows Intel Xe dedicated and integrated GPUs NVIDIA GPUs using Turing or newer architectures AMD GPUs with RDNA2 (Navi 21 only) and RDNA3 (Navi 3x) architectures Parent page: HtoA 6.x Release Notes",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6454_html.html",
+      "scrapedAt": "2026-04-27T10:07:31.743Z"
+    },
     {
       "version": "6.5.1.1",
       "versionId": "6511",
@@ -10173,63 +10209,63 @@
       "versionId": "6133",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6133_html.html",
-      "scrapedAt": "2026-04-20T09:51:24.649Z"
+      "scrapedAt": "2026-04-27T10:07:33.312Z"
     },
     {
       "version": "6.1.3.0",
       "versionId": "6130",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6130_html.html",
-      "scrapedAt": "2026-04-20T09:51:24.923Z"
+      "scrapedAt": "2026-04-27T10:07:33.508Z"
     },
     {
       "version": "6.1.1.0",
       "versionId": "6110",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6110_html.html",
-      "scrapedAt": "2026-04-20T09:51:25.176Z"
+      "scrapedAt": "2026-04-27T10:07:33.570Z"
     },
     {
       "version": "6.1.0.0",
       "versionId": "6100",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6100_html.html",
-      "scrapedAt": "2026-04-20T09:51:25.265Z"
+      "scrapedAt": "2026-04-27T10:07:33.649Z"
     },
     {
       "version": "6.0.2.2",
       "versionId": "6022",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6022_html.html",
-      "scrapedAt": "2026-04-20T09:51:25.495Z"
+      "scrapedAt": "2026-04-27T10:07:33.712Z"
     },
     {
       "version": "6.0.2.1",
       "versionId": "6021",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6021_html.html",
-      "scrapedAt": "2026-04-20T09:51:25.720Z"
+      "scrapedAt": "2026-04-27T10:07:33.777Z"
     },
     {
       "version": "6.0.2.0",
       "versionId": "6020",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6020_html.html",
-      "scrapedAt": "2026-04-20T09:51:25.807Z"
+      "scrapedAt": "2026-04-27T10:07:33.845Z"
     },
     {
       "version": "6.0.1.0",
       "versionId": "6010",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6010_html.html",
-      "scrapedAt": "2026-04-20T09:51:25.900Z"
+      "scrapedAt": "2026-04-27T10:07:33.909Z"
     },
     {
       "version": "6.0.0.0",
       "versionId": "6000",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6000_html.html",
-      "scrapedAt": "2026-04-20T09:51:26.135Z"
+      "scrapedAt": "2026-04-27T10:07:33.971Z"
     },
     {
       "version": "5.6.3.1",
@@ -13216,5 +13252,5 @@
       "scrapedAt": "2026-03-24T11:43:21.195Z"
     }
   ],
-  "updatedAt": "2026-04-20T09:51:26.136Z"
+  "updatedAt": "2026-04-27T10:07:33.971Z"
 }
