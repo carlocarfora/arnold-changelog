@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "7512",
+      "label": "7.5.1.2",
+      "series": "7x"
+    },
+    {
       "id": "7511",
       "label": "7.5.1.1",
       "series": "7x"
@@ -417,6 +422,166 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "7.5.1.2",
+      "versionId": "7512",
+      "releaseType": "release",
+      "intro": "27 May 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-8717 - Interactive changes to a sphere center or radius are not transferred to its instances",
+              "tickets": [
+                "ARNOLD-8717"
+              ]
+            },
+            {
+              "html": "ARNOLD-12159 - Dispersion transmission incorrectly raises error_color_bad_pixel debug coloring (blue pixels)",
+              "tickets": [
+                "ARNOLD-12159"
+              ]
+            },
+            {
+              "html": "ARNOLD-14076 - standard_hair shading artifacts when used with non-curves objects",
+              "tickets": [
+                "ARNOLD-14076"
+              ]
+            },
+            {
+              "html": "ARNOLD-15737 - Fix Ctrl+C (SIGINT) being ignored when Arnold is run in background or automated runs",
+              "tickets": [
+                "ARNOLD-15737"
+              ]
+            },
+            {
+              "html": "ARNOLD-16842 - Modification of child object matrix in procedural_update is randomly ignored",
+              "tickets": [
+                "ARNOLD-16842"
+              ]
+            },
+            {
+              "html": "ARNOLD-17339 - Log messages that were intended to show up only once could show up multiple times",
+              "tickets": [
+                "ARNOLD-17339"
+              ]
+            },
+            {
+              "html": "ARNOLD-17411 - kick crashes when you render an ASS file that does not define any render outputs",
+              "tickets": [
+                "ARNOLD-17411"
+              ]
+            },
+            {
+              "html": "ARNOLD-17682 - Some node parameter changes can be randomly lost during scene update",
+              "tickets": [
+                "ARNOLD-17682"
+              ]
+            },
+            {
+              "html": "ARNOLD-17696 - Error when assigning MaterialX shader to a USD prim",
+              "tickets": [
+                "ARNOLD-17696"
+              ]
+            },
+            {
+              "html": "ARNOLD-17708 - Crash on process exit when Arnold library is loaded with deep bindings",
+              "tickets": [
+                "ARNOLD-17708"
+              ]
+            },
+            {
+              "html": "ARNOLD-17712 - SSS is broken with native instancing",
+              "tickets": [
+                "ARNOLD-17712"
+              ]
+            },
+            {
+              "html": "ARNOLD-17728 - Fix regression of rare crash when compiling OSL shaders during IPR",
+              "tickets": [
+                "ARNOLD-17728"
+              ]
+            },
+            {
+              "html": "ARNOLD-17748 - Fix random crashes/hangs at process exit and during rendering with network (NLM) licenses",
+              "tickets": [
+                "ARNOLD-17748"
+              ]
+            },
+            {
+              "html": "ARNOLD-17757 - Artifacts when using oriented curves with a scaled transform matrix",
+              "tickets": [
+                "ARNOLD-17757"
+              ]
+            },
+            {
+              "html": "ARNOLD-17766 - Point cloud cache causes a CUDA exception when used with multiple GPUs",
+              "tickets": [
+                "ARNOLD-17766"
+              ]
+            },
+            {
+              "html": "ARNOLD-17769 - Fix random crash/hang at process exit caused by AiMsg calls when missing AiEnd",
+              "tickets": [
+                "ARNOLD-17769"
+              ]
+            },
+            {
+              "html": "ARNOLD-17771 - Rare crash at process exit when using Arnold denoiser (noice) imager",
+              "tickets": [
+                "ARNOLD-17771"
+              ]
+            },
+            {
+              "html": "ARNOLD-17794 - GPU rendering issue with native shape instancing",
+              "tickets": [
+                "ARNOLD-17794"
+              ]
+            },
+            {
+              "html": "ARNOLD-17801 - Procedural instances sometimes do not render in conservative optimization mode",
+              "tickets": [
+                "ARNOLD-17801"
+              ]
+            },
+            {
+              "html": "ARNOLD-17803 - Rare crash when instancing procedurals",
+              "tickets": [
+                "ARNOLD-17803"
+              ]
+            },
+            {
+              "html": "ARNOLD-17807 - Random GPU crash in optixQueryFunctionTable after modifying objects",
+              "tickets": [
+                "ARNOLD-17807"
+              ]
+            },
+            {
+              "html": "ARNOLD-17808 - kick -o does not work if drivers NULL in ASS file",
+              "tickets": [
+                "ARNOLD-17808"
+              ]
+            },
+            {
+              "html": "ARNOLD-17817 - Kick output directory prefix is not applied when overriding the filename via <code>-set</code>",
+              "tickets": [
+                "ARNOLD-17817"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2635\" target=\"_blank\" rel=\"noopener\">usd#2635</a> - Fix rounding issue with husk when overscan is used at certain resolutions",
+              "tickets": [
+                "usd#2635"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.28. This is equivalent to RHEL/Rocky 8. macOS 12 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M-series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7512_html.html",
+      "scrapedAt": "2026-06-01T13:28:39.666Z"
+    },
     {
       "version": "7.5.1.1",
       "versionId": "7511",
@@ -9049,28 +9214,28 @@
       "versionId": "7122",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7122_html.html",
-      "scrapedAt": "2026-04-20T09:51:21.799Z"
+      "scrapedAt": "2026-06-01T13:28:41.341Z"
     },
     {
       "version": "7.1.2.1",
       "versionId": "7121",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7121_html.html",
-      "scrapedAt": "2026-04-20T09:51:22.136Z"
+      "scrapedAt": "2026-06-01T13:28:41.512Z"
     },
     {
       "version": "7.1.2.0",
       "versionId": "7120",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7120_html.html",
-      "scrapedAt": "2026-04-20T09:51:22.344Z"
+      "scrapedAt": "2026-06-01T13:28:41.627Z"
     },
     {
       "version": "7.1.1.1",
       "versionId": "7111",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7111_html.html",
-      "scrapedAt": "2026-04-20T09:51:22.756Z"
+      "scrapedAt": "2026-06-01T13:28:41.787Z"
     },
     {
       "version": "7.1.1.0",
@@ -14029,5 +14194,5 @@
       "scrapedAt": "2026-03-23T23:17:00.322Z"
     }
   ],
-  "updatedAt": "2026-04-20T09:51:22.756Z"
+  "updatedAt": "2026-06-01T13:28:41.788Z"
 }
