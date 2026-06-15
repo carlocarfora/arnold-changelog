@@ -65,8 +65,8 @@ function parseIndexPage(html, product) {
     } else {
       // 6.x href: ah-htoa-6x/arnold_for_houdini_6461_html.html
       // 5.x href: ah-htoa-5x/arnold_for_houdini_ah_htoa_5x_ah_HtoA_5_6_3_1_html.html
-      // text: "HtoA 6.4.6.1" or "HtoA 5.4.1"
-      const labelMatch = text.match(/HtoA\s+([\d.]+)/i);
+      // text: "HtoA 6.4.6.1" or "HtoA 5.4.1" — newest entry on the page may omit the "HtoA " prefix (e.g. "6.5.1.2")
+      const labelMatch = text.match(/^(?:HtoA\s+)?([\d.]+)$/i);
       if (!labelMatch) continue;
       const label = labelMatch[1];
       if (!/^\d+\.\d+(\.\d+){1,2}$/.test(label)) continue;
