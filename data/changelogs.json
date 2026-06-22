@@ -1,6 +1,16 @@
 {
   "versions": [
     {
+      "id": "7520",
+      "label": "7.5.2.0",
+      "series": "7x"
+    },
+    {
+      "id": "7513",
+      "label": "7.5.1.3",
+      "series": "7x"
+    },
+    {
       "id": "7512",
       "label": "7.5.1.2",
       "series": "7x"
@@ -422,6 +432,318 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "7.5.2.0",
+      "versionId": "7520",
+      "releaseType": "release",
+      "intro": "18 June 2026",
+      "sections": [
+        {
+          "heading": "Flow Render Tech Preview",
+          "items": [
+            {
+              "html": "Arnold 7.5.2.0 beta includes a Tech Preview of Flow Render, an Arnold cloud-rendering solution. We are providing 2400 minutes (per user, per month) of rendering time to Arnold users for testing and evaluating the service. Please report any feedback or issues in the Arnold feedback forums.",
+              "tickets": []
+            },
+            {
+              "html": "See the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_core_rendering_ac_flow_render_toc_html\" target=\"_blank\" rel=\"noopener\">Flow Render Tech Preview</a> documentation for more information.",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "html": "<strong>Gaussian Splats</strong>: Arnold now supports rendering <a href=\"https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/\" target=\"_blank\" rel=\"noopener\">3D Gaussian Splatting (3DGS)</a> scenes using the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_user_guide_ac_shapes_ac_points_html\" target=\"_blank\" rel=\"noopener\">points node</a>. You can enable Gaussian splat rendering by setting <code>points.mode</code> to <code>gaussian</code>. (ARNOLD-16779)",
+              "tickets": [
+                "ARNOLD-16779"
+              ]
+            },
+            {
+              "html": "<strong>Supported formats</strong>: You can load Gaussian splat data from a <code>.ply</code> file by setting the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_user_guide_ac_shapes_ac_points_html\" target=\"_blank\" rel=\"noopener\">points node</a> <code>file_name</code> parameter to a PLY. You can also supply splat data directly as per-point arrays on a <code>points</code> node.",
+              "tickets": []
+            },
+            {
+              "html": "<strong>Lighting and shading</strong>: Render Gaussian splats with the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_core_ac_gaussian_splat_shader_html\" target=\"_blank\" rel=\"noopener\">gaussian_splat_shader</a> node. The shader has two components: <strong>emission</strong>, the original unlit SH-color look, and <strong>diffuse</strong>, for relighting. By default, gaussian splats render with emission only, but for relighting you can increase the diffuse weight to have splats respond to scene lights via path tracing.",
+              "tickets": []
+            },
+            {
+              "html": "<strong>Improved quality of noice denoiser</strong>: Previously, the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_user_guide_ac_denoising_ac_arnold_denoiser_html\" target=\"_blank\" rel=\"noopener\">noice denoiser</a> could produce overly-blurred denoised images even with sufficient samples. This noice improvement also fixes occasional black pixel artifacts introduced by the denoiser. The <code>variance</code> parameter on the noice imager has been renamed to <code>filter_strength</code>; the old name is still accepted as a synonym. The standalone tool's <code>--variance</code>/<code>-v</code> flags are kept as aliases for <code>--filter_strength</code>/<code>-k</code>. In the example below, note the improved denoising of the sweater, the fur, and the whiskers (scene credit: Netflix Animation Studios ALab Copyright 2025 Netflix, Inc. All rights reserved.). (ARNOLD-14879)",
+              "tickets": [
+                "ARNOLD-14879"
+              ]
+            },
+            {
+              "html": "<strong>Faster GPU scene updates</strong>: Several optimizations make GPU scene updates noticeably faster, especially for interactive edits to meshes, with update times reduced by up to 43%. (ARNOLD-17720, ARNOLD-17721)",
+              "tickets": [
+                "ARNOLD-17720",
+                "ARNOLD-17721"
+              ]
+            },
+            {
+              "html": "<strong>Tone zones</strong>: The new <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_core_ac_tone_zones_html\" target=\"_blank\" rel=\"noopener\">tone_zones</a> node splits lighting into up to eight discrete brightness bands for cel-shading and non-photorealistic-rendering workflows. Zone widths are defined as simple ratios and stay stable across exposure changes. Each zone outputs a tint color and a mask that you can use for compositing. You can soften boundaries between zones independently, and chain nodes to further subdivide a zone. (ARNOLD-17680)",
+              "tickets": [
+                "ARNOLD-17680"
+              ]
+            },
+            {
+              "html": "<strong>Shader to RGBA</strong>: The new <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_user_guide_ac_conversion_node_ac_shader_rgba_html\" target=\"_blank\" rel=\"noopener\">shader_to_rgba</a> node evaluates lighting for a surface shader (such as <code>openpbr_surface</code>) and outputs the result as RGBA that you can use in a shading tree. For example, you could feed those RGBA values into a ramp for non-photorealistic rendering. Both direct and indirect illumination are available as separate outputs, and a light group filter allows for per-light stylization. <code>shader_to_rgba</code> works on both CPU and GPU (<code>out_indirect</code> is not yet available on GPU). (ARNOLD-17679)",
+              "tickets": [
+                "ARNOLD-17679"
+              ]
+            },
+            {
+              "html": "<strong>OpenPBR Surface &gt; Shader to RGBA &gt; Tone Zone shader</strong>",
+              "tickets": []
+            },
+            {
+              "html": "<strong>Improved point cloud queries</strong>: You can now query point clouds for up to 1024 nearest points, and the <code>pointcloud_search</code> and <code>pointcloud_get</code> built-in functions now work on GPUs. (ARNOLD-17285, ARNOLD-17364)",
+              "tickets": [
+                "ARNOLD-17285",
+                "ARNOLD-17364"
+              ]
+            },
+            {
+              "html": "<strong>Per-subimage compression for multipart EXRs</strong>: The EXR driver now supports per-subimage compression for multipart EXR files. (ARNOLD-15669)",
+              "tickets": [
+                "ARNOLD-15669"
+              ]
+            },
+            {
+              "html": "<strong>Faster loading of PLY file meshes</strong>: Loading meshes from PLY files is now generally about 1.2x to 1.4x faster. (ARNOLD-17584)",
+              "tickets": [
+                "ARNOLD-17584"
+              ]
+            },
+            {
+              "html": "<strong>Overlay imager default font</strong>: Instead of erroring out, the <strong>Overlay</strong> imager now tries to render with a default system font, like Arial or Liberation Sans, if the user-specified font is not available. (ARNOLD-17759)",
+              "tickets": [
+                "ARNOLD-17759"
+              ]
+            },
+            {
+              "html": "<strong>Options node in render reports</strong>: <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_user_guide_ac_diagnostics_ac_statistics_profiling_html\" target=\"_blank\" rel=\"noopener\">Render reports</a> now include the <strong>options</strong> node parameters (Arnold's global render settings), so you can see exactly which settings were active when reviewing performance data. (ARNOLD-17099)",
+              "tickets": [
+                "ARNOLD-17099"
+              ]
+            },
+            {
+              "html": "<strong>Override node and string arrays in <code>kick</code></strong>: You can now override node and string array type parameters, such as <code>options.drivers</code> or <code>options.outputs</code>, using the <code>-set</code> command in <code>kick</code>. (ARNOLD-17816, ARNOLD-17821)",
+              "tickets": [
+                "ARNOLD-17816",
+                "ARNOLD-17821"
+              ]
+            },
+            {
+              "html": "<strong>Ignore deformation and transformation motion blur</strong>: The Arnold options have two additional attributes <code>ignore_motion_transform</code> and <code>ignore_motion_deform</code> that can disable the two types of motion blur independently. (ARNOLD-17112)",
+              "tickets": [
+                "ARNOLD-17112"
+              ]
+            },
+            {
+              "html": "<strong>Upgraded OSL</strong>: OSL has been upgraded to version <a href=\"https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/blob/main/CHANGES.md#release-114-6-apr-2025----compared-to-113\" target=\"_blank\" rel=\"noopener\">1.14.2.0</a>. (ARNOLD-17651)",
+              "tickets": [
+                "ARNOLD-17651"
+              ]
+            },
+            {
+              "html": "<strong>Upgraded MaterialX</strong>: MaterialX has been upgraded to version <a href=\"https://github.com/AcademySoftwareFoundation/MaterialX/blob/v1.39.5/CHANGELOG.md\" target=\"_blank\" rel=\"noopener\">1.39.5</a>. (ARNOLD-17572)",
+              "tickets": [
+                "ARNOLD-17572"
+              ]
+            },
+            {
+              "html": "<strong>Upgraded OpenColorIO</strong>: OpenColorIO has been upgraded to version <a href=\"https://github.com/AcademySoftwareFoundation/OpenColorIO/releases/tag/v2.5.2\" target=\"_blank\" rel=\"noopener\">2.5.2</a>. (ARNOLD-17725)",
+              "tickets": [
+                "ARNOLD-17725"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Flow Render Enhancements",
+          "items": [
+            {
+              "html": "<strong>Multipart uploads</strong>: File uploads are no longer limited to 5 GB, as large files are now uploaded in multiple parts. (ARNOLD-17554)",
+              "tickets": [
+                "ARNOLD-17554"
+              ]
+            },
+            {
+              "html": "<strong>Verify scene outputs and camera</strong>: Render outputs and camera are now verified when the scene is submitted and will trigger a submission failure when missing. (ARNOLD-17661)",
+              "tickets": [
+                "ARNOLD-17661"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "html": "<strong>Full UsdLux support</strong>: Arnold now implements the current UsdLux lighting standard for USD lights, enabled by setting the options node <code>usdlux_version</code> parameter to <code>25.05</code>. Cone shaping (cone angle, softness, focus, and focus tint) and IES photometric profiles now work on <strong>all</strong> light types (cylinder, disk, quad, and mesh lights, not just spot and sphere lights), together with IES orientation, angle-scale, and brightness-normalization controls. See <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_core_ac_usdlux_html\" target=\"_blank\" rel=\"noopener\">USD Lux</a> for the full feature list and more examples. <a href=\"https://github.com/Autodesk/arnold-usd/issues/2439\" target=\"_blank\" rel=\"noopener\">usd#2439</a> <strong>Cone angle</strong>: You can restrict area light emission to a cone around its primary axis:",
+              "tickets": [
+                "usd#2439"
+              ]
+            },
+            {
+              "html": "<strong>IES profiles</strong>: You can now use IES profiles with non-sphere lights.",
+              "tickets": []
+            },
+            {
+              "html": "<strong>Optimized nested instancers</strong>: The new lightweight instancing scheme has now been extended to nested procedurals. On complex production scenes, users have reported up to a 5x speedup in startup times. <a href=\"https://github.com/Autodesk/arnold-usd/issues/2583\" target=\"_blank\" rel=\"noopener\">usd#2583</a>",
+              "tickets": [
+                "usd#2583"
+              ]
+            },
+            {
+              "html": "<strong>Gaussian Splat USD schema</strong>: Arnold now has preliminary support for reading the USD 26.03 <code>ParticleField3DGaussianSplat</code> schema, allowing Gaussian Splat data authored in USD to be rendered. <a href=\"https://github.com/Autodesk/arnold-usd/issues/2608\" target=\"_blank\" rel=\"noopener\">usd#2608</a>",
+              "tickets": [
+                "usd#2608"
+              ]
+            },
+            {
+              "html": "<strong>Matte in Render Passes</strong>: In Hydra 2, Render passes now support the matte attribute with Arnold. <a href=\"https://github.com/Autodesk/arnold-usd/issues/2549\" target=\"_blank\" rel=\"noopener\">usd#2549</a>",
+              "tickets": [
+                "usd#2549"
+              ]
+            },
+            {
+              "html": "<strong>ArnoldNodeGraph in referenced USD files</strong>: ArnoldNodeGraph primitives are now correctly resolved when the USD file containing them is referenced into a larger stage. <a href=\"https://github.com/Autodesk/arnold-usd/issues/2645\" target=\"_blank\" rel=\"noopener\">usd#2645</a>",
+              "tickets": [
+                "usd#2645"
+              ]
+            },
+            {
+              "html": "<strong>Hole Indices support</strong>: Hole indices are now supported in UsdGeomMesh for non-subdivided meshes. <a href=\"https://github.com/Autodesk/arnold-usd/issues/2632\" target=\"_blank\" rel=\"noopener\">usd#2632</a>",
+              "tickets": [
+                "usd#2632"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Changes",
+          "items": [
+            {
+              "html": "<strong>Texture plugin API</strong>: Arnold's texture system can now be extended with live, procedural image data. Plugin authors register a custom URI prefix with <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=Arnold_API_REF_group_ai_texture_html#gaae6f27dfbedb61354572343d4e8516ab\" target=\"_blank\" rel=\"noopener\">AiTexturePluginRegisterURI()</a> and supply pixels through <code>AtTexturePluginCallbacks</code> when an <code>image</code> shader points at that URI. Arnold treats the result like any other texture, including filtering and mipmapping, but the pixels can be generated on demand instead of being read from disk. That makes it practical to wire in host-native procedural sources without baking intermediate files. See <code>ai_texture.h</code> for the callback interface and an example implementation. (ARNOLD-17820)",
+              "tickets": [
+                "ARNOLD-17820"
+              ]
+            },
+            {
+              "html": "<strong>Profile write and reset</strong>: Profiling data can now be explicitly written to the profile file and cleared (reset). Previously, profile data was written and reset only when Arnold was unloaded or when the process exited. Two new functions have been added for this purpose: <code>void AiProfileWrite()</code> and <code>void AiProfileReset()</code>. Note that both functions immediately resume collecting profiling data after execution. (ARNOLD-11923)",
+              "tickets": [
+                "ARNOLD-11923"
+              ]
+            },
+            {
+              "html": "<strong>Per-subimage compression for multipart EXRs</strong>: To support per-subimage compression for multipart EXR files, the EXR driver <code>compression</code> parameter is now a string array. This allows you to use a different compression type for each subimage. (ARNOLD-15669)",
+              "tickets": [
+                "ARNOLD-15669"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-15737 - Fix Ctrl+C (SIGINT) being ignored when Arnold is run in background or automated runs",
+              "tickets": [
+                "ARNOLD-15737"
+              ]
+            },
+            {
+              "html": "ARNOLD-17113 - Rare AiMicrofacetThinWallRefractionBSDF sampling artifact",
+              "tickets": [
+                "ARNOLD-17113"
+              ]
+            },
+            {
+              "html": "ARNOLD-17581 - Memory for adaptive sampling buffers was allocated even with adaptive disabled",
+              "tickets": [
+                "ARNOLD-17581"
+              ]
+            },
+            {
+              "html": "ARNOLD-17599 - Enabling OIDN/OptiX denoiser causes <strong>Closest Filter</strong> width to match beauty",
+              "tickets": [
+                "ARNOLD-17599"
+              ]
+            },
+            {
+              "html": "ARNOLD-17667 - Rare crash in GPU volumes with velocity grids",
+              "tickets": [
+                "ARNOLD-17667"
+              ]
+            },
+            {
+              "html": "ARNOLD-17769 - Fix random crash/hang at process exit caused by AiMsg calls when missing AiEnd",
+              "tickets": [
+                "ARNOLD-17769"
+              ]
+            },
+            {
+              "html": "ARNOLD-17825 - No anti-aliasing on <strong>Contour Filter</strong> output if there is a denoiser imager (even if the imager is disabled)",
+              "tickets": [
+                "ARNOLD-17825"
+              ]
+            },
+            {
+              "html": "ARNOLD-17885 - Render reports with built in stats do not work",
+              "tickets": [
+                "ARNOLD-17885"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.28. This is equivalent to RHEL/Rocky 8. macOS 12 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M-series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7520_html.html",
+      "scrapedAt": "2026-06-22T13:27:36.038Z"
+    },
+    {
+      "version": "7.5.1.3",
+      "versionId": "7513",
+      "releaseType": "release",
+      "intro": "16 June 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-17901 - OIDN imager crashes when using overscan",
+              "tickets": [
+                "ARNOLD-17901"
+              ]
+            },
+            {
+              "html": "ARNOLD-17909 - Crash at node_update with light linking and procedural auto-instancing",
+              "tickets": [
+                "ARNOLD-17909"
+              ]
+            },
+            {
+              "html": "ARNOLD-17913 - Crash when OSL texture filenames contain certain backslashed characters",
+              "tickets": [
+                "ARNOLD-17913"
+              ]
+            },
+            {
+              "html": "ARNOLD-17928 - kick -merge fails for outputs with <code>.</code>",
+              "tickets": [
+                "ARNOLD-17928"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.28. This is equivalent to RHEL/Rocky 8. macOS 12 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M-series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7513_html.html",
+      "scrapedAt": "2026-06-22T13:27:37.579Z"
+    },
     {
       "version": "7.5.1.2",
       "versionId": "7512",
@@ -9214,28 +9536,28 @@
       "versionId": "7122",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7122_html.html",
-      "scrapedAt": "2026-06-01T13:28:41.341Z"
+      "scrapedAt": "2026-06-22T13:27:39.153Z"
     },
     {
       "version": "7.1.2.1",
       "versionId": "7121",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7121_html.html",
-      "scrapedAt": "2026-06-01T13:28:41.512Z"
+      "scrapedAt": "2026-06-22T13:27:39.255Z"
     },
     {
       "version": "7.1.2.0",
       "versionId": "7120",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7120_html.html",
-      "scrapedAt": "2026-06-01T13:28:41.627Z"
+      "scrapedAt": "2026-06-22T13:27:39.322Z"
     },
     {
       "version": "7.1.1.1",
       "versionId": "7111",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7111_html.html",
-      "scrapedAt": "2026-06-01T13:28:41.787Z"
+      "scrapedAt": "2026-06-22T13:27:39.410Z"
     },
     {
       "version": "7.1.1.0",
@@ -14194,5 +14516,5 @@
       "scrapedAt": "2026-03-23T23:17:00.322Z"
     }
   ],
-  "updatedAt": "2026-06-01T13:28:41.788Z"
+  "updatedAt": "2026-06-22T13:27:39.411Z"
 }

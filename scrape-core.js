@@ -15,6 +15,8 @@ import { writeFileSync, readFileSync, existsSync } from 'fs';
 // ADD NEW VERSIONS HERE when Arnold releases a new version.
 const VERSIONS = [
   // ── 7.x ──────────────────────────────────────────────────────────────────
+  { id: "7520", label: "7.5.2.0", series: "7x" },
+  { id: "7513", label: "7.5.1.3", series: "7x" },
   { id: "7512", label: "7.5.1.2", series: "7x" },
   { id: "7511", label: "7.5.1.1", series: "7x" },
   { id: "7452", label: "7.4.5.2", series: "7x" },
