@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "7514",
+      "label": "7.5.1.4",
+      "series": "7x"
+    },
+    {
       "id": "7520",
       "label": "7.5.2.0",
       "series": "7x"
@@ -432,6 +437,28 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "7.5.1.4",
+      "versionId": "7514",
+      "releaseType": "release",
+      "intro": "30 June 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-18000 - Cannot open the License Manager on macOS and Linux",
+              "tickets": [
+                "ARNOLD-18000"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.28. This is equivalent to RHEL/Rocky 8. macOS 12 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M-series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7514_html.html",
+      "scrapedAt": "2026-07-06T11:56:34.762Z"
+    },
     {
       "version": "7.5.2.0",
       "versionId": "7520",
@@ -9536,28 +9563,28 @@
       "versionId": "7122",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7122_html.html",
-      "scrapedAt": "2026-06-22T13:27:39.153Z"
+      "scrapedAt": "2026-07-06T11:56:36.608Z"
     },
     {
       "version": "7.1.2.1",
       "versionId": "7121",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7121_html.html",
-      "scrapedAt": "2026-06-22T13:27:39.255Z"
+      "scrapedAt": "2026-07-06T11:56:36.822Z"
     },
     {
       "version": "7.1.2.0",
       "versionId": "7120",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7120_html.html",
-      "scrapedAt": "2026-06-22T13:27:39.322Z"
+      "scrapedAt": "2026-07-06T11:56:37.012Z"
     },
     {
       "version": "7.1.1.1",
       "versionId": "7111",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7111_html.html",
-      "scrapedAt": "2026-06-22T13:27:39.410Z"
+      "scrapedAt": "2026-07-06T11:56:37.206Z"
     },
     {
       "version": "7.1.1.0",
@@ -14516,5 +14543,5 @@
       "scrapedAt": "2026-03-23T23:17:00.322Z"
     }
   ],
-  "updatedAt": "2026-06-22T13:27:39.411Z"
+  "updatedAt": "2026-07-06T11:56:37.206Z"
 }
