@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "6530",
+      "label": "6.5.3.0",
+      "series": "6x"
+    },
+    {
       "id": "6521",
       "label": "6.5.2.1",
       "series": "6x"
@@ -457,6 +462,348 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "6.5.3.0",
+      "versionId": "6530",
+      "arnoldCoreVersion": null,
+      "houdiniVersions": [
+        "20.0.896",
+        "20.5.684",
+        "21.0.729",
+        "22.0.368"
+      ],
+      "gccVersions": [
+        "11.2.1"
+      ],
+      "releaseType": "release",
+      "intro": "22 July 2026",
+      "sections": [
+        {
+          "heading": "Flow Render Tech Preview",
+          "items": [
+            {
+              "html": "HtoA includes a Tech Preview of Flow Render, an Arnold cloud-rendering solution. We are providing 2400 minutes (per user, per month) of rendering time to Arnold users for testing and evaluating the service. Please report any feedback or issues in the Arnold feedback forums.",
+              "tickets": []
+            },
+            {
+              "html": "See the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_for_houdini_ah_flow_render_html\" target=\"_blank\" rel=\"noopener\">Flow Render Tech Preview</a> documentation for more information.",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "Enhancements",
+          "items": [
+            {
+              "html": "<strong>Faster GPU pixel rendering</strong>: GPU rendering is now more efficient, with improvements ranging between 1–20% depending on the scene. (ARNOLD-17861, ARNOLD-17866, ARNOLD-17903, ARNOLD-17943)",
+              "tickets": [
+                "ARNOLD-17861",
+                "ARNOLD-17866",
+                "ARNOLD-17903",
+                "ARNOLD-17943"
+              ]
+            },
+            {
+              "html": "<strong>Faster time to first pixel on GPU</strong>: Building on the improvements in the previous Arnold release, GPU scene update is now much faster, typically 1–4x faster than in Arnold 7.5.2. (ARNOLD-17907, ARNOLD-17966) Scene 7.5.2 GPU scene update 7.5.3 GPU scene update Speedup Beeple 3081 ms 790 ms 3.90x Walrus 107 ms 47 ms 2.27x ALab 1910 ms 850 ms 2.25x Sophie 2608 ms 2601 ms 1.00x",
+              "tickets": [
+                "ARNOLD-17907",
+                "ARNOLD-17966"
+              ]
+            },
+            {
+              "html": "<strong>Faster interactive polygon mesh editing on CPU and GPU</strong>: Modifying a polymesh during IPR now updates incrementally instead of fully rebuilding the mesh. Typical vertex and deformation edits on dense meshes update ~2–2.5x faster. For example, toggling smoothing on a 200k-face Catmull-Clark mesh drops from ~6.5 ms to ~1.4 ms per update. (ARNOLD-17628)",
+              "tickets": [
+                "ARNOLD-17628"
+              ]
+            },
+            {
+              "html": "<strong>Lightweight instancing with the instancer node</strong>: Arnold now renders instances through a lightweight instancing system for any plugin that uses an Arnold <code>instancer</code> node, extending the benefits previously available only through USD. Instancing is more memory efficient and time to first pixel is faster, because the scene is quicker to initialize. Dense instanced scenes, such as scattered vegetation, crowds, and particle duplicates, now render faster and use less memory across all plugins. (ARNOLD-17947)",
+              "tickets": [
+                "ARNOLD-17947"
+              ]
+            },
+            {
+              "html": "<strong>Solaris Render Texture Baking</strong>: Texture baking is now supported in Solaris. The new <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_for_houdini_ah_flow_render_texture_baking_html\" target=\"_blank\" rel=\"noopener\">Arnold Texture Baker</a> LOP can bake locally, using per-mesh or AOV Render Passes in Husk, or via Flow Render, which expands each mesh or AOV into a separate render and processes them in parallel after submission. (HTOA-3303)",
+              "tickets": [
+                "HTOA-3303"
+              ]
+            },
+            {
+              "html": "<strong>BSDF nodes for stylized rendering</strong>: The new <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_user_guide_ac_surface_shaders_ac_diffuse_bsdf_html\" target=\"_blank\" rel=\"noopener\">diffuse</a>, <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_user_guide_ac_surface_shaders_ac_fuzz_bsdf_html\" target=\"_blank\" rel=\"noopener\">fuzz</a>, and <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_user_guide_ac_surface_shaders_ac_specular_bsdf_html\" target=\"_blank\" rel=\"noopener\">specular</a> BSDF nodes evaluate individual lighting responses independently. Connect them to a <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_user_guide_ac_conversion_node_ac_shader_rgba_html\" target=\"_blank\" rel=\"noopener\">shader_to_rgba</a> node to more easily build non-photorealistic (NPR) looks. (ARNOLD-17782)",
+              "tickets": [
+                "ARNOLD-17782"
+              ]
+            },
+            {
+              "html": "<strong>Direct outputs rendering</strong>: A new <strong>direct outputs</strong> mode lets you obtain AOVs directly, skipping the regular CPU-based imagers and drivers infrastructure, for much faster feedback while navigating and editing. Direct outputs rendering mode also has some IPR optimizations not yet exposed in regular Arnold IPR and is currently available on GPU only. You can enable this mode with the <code>options.direct_outputs</code> boolean parameter. The new mode doesn't support regular drivers and outputs must be obtained through <code>AiGetRenderOutput()</code> calls (see API section below). (ARNOLD-17608)",
+              "tickets": [
+                "ARNOLD-17608"
+              ]
+            },
+            {
+              "html": "Direct outputs rendering mode also has some IPR optimizations not yet exposed in regular Arnold IPR and is currently available on GPU only.",
+              "tickets": []
+            },
+            {
+              "html": "You can enable this mode with the <code>options.direct_outputs</code> boolean parameter. The new mode doesn't support regular drivers and outputs must be obtained through <code>AiGetRenderOutput()</code> calls (see API section below). (ARNOLD-17608)",
+              "tickets": [
+                "ARNOLD-17608"
+              ]
+            },
+            {
+              "html": "<strong>Smaller, more efficient Cryptomatte manifests</strong>: Cryptomatte manifests no longer include entries for matte holdout objects and objects that are invisible to the camera. This can significantly reduce the size of the manifest metadata embedded in EXR files, or saved in the sidecar manifests. In production scenes, it was possible to accumulate several megabytes of unusable manifest data, which slowed down downstream tools such as Nuke. (ARNOLD-17983)",
+              "tickets": [
+                "ARNOLD-17983"
+              ]
+            },
+            {
+              "html": "<strong>OptiX denoiser</strong>: The OptiX denoiser now produces higher-quality denoising results. (ARNOLD-12188)",
+              "tickets": [
+                "ARNOLD-12188"
+              ]
+            },
+            {
+              "html": "<strong>Higher-quality denoising with noice</strong>: The Noice denoiser now gives better results when denoising objects seen through transparent surfaces like glass and in reflective surfaces such as mirrors. To take advantage of this change, Noice requires <code>denoise_albedo_noisy</code> and its variance AOV as inputs. This is the same Albedo AOV used by the OIDN and OptiX denoisers. (ARNOLD-10252)",
+              "tickets": [
+                "ARNOLD-10252"
+              ]
+            },
+            {
+              "html": "<strong>Render multiple frames with kick</strong>: The <code>-frame</code> argument now supports a semicolon-separated list of frames and ranges when you kick a USD file. A range is written <code>start-end</code> and may take an optional step after a comma (<code>start-end,step</code>). For example, <code>-frame 1;3;10-22</code> renders frames 1, 3, and 10 through 22, while <code>-frame 1-100,2</code> renders every second frame from 1 to 100. The two can be combined: <code>-frame 1-10,2;15</code>. (ARNOLD-9867)",
+              "tickets": [
+                "ARNOLD-9867"
+              ]
+            },
+            {
+              "html": "<strong>UI grouping metadata added to the options node</strong>: Tools like kick can now group related parameters for improved help. For example, <code>kick -info options</code> now lists the options node parameters under headings such as Sampling, System, and Diagnostics. (ARNOLD-15626)",
+              "tickets": [
+                "ARNOLD-15626"
+              ]
+            },
+            {
+              "html": "<strong>Motion range on <code>matrix_interpolate</code></strong>: The <code>matrix_interpolate</code> node now supports <code>motion_start</code> and <code>motion_end</code> parameters. (ARNOLD-17964)",
+              "tickets": [
+                "ARNOLD-17964"
+              ]
+            },
+            {
+              "html": "<strong>Update Autodesk Desktop Licensing</strong>: Arnold now includes Autodesk Desktop Licensing v16.3.1.15415. See the <a href=\"https://www.autodesk.com/support/technical/article/caas/tsarticles/ts/6jWlafu6rb46GKeh4N2ssk.html\" target=\"_blank\" rel=\"noopener\">release notes</a> for more information on this release. (ARNOLD-17435)",
+              "tickets": [
+                "ARNOLD-17435"
+              ]
+            },
+            {
+              "html": "<strong>Update Intel Open Image Denoise (OIDN) to version 2.5.0</strong>: The Intel Open Image Denoise (OIDN) was updated from 2.4.1 to 2.5.0. For the list of changes, see the <a href=\"https://github.com/RenderKit/oidn/releases/tag/v2.5.0\" target=\"_blank\" rel=\"noopener\">OIDN release notes</a>. (ARNOLD-17917)",
+              "tickets": [
+                "ARNOLD-17917"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Flow Render Enhancements",
+          "items": [
+            {
+              "html": "<strong>Turntable render</strong>: You can now render turntable animations on the Flow Render cloud service, providing a 360-degree view of your model, without needing to manually set up cameras or lighting. (ARNOLD-17894)",
+              "tickets": [
+                "ARNOLD-17894"
+              ]
+            },
+            {
+              "html": "<strong>Thanks to <a href=\"https://alexmateo.gumroad.com/l/mlcsav?layout=profile\" target=\"_blank\" rel=\"noopener\">Alex Mateo</a> for the use of his Gabi scene.</strong>",
+              "tickets": []
+            },
+            {
+              "html": "<strong>Texture baking</strong>: Flow Render now supports texture baking, which lets you permanently capture lighting and shading detail into an image file, improving performance in real-time or downstream rendering. (ARNOLD-17763)",
+              "tickets": [
+                "ARNOLD-17763"
+              ]
+            },
+            {
+              "html": "<strong>Multi-frame rendering</strong>: The new Frames Per Task setting lets you group multiple frames into a single task when submitting a render job. This reduces the overhead of cloud worker startup and shutdown time, especially useful for long sequences or fast-rendering scenes. (ARNOLD-17676)",
+              "tickets": [
+                "ARNOLD-17676"
+              ]
+            },
+            {
+              "html": "<strong>Improved job submission performance</strong>: Job submission of asset-heavy scenes is now much faster. Verifying the upload status of thousands of assets is now reduced from minutes to seconds. (ARNOLD-17637)",
+              "tickets": [
+                "ARNOLD-17637"
+              ]
+            },
+            {
+              "html": "<strong>Increased worker timeout</strong>: Cloud rendering jobs can now run for up to 24 hours, supporting longer and more complex renders. (ARNOLD-17948)",
+              "tickets": [
+                "ARNOLD-17948"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "html": "<strong>Author upAxis and meterUnit metadata in the writer</strong> (<a href=\"https://github.com/Autodesk/arnold-usd/issues/2698\" target=\"_blank\" rel=\"noopener\">usd#2698</a>)",
+              "tickets": [
+                "usd#2698"
+              ]
+            },
+            {
+              "html": "<strong>Add turntable command-line tool that generates turntable scenes from a USD asset</strong> (<a href=\"https://github.com/Autodesk/arnold-usd/issues/2625\" target=\"_blank\" rel=\"noopener\">usd#2625</a>)",
+              "tickets": [
+                "usd#2625"
+              ]
+            },
+            {
+              "html": "<strong>Support UV RenderVars</strong> (<a href=\"https://github.com/Autodesk/arnold-usd/issues/1286\" target=\"_blank\" rel=\"noopener\">usd#1286</a>)",
+              "tickets": [
+                "usd#1286"
+              ]
+            },
+            {
+              "html": "<strong>Support double-precision primvars</strong> (<a href=\"https://github.com/Autodesk/arnold-usd/issues/2687\" target=\"_blank\" rel=\"noopener\">usd#2687</a>)",
+              "tickets": [
+                "usd#2687"
+              ]
+            },
+            {
+              "html": "<strong>Support mesh normals updates interactively</strong> (<a href=\"https://github.com/Autodesk/arnold-usd/issues/2691\" target=\"_blank\" rel=\"noopener\">usd#2691</a>)",
+              "tickets": [
+                "usd#2691"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Changes",
+          "items": [
+            {
+              "html": "<strong>Direct outputs API</strong>: DCC plugins can now build a fast interactive viewport on top of the new <strong>direct outputs</strong> GPU rendering mode. Set the <code>direct_outputs</code> option on the options node to render at a reduced internal resolution and upscale to the final resolution for faster feedback. During the viewport render loop the render update callback is now invoked with the new <code>AI_RENDER_UPDATE_VIEWPORT</code> update type on each viewport update. This signals that fresh output is ready to display. Each AOV lives on the GPU. Use the new <code>AiGetRenderOutput()</code> function to copy an AOV into a caller-provided destination. The destination type is selected by <code>AtGetRenderOutputHandleType</code>: <code>OPENGL</code> copies directly into a GL texture via CUDA-GL interop, and <code>CPU</code> copies into a host buffer. See <code>ai_render.h</code> for the interface. The feature is currently available for GPU rendering only. (ARNOLD-17608)",
+              "tickets": [
+                "ARNOLD-17608"
+              ]
+            },
+            {
+              "html": "<strong>Node versioning API</strong>: Arnold now provides an API for registering and resolving versioned node entries, letting plugins share a logical <code>node_family</code> across multiple <code>node_version</code> variants and look them up without hardcoding raw node names. The API is available in both C and Python, and exposes <code>AiNodeEntryGetVersion()</code>, <code>AiNodeEntryLookUpVersion()</code>, <code>AiNodeEntryLookUpLatestVersion()</code>, <code>AiNodeEntryGetFamilyVersions()</code>, and <code>AiNodeEntryGetVersionFamilyIterator()</code>. (ARNOLD-8640, ARNOLD-17959)",
+              "tickets": [
+                "ARNOLD-8640",
+                "ARNOLD-17959"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "HTOA-3307 - Fixed the Toon shader parameter interface",
+              "tickets": [
+                "HTOA-3307"
+              ]
+            },
+            {
+              "html": "ARNOLD-10448 - Crash when reinitializing a polymesh with instances",
+              "tickets": [
+                "ARNOLD-10448"
+              ]
+            },
+            {
+              "html": "ARNOLD-15427 - [GPU] Texture mipmap level was occasionally too low resolution",
+              "tickets": [
+                "ARNOLD-15427"
+              ]
+            },
+            {
+              "html": "ARNOLD-17185 - No error reported when loading plugins",
+              "tickets": [
+                "ARNOLD-17185"
+              ]
+            },
+            {
+              "html": "ARNOLD-17412 - Crash when instances of a mesh have overridden subdiv settings",
+              "tickets": [
+                "ARNOLD-17412"
+              ]
+            },
+            {
+              "html": "ARNOLD-17738 - Interactively changing the feature overrides (the ignore parameters) has no effect",
+              "tickets": [
+                "ARNOLD-17738"
+              ]
+            },
+            {
+              "html": "ARNOLD-17960 - Race condition with nested instancers leading to crashes",
+              "tickets": [
+                "ARNOLD-17960"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/255\" target=\"_blank\" rel=\"noopener\">usd#255</a> - Do not reset lights during IPR iterations",
+              "tickets": [
+                "usd#255"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2621\" target=\"_blank\" rel=\"noopener\">usd#2621</a> - Fix invalid null shader being authored to USD from Maya",
+              "tickets": [
+                "usd#2621"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2628\" target=\"_blank\" rel=\"noopener\">usd#2628</a> - Fix crash happening after changing the purpose in hydra",
+              "tickets": [
+                "usd#2628"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2641\" target=\"_blank\" rel=\"noopener\">usd#2641</a> - Animate instanced lights driven by an animated Point Instancer in Hydra",
+              "tickets": [
+                "usd#2641"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2673\" target=\"_blank\" rel=\"noopener\">usd#2673</a> - Remove spurious warnings &quot;Arnold attribute not recognized&quot;",
+              "tickets": [
+                "usd#2673"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2677\" target=\"_blank\" rel=\"noopener\">usd#2677</a> - Fix crash reading RenderSettings with empty arnold:filter on a RenderVar",
+              "tickets": [
+                "usd#2677"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2685\" target=\"_blank\" rel=\"noopener\">usd#2685</a> - Fix warnings about empty node names with nested instancers",
+              "tickets": [
+                "usd#2685"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2686\" target=\"_blank\" rel=\"noopener\">usd#2686</a> - Prevent subdivisionScheme from being written as timeSamples in USD export",
+              "tickets": [
+                "usd#2686"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2695\" target=\"_blank\" rel=\"noopener\">usd#2695</a> - Fix MaterialX boolean shaders through USD",
+              "tickets": [
+                "usd#2695"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2706\" target=\"_blank\" rel=\"noopener\">usd#2706</a> - Fix overscan 1-pixel offset with certain resolutions",
+              "tickets": [
+                "usd#2706"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Houdini, Houdini FX, Houdini Indie, and Houdini Education 20.0.896 20.5.684 21.0.729 22.0.368 Flow Render is available for the default Houdini Qt versions ( Qt6 for Houdini 22 and Houdini 21, and Qt5 for Houdini 20.5 and Houdini 20.0) Linux with at least glibc 2.28 and libstdc++ 11.2.1 (gcc 11.2.1). This is equivalent to Rocky 8. macOS 11 or later Apple Mac models with M series chips are natively supported by HtoA x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chip are supported natively. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: HtoA 6.x Release Notes",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6530_html.html",
+      "scrapedAt": "2026-07-27T11:11:03.255Z"
+    },
     {
       "version": "6.5.2.1",
       "versionId": "6521",
@@ -10892,63 +11239,63 @@
       "versionId": "6133",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6133_html.html",
-      "scrapedAt": "2026-07-20T10:42:12.401Z"
+      "scrapedAt": "2026-07-27T11:11:04.861Z"
     },
     {
       "version": "6.1.3.0",
       "versionId": "6130",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6130_html.html",
-      "scrapedAt": "2026-07-20T10:42:12.698Z"
+      "scrapedAt": "2026-07-27T11:11:05.016Z"
     },
     {
       "version": "6.1.1.0",
       "versionId": "6110",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6110_html.html",
-      "scrapedAt": "2026-07-20T10:42:12.760Z"
+      "scrapedAt": "2026-07-27T11:11:05.117Z"
     },
     {
       "version": "6.1.0.0",
       "versionId": "6100",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6100_html.html",
-      "scrapedAt": "2026-07-20T10:42:12.817Z"
+      "scrapedAt": "2026-07-27T11:11:05.212Z"
     },
     {
       "version": "6.0.2.2",
       "versionId": "6022",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6022_html.html",
-      "scrapedAt": "2026-07-20T10:42:12.878Z"
+      "scrapedAt": "2026-07-27T11:11:05.385Z"
     },
     {
       "version": "6.0.2.1",
       "versionId": "6021",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6021_html.html",
-      "scrapedAt": "2026-07-20T10:42:12.946Z"
+      "scrapedAt": "2026-07-27T11:11:05.503Z"
     },
     {
       "version": "6.0.2.0",
       "versionId": "6020",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6020_html.html",
-      "scrapedAt": "2026-07-20T10:42:13.002Z"
+      "scrapedAt": "2026-07-27T11:11:05.654Z"
     },
     {
       "version": "6.0.1.0",
       "versionId": "6010",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6010_html.html",
-      "scrapedAt": "2026-07-20T10:42:13.060Z"
+      "scrapedAt": "2026-07-27T11:11:05.790Z"
     },
     {
       "version": "6.0.0.0",
       "versionId": "6000",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6000_html.html",
-      "scrapedAt": "2026-07-20T10:42:13.122Z"
+      "scrapedAt": "2026-07-27T11:11:05.886Z"
     },
     {
       "version": "5.6.3.1",
@@ -13935,5 +14282,5 @@
       "scrapedAt": "2026-03-24T11:43:21.195Z"
     }
   ],
-  "updatedAt": "2026-07-20T10:42:13.123Z"
+  "updatedAt": "2026-07-27T11:11:05.887Z"
 }
