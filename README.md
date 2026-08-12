@@ -17,7 +17,7 @@ Scrapes Arnold Core and Arnold for Houdini (HtoA) release notes from Autodesk's 
 ## How it works
 
 ```
-GitHub Actions (weekly — check-versions.yml)
+GitHub Actions (daily — check-versions.yml)
   → fetches Core + HtoA index pages from Autodesk
   → compares against VERSIONS arrays in scraper files
   → if new Core versions: updates scrape-core.js, runs scrape-core.js
@@ -121,7 +121,7 @@ Click the link icon next to any version heading or hover over an item to reveal 
 
 ## Schedule
 
-`check-versions.yml` runs every **Monday at 8am UTC**. It fetches the Autodesk index pages, detects any new versions, updates the `VERSIONS` arrays in the scraper files, and runs whichever scrapers are needed. If nothing is new, it exits without committing or scraping anything.
+`check-versions.yml` runs every **day at 8am UTC**. It fetches the Autodesk index pages, detects any new versions, updates the `VERSIONS` arrays in the scraper files, and runs whichever scrapers are needed. If nothing is new, it exits without committing or scraping anything.
 
 `scrape.yml` and `scrape-htoa.yml` are manual-only backups — useful if you need to force a full re-scrape without waiting for the version checker.
 
