@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "7531",
+      "label": "7.5.3.1",
+      "series": "7x"
+    },
+    {
       "id": "7530",
       "label": "7.5.3.0",
       "series": "7x"
@@ -447,6 +452,64 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "7.5.3.1",
+      "versionId": "7531",
+      "releaseType": "release",
+      "intro": "10 August 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-17791 - Alembic node doesn't support setting user data, such as interior_set",
+              "tickets": [
+                "ARNOLD-17791"
+              ]
+            },
+            {
+              "html": "ARNOLD-17804 - Crash when using non-UTF8 strings",
+              "tickets": [
+                "ARNOLD-17804"
+              ]
+            },
+            {
+              "html": "ARNOLD-18131 - GPU stats missing in direct_outputs mode",
+              "tickets": [
+                "ARNOLD-18131"
+              ]
+            },
+            {
+              "html": "ARNOLD-18134 - Use-after-free crash in AtUniverse's scene initialize when nodes are destroyed mid-traversal",
+              "tickets": [
+                "ARNOLD-18134"
+              ]
+            },
+            {
+              "html": "ARNOLD-18162 - Hang when scene is being destroyed",
+              "tickets": [
+                "ARNOLD-18162"
+              ]
+            },
+            {
+              "html": "ARNOLD-18171 - spot_light roundness combined with cosine_power causes NaNs",
+              "tickets": [
+                "ARNOLD-18171"
+              ]
+            },
+            {
+              "html": "ARNOLD-18190 - Variance filter can emit NaN/Inf for the Z AOV",
+              "tickets": [
+                "ARNOLD-18190"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.28. This is equivalent to RHEL/Rocky 8. macOS 12 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M-series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7531_html.html",
+      "scrapedAt": "2026-08-12T11:14:27.819Z"
+    },
     {
       "version": "7.5.3.0",
       "versionId": "7530",
@@ -9961,28 +10024,28 @@
       "versionId": "7122",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7122_html.html",
-      "scrapedAt": "2026-07-27T11:11:02.262Z"
+      "scrapedAt": "2026-08-12T11:14:29.680Z"
     },
     {
       "version": "7.1.2.1",
       "versionId": "7121",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7121_html.html",
-      "scrapedAt": "2026-07-27T11:11:02.474Z"
+      "scrapedAt": "2026-08-12T11:14:30.018Z"
     },
     {
       "version": "7.1.2.0",
       "versionId": "7120",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7120_html.html",
-      "scrapedAt": "2026-07-27T11:11:02.666Z"
+      "scrapedAt": "2026-08-12T11:14:30.301Z"
     },
     {
       "version": "7.1.1.1",
       "versionId": "7111",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7111_html.html",
-      "scrapedAt": "2026-07-27T11:11:02.996Z"
+      "scrapedAt": "2026-08-12T11:14:30.700Z"
     },
     {
       "version": "7.1.1.0",
@@ -14941,5 +15004,5 @@
       "scrapedAt": "2026-03-23T23:17:00.322Z"
     }
   ],
-  "updatedAt": "2026-07-27T11:11:02.997Z"
+  "updatedAt": "2026-08-12T11:14:30.701Z"
 }
