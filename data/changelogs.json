@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "7532",
+      "label": "7.5.3.2",
+      "series": "7x"
+    },
+    {
       "id": "7531",
       "label": "7.5.3.1",
       "series": "7x"
@@ -452,6 +457,70 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "7.5.3.2",
+      "versionId": "7532",
+      "releaseType": "release",
+      "intro": "3 September 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-18138 - DLSS result should be applied to RGBA output of AiGetRenderOutput()",
+              "tickets": [
+                "ARNOLD-18138"
+              ]
+            },
+            {
+              "html": "ARNOLD-18202 - direct_outputs crashes when the OpenGL context is driven by a different GPU than the CUDA render device",
+              "tickets": [
+                "ARNOLD-18202"
+              ]
+            },
+            {
+              "html": "ARNOLD-18212 - Memory leak due to ImagerNode not being correctly destroyed",
+              "tickets": [
+                "ARNOLD-18212"
+              ]
+            },
+            {
+              "html": "ARNOLD-18240 - Slowdown in nested instancing",
+              "tickets": [
+                "ARNOLD-18240"
+              ]
+            },
+            {
+              "html": "ARNOLD-18247 - Unexpected render outputs line in output log",
+              "tickets": [
+                "ARNOLD-18247"
+              ]
+            },
+            {
+              "html": "ARNOLD-18270 - AI_PROC_BOXES viewport proxy box node has an empty name",
+              "tickets": [
+                "ARNOLD-18270"
+              ]
+            },
+            {
+              "html": "ARNOLD-18281 - Denoiser imagers slowdown the render with direct outputs",
+              "tickets": [
+                "ARNOLD-18281"
+              ]
+            },
+            {
+              "html": "ARNOLD-18287 - ADP optin dialog box is empty on certain Linux distros",
+              "tickets": [
+                "ARNOLD-18287"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.28. This is equivalent to RHEL/Rocky 8. macOS 12 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M-series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7532_html.html",
+      "scrapedAt": "2026-09-03T12:41:38.579Z"
+    },
     {
       "version": "7.5.3.1",
       "versionId": "7531",
@@ -10024,28 +10093,28 @@
       "versionId": "7122",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7122_html.html",
-      "scrapedAt": "2026-08-12T11:14:29.680Z"
+      "scrapedAt": "2026-09-03T12:41:40.364Z"
     },
     {
       "version": "7.1.2.1",
       "versionId": "7121",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7121_html.html",
-      "scrapedAt": "2026-08-12T11:14:30.018Z"
+      "scrapedAt": "2026-09-03T12:41:40.626Z"
     },
     {
       "version": "7.1.2.0",
       "versionId": "7120",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7120_html.html",
-      "scrapedAt": "2026-08-12T11:14:30.301Z"
+      "scrapedAt": "2026-09-03T12:41:40.853Z"
     },
     {
       "version": "7.1.1.1",
       "versionId": "7111",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7111_html.html",
-      "scrapedAt": "2026-08-12T11:14:30.700Z"
+      "scrapedAt": "2026-09-03T12:41:41.157Z"
     },
     {
       "version": "7.1.1.0",
@@ -15004,5 +15073,5 @@
       "scrapedAt": "2026-03-23T23:17:00.322Z"
     }
   ],
-  "updatedAt": "2026-08-12T11:14:30.701Z"
+  "updatedAt": "2026-09-03T12:41:41.157Z"
 }
