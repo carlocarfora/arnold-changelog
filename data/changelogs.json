@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "7533",
+      "label": "7.5.3.3",
+      "series": "7x"
+    },
+    {
       "id": "7532",
       "label": "7.5.3.2",
       "series": "7x"
@@ -457,6 +462,58 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "7.5.3.3",
+      "versionId": "7533",
+      "releaseType": "release",
+      "intro": "17 September 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-18165 - Random crash in LogSession when moving the camera quickly",
+              "tickets": [
+                "ARNOLD-18165"
+              ]
+            },
+            {
+              "html": "ARNOLD-18205 - direct_outputs should keep rendering until all textures are loaded",
+              "tickets": [
+                "ARNOLD-18205"
+              ]
+            },
+            {
+              "html": "ARNOLD-18315 - <code>compileModules</code> leaks Optix handles every time",
+              "tickets": [
+                "ARNOLD-18315"
+              ]
+            },
+            {
+              "html": "ARNOLD-18323 - Changing texture_searchpath/asset_searchpath does not retry previously unreadable textures when enable_dependency_graph is on",
+              "tickets": [
+                "ARNOLD-18323"
+              ]
+            },
+            {
+              "html": "ARNOLD-18381 - distance shader crashes when <code>samples</code> parameter is 0",
+              "tickets": [
+                "ARNOLD-18381"
+              ]
+            },
+            {
+              "html": "ARNOLD-18338 - Regression in BVH promotion of instanced procedural in exhaustive mode",
+              "tickets": [
+                "ARNOLD-18338"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.28. This is equivalent to RHEL/Rocky 8. macOS 12 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M-series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7533_html.html",
+      "scrapedAt": "2026-09-18T12:48:13.515Z"
+    },
     {
       "version": "7.5.3.2",
       "versionId": "7532",
@@ -10093,28 +10150,28 @@
       "versionId": "7122",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7122_html.html",
-      "scrapedAt": "2026-09-03T12:41:40.364Z"
+      "scrapedAt": "2026-09-18T12:48:15.271Z"
     },
     {
       "version": "7.1.2.1",
       "versionId": "7121",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7121_html.html",
-      "scrapedAt": "2026-09-03T12:41:40.626Z"
+      "scrapedAt": "2026-09-18T12:48:15.468Z"
     },
     {
       "version": "7.1.2.0",
       "versionId": "7120",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7120_html.html",
-      "scrapedAt": "2026-09-03T12:41:40.853Z"
+      "scrapedAt": "2026-09-18T12:48:15.724Z"
     },
     {
       "version": "7.1.1.1",
       "versionId": "7111",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7111_html.html",
-      "scrapedAt": "2026-09-03T12:41:41.157Z"
+      "scrapedAt": "2026-09-18T12:48:15.936Z"
     },
     {
       "version": "7.1.1.0",
@@ -15073,5 +15130,5 @@
       "scrapedAt": "2026-03-23T23:17:00.322Z"
     }
   ],
-  "updatedAt": "2026-09-03T12:41:41.157Z"
+  "updatedAt": "2026-09-18T12:48:15.936Z"
 }

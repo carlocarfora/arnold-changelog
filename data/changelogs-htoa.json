@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "6534",
+      "label": "6.5.3.4",
+      "series": "6x"
+    },
+    {
       "id": "6533",
       "label": "6.5.3.3",
       "series": "6x"
@@ -477,6 +482,67 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "6.5.3.4",
+      "versionId": "6534",
+      "arnoldCoreVersion": null,
+      "houdiniVersions": [
+        "20.5.684",
+        "21.0.792",
+        "22.0.429"
+      ],
+      "gccVersions": [
+        "11.2.1"
+      ],
+      "releaseType": "release",
+      "intro": "17 September 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-18165 - Random crash in LogSession when moving the camera quickly",
+              "tickets": [
+                "ARNOLD-18165"
+              ]
+            },
+            {
+              "html": "ARNOLD-18205 - direct_outputs should keep rendering until all textures are loaded",
+              "tickets": [
+                "ARNOLD-18205"
+              ]
+            },
+            {
+              "html": "ARNOLD-18315 - <code>compileModules</code> leaks Optix handles every time",
+              "tickets": [
+                "ARNOLD-18315"
+              ]
+            },
+            {
+              "html": "ARNOLD-18323 - Changing texture_searchpath/asset_searchpath does not retry previously unreadable textures when enable_dependency_graph is on",
+              "tickets": [
+                "ARNOLD-18323"
+              ]
+            },
+            {
+              "html": "ARNOLD-18381 - distance shader crashes when <code>samples</code> parameter is 0",
+              "tickets": [
+                "ARNOLD-18381"
+              ]
+            },
+            {
+              "html": "ARNOLD-18338 - Regression in BVH promotion of instanced procedural in exhaustive mode",
+              "tickets": [
+                "ARNOLD-18338"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Houdini, Houdini FX, Houdini Indie, and Houdini Education 20.5.684 21.0.792 22.0.429 Flow Render is available for the default Houdini Qt versions ( Qt6 for Houdini 22 and Houdini 21, and Qt5 for Houdini 20.5) Linux with at least glibc 2.28 and libstdc++ 11.2.1 (gcc 11.2.1). This is equivalent to Rocky 8. macOS 11 or later Apple Mac models with M series chips are natively supported by HtoA x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are supported natively. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: HtoA 6.x Release Notes",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6534_html.html",
+      "scrapedAt": "2026-09-18T12:48:16.208Z"
+    },
     {
       "version": "6.5.3.3",
       "versionId": "6533",
@@ -11434,63 +11500,63 @@
       "versionId": "6133",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6133_html.html",
-      "scrapedAt": "2026-09-03T12:41:43.161Z"
+      "scrapedAt": "2026-09-18T12:48:17.819Z"
     },
     {
       "version": "6.1.3.0",
       "versionId": "6130",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6130_html.html",
-      "scrapedAt": "2026-09-03T12:41:43.353Z"
+      "scrapedAt": "2026-09-18T12:48:17.951Z"
     },
     {
       "version": "6.1.1.0",
       "versionId": "6110",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6110_html.html",
-      "scrapedAt": "2026-09-03T12:41:43.462Z"
+      "scrapedAt": "2026-09-18T12:48:18.057Z"
     },
     {
       "version": "6.1.0.0",
       "versionId": "6100",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6100_html.html",
-      "scrapedAt": "2026-09-03T12:41:43.573Z"
+      "scrapedAt": "2026-09-18T12:48:18.290Z"
     },
     {
       "version": "6.0.2.2",
       "versionId": "6022",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6022_html.html",
-      "scrapedAt": "2026-09-03T12:41:43.712Z"
+      "scrapedAt": "2026-09-18T12:48:18.395Z"
     },
     {
       "version": "6.0.2.1",
       "versionId": "6021",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6021_html.html",
-      "scrapedAt": "2026-09-03T12:41:43.967Z"
+      "scrapedAt": "2026-09-18T12:48:18.507Z"
     },
     {
       "version": "6.0.2.0",
       "versionId": "6020",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6020_html.html",
-      "scrapedAt": "2026-09-03T12:41:44.081Z"
+      "scrapedAt": "2026-09-18T12:48:18.609Z"
     },
     {
       "version": "6.0.1.0",
       "versionId": "6010",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6010_html.html",
-      "scrapedAt": "2026-09-03T12:41:44.216Z"
+      "scrapedAt": "2026-09-18T12:48:18.715Z"
     },
     {
       "version": "6.0.0.0",
       "versionId": "6000",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6000_html.html",
-      "scrapedAt": "2026-09-03T12:41:44.330Z"
+      "scrapedAt": "2026-09-18T12:48:18.804Z"
     },
     {
       "version": "5.6.3.1",
@@ -14477,5 +14543,5 @@
       "scrapedAt": "2026-03-24T11:43:21.195Z"
     }
   ],
-  "updatedAt": "2026-09-03T12:41:44.331Z"
+  "updatedAt": "2026-09-18T12:48:18.804Z"
 }
