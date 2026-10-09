@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "7534",
+      "label": "7.5.3.4",
+      "series": "7x"
+    },
+    {
       "id": "7533",
       "label": "7.5.3.3",
       "series": "7x"
@@ -462,6 +467,106 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "7.5.3.4",
+      "versionId": "7534",
+      "releaseType": "release",
+      "intro": "8 October 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-10973 - [GPU] Discrepancy in SSS LPEs compared to CPU",
+              "tickets": [
+                "ARNOLD-10973"
+              ]
+            },
+            {
+              "html": "ARNOLD-12111 - OSL: rare &quot;Failed parse of preloaded OSO code&quot; with matrix",
+              "tickets": [
+                "ARNOLD-12111"
+              ]
+            },
+            {
+              "html": "ARNOLD-17540 - [GPU] transform motion blur randomly dropped on procedural instances",
+              "tickets": [
+                "ARNOLD-17540"
+              ]
+            },
+            {
+              "html": "ARNOLD-18220 - Random crash in network license checkout",
+              "tickets": [
+                "ARNOLD-18220"
+              ]
+            },
+            {
+              "html": "ARNOLD-18267 - MaterialX conductor_bsdf Inputs Ignored in Arnold Render",
+              "tickets": [
+                "ARNOLD-18267"
+              ]
+            },
+            {
+              "html": "ARNOLD-18359 - Fix crash from auto_transparency_depth = 0 on shadow-invisible mesh lights",
+              "tickets": [
+                "ARNOLD-18359"
+              ]
+            },
+            {
+              "html": "ARNOLD-18415 - Crash when modifying vertex data interactively on a mesh light",
+              "tickets": [
+                "ARNOLD-18415"
+              ]
+            },
+            {
+              "html": "ARNOLD-18455 - NaN shading normal from normal_map when object has a zero &quot;normal&quot; user parameter",
+              "tickets": [
+                "ARNOLD-18455"
+              ]
+            },
+            {
+              "html": "ARNOLD-18481 - Texture invalidate did not work on Windows if use_existing_tx is disabled and the path uses backslashes",
+              "tickets": [
+                "ARNOLD-18481"
+              ]
+            },
+            {
+              "html": "ARNOLD-18496 - mesh light should not emit light when its mesh is disabled",
+              "tickets": [
+                "ARNOLD-18496"
+              ]
+            },
+            {
+              "html": "ARNOLD-18508 - Profiler sample counter thread is never joined and crashes the host after libai is unloaded",
+              "tickets": [
+                "ARNOLD-18508"
+              ]
+            },
+            {
+              "html": "ARNOLD-18536 - IPR crash when editing meshes inside a procedural with native instances",
+              "tickets": [
+                "ARNOLD-18536"
+              ]
+            },
+            {
+              "html": "ARNOLD-18549 - Make additional file output drivers a few ms faster on Linux",
+              "tickets": [
+                "ARNOLD-18549"
+              ]
+            },
+            {
+              "html": "ARNOLD-18554 - Duplicate normal merge ignores motion keys after the first",
+              "tickets": [
+                "ARNOLD-18554"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.28. This is equivalent to RHEL/Rocky 8. macOS 12 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M-series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7534_html.html",
+      "scrapedAt": "2026-10-09T15:05:16.368Z"
+    },
     {
       "version": "7.5.3.3",
       "versionId": "7533",
@@ -10150,28 +10255,28 @@
       "versionId": "7122",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7122_html.html",
-      "scrapedAt": "2026-09-18T12:48:15.271Z"
+      "scrapedAt": "2026-10-09T15:05:18.139Z"
     },
     {
       "version": "7.1.2.1",
       "versionId": "7121",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7121_html.html",
-      "scrapedAt": "2026-09-18T12:48:15.468Z"
+      "scrapedAt": "2026-10-09T15:05:18.347Z"
     },
     {
       "version": "7.1.2.0",
       "versionId": "7120",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7120_html.html",
-      "scrapedAt": "2026-09-18T12:48:15.724Z"
+      "scrapedAt": "2026-10-09T15:05:18.563Z"
     },
     {
       "version": "7.1.1.1",
       "versionId": "7111",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7111_html.html",
-      "scrapedAt": "2026-09-18T12:48:15.936Z"
+      "scrapedAt": "2026-10-09T15:05:18.775Z"
     },
     {
       "version": "7.1.1.0",
@@ -15130,5 +15235,5 @@
       "scrapedAt": "2026-03-23T23:17:00.322Z"
     }
   ],
-  "updatedAt": "2026-09-18T12:48:15.936Z"
+  "updatedAt": "2026-10-09T15:05:18.775Z"
 }
