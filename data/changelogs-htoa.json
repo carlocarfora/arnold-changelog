@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "6540",
+      "label": "6.5.4.0",
+      "series": "6x"
+    },
+    {
       "id": "6515",
       "label": "6.5.1.5",
       "series": "6x"
@@ -492,6 +497,752 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "6.5.4.0",
+      "versionId": "6540",
+      "arnoldCoreVersion": null,
+      "houdiniVersions": [
+        "20.5.684",
+        "21.0.792",
+        "22.0.429"
+      ],
+      "gccVersions": [
+        "11.2.1"
+      ],
+      "releaseType": "release",
+      "intro": "22 October 2026",
+      "sections": [
+        {
+          "heading": "Flow Render Tech Preview",
+          "items": [
+            {
+              "html": "HtoA includes a Tech Preview of Flow Render, an Arnold cloud-rendering solution. We are providing 2400 minutes (per user, per month) of rendering time to Arnold users for testing and evaluating the service. Please report any feedback or issues in the Arnold feedback forums.",
+              "tickets": []
+            },
+            {
+              "html": "In this release, Flow Render adds support for custom OCIO configs, UDIM tile tokens in texture filenames, and a per-frame render time limit.",
+              "tickets": []
+            },
+            {
+              "html": "See the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_for_houdini_ah_flow_render_html\" target=\"_blank\" rel=\"noopener\">Flow Render Tech Preview</a> documentation for more information.",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "Imager Enhancements",
+          "items": [
+            {
+              "html": "<strong>Imager Shader</strong>: The new Imager Shader node runs a shader network on the rendered image during the imager passes, so you can apply simple compositing graphs and do slap compositing interactively. It works in both Classic HtoA and Solaris. The Imager Shader is a subnetwork: inside it, build an Arnold shader network and connect it to the <strong>Imager Shader Output</strong> node. The network can read AOVs through OSL shaders or an image node, using filenames such as aov:diffuse and aov:albedo. The imager also has <strong>Samples</strong>, <strong>UV Mode</strong> and <strong>Run Every Pass</strong> settings. See <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_core_ac_imager_shader_html\" target=\"_blank\" rel=\"noopener\">Imager Shader</a> in the Arnold documentation. (HTOA-3376, ARNOLD-10321, ARNOLD-18335)",
+              "tickets": [
+                "HTOA-3376",
+                "ARNOLD-10321",
+                "ARNOLD-18335"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Global Light Sampling Enhancements",
+          "items": [
+            {
+              "html": "<strong>Control indirect light samples with Global Light Sampling</strong>: When Global Light Sampling is enabled (<strong>Light Samples</strong> above 0), Arnold previously used a single light sample per shading point on indirect (secondary) bounces. The new <strong>Light Samples Indirect</strong> setting, in the <strong>Sampling</strong> settings of the Arnold ROP and of the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_for_houdini_solaris_ah_Rendering_Sampling_html\" target=\"_blank\" rel=\"noopener\">Arnold Render Settings</a> LOP, lets you increase the number of indirect lighting samples to reduce noise in scenes with many lights, at the cost of additional sampling. The default is 1, matching the previous behavior. (ARNOLD-17084)",
+              "tickets": [
+                "ARNOLD-17084"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Accelerated Viewport Enhancements",
+          "items": [
+            {
+              "html": "<strong>Accelerated Viewport in Solaris</strong>: The new <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_for_houdini_solaris_ah_Rendering_Accelerated_Viewport_html\" target=\"_blank\" rel=\"noopener\">Accelerated Viewport</a> option gives you a faster, more responsive interactive render in the Solaris viewport when rendering on the GPU. It keeps the image clean as the camera moves, so you see a useful rendered image sooner and can stay in the viewport while you light and do look development. You can turn it on with the Accelerated Viewport icon in the Solaris viewport's right-hand toolbar, in the viewport's Arnold display options, or on the <strong>Interactive</strong> tab at the top of the <strong>Rendering</strong> folder of the Arnold Render Settings LOP. On the default Render Settings LOP it is under <strong>Rendering &gt; Device</strong>. It is off by default and is not available on macOS. (HTOA-3386, HTOA-3390, HTOA-3420, HTOA-3435, ARNOLD-17608, ARNOLD-18151)",
+              "tickets": [
+                "HTOA-3386",
+                "HTOA-3390",
+                "HTOA-3420",
+                "HTOA-3435",
+                "ARNOLD-17608",
+                "ARNOLD-18151"
+              ]
+            },
+            {
+              "html": "<strong>Responsive navigation</strong>: When you move the camera, the Accelerated Viewport gets to an interactive frame rate quickly and holds it, then returns to full quality once the camera settles. To keep up, it can drop several quality settings in one step and render at a reduced resolution. (ARNOLD-18083, ARNOLD-18181, ARNOLD-17770)",
+              "tickets": [
+                "ARNOLD-18083",
+                "ARNOLD-18181",
+                "ARNOLD-17770"
+              ]
+            },
+            {
+              "html": "<strong>A clean, sharp image while the camera moves</strong>: NVIDIA Deep Learning Super Sampling (DLSS) carries its accumulated reconstruction across camera moves instead of starting over every frame, so noisy scenes stay clean while you navigate. The upscaled image stays sharp, with little smearing and few blotchy artifacts right after the camera moves. Textures look close to their final appearance while they load. Once the camera stops, the Intel Open Image Denoise (OIDN) denoising preserves detail, and the switch from DLSS to the denoised image is smooth. (ARNOLD-18001, ARNOLD-18113, ARNOLD-18197, ARNOLD-18252, ARNOLD-18418, ARNOLD-18401, ARNOLD-18459, ARNOLD-18572, ARNOLD-18608)",
+              "tickets": [
+                "ARNOLD-18001",
+                "ARNOLD-18113",
+                "ARNOLD-18197",
+                "ARNOLD-18252",
+                "ARNOLD-18418",
+                "ARNOLD-18401",
+                "ARNOLD-18459",
+                "ARNOLD-18572",
+                "ARNOLD-18608"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Rendering Enhancements",
+          "items": [
+            {
+              "html": "<strong>Pause and resume renders in Solaris</strong>: You can now pause an Arnold render in the Solaris viewport and resume it later without starting over. Pixels already rendered are kept, and rendering continues from where it stopped. (HTOA-3375, ARNOLD-11048)",
+              "tickets": [
+                "HTOA-3375",
+                "ARNOLD-11048"
+              ]
+            },
+            {
+              "html": "<strong>Stop a render after a fixed time</strong>: A new <strong>Frame Time Limit</strong> setting stops a batch render after roughly that much time and writes out the image rendered so far. This is useful when a shot has to be delivered by a deadline. You can set it in seconds, minutes or hours. It is on the new <strong>Batch</strong> tab of the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_for_houdini_properties_ah_Batch_html\" target=\"_blank\" rel=\"noopener\">Arnold ROP</a> and of the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_for_houdini_solaris_ah_batch_html\" target=\"_blank\" rel=\"noopener\">Arnold Render Settings</a> LOP, and in the Flow Render submitter. The image is complete but noisier than a fully converged render, because the render uses progressive sampling. The limit is approximate, and the render can run longer if some pixels don't have valid data yet. The default of 0 means no limit, and interactive renders ignore the setting. (HTOA-3408, ARNOLD-18340, ARNOLD-18416)",
+              "tickets": [
+                "HTOA-3408",
+                "ARNOLD-18340",
+                "ARNOLD-18416"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Shader Enhancements",
+          "items": [
+            {
+              "html": "<strong>New Rim Light shader</strong>: The <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_user_guide_ac_surface_shaders_ac_rim_light_bsdf_html\" target=\"_blank\" rel=\"noopener\">Rim Light</a> shader is a standalone node that outputs the same rim lighting that you get from the Toon shader. For stylized rendering, such as non-photorealistic rendering (NPR), you can layer the rim light into any shader network, without using Toon, and use the rim lighting as a discrete RGB component rather than a fixed, built-in effect. (HTOA-3379, ARNOLD-17744)",
+              "tickets": [
+                "HTOA-3379",
+                "ARNOLD-17744"
+              ]
+            },
+            {
+              "html": "<strong>Specular BSDF's Specular Weight renamed Reflectivity</strong>: The <strong>Specular Weight</strong> parameter of the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_user_guide_ac_surface_shaders_ac_specular_bsdf_html\" target=\"_blank\" rel=\"noopener\">Specular BSDF</a> shader is now called <strong>Reflectivity</strong>, which describes better what it does: it multiplies the dielectric Fresnel reflectivity without affecting refraction. The old name is still accepted as a synonym, so existing scenes keep working. (HTOA-3378, ARNOLD-18136)",
+              "tickets": [
+                "HTOA-3378",
+                "ARNOLD-18136"
+              ]
+            },
+            {
+              "html": "<strong>Detect Arnold from OSL shaders</strong>: OSL shaders can now call <code>getattribute(&quot;renderer:name&quot;, ...)</code> and <code>getattribute(&quot;renderer:version&quot;, ...)</code> to check whether they are running in Arnold, and in which version. This lets you write shaders that use Arnold-specific behavior and still work in other renderers. (ARNOLD-18066)",
+              "tickets": [
+                "ARNOLD-18066"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Denoising Enhancements",
+          "items": [
+            {
+              "html": "<strong>Better Noice denoising through glass and in reflections</strong>: HtoA now sets up the AOVs that the improved Noice denoiser needs. Noice keeps detail in objects seen through transparent surfaces like glass, and in reflective surfaces like mirrors. In Classic HtoA, turning on <strong>Output Variance AOV</strong> on the Arnold ROP now writes <code>denoise_albedo_noisy</code> and its <code>denoise_albedo_noisy_variance</code> AOV. In Solaris, the Arnold Render Settings, Arnold Render Vars and Arnold Denoise Render Vars LOPs now offer <strong>Denoise Albedo (Noisy)</strong> in place of <strong>Denoise Albedo</strong>. Arnold Render Settings LOPs in existing hip files keep their Denoise Albedo settings when upgraded. (HTOA-3357, ARNOLD-10252)",
+              "tickets": [
+                "HTOA-3357",
+                "ARNOLD-10252"
+              ]
+            },
+            {
+              "html": "In Classic HtoA, turning on <strong>Output Variance AOV</strong> on the Arnold ROP now writes <code>denoise_albedo_noisy</code> and its <code>denoise_albedo_noisy_variance</code> AOV.",
+              "tickets": []
+            },
+            {
+              "html": "In Solaris, the Arnold Render Settings, Arnold Render Vars and Arnold Denoise Render Vars LOPs now offer <strong>Denoise Albedo (Noisy)</strong> in place of <strong>Denoise Albedo</strong>. Arnold Render Settings LOPs in existing hip files keep their Denoise Albedo settings when upgraded. (HTOA-3357, ARNOLD-10252)",
+              "tickets": [
+                "HTOA-3357",
+                "ARNOLD-10252"
+              ]
+            },
+            {
+              "html": "<strong>Noice denoiser</strong>: <code>--filter_strength</code> now behaves consistently across all rendering filters, instead of requiring a different optimal value per filter as before. The recommended range is 0.6 to 0.8, depending on your preference for the detail/noise tradeoff. The default has increased from 0.45 to 0.6. (ARNOLD-18168)",
+              "tickets": [
+                "ARNOLD-18168"
+              ]
+            },
+            {
+              "html": "<strong>Automatic configuration of variance_filter parameters</strong>: The variance filter, used by the Arnold Denoiser (Noice), has parameters <code>width</code> and <code>filter_weights</code> that need to match the filter settings of the corresponding AOV. Incorrectly setting this will hurt denoiser quality. Arnold now sets the <code>width</code> and <code>filter_weights</code> automatically, so you can ignore them. Using them will trigger a deprecation warning. A future version of Arnold will remove these now unused parameters. (ARNOLD-17982)",
+              "tickets": [
+                "ARNOLD-17982"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "GPU Enhancements",
+          "items": [
+            {
+              "html": "<strong>Faster GPU scene updates</strong>: GPU renders of scenes with many objects or instances now start sooner and react faster to interactive edits, such as moving objects or adding, removing, or changing instances. Geometry and user data are uploaded to the GPU in larger batches, and the acceleration structures use less memory. (ARNOLD-17900, ARNOLD-18140, ARNOLD-18160, ARNOLD-18179, ARNOLD-18376, ARNOLD-18380, ARNOLD-18384)",
+              "tickets": [
+                "ARNOLD-17900",
+                "ARNOLD-18140",
+                "ARNOLD-18160",
+                "ARNOLD-18179",
+                "ARNOLD-18376",
+                "ARNOLD-18380",
+                "ARNOLD-18384"
+              ]
+            },
+            {
+              "html": "<strong>Warning when the GPU is out of video memory</strong>: On Windows, Arnold now warns you when a GPU render exceeds the GPU memory budget provided by the operating system. When GPU memory goes over budget, the GPU driver keeps the render alive by paging GPU memory out to system RAM, which can slow rendering down dramatically. (ARNOLD-17693)",
+              "tickets": [
+                "ARNOLD-17693"
+              ]
+            },
+            {
+              "html": "<strong>Better accounting of GPU memory in stats</strong>: Previously unaccounted-for GPU memory is now reported in the stats as <code>compute stacks</code>. This is the GPU memory allocated by each GPU thread to do its computation. This memory increases with the number of GPU cores, not with scene complexity, and is usually a few GBs in size. (ARNOLD-17310)",
+              "tickets": [
+                "ARNOLD-17310"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "General Performance Enhancements",
+          "items": [
+            {
+              "html": "<strong>Faster updates when deforming meshes</strong>: When a mesh deforms in an interactive session, such as when animating or sculpting, Arnold now updates it in place instead of rebuilding the whole mesh (ARNOLD-18289, ARNOLD-18321, ARNOLD-18544). For example: Deforming a subdivided and displaced test character (17M polygons after subdivision) is 43% faster on both CPU and GPU. Deforming a non-subdivided test character (1M polygons) with authored normals is 65% faster on CPU and 68% faster on GPU Deforming every mesh in the 27,000-mesh Caldera USD scene is up to 78% faster on CPU and 75% faster on GPU.",
+              "tickets": [
+                "ARNOLD-18289",
+                "ARNOLD-18321",
+                "ARNOLD-18544"
+              ]
+            },
+            {
+              "html": "Deforming a subdivided and displaced test character (17M polygons after subdivision) is 43% faster on both CPU and GPU.",
+              "tickets": []
+            },
+            {
+              "html": "Deforming a non-subdivided test character (1M polygons) with authored normals is 65% faster on CPU and 68% faster on GPU",
+              "tickets": []
+            },
+            {
+              "html": "Deforming every mesh in the 27,000-mesh Caldera USD scene is up to 78% faster on CPU and 75% faster on GPU.",
+              "tickets": []
+            },
+            {
+              "html": "<strong>Faster imager updates during CPU renders</strong>: On CPU, imagers that refresh the display partway through a render used to run on a single thread. A slow imager could take minutes to appear, and other threads could sit idle waiting for it at the end of a pass. Render threads now help with these kind of imagers, so intermediate results appear much sooner. This applies to the Imager Shader, Imager Lens Effects (except with the simple bloom mode), and Imager Denoiser OIDN on the CPU device. The final imager run, GPU renders, and other imagers, including Noice, the OptiX denoiser and third-party imagers, behave as before. (ARNOLD-18500)",
+              "tickets": [
+                "ARNOLD-18500"
+              ]
+            },
+            {
+              "html": "<strong>More predictable imager updates during CPU renders</strong>: When deciding when to run imagers partway through a CPU render, Arnold now takes into account how long the previous imager run took, so the time spent on imagers stays close to its target share of the render time. Previously, short renders could spend a lot of their time running imagers, while long renders updated so rarely that the render could look like it had stopped. Arnold also resets this timing when you interrupt the render or edit an imager, so changes such as turning denoising on or off show up sooner. (ARNOLD-12642, ARNOLD-15447)",
+              "tickets": [
+                "ARNOLD-12642",
+                "ARNOLD-15447"
+              ]
+            },
+            {
+              "html": "<strong>Faster motion blur when objects have different motion keys</strong>: When objects in a scene or procedural had different numbers of motion keys or different motion start and end settings, Arnold used to drop motion keys for all of those objects. Each object was then bounded over its whole motion, and renders could slow down by an order of magnitude or more. Arnold now keeps motion keys for these scenes. In a test with 39k moving objects, a scene where 90% of objects had 5 keys and 10% had 2 went from 3.76 s to 0.28 s. A scene with 30 different time ranges and 1–9 keys per object went from 1.37 s to 0.31 s. Scenes whose objects already agree on their keys are unchanged. The cost is extra memory in the scenes that now get motion keys: about what the scene would use if every object had those keys. This also fixes geometry missing from motion-blurred objects inside moving procedurals when procedural instancing optimization is enabled. (ARNOLD-6597)",
+              "tickets": [
+                "ARNOLD-6597"
+              ]
+            },
+            {
+              "html": "<strong>Faster light importance map calculation</strong>: Quad light importance maps are now multithreaded and significantly faster. For example, a 4096x4096 quad light map went from 3.7 s to 0.12 s. Skydome light importance maps are now built before rendering starts, and are up to 2x faster with 32 or more threads. Rendered results and memory use are unchanged. (ARNOLD-18155)",
+              "tickets": [
+                "ARNOLD-18155"
+              ]
+            },
+            {
+              "html": "<strong>Faster BVH builds for scenes with many objects</strong>: Building a BVH (the bounding volume hierarchy that Arnold uses to find which objects a ray hits) is now multi-threaded. Scenes with a very large number of objects, such as heavily instanced scenes, now start rendering sooner, especially on machines with many cores. (ARNOLD-16616)",
+              "tickets": [
+                "ARNOLD-16616"
+              ]
+            },
+            {
+              "html": "<strong>Optimized dependency graph</strong>: Arnold dependency graph is now more efficient, reducing memory footprint on large scenes. (ARNOLD-16102)",
+              "tickets": [
+                "ARNOLD-16102"
+              ]
+            },
+            {
+              "html": "<strong>Parallelized nodes destruction</strong>: When the Arnold universe is deleted, the nodes are now deleted in parallel, making the shutdown time faster. The USD Caldera scene is now 3.6x faster at render shutdown. (ARNOLD-16156)",
+              "tickets": [
+                "ARNOLD-16156"
+              ]
+            },
+            {
+              "html": "<strong>Shaders support in the dependency graph</strong>: The shading trees are now properly handled by the node dependency graph. Shaders can now be deleted during interactive renders without requiring additional process on the plugin side. (ARNOLD-7064)",
+              "tickets": [
+                "ARNOLD-7064"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Other Enhancements",
+          "items": [
+            {
+              "html": "<strong>New built-in roughness AOV</strong>: A new roughness AOV reports the surface roughness seen at the first bounce, so you can check the roughness maps across a whole shot at render time instead of building a custom AOV for every material. You can select it on the Arnold ROP, and on the Arnold Render Settings and Arnold Render Vars LOPs. It accumulates the roughness into a single value, without anisotropy. A material with several lobes returns a weighted average across them, and a surface with no microfacet roughness, and that is pure diffuse, hair, sheen, fuzz, and transmission, returns 1. (HTOA-3427, ARNOLD-17777)",
+              "tickets": [
+                "HTOA-3427",
+                "ARNOLD-17777"
+              ]
+            },
+            {
+              "html": "<strong>Thanks to <a href=\"https://alexmateo.gumroad.com/\" target=\"_blank\" rel=\"noopener\">Alex Mateo</a> for the use of the Salita scene.</strong>",
+              "tickets": []
+            },
+            {
+              "html": "<strong>Progress feedback while imagers update a finished render</strong>: Editing an imager after a render has finished reruns the imagers over the image. The render progress now tracks that imager work, so the progress bar shows that something is happening and when it's done. Previously the progress dropped to 0% when the update started and stayed there on a finished render. Progress during rendering is unchanged. (ARNOLD-16372)",
+              "tickets": [
+                "ARNOLD-16372"
+              ]
+            },
+            {
+              "html": "<strong>More detailed timing stats</strong>: Scene creation time now has two subsections: scene setup and scene load (this is for all scene formats, not just ASS scenes). In the general frame time, a new render setup time was added, which covers one-time setup (both CPU and GPU) and has a separate gpu context creation subsection for GPU. Finally, light-tree building is now correctly accounted for and included in light-accel building. (ARNOLD-16395)",
+              "tickets": [
+                "ARNOLD-16395"
+              ]
+            },
+            {
+              "html": "<strong>Alembic procedural is now a built-in node</strong>: The <code>alembic</code> node is included in Arnold and is not a separate library in the plugins subdirectory. (ARNOLD-18288)",
+              "tickets": [
+                "ARNOLD-18288"
+              ]
+            },
+            {
+              "html": "<strong>Updated DLSS</strong>: The DLSS library used by the Accelerated Viewport is upgraded to version 310.9.1, which includes the newer DLSS 4.5 Ray Reconstruction model. (ARNOLD-18263)",
+              "tickets": [
+                "ARNOLD-18263"
+              ]
+            },
+            {
+              "html": "<strong>Update network licensing</strong>: The Autodesk network licensing library is updated to version 3.4.0.4. (ARNOLD-18220)",
+              "tickets": [
+                "ARNOLD-18220"
+              ]
+            },
+            {
+              "html": "<strong>Update oneTBB to version 2023.1.0</strong>: Arnold's threading library was updated from oneTBB 2020.3 to 2023.1.0. (ARNOLD-18120)",
+              "tickets": [
+                "ARNOLD-18120"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "HtoA Enhancements",
+          "items": [
+            {
+              "html": "<strong>AOV Write shaders in volume networks</strong>: You can now insert an <code>aov_write_*</code> shader (float, int, rgb, rgba, vector) directly into a volume shading network in Solaris, to write a custom AOV from a volume. The <strong>passthrough</strong> input accepts a surface or a volume shader, and the node's output changes to match what's connected. One AOV Write node therefore works in both surface and volume networks, and you don't need a separate workaround for volumes. Existing surface networks are unchanged. (HTOA-2748)",
+              "tickets": [
+                "HTOA-2748"
+              ]
+            },
+            {
+              "html": "<strong>Per-AOV compression in multipart EXRs</strong>: In Solaris you can now set a different EXR compression for each AOV written to the same multipart EXR. For example, use a lossless compression on the beauty and a smaller lossy one such as DWAB on utility AOVs, to cut the size of your files on disk. On the Arnold Render Settings LOP, each AOV has a new <strong>Compression</strong> setting under its <strong>EXR Settings</strong>. If you leave it unset, the AOV uses the compression set in <strong>Driver Options</strong>, so existing scenes render as before. Classic HtoA already supports per-AOV compression on the Arnold ROP. (HTOA-3287, ARNOLD-15669)",
+              "tickets": [
+                "HTOA-3287",
+                "ARNOLD-15669"
+              ]
+            },
+            {
+              "html": "<strong>Cage baking in Solaris</strong>: The <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_for_houdini_solaris_ah_arnold_texture_baker_html\" target=\"_blank\" rel=\"noopener\">Arnold Texture Baker</a> LOP can now project through a custom cage mesh. That gives you control over the projection where the automatic <strong>UV Offset</strong> cage misses detail or picks up nearby geometry. In a projection Bake Mode, turn on <strong>Use Cage</strong> for a bake mesh and set <strong>Cage Path</strong> to the cage. The cage must be an edited copy of the bake mesh: the same points moved around, with no topology changes. <strong>Use Cage</strong> is off by default, so existing bakes keep using the automatic cage. (HTOA-3353)",
+              "tickets": [
+                "HTOA-3353"
+              ]
+            },
+            {
+              "html": "<strong>Predictable filenames for texture baking</strong>: The Arnold ROP has a new <strong>Output Texture</strong> parameter, in the <strong>Baking</strong> folder, for texture baking. You write a filename template using the tokens <code>&lt;mesh&gt;</code>, <code>&lt;uvset&gt;</code>, <code>&lt;udim&gt;</code>, <code>&lt;aov&gt;</code> and <code>&lt;row&gt;</code>, and HtoA fills them in for each bake row. A pipeline can then know the output filenames in advance without cooking the geometry, and you can re-bake a single mesh and UV set combination to the same file. The dropdown offers example templates, such as <code>tex_&lt;mesh&gt;_&lt;uvset&gt;.&lt;udim&gt;.$F4.exr</code>. A requested UDIM that has no UVs on a mesh is now skipped, instead of being written as UDIM 1001 without a UDIM token in the filename. If two rows resolve to the same filename, HtoA appends <code>_row&lt;NN&gt;</code> to each of them and logs a warning. If a token has no value for a row, it is removed from the filename and a warning is logged. If you leave <strong>Output Texture</strong> empty, or the path has no tokens, the bake uses <strong>Output Picture</strong> with the old naming. Existing scenes therefore bake as before. Turn on <strong>Enable Legacy Texture Naming</strong> to force the old naming. (HTOA-2843)",
+              "tickets": [
+                "HTOA-2843"
+              ]
+            },
+            {
+              "html": "<strong>Shading controls on the Classic HtoA Gaussian Splat object</strong>: The <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_for_houdini_shapes_ah_Gaussian_Splat_html\" target=\"_blank\" rel=\"noopener\">Arnold Gaussian Splat</a> object has a new <strong>Shading</strong> tab, so you can adjust how splats are shaded without building a material. <strong>Emission Weight</strong> and <strong>Emission Tint</strong> control the splat's own color, which defaults to full emission. <strong>Diffuse Weight</strong>, <strong>Diffuse Tint</strong> and <strong>Diffuse Roughness</strong> let the splats respond to the lights in your scene. Diffuse is off by default, so existing scenes look the same. These controls are disabled when you assign a material to the object. (HTOA-3316)",
+              "tickets": [
+                "HTOA-3316"
+              ]
+            },
+            {
+              "html": "<strong>Gaussian splats in the viewport for Classic HtoA</strong>: The <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_for_houdini_shapes_ah_Gaussian_Splat_html\" target=\"_blank\" rel=\"noopener\">Arnold Gaussian Splat</a> object now shows its splats as colored points in the Houdini viewport. You can see and place a splat cloud without rendering it. HtoA reads the PLY file with the Arnold PLY reader through the viewport proxy. New Gaussian Splat objects default to the points display. (HTOA-3377, ARNOLD-17834, ARNOLD-18269)",
+              "tickets": [
+                "HTOA-3377",
+                "ARNOLD-17834",
+                "ARNOLD-18269"
+              ]
+            },
+            {
+              "html": "<strong>Render Pass setup with the Arnold (Setup) tool</strong>: In Houdini 22 and later, the <strong>Arnold (Setup)</strong> LOP tool now also creates a <strong>Render Pass</strong> LOP. It points the Render Pass at the new Arnold render settings, and points the <strong>USD Render ROP</strong> at the Render Pass, the same setup Karma uses. Your Arnold LOP network is then ready for render-pass workflows without manual wiring. In earlier Houdini versions the tool works as before. (HTOA-3333)",
+              "tickets": [
+                "HTOA-3333"
+              ]
+            },
+            {
+              "html": "<strong>Arnold logs in the Houdini Log Viewer for Solaris</strong>: Arnold messages from Solaris viewport renders now appear in the Houdini <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_for_houdini_ah_Log_Viewer_html\" target=\"_blank\" rel=\"noopener\">Log Viewer</a> under a new <strong>HtoA (Solaris Delegate)</strong> source. You can now filter, search, and review the Solaris render log next to Houdini's other logs, without watching the console. This brings Solaris in line with Classic HtoA, which already sends its logs to the Log Viewer as <strong>HtoA</strong> and <strong>HtoA-py</strong>. (HTOA-3089)",
+              "tickets": [
+                "HTOA-3089"
+              ]
+            },
+            {
+              "html": "<strong>Clearer program names on Windows</strong>: The Windows installer now registers HtoA as <strong>HtoA for Houdini version</strong>, for example <code>HtoA for Houdini 22.0.429</code>. Before, it was registered as <code>Arnold for Houdini 6.5.4.0</code>. Builds for an alternate Python version add the Python version, for example <code>HtoA for Houdini 22.0.429 (Python 3.11)</code>. When you have several builds installed, you can now tell which Houdini version each one is for. The name now also matches the other Arnold plug-ins, such as MtoA and MAXtoA. (HTOA-3416)",
+              "tickets": [
+                "HTOA-3416"
+              ]
+            },
+            {
+              "html": "<strong>ASS and USD export is now supported from Houdini Indie</strong>: For example, you can now export scenes from Houdini Indie and batch render them with kick. (HTOA-3430)",
+              "tickets": [
+                "HTOA-3430"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Flow Render Enhancements",
+          "items": [
+            {
+              "html": "<strong>Custom OCIO configs with Flow Render</strong>: You can now submit scenes that use a custom OCIO config to Flow Render. HtoA now also sends the OCIO display as well as the view transform, so Flow Render output matches the color management you see in Houdini. (HTOA-3398, ARNOLD-17134)",
+              "tickets": [
+                "HTOA-3398",
+                "ARNOLD-17134"
+              ]
+            },
+            {
+              "html": "<strong>Tile token support</strong>: The <code>&lt;utile&gt;</code> and <code>&lt;vtile&gt;</code> tokens are now supported in texture filenames. (ARNOLD-18206)",
+              "tickets": [
+                "ARNOLD-18206"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "html": "<strong>Render pause in Hydra</strong>: The Arnold render delegate now supports pausing <a href=\"https://github.com/Autodesk/arnold-usd/issues/2719\" target=\"_blank\" rel=\"noopener\">usd#2719</a>",
+              "tickets": [
+                "usd#2719"
+              ]
+            },
+            {
+              "html": "<strong>Accelerated Rendering</strong>: A new render setting <code>accelerated_rendering</code> provides fast viewport updates (GPU-only) <a href=\"https://github.com/Autodesk/arnold-usd/issues/2652\" target=\"_blank\" rel=\"noopener\">usd#2652</a>",
+              "tickets": [
+                "usd#2652"
+              ]
+            },
+            {
+              "html": "<strong>Support points grids in Volumes</strong>: When a Volume primitive loads a VDB file having points grids, these grids are then rendered as points in Arnold <a href=\"https://github.com/Autodesk/arnold-usd/issues/2740\" target=\"_blank\" rel=\"noopener\">usd#2740</a>",
+              "tickets": [
+                "usd#2740"
+              ]
+            },
+            {
+              "html": "<strong>CoordSys support in Hydra</strong>: Arnold now resolves the USD <code>UsdShadeCoordSysAPI</code>, so named coordinate systems can be bound to a prim and referenced by the Space parameter of MaterialX shaders such as MtlX Position. See <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_for_houdini_solaris_ah_solaris_mtlx_html\" target=\"_blank\" rel=\"noopener\">Material X</a> for an example. (ARNOLD-18248) <a href=\"https://github.com/Autodesk/arnold-usd/issues/32\" target=\"_blank\" rel=\"noopener\">usd#32</a>",
+              "tickets": [
+                "ARNOLD-18248",
+                "usd#32"
+              ]
+            },
+            {
+              "html": "<strong>Per-render var EXR compression</strong>: EXR compression can now be set separately for each render var (AOV) with the <code>arnold:driver_exr:compression</code> attribute. The compression set on the render product is still used as a fallback. <a href=\"https://github.com/Autodesk/arnold-usd/issues/2742\" target=\"_blank\" rel=\"noopener\">usd#2742</a> <a href=\"https://github.com/Autodesk/arnold-usd/issues/2731\" target=\"_blank\" rel=\"noopener\">usd#2731</a>",
+              "tickets": [
+                "usd#2742",
+                "usd#2731"
+              ]
+            },
+            {
+              "html": "<strong>UV camera ray direction and origin in Hydra</strong>: The <code>ray_direction</code> and <code>ray_origin</code> inputs of the <code>uv_camera</code> are now supported in Hydra, which fixes cage handling when baking textures in Solaris. <a href=\"https://github.com/Autodesk/arnold-usd/issues/2710\" target=\"_blank\" rel=\"noopener\">usd#2710</a>",
+              "tickets": [
+                "usd#2710"
+              ]
+            },
+            {
+              "html": "<strong>Sequence rendering with Hydra 2 render settings</strong>: Sequences now render correctly when the render settings change during the sequence. The render is interrupted before the render settings are updated, and existing Arnold nodes are reused instead of being recreated. <a href=\"https://github.com/Autodesk/arnold-usd/issues/2754\" target=\"_blank\" rel=\"noopener\">usd#2754</a>",
+              "tickets": [
+                "usd#2754"
+              ]
+            },
+            {
+              "html": "<strong>Interactive updates for shader imagers</strong>: When an imager shader, or a shading tree connected to it, is modified interactively, only the imager pass is updated instead of the whole render being restarted. <a href=\"https://github.com/Autodesk/arnold-usd/issues/2758\" target=\"_blank\" rel=\"noopener\">usd#2758</a>",
+              "tickets": [
+                "usd#2758"
+              ]
+            },
+            {
+              "html": "<strong>Mesh geometry deduplication in Hydra</strong>: The render delegate now finds identical meshes and curves and renders them as instances of one shared node. This reduces memory use and BVH build time in scenes with repeated assets, such as point instancer prototypes. The <code>HDARNOLD_GEOM_DEDUP</code> environment variable sets the mode: <code>0</code> (no deduplication), <code>1</code> (point instancer prototypes only; the default), or <code>2</code> (all duplicate geometry). <a href=\"https://github.com/Autodesk/arnold-usd/issues/2749\" target=\"_blank\" rel=\"noopener\">usd#2749</a>",
+              "tickets": [
+                "usd#2749"
+              ]
+            },
+            {
+              "html": "<strong>Turntable render settings</strong>: The turntable command now uses the render settings already in the scene instead of creating new ones with default values. A new option lets you choose a specific render settings prim. <a href=\"https://github.com/Autodesk/arnold-usd/issues/2769\" target=\"_blank\" rel=\"noopener\">usd#2769</a>",
+              "tickets": [
+                "usd#2769"
+              ]
+            },
+            {
+              "html": "<strong>Arnold logs in Houdini</strong>: Arnold log messages can now be forwarded to the Houdini logger. <a href=\"https://github.com/Autodesk/arnold-usd/issues/2775\" target=\"_blank\" rel=\"noopener\">usd#2775</a>",
+              "tickets": [
+                "usd#2775"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Changes",
+          "items": [
+            {
+              "html": "<strong>Render pause API</strong>: New <code>AiRenderPause()</code> and <code>AiRenderIsPaused()</code> functions let a host pause a running render without losing progress, then resume it with the existing <code>AiRenderResume()</code>. Rendering threads block at pixel or sample scheduling boundaries until resumed, so no in-flight buckets are lost or restarted. <code>AiRenderGetStatus()</code> continues to report <code>AI_RENDER_STATUS_RENDERING</code> while a render is paused. Call <code>AiRenderIsPaused()</code> to check the pause state. (ARNOLD-11048)",
+              "tickets": [
+                "ARNOLD-11048"
+              ]
+            },
+            {
+              "html": "<strong>Imager interrupt and resume APIs</strong>: When an imager, or a shader under an imager graph is modified interactively, the imager pass should now be interrupted with <code>AiImagerInterrupt()</code>. Note that this does not stop the render, but only the imager passes. After the imagers and included shaders were modified, they can be resumed with <code>AiImagerResume()</code>. This later function can replace the previous <code>request_imager_update</code> render hint. (ARNOLD-11648)",
+              "tickets": [
+                "ARNOLD-11648"
+              ]
+            },
+            {
+              "html": "<strong>Recognize shaders under an imager graph</strong>: The new <code>imager_shader</code> can reference a shading tree under the imager graph, therefore such shaders being modified interactively should only trigger a new imager pass without needing a new render. A new API <code>AiShaderInImagerTree</code> allows to distinguish such shaders from regular shading trees (ARNOLD-18297)",
+              "tickets": [
+                "ARNOLD-18297"
+              ]
+            },
+            {
+              "html": "<strong>OSL screen coordinates</strong>: OSL shaders evaluated by the <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_core_ac_imager_shader_html\" target=\"_blank\" rel=\"noopener\">Imager Shader</a> can read the screen position of the current pixel, in the 0–1 range, with two new attributes. <code>getattribute(&quot;screen_uv&quot;, ...)</code> has <code>v = 0</code> at the bottom of the image, matching Arnold's convention and the Imager Shader's <strong>Screen</strong> UV mode. <code>getattribute(&quot;screen_st&quot;, ...)</code> has <code>t = 0</code> at the top of the image, matching OSL's texture convention, so you can pass it to <code>texture()</code> without flipping. Both return screen-space derivatives, so <code>texture()</code> lookups are filtered correctly. See <a href=\"https://beehive.autodesk.com/community/service/rest/cloudhelp/resource/cloudhelpchannel/guidcrossbook/?p=ARNOL&amp;l=ENU&amp;accessmode=live&amp;guid=arnold_user_guide_ac_shading_ac_osl_shaders_html\" target=\"_blank\" rel=\"noopener\">OSL Shaders</a>. (ARNOLD-18419)",
+              "tickets": [
+                "ARNOLD-18419"
+              ]
+            },
+            {
+              "html": "<strong>Volume grid type API</strong>: New <code>AiVolumeFileGetChannelTypes()</code> function lets you check whether a vdb grid is a volume channel or a points grid. (ARNOLD-18209)",
+              "tickets": [
+                "ARNOLD-18209"
+              ]
+            },
+            {
+              "html": "<strong>AiGetRenderOutput() output properties</strong>: <code>AiGetRenderOutput()</code> takes a new optional <code>AtRenderOutputProperties</code> argument that sets how an AOV is written into the destination. This lets hosts copy directly into their own buffers without an extra conversion pass. <code>destination_row_pitch</code> lets the render region be copied into a CPU buffer wider than itself, such as a mapped viewport framebuffer. <code>half_float</code> converts the AOV to 16-bit half float on the GPU before a CPU transfer, which halves both the destination size and the amount of data copied. <code>alpha_mode</code> writes the alpha as is, inverted, or as a constant <code>alpha_value</code>, for example 1.0 for an opaque result. The defaults keep the existing behavior, so current calls are unaffected. (ARNOLD-18283, ARNOLD-18284, ARNOLD-18285)",
+              "tickets": [
+                "ARNOLD-18283",
+                "ARNOLD-18284",
+                "ARNOLD-18285"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "HTOA-2635 - Camera projection shaders now work correctly in Solaris",
+              "tickets": [
+                "HTOA-2635"
+              ]
+            },
+            {
+              "html": "HTOA-3334 - Light linking doesn't work with instanceable references (also logged as HTOA-3288)",
+              "tickets": [
+                "HTOA-3334",
+                "HTOA-3288"
+              ]
+            },
+            {
+              "html": "HTOA-3344 - Fix volume alpha compositing issue in the Solaris viewport",
+              "tickets": [
+                "HTOA-3344"
+              ]
+            },
+            {
+              "html": "HTOA-3365 - Fixed invalid USD prim names generated by Arnold Edit Material, which could cause scene instability and undefined behaviour",
+              "tickets": [
+                "HTOA-3365"
+              ]
+            },
+            {
+              "html": "HTOA-3373 - VDBs authored via the the Arnold VDB LOD (or VDB LOD Sop) workflows now work in Solaris",
+              "tickets": [
+                "HTOA-3373"
+              ]
+            },
+            {
+              "html": "HTOA-3403 - Fix passthrough for volume plugs",
+              "tickets": [
+                "HTOA-3403"
+              ]
+            },
+            {
+              "html": "HTOA-3407 - Segfault in FilterUnusedPoints::filter() rendering unconnected points without full topology",
+              "tickets": [
+                "HTOA-3407"
+              ]
+            },
+            {
+              "html": "HTOA-3411 - Use a USD prim picker dialog for shader node parms in a Solaris Material Builder (for example, the camera projection shader)",
+              "tickets": [
+                "HTOA-3411"
+              ]
+            },
+            {
+              "html": "HTOA-3421 - Unstable camera while panning in the Solaris viewport",
+              "tickets": [
+                "HTOA-3421"
+              ]
+            },
+            {
+              "html": "ARNOLD-9430 - Interactive modification of displacement shaders works",
+              "tickets": [
+                "ARNOLD-9430"
+              ]
+            },
+            {
+              "html": "ARNOLD-11648 - Make full frame imager updates thread safe",
+              "tickets": [
+                "ARNOLD-11648"
+              ]
+            },
+            {
+              "html": "ARNOLD-11706 - Tiny transmittance in interiors generates NaNs in CPU rendering",
+              "tickets": [
+                "ARNOLD-11706"
+              ]
+            },
+            {
+              "html": "ARNOLD-14047 - Light linking is not respected through transmission in skydome light",
+              "tickets": [
+                "ARNOLD-14047"
+              ]
+            },
+            {
+              "html": "ARNOLD-15234 - Crash in profiler with multiple render sessions",
+              "tickets": [
+                "ARNOLD-15234"
+              ]
+            },
+            {
+              "html": "ARNOLD-16231 - OSL opacity mask does not respect missingcolor",
+              "tickets": [
+                "ARNOLD-16231"
+              ]
+            },
+            {
+              "html": "ARNOLD-16386 - [GPU] Complex OSL and MaterialX shader networks could fail with an illegal memory access and render black",
+              "tickets": [
+                "ARNOLD-16386"
+              ]
+            },
+            {
+              "html": "ARNOLD-17468 - ar_orientations does not work for curves in Alembic files",
+              "tickets": [
+                "ARNOLD-17468"
+              ]
+            },
+            {
+              "html": "ARNOLD-17668 - kick: -o output file ignored when rendering USD scenes with open render window",
+              "tickets": [
+                "ARNOLD-17668"
+              ]
+            },
+            {
+              "html": "ARNOLD-17871 - Rare OSL crashes, particularly on macos",
+              "tickets": [
+                "ARNOLD-17871"
+              ]
+            },
+            {
+              "html": "ARNOLD-17988 - GPU OIDN crashes in Cinema 4D on Linux",
+              "tickets": [
+                "ARNOLD-17988"
+              ]
+            },
+            {
+              "html": "ARNOLD-18072 - Global operators must not change shared procedural content unless the selection matches every sharer",
+              "tickets": [
+                "ARNOLD-18072"
+              ]
+            },
+            {
+              "html": "ARNOLD-18142 - [FlowRender] Texture baking fails if multiple meshes have the same name",
+              "tickets": [
+                "ARNOLD-18142"
+              ]
+            },
+            {
+              "html": "ARNOLD-18279 - Viewport proxy of VDB points missing with custom point attribute",
+              "tickets": [
+                "ARNOLD-18279"
+              ]
+            },
+            {
+              "html": "ARNOLD-18322 - OSL texture() lookups on a missing file are slow",
+              "tickets": [
+                "ARNOLD-18322"
+              ]
+            },
+            {
+              "html": "ARNOLD-18333 - OSL camera:* attributes crash or return nothing when no object is being shaded",
+              "tickets": [
+                "ARNOLD-18333"
+              ]
+            },
+            {
+              "html": "ARNOLD-18356 - UsdLux: IES angle_scale in range (0, 1) renders too dark",
+              "tickets": [
+                "ARNOLD-18356"
+              ]
+            },
+            {
+              "html": "ARNOLD-18377 - OSL getattribute('uv'/'st') returns a transposed derivative block",
+              "tickets": [
+                "ARNOLD-18377"
+              ]
+            },
+            {
+              "html": "ARNOLD-18407 - Volume AOVs are black or dim in non-deep outputs when also rendering deep EXR or Cryptomatte",
+              "tickets": [
+                "ARNOLD-18407"
+              ]
+            },
+            {
+              "html": "ARNOLD-18446 - Crash when an imager was added to a driver's imager chain during an interactive render",
+              "tickets": [
+                "ARNOLD-18446"
+              ]
+            },
+            {
+              "html": "ARNOLD-18506 - [GPU] Crash at exit after a GPU render when AiEnd() is not called",
+              "tickets": [
+                "ARNOLD-18506"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2705\" target=\"_blank\" rel=\"noopener\">usd#2705</a> - Bind volume shaders on step-sized meshes",
+              "tickets": [
+                "usd#2705"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2730\" target=\"_blank\" rel=\"noopener\">usd#2730</a> - Use the OCIO config file path from the settings map when $OCIO is not set",
+              "tickets": [
+                "usd#2730"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2745\" target=\"_blank\" rel=\"noopener\">usd#2745</a> - Support renderingColorSpace in the hydra2 render_settings",
+              "tickets": [
+                "usd#2745"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/2747\" target=\"_blank\" rel=\"noopener\">usd#2747</a> - Fix nodes destruction during interactive sessions under a procedural",
+              "tickets": [
+                "usd#2747"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Houdini, Houdini FX, Houdini Indie, and Houdini Education 20.5.684 21.0.792 22.0.429 Flow Render is available for the default Houdini Qt versions ( Qt6 for Houdini 22 and Houdini 21, and Qt5 for Houdini 20.5 and Houdini 20.0) Linux with at least glibc 2.28 and libstdc++ 11.2.1 (gcc 11.2.1). This is equivalent to Rocky 8. macOS 11 or later Apple Mac models with M series chips are natively supported by HtoA x86-64 CPUs need to support the SSE4.1 instruction set. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: HtoA 6.x Release Notes",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6540_html.html",
+      "scrapedAt": "2026-10-24T12:30:18.573Z"
+    },
     {
       "version": "6.5.1.5",
       "versionId": "6515",
@@ -11651,63 +12402,63 @@
       "versionId": "6133",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6133_html.html",
-      "scrapedAt": "2026-10-16T13:05:26.039Z"
+      "scrapedAt": "2026-10-24T12:30:20.133Z"
     },
     {
       "version": "6.1.3.0",
       "versionId": "6130",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6130_html.html",
-      "scrapedAt": "2026-10-16T13:05:26.190Z"
+      "scrapedAt": "2026-10-24T12:30:20.234Z"
     },
     {
       "version": "6.1.1.0",
       "versionId": "6110",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6110_html.html",
-      "scrapedAt": "2026-10-16T13:05:26.294Z"
+      "scrapedAt": "2026-10-24T12:30:20.313Z"
     },
     {
       "version": "6.1.0.0",
       "versionId": "6100",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6100_html.html",
-      "scrapedAt": "2026-10-16T13:05:26.397Z"
+      "scrapedAt": "2026-10-24T12:30:20.382Z"
     },
     {
       "version": "6.0.2.2",
       "versionId": "6022",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6022_html.html",
-      "scrapedAt": "2026-10-16T13:05:26.500Z"
+      "scrapedAt": "2026-10-24T12:30:20.476Z"
     },
     {
       "version": "6.0.2.1",
       "versionId": "6021",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6021_html.html",
-      "scrapedAt": "2026-10-16T13:05:26.590Z"
+      "scrapedAt": "2026-10-24T12:30:20.767Z"
     },
     {
       "version": "6.0.2.0",
       "versionId": "6020",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6020_html.html",
-      "scrapedAt": "2026-10-16T13:05:26.703Z"
+      "scrapedAt": "2026-10-24T12:30:20.844Z"
     },
     {
       "version": "6.0.1.0",
       "versionId": "6010",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6010_html.html",
-      "scrapedAt": "2026-10-16T13:05:26.798Z"
+      "scrapedAt": "2026-10-24T12:30:20.902Z"
     },
     {
       "version": "6.0.0.0",
       "versionId": "6000",
       "error": "Page not found or fetch failed",
       "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Houdini/files/ah-release-notes/ah-htoa-6x/arnold_for_houdini_6000_html.html",
-      "scrapedAt": "2026-10-16T13:05:26.995Z"
+      "scrapedAt": "2026-10-24T12:30:20.989Z"
     },
     {
       "version": "5.6.3.1",
@@ -14694,5 +15445,5 @@
       "scrapedAt": "2026-03-24T11:43:21.195Z"
     }
   ],
-  "updatedAt": "2026-10-16T13:05:26.995Z"
+  "updatedAt": "2026-10-24T12:30:20.989Z"
 }
