@@ -19,6 +19,7 @@ import { writeFileSync, readFileSync, existsSync } from 'fs';
 // ADD NEW VERSIONS HERE when HtoA releases a new version.
 const VERSIONS = [
   // ── 6.x ──────────────────────────────────────────────────────────────────
+  { id: "6541", label: "6.5.4.1", series: "6x" },
   { id: "6536", label: "6.5.3.6", series: "6x" },
   { id: "6540", label: "6.5.4.0", series: "6x" },
   { id: "6515", label: "6.5.1.5", series: "6x" },
