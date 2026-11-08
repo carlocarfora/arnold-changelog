@@ -10888,30 +10888,494 @@
     {
       "version": "7.1.2.2",
       "versionId": "7122",
-      "error": "Page not found or fetch failed",
-      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7122_html.html",
-      "scrapedAt": "2026-10-24T12:30:17.493Z"
+      "releaseType": "release",
+      "intro": "08 Jul 2022",
+      "sections": [
+        {
+          "heading": "I n the driver page select \"Windows Driver Type:\" DCH",
+          "items": [
+            {
+              "html": "The cache will also need to be re-populated after installing a new Arnold version, <strong>updating to a new NVIDIA driver</strong> , or changing the hardware configuration of GPUs on the system. More information can be found <a href=\"https://docs.arnoldrenderer.com/display/A5ARP/Getting+Started+With+Arnold+GPU\" target=\"_blank\" rel=\"noopener\">here</a> .",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-12443 Crash when calling AiUniverseCacheFlush on a skydome light without a render session",
+              "tickets": [
+                "ARNOLD-12443"
+              ]
+            },
+            {
+              "html": "ARNOLD-12365 Fix Python bindings compatibility for AiMsg functions",
+              "tickets": [
+                "ARNOLD-12365"
+              ]
+            },
+            {
+              "html": "ARNOLD-12438 Fix Python 3 compatibility for the stats API bindings",
+              "tickets": [
+                "ARNOLD-12438"
+              ]
+            },
+            {
+              "html": "ARNOLD-12345 [GPU] Disabling skydome_light interactively is ignored",
+              "tickets": [
+                "ARNOLD-12345"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 10.13 or later . CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are supported under Rosetta 2 mode. GPU rendering works on Windows and Linux only and requires an NVIDIA GPU of the Ampere, Turing, Volta, Pascal, or Maxwell architecture. Optix™ denoiser requires an NVidia GPU with CUDA™ Compute Capability 5.0 and above. We recommend using the 511.09 (Quadro), 511.09 (GeForce) , or higher on Windows and 495.46 or higher drivers on Linux . See Getting Started with Arnold GPU for more information. The driver type must be set to DCH.",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_ac_rn_7122_html.html",
+      "scrapedAt": "2026-11-08T18:37:34.601Z"
     },
     {
       "version": "7.1.2.1",
       "versionId": "7121",
-      "error": "Page not found or fetch failed",
-      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7121_html.html",
-      "scrapedAt": "2026-10-24T12:30:17.878Z"
+      "releaseType": "release",
+      "intro": "30 Jun 2022",
+      "sections": [
+        {
+          "heading": "I n the driver page select \"Windows Driver Type:\" DCH",
+          "items": [
+            {
+              "html": "The cache will also need to be re-populated after installing a new Arnold version, <strong>updating to a new NVIDIA driver</strong> , or changing the hardware configuration of GPUs on the system. More information can be found <a href=\"https://docs.arnoldrenderer.com/display/A5ARP/Getting+Started+With+Arnold+GPU\" target=\"_blank\" rel=\"noopener\">here</a> .",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-12352 - Unsupported VECTOR2 AOV deep output prevents EXR files from being written",
+              "tickets": [
+                "ARNOLD-12352"
+              ]
+            },
+            {
+              "html": "ARNOLD-12334 - Nested instancers were unnecessarily duplicating instancer data",
+              "tickets": [
+                "ARNOLD-12334"
+              ]
+            },
+            {
+              "html": "ARNOLD-12328 - Unwanted AiUniverseCompare log messages during rendering",
+              "tickets": [
+                "ARNOLD-12328"
+              ]
+            },
+            {
+              "html": "ARNOLD-12292 - Log reports original requested samples instead of actual samples used during negative progressive passes",
+              "tickets": [
+                "ARNOLD-12292"
+              ]
+            },
+            {
+              "html": "ARNOLD-12199 - Disk and Cylinder lights aren't motion blurred in the camera",
+              "tickets": [
+                "ARNOLD-12199"
+              ]
+            },
+            {
+              "html": "ARNOLD-12051 - Skydome texture is not flushed after calling AiUniverseCacheFlush",
+              "tickets": [
+                "ARNOLD-12051"
+              ]
+            },
+            {
+              "html": "ARNOLD-10959 - Inconsistent order of light AOVs in output iterators passed to the driver API",
+              "tickets": [
+                "ARNOLD-10959"
+              ]
+            },
+            {
+              "html": "ARNOLD-11064 - [GPU] Crash when rendering the N AOV with volumes",
+              "tickets": [
+                "ARNOLD-11064"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/pull/1168\" target=\"_blank\" rel=\"noopener\">usd#1168</a> Remove attributes reset in the lights delegate",
+              "tickets": [
+                "usd#1168"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/pull/1165\" target=\"_blank\" rel=\"noopener\">usd#1165</a> Support double array primvars in the procedural",
+              "tickets": [
+                "usd#1165"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/pull/1175\" target=\"_blank\" rel=\"noopener\">usd#1175</a> Fix authoring per-channel connections so that the output attribute exists",
+              "tickets": [
+                "usd#1175"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/pull/1170\" target=\"_blank\" rel=\"noopener\">usd#1170</a> Support render products with no productName",
+              "tickets": [
+                "usd#1170"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 10.13 or later . CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are supported under Rosetta 2 mode. GPU rendering works on Windows and Linux only and requires an NVIDIA GPU of the Ampere, Turing, Volta, Pascal, or Maxwell architecture. Optix™ denoiser requires an NVidia GPU with CUDA™ Compute Capability 5.0 and above. We recommend using the 511.09 (Quadro), 511.09 (GeForce) , or higher on Windows and 495.46 or higher drivers on Linux . See Getting Started with Arnold GPU for more information. The driver type must be set to DCH.",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_ac_rn_7121_html.html",
+      "scrapedAt": "2026-11-08T18:37:36.433Z"
     },
     {
       "version": "7.1.2.0",
       "versionId": "7120",
-      "error": "Page not found or fetch failed",
-      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7120_html.html",
-      "scrapedAt": "2026-10-24T12:30:18.035Z"
+      "releaseType": "release",
+      "intro": "25 May 2022",
+      "sections": [
+        {
+          "heading": "I n the driver page select \"Windows Driver Type:\" DCH",
+          "items": [
+            {
+              "html": "The cache will also need to be re-populated after installing a new Arnold version, <strong>updating to a new NVIDIA driver</strong> , or changing the hardware configuration of GPUs on the system. More information can be found <a href=\"https://docs.arnoldrenderer.com/display/A5ARP/Getting+Started+With+Arnold+GPU\" target=\"_blank\" rel=\"noopener\">here</a> .",
+              "tickets": []
+            },
+            {
+              "html": "This version breaks binary compatibility with Arnold versions 7.0 and older. Shaders, procedurals, and other plugins compiled against Arnold 7.0 and older are not compatible with this version of Arnold and will need to be updated and recompiled.",
+              "tickets": []
+            },
+            {
+              "html": "<strong>Autodesk Network Licensing version</strong> : Arnold 7.1 switches to <code>ARNOL_2023</code> licensing.",
+              "tickets": []
+            },
+            {
+              "html": "Single-user subscriptions will work with Arnold 7.1. The plugin installers automatically register the new version. If you do not use a plugin, then after you download Arnold, open the Arnold License Manager and click Register .",
+              "tickets": []
+            },
+            {
+              "html": "Existing network licenses will not work with Arnold 7.1. Log on to your Autodesk account to generate your new <code>ARNOL_2023</code> licenses.",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "USD Enhancements",
+          "items": [
+            {
+              "html": "<strong>Mesh Lights</strong> : Geometry lights are now supported in the render delegate ( <a href=\"https://github.com/Autodesk/arnold-usd/issues/1080\" target=\"_blank\" rel=\"noopener\">usd#1080</a> )",
+              "tickets": [
+                "usd#1080"
+              ]
+            },
+            {
+              "html": "<strong>Color Management</strong> : When a usd file is loaded, the color manager node is set based on render settings parameters ( <a href=\"https://github.com/Autodesk/arnold-usd/issues/946\" target=\"_blank\" rel=\"noopener\">usd#946</a> <a href=\"https://github.com/Autodesk/arnold-usd/issues/1042\" target=\"_blank\" rel=\"noopener\">usd#1042</a> )",
+              "tickets": [
+                "usd#946",
+                "usd#1042"
+              ]
+            },
+            {
+              "html": "<strong>Motion Blur from Render Settings</strong> : A usd scene with Render Settings primitive can be rendered with motion blur ( <a href=\"https://github.com/Autodesk/arnold-usd/issues/1089\" target=\"_blank\" rel=\"noopener\">usd#1089</a> )",
+              "tickets": [
+                "usd#1089"
+              ]
+            },
+            {
+              "html": "<strong>Varying topologies and motion blur</strong> : Support velocity motion blur on geometries with varying topologies (mesh, curves, points) on both the procedural and the render delegate ( <a href=\"https://github.com/Autodesk/arnold-usd/issues/1090\" target=\"_blank\" rel=\"noopener\">usd#1090</a> )",
+              "tickets": [
+                "usd#1090"
+              ]
+            },
+            {
+              "html": "<strong>Support arnold primvars in instances</strong> : When an instancer has a primvar for an arnold builtin attribute (e.g. matte), we now propagate it to its instances ( <a href=\"https://github.com/Autodesk/arnold-usd/issues/1100\" target=\"_blank\" rel=\"noopener\">usd#1100</a> )",
+              "tickets": [
+                "usd#1100"
+              ]
+            },
+            {
+              "html": "<strong>Support UsdPreviewSurface displacement output</strong> : scenes where UsdPreviewSurface is used as a displacement shader, through its attribute displacement are now supported. This is needed to render the Alab scenes ( <a href=\"https://github.com/Autodesk/arnold-usd/pull/1130\" target=\"_blank\" rel=\"noopener\">usd#1130</a> )",
+              "tickets": [
+                "usd#1130"
+              ]
+            },
+            {
+              "html": "<strong>Support light linking on instances</strong> : We can now support setting a point instancer, or an instanceable prim, in light linking ( <a href=\"https://github.com/Autodesk/arnold-usd/pull/1128\" target=\"_blank\" rel=\"noopener\">usd#1128</a> )",
+              "tickets": [
+                "usd#1128"
+              ]
+            },
+            {
+              "html": "<strong>Optimize nested instances in the render delegate</strong> : The memory consumption for nested instances (point instancer having another point instancer as a prototype) has reduced dramatically in Hydra ( <a href=\"https://github.com/Autodesk/arnold-usd/issues/1124\" target=\"_blank\" rel=\"noopener\">usd#1124</a> )",
+              "tickets": [
+                "usd#1124"
+              ]
+            },
+            {
+              "html": "<strong>Render NurbsCurves as UsdGeomCurves:</strong> Usd Nurbs Curves were previously ignored by Arnold. They are now rendered as basic UsdGeomCurves ( <a href=\"https://github.com/Autodesk/arnold-usd/issues/1120\" target=\"_blank\" rel=\"noopener\">usd#1120</a> )",
+              "tickets": [
+                "usd#1120"
+              ]
+            },
+            {
+              "html": "<strong>Support instanceable prims with variant overrides:</strong> It is now possible to render an instanceable prim referencing another primitive, and override its variants ( <a href=\"https://github.com/Autodesk/arnold-usd/pull/1127\" target=\"_blank\" rel=\"noopener\">usd#1127</a> )",
+              "tickets": [
+                "usd#1127"
+              ]
+            },
+            {
+              "html": "<strong>Support per-instance velocity blur</strong> : The Arnold render delegate now supports point instancers with varying amount of instances, where it's the velocity blur that drives motion blur ( <a href=\"https://github.com/Autodesk/arnold-usd/issues/1092\" target=\"_blank\" rel=\"noopener\">usd#1092</a> )",
+              "tickets": [
+                "usd#1092"
+              ]
+            },
+            {
+              "html": "<strong>Usd Writer reuses eventual existing material primitives</strong> : This is needed for MayaUsd exports, so that the original mayaUsd material is kept, and Arnold shaders are assigned in the &quot;arnold&quot; context ( <a href=\"https://github.com/Autodesk/arnold-usd/issues/1139\" target=\"_blank\" rel=\"noopener\">usd#1139</a> )",
+              "tickets": [
+                "usd#1139"
+              ]
+            },
+            {
+              "html": "<strong>Support shader connections to lights in Hydra</strong> : Using an ArnoldNodeGraph primitive, the Arnold render delegate now supports connecting arbitrary shading trees to light's colors ( <a href=\"https://github.com/Autodesk/arnold-usd/issues/1141\" target=\"_blank\" rel=\"noopener\">usd#1141</a> )",
+              "tickets": [
+                "usd#1141"
+              ]
+            },
+            {
+              "html": "<strong>Support lights filters in Hydra</strong> : Similarly to shader connections, arnold light filters (gobo, etc...) can now be assigned to lights, through an ArnoldNodeGraph primitive ( <a href=\"https://github.com/Autodesk/arnold-usd/issues/1141\" target=\"_blank\" rel=\"noopener\">usd#1141</a> )",
+              "tickets": [
+                "usd#1141"
+              ]
+            },
+            {
+              "html": "<strong>Improve shader dependency graph in the render delegate</strong> : The tracking of shader connections (for materials, lights, light filters, etc...) is now more robust, and fixes crashes when disconnecting or reconnecting shaders ( <a href=\"https://github.com/Autodesk/arnold-usd/issues/1158\" target=\"_blank\" rel=\"noopener\">usd#1158</a> )",
+              "tickets": [
+                "usd#1158"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "API Additions",
+          "items": [
+            {
+              "html": "<strong>Universe comparison:</strong> The new <code>AiUniverseCompare()</code> API allows the comparison of 2 universes, returning a boolean result. It can receive an optional type mask so that only nodes of types matching that mask are taken into account for the comparison. Finally, it can optionally return a list of all the differences found. (ARNOLD-10171).",
+              "tickets": [
+                "ARNOLD-10171"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Incompatible Changes",
+          "items": [
+            {
+              "html": "<strong>Connection priority in MaterialX document:</strong> Setting both a value and a connection as input of a node is undefined behavior in MaterialX. Arnold will now prioritize the connection over the value when both are defined. (ARNOLD-11198).",
+              "tickets": [
+                "ARNOLD-11198"
+              ]
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-12299 - Crash when writing .ass file expanding procs without a render session",
+              "tickets": [
+                "ARNOLD-12299"
+              ]
+            },
+            {
+              "html": "ARNOLD-12232 - Memory leak when rendering deep EXR layers",
+              "tickets": [
+                "ARNOLD-12232"
+              ]
+            },
+            {
+              "html": "ARNOLD-11809 - Random crash when rendering multiple scenes in parallel",
+              "tickets": [
+                "ARNOLD-11809"
+              ]
+            },
+            {
+              "html": "ARNOLD-12211 - [GPU] Optix denoiser memory leak when creating and destroying render sessions successively",
+              "tickets": [
+                "ARNOLD-12211"
+              ]
+            },
+            {
+              "html": "ARNOLD-12177 - [GPU] Crash with ramp shader after aborting due to an error",
+              "tickets": [
+                "ARNOLD-12177"
+              ]
+            },
+            {
+              "html": "ARNOLD-12166 - [GPU] Texture memory leak when creating and destroying render sessions successively",
+              "tickets": [
+                "ARNOLD-12166"
+              ]
+            },
+            {
+              "html": "ARNOLD-12165 - [GPU] Incorrect volume bounds",
+              "tickets": [
+                "ARNOLD-12165"
+              ]
+            },
+            {
+              "html": "ARNOLD-357 - [Licensing] Licensing error &quot;[clm.v1] product key not found",
+              "tickets": [
+                "ARNOLD-357"
+              ]
+            },
+            {
+              "html": "ARNOLD-12144 - [maketx] Unwanted log messages",
+              "tickets": [
+                "ARNOLD-12144"
+              ]
+            },
+            {
+              "html": "ARNOLD-12171 - [MaterialX] Crash when exporting a volume shader to MaterialX",
+              "tickets": [
+                "ARNOLD-12171"
+              ]
+            },
+            {
+              "html": "ARNOLD-11198 - [MaterialX] Connection is ignored when a node input also has a defined value",
+              "tickets": [
+                "ARNOLD-11198"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/1073\" target=\"_blank\" rel=\"noopener\">usd#1073</a> Resolve node attributes from referenced files",
+              "tickets": [
+                "usd#1073"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/1093\" target=\"_blank\" rel=\"noopener\">usd#1093</a> Fix instanceable references in the same USD file",
+              "tickets": [
+                "usd#1093"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/1104\" target=\"_blank\" rel=\"noopener\">usd#1104</a> Compute visibility until the eventual root prim",
+              "tickets": [
+                "usd#1104"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/pull/1129\" target=\"_blank\" rel=\"noopener\">usd#1129</a> Support UsdUvTexture relative paths with udims",
+              "tickets": [
+                "usd#1129"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/1133\" target=\"_blank\" rel=\"noopener\">usd#1133</a> Set outputs layer names only if required",
+              "tickets": [
+                "usd#1133"
+              ]
+            },
+            {
+              "html": "<a href=\"https://github.com/Autodesk/arnold-usd/issues/1136\" target=\"_blank\" rel=\"noopener\">usd#1136</a> Fix uninitialized UV coords with leftHanded meshes",
+              "tickets": [
+                "usd#1136"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 10.13 or later . CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are supported under Rosetta 2 mode. GPU rendering works on Windows and Linux only and requires an NVIDIA GPU of the Ampere, Turing, Volta, Pascal, or Maxwell architecture. Optix™ denoiser requires an NVidia GPU with CUDA™ Compute Capability 5.0 and above. We recommend using the 511.09 (Quadro), 511.09 (GeForce) , or higher on Windows and 495.46 or higher drivers on Linux . See Getting Started with Arnold GPU for more information. The driver type must be set to DCH.",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_ac_rn_7120_html.html",
+      "scrapedAt": "2026-11-08T18:37:38.268Z"
     },
     {
       "version": "7.1.1.1",
       "versionId": "7111",
-      "error": "Page not found or fetch failed",
-      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7111_html.html",
-      "scrapedAt": "2026-10-24T12:30:18.249Z"
+      "releaseType": "release",
+      "intro": "27 Apr 2022",
+      "sections": [
+        {
+          "heading": "I n the driver page select \"Windows Driver Type:\" DCH",
+          "items": [
+            {
+              "html": "The cache will also need to be re-populated after installing a new Arnold version, <strong>updating to a new NVIDIA driver</strong> , or changing the hardware configuration of GPUs on the system. More information can be found <a href=\"https://docs.arnoldrenderer.com/display/A5ARP/Getting+Started+With+Arnold+GPU\" target=\"_blank\" rel=\"noopener\">here</a> .",
+              "tickets": []
+            }
+          ]
+        },
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-12230 - Crash when rendering quad lights with non-default roundness in multiple render sessions",
+              "tickets": [
+                "ARNOLD-12230"
+              ]
+            },
+            {
+              "html": "ARNOLD-12229 - Crash when adjusting a camera used across multiple render session lifetimes",
+              "tickets": [
+                "ARNOLD-12229"
+              ]
+            },
+            {
+              "html": "ARNOLD-12228 - Deep driver crashes when batch rendering with progressive negative-AA",
+              "tickets": [
+                "ARNOLD-12228"
+              ]
+            },
+            {
+              "html": "ARNOLD-12223 - Do not show a dialog box when loading invalid plugins on Windows",
+              "tickets": [
+                "ARNOLD-12223"
+              ]
+            },
+            {
+              "html": "ARNOLD-12216 - Thread priority was no longer affecting render threads on Windows",
+              "tickets": [
+                "ARNOLD-12216"
+              ]
+            },
+            {
+              "html": "ARNOLD-12208 - Crash when destroying and recreating a RenderSession with GPU rendering or Optix denoising",
+              "tickets": [
+                "ARNOLD-12208"
+              ]
+            },
+            {
+              "html": "ARNOLD-12054 - Restarted checkpoint renders were always starting progress at 0%",
+              "tickets": [
+                "ARNOLD-12054"
+              ]
+            },
+            {
+              "html": "ARNOLD-12192 - [Alembic] Root of b-spline curve is cut short",
+              "tickets": [
+                "ARNOLD-12192"
+              ]
+            },
+            {
+              "html": "ARNOLD-12253 - [GPU] Crash when deleting and creating render sessions for the same universe",
+              "tickets": [
+                "ARNOLD-12253"
+              ]
+            },
+            {
+              "html": "ARNOLD-12037 - [GPU] Artifacts in Light Path Expression AOVs using closure labels",
+              "tickets": [
+                "ARNOLD-12037"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.17 and libstdc++ 4.8.5 (gcc 4.8.5). This is equivalent to RHEL/CentOS 7. macOS 10.13 or later . CPUs need to support the SSE4.1 instruction set. Apple Mac models with M series chips are supported under Rosetta 2 mode. GPU rendering works on Windows and Linux only and requires an NVIDIA GPU of the Ampere, Turing, Volta, Pascal, or Maxwell architecture. Optix™ denoiser requires an NVidia GPU with CUDA™ Compute Capability 5.0 and above. We recommend using the 511.09 (Quadro), 511.09 (GeForce) , or higher on Windows and 495.46 or higher drivers on Linux . See Getting Started with Arnold GPU for more information. The driver type must be set to DCH.",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_ac_rn_7111_html.html",
+      "scrapedAt": "2026-11-08T18:37:40.070Z"
     },
     {
       "version": "7.1.1.0",
@@ -15870,5 +16334,5 @@
       "scrapedAt": "2026-03-23T23:17:00.322Z"
     }
   ],
-  "updatedAt": "2026-10-24T12:30:18.249Z"
+  "updatedAt": "2026-11-08T18:37:41.572Z"
 }

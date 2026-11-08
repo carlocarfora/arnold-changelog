@@ -114,11 +114,13 @@ const VERSIONS = [
 
 // ── URL builder ───────────────────────────────────────────────────────────────
 // Newer versions use arnold_core_{id}_html.html
+// 7.1.1.1–7.1.2.2 use arnold_core_ac_rn_{id}_html.html
 // Older versions use arnold_user_guide_ac_release_notes_ac_rn_{id}_html.html
 function buildUrls(v) {
   const base = `https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-${v.series}`;
   return [
     `${base}/arnold_core_${v.id}_html.html`,
+    `${base}/arnold_core_ac_rn_${v.id}_html.html`,
     `${base}/arnold_user_guide_ac_release_notes_ac_rn_${v.id}_html.html`,
   ];
 }
