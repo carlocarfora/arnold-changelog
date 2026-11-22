@@ -1,6 +1,11 @@
 {
   "versions": [
     {
+      "id": "7542",
+      "label": "7.5.4.2",
+      "series": "7x"
+    },
+    {
       "id": "7541",
       "label": "7.5.4.1",
       "series": "7x"
@@ -477,6 +482,118 @@
     }
   ],
   "changelogs": [
+    {
+      "version": "7.5.4.2",
+      "versionId": "7542",
+      "releaseType": "release",
+      "intro": "21 November 2026",
+      "sections": [
+        {
+          "heading": "Bug Fixes",
+          "items": [
+            {
+              "html": "ARNOLD-15789 - Random crash when rendering with cryptomatte",
+              "tickets": [
+                "ARNOLD-15789"
+              ]
+            },
+            {
+              "html": "ARNOLD-18382 - AiTraceProbe/AiTrace silently drop hits on the shaded primitive when the ray origin is unrelated to the shading point",
+              "tickets": [
+                "ARNOLD-18382"
+              ]
+            },
+            {
+              "html": "ARNOLD-18542 - Randomwalk SSS artifacts on small objects, such as centimeter assets in a meter scene",
+              "tickets": [
+                "ARNOLD-18542"
+              ]
+            },
+            {
+              "html": "ARNOLD-18592 - Polymesh holes render filled after an interactive edit, and turning subdivision off can crash",
+              "tickets": [
+                "ARNOLD-18592"
+              ]
+            },
+            {
+              "html": "ARNOLD-18597 - Random crash at GPU render start with AA samples above 1",
+              "tickets": [
+                "ARNOLD-18597"
+              ]
+            },
+            {
+              "html": "ARNOLD-18641 - Geometry stats are wrong after interactive polymesh edits",
+              "tickets": [
+                "ARNOLD-18641"
+              ]
+            },
+            {
+              "html": "ARNOLD-18760 - Opaque shapes with a partly transparent shader sometimes render transparent despite disable_smart_opaque",
+              "tickets": [
+                "ARNOLD-18760"
+              ]
+            },
+            {
+              "html": "ARNOLD-18970 - Creases set on a subdivided polymesh after its first render aren't applied in interactive sessions",
+              "tickets": [
+                "ARNOLD-18970"
+              ]
+            },
+            {
+              "html": "ARNOLD-18972 - Destroying a former link source zeroes the parameter of a node reset with AiNodeReset in interactive sessions",
+              "tickets": [
+                "ARNOLD-18972"
+              ]
+            },
+            {
+              "html": "ARNOLD-18991 - AiNodeReset on a nested instanced node causes a crash or hang",
+              "tickets": [
+                "ARNOLD-18991"
+              ]
+            },
+            {
+              "html": "ARNOLD-19020 - Intermittent crash when loading .ass files",
+              "tickets": [
+                "ARNOLD-19020"
+              ]
+            },
+            {
+              "html": "ARNOLD-19036 - Hang when loading a .ass file with a truncated base85/base64 array",
+              "tickets": [
+                "ARNOLD-19036"
+              ]
+            },
+            {
+              "html": "ARNOLD-19042 - ARNOLD_ADP_DISABLE does not fully disable ADP SDK",
+              "tickets": [
+                "ARNOLD-19042"
+              ]
+            },
+            {
+              "html": "ARNOLD-19061 - Array value set with AiNodeSetArray is overwritten when a node referenced by an earlier .ass file is loaded later",
+              "tickets": [
+                "ARNOLD-19061"
+              ]
+            },
+            {
+              "html": "ARNOLD-19063 - Creases are lost when a subdivided polymesh is re-subdivided in an interactive session",
+              "tickets": [
+                "ARNOLD-19063"
+              ]
+            },
+            {
+              "html": "ARNOLD-19076 - Wrong lighting on GPU when a volume is hidden from shadow or camera rays",
+              "tickets": [
+                "ARNOLD-19076"
+              ]
+            }
+          ]
+        }
+      ],
+      "systemRequirements": "Windows 10 or later, with the Visual Studio 2019 redistributable. Linux with at least glibc 2.28. This is equivalent to RHEL/Rocky 8. macOS 12 or later. x86-64 CPUs need to support the SSE4.1 instruction set. Apple Mac models with M-series chips are natively supported. GPU rendering and OptiX denoising work on Windows and Linux only, and require an NVIDIA GPU with the Maxwell architecture or later. On Linux, we recommend 590.48 or higher drivers. On Windows, we recommend 591.28 or higher drivers. Intel OIDN runs on all CPUs. GPU support is limited to: macOS Apple silicon GPUs (M1 and newer) Linux NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures Windows Intel Xe and Intel Arc dedicated and integrated GPUs NVIDIA GPUs with Turing, Ampere, Ada Lovelace, Hopper, and Blackwell architectures AMD GPUs with RDNA 2, RDNA 3, RDNA 3.5, and RDNA 4 architectures Parent page: 7.x",
+      "sourceUrl": "https://help.autodesk.com/cloudhelp/ENU/AR-Core/files/ac-release-notes/ac-rn-7x/arnold_core_7542_html.html",
+      "scrapedAt": "2026-11-22T16:02:50.003Z"
+    },
     {
       "version": "7.5.4.1",
       "versionId": "7541",
@@ -16487,5 +16604,5 @@
       "scrapedAt": "2026-03-23T23:17:00.322Z"
     }
   ],
-  "updatedAt": "2026-11-12T16:40:10.510Z"
+  "updatedAt": "2026-11-22T16:02:51.506Z"
 }
